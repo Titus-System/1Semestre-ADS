@@ -1,0 +1,41 @@
+>Introdução
+	>O que é o SCRUM
+		>Pilares
+		>valores
+	>Vantagens do SCRUM
+	>Desvantagens
+<QUIZ>
+>Começando o processo SCRUM
+	>Definindo o Produto
+		> P.O. e ScrumMaster
+		>O backlog do produto
+		>Prioridades
+			>Por Valor
+			>Por Esforço
+			>Por Riscos
+			>Por dependencias
+			<QUIZ>
+		>Prazos e estimativas
+	>As sprints
+		>O Backlog da Sprint
+<QUIZ>
+>Ceremonies
+	>Sprint Planning
+	>Daily
+	>Sprint Review
+	>Sprint Retrospective
+<QUIZ>
+>Artefacts 
+	>De volta ao Backlog
+		>Do Produto
+			>User Story
+			>Product Goal
+		>Da Sprint
+			>Sprint Goal
+		>Product Increment
+		<QUIZ>
+	>Burndown Chart
+	>Definition of Done
+	>Definition of Ready
+	>Planing Poker
+<QUIZ>
