@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>{% block title %} <!-- inserir o nome da página --> {% endblock %}</title>
+</head>
+<body class="body_teoria">
+    <!-- cabeçalho -->
+    <header>
+        <div class="link_bar">
+            <img src="" alt="logo">
+            <span class="header_link">
+                <a href="#" alt="resultado">resultado</a>
+                <a href="#" alt="apostila">apostila</a>
+                <a href="#" alt="quiz">quiz</a>
+                <a href="#" alt="home">home</a>
+            </span>
+        </div>
+        <!-- inserir imagem principal da página -->
+        {% block head_image %} {% endblock %}
+    </header>
+
+    <!-- conteúdo de teoria -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- paginação -->
+    <div class="paginacao">
+        <a href="#" title="página anterior">&#11207;</a>
+        <a href="/introducao" title="página 1" style="background-color:#8da7b3">1</a>|
+        <a href="/papeis" title="página 2">2</a>|
+        <a href="/cerimonias" title="página 3">3</a>|
+        <a href="/artefatos" title="página 4">4</a>|
+        <a href="/priorizacao" title="página 5">5</a>|
+        <a href="/vantagens-e-desvantagens" title="página 6">6</a>|
+        <a href="#" title="página 7">7</a>
+        <a href="#" title="próxima página">&#11208;</a>
+    </div>
+
+    <footer>
+        
+    </footer>
+
+</body>
+</html>
