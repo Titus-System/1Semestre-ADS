@@ -1,9 +1,62 @@
 {% extends 'base_teoria.html' %}
 
-{% block title %} {% endblock %}
+{% block title %}Papéis{% endblock %}
 
 {% block head_image %}
+<div class="head_img" style="background-image:url(./static/images/dark_color.png); background-position:0 500px; background-size:cover;"></div>
 {% endblock %}
 
 {% block content %}
+<div class="conteudo_teoria">
+    <h1>Papéis</h1>
+    <p>O primeiro passo para o desenvolvimento por SCRUM é definir quem vai fazer o quê. Há três entidades principais: o Proprietário do Produto (Product Owner), o SCRUM master, e o Time.</p>
+    <br>
+    <h2>Proprietário do Produto (Product Owner/ P.O.)</h2>
+    <p>O Proprietário do Produto representa os interesses do cliente. Ele tem que ser a interface entre o cliente e o time de desenvolvedores, ou seja, estar sempre em contato com o cliente e saber exatamente o que o projeto tem que ser.</p>
+    <p>Ele tem as seguintes responsabilidades:</p>
+    <ul>
+        <li>Definir as características e conteúdo do produto;</li>
+        <br>
+        <li>Decidir sobre a data de término;</li>
+        <br>
+        <li>Ser responável pela rentabilidade do produto;</li>
+        <br>
+        <li>Priorizar as funções de acordo com o valor de mercado e com o cliente (e outras possíveis variáveis);</li>
+        <br>
+        <li>Ajustar recursos e priorizar tarefas a cada Sprint, como necessário;</li>
+        <br>
+        <li>Aceitar ou rejeitar o resultado do trabalho;</li>
+        <br>
+        <li>Definir o Product Backlog</li>
+    </ul>
+    <br>
+    <h2>ScrumMaster</h2>
+    <p>O ScrumMaster é, durante o trabalho, é quem mais fica em contato com o Proprietário do Produto. Podemos chamá-lo também de Coordenador do Projeto devido à importância de suas responsabilidades. Ele facilita a comunicação entre o time e faz o projeto andar de verdade.</p>
+    <p>Ele deve:</p>
+    <ul>
+        <li>Asegurar que a equipe de desenvolvimento funcione plenamente e seja produtiva;</li><br>
+        <li>Ajudar na cooperação entre todas as funções e papéis do time;</li><br>
+        <li>Remover barreiras (como problemas pessoais ou conflitos entre os integrantes do time de desenvolvimento);</li><br>
+        <li>Proteger a equipe de interferências externas;</li><br>
+        <li>Assegurar-se de que a metodologia está sendo seguida, incluindo chamadas para reuniões diárias (Daily Scrum Meetings), revisões de atividade (Sprint Reviews) e reuniões de planejamento das atividades (Sprint Planning);</li><br>
+        <li>Saber quais atividades foram concluídas, iniciadas e descobertas e qualquer estimativa que possa ter mudado, para poder atualizar sempre o Burndown Chart, que mostra quanto trabalho falta para um Sprint acabar, dia por dia. Ele também tem que sempre olhar cuidadosamente para o número de tarefas em aberto. Elas devem ser minimizadas o máximo possível para garantir um trabalho sempre limpo e eficiente;</li><br>
+        <li>Avaliar as dependências superficiais e bloqueios que causam prejuízos ao andamento do Projeto. Estes itens devem receber prioridade e um plano de solução deve ser implementado de acordo com a ordem de prioridade destes impedimentos. Alguns podem ser resolvidos pelo time, outros podem ser resolvidos por meio de vários times e outros podem precisar de envolvimento da gerência, pois podem ser problemas relacionados a atitudes da empresa. Como exemplo desse tipo de impedimento externo, há as questões judiciais;</li>
+    </ul>
+    <br>
+    <h2>A equipe de desenvolvimento</h2>
+    <p>A equipe de desenvolvimento é formada por aqueles que, efetivamente, trabalharão para que o software funcione. Pode haver uma ou mais equipes de desenvolvimento, dependendo da complexidade do software.</p>
+    <p>Algumas características das equipes de desenvolvimento:</p>
+    <ul>
+        <li>São pequenas e multidisciplinares, com, em média, 7 participantes;</li><br>
+        <li>Devem fazer de tudo, dentro dos limites das diretrizes do projeto, para atingir a meta de cada Sprint;</li><br>
+        <li>São autogerenciáveis (decidem internamente quem faz o que e como);</li><br>
+        <li>Trabalham para atingir todos os resultados definidos pelo Proprietário do Produto.</li>
+    </ul>
+</div>
 {% endblock %}
+
+{% block voltar %}/apostila/introducao{% endblock %}
+
+{% block prox %}/apostila/cerimonias{% endblock %}
+
+{% block highlight_2 %} class='paginacao_atual' {% endblock %}

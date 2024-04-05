@@ -1,9 +1,32 @@
 {% extends 'base_teoria.html' %}
 
-{% block title %} {% endblock %}
+{% block title %}Priorização{% endblock %}
 
 {% block head_image %}
+<div class="head_img" style="background-image:url(./static/images/dark_color.png); background-position:0 500px; background-size:cover;"></div>
 {% endblock %}
 
 {% block content %}
+<div class="conteudo_teoria">
+    <h1>Técnicas de priorização SCRUM</h1>
+    <p>Priorizar as atividades e tarefas em um projeto de desenvolvimento de software é uma parte fundamental do Scrum. Por meio das técnicas de priorização adequadas, é possível aumentar a eficiência do time e garantir a entrega de valor de forma mais eficaz.</p>
+    <br>
+    <h2>Priorização baseada em valor</h2>
+    <p>Nessa técnica de priorização, o valor que as atividades trazem ao cliente ou ao produto é o determinante de sua importância. O time e o Product Owner trabalham juntos para identificar e classificar as funcionalidades e tarefas com base em sua importância estratégica. Dessa forma, é possível direcionar os esforços do time para as atividades que trarão o maior benefício para o cliente ou usuário final.</p>
+    <br>
+    <h2>Priorização baseada em esforço</h2>
+    <p>Outra técnica de priorização Scrum é a baseada em esforço. Nesse caso, as atividades são analisadas levando em consideração o tempo, recursos e complexidade necessários para sua execução. O time realiza estimativas e pontuações para cada atividade, levando em conta fatores como a complexidade do trabalho, a experiência e habilidades dos membros do time. A partir dessas avaliações, é possível priorizar as atividades com base na capacidade do time de entregá-las dentro do prazo desejado.</p>
+    <br>
+    <h2>Priorização baseada em riscos</h2>
+    <p>A priorização baseada em riscos é uma técnica que visa identificar e priorizar as atividades que podem representar maiores riscos para o projeto. Nessa abordagem, o time analisa os possíveis obstáculos, desafios e incertezas associadas a cada atividade. As atividades que apresentam maior risco são priorizadas, permitindo que o time possa lidar com os desafios mais críticos desde cedo no projeto. Dessa forma, é possível minimizar possíveis impactos negativos e garantir uma execução mais suave do trabalho.</p>
+    <br>
+    <h2>Priorização baseada em dependências</h2>
+    <p>A técnica de priorização baseada em dependências é utilizada quando existem atividades que possuem pré-requisitos ou dependem de outras atividades para sua execução. Nesse caso, o time analisa as relações de dependência entre as atividades e prioriza aquelas que são dependentes de outras. Garantir que as atividades pré-requisito sejam concluídas antes das atividades dependentes é essencial para evitar bloqueios ou atrasos no projeto. Essa técnica permite que o time trabalhe de forma mais eficiente, evitando que atividades importantes fiquem paradas por falta de dependências resolvidas.</p>
+</div>
 {% endblock %}
+
+{% block voltar %}/apostila/artefatos{% endblock %}
+
+{% block prox %}/apostila/vantagens-e-desvantagens{% endblock %}
+
+{% block highlight_5 %} class='paginacao_atual' {% endblock %}

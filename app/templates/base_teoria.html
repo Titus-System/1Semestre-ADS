@@ -18,6 +18,7 @@
                 <a href="#" alt="home">home</a>
             </span>
         </div>
+        <hr style="margin:0; height:2px;">
         <!-- inserir imagem principal da página -->
         {% block head_image %} {% endblock %}
     </header>
@@ -26,19 +27,21 @@
     {% block content %}
     {% endblock %}
 
-    <!-- paginação -->
-    <div class="paginacao">
-        <a href="#" title="página anterior">&#11207;</a>
-        <a href="/introducao" title="página 1" style="background-color:#8da7b3">1</a>|
-        <a href="/papeis" title="página 2">2</a>|
-        <a href="/cerimonias" title="página 3">3</a>|
-        <a href="/artefatos" title="página 4">4</a>|
-        <a href="/priorizacao" title="página 5">5</a>|
-        <a href="/vantagens-e-desvantagens" title="página 6">6</a>|
-        <a href="#" title="página 7">7</a>
-        <a href="#" title="próxima página">&#11208;</a>
-    </div>
+    {% block perguntas %}
+    {% endblock %}
 
+    <!-- paginação -->
+            <div class="paginacao">
+                <a href='{% block voltar %}{% endblock %}' title="página anterior">&#11207;</a>
+                <a href="/apostila/introducao" title="página 1" {% block highlight_1 %}{% endblock %}>1</a> |
+                <a href="/apostila/papeis" title="página 2" {% block highlight_2 %}{% endblock %}>2</a> |
+                <a href="/apostila/cerimonias" title="página 3" {% block highlight_3 %}{% endblock %}>3</a> |
+                <a href="/apostila/artefatos" title="página 4" {% block highlight_4 %}{% endblock %}>4</a> |
+                <a href="/apostila/priorizacao" title="página 5" {% block highlight_5 %}{% endblock %}>5</a> |
+                <a href="/apostila/vantagens-e-desvantagens" title="página 6" {% block highlight_6 %}{% endblock %}>6</a> |
+                <a href="/apostila/glossario" title="página 7" {% block highlight_7 %}{% endblock %}>7</a>
+                <a href="{% block prox %}{% endblock %}" title="próxima página">&#11208;</a>
+            </div>
     <footer>
         
     </footer>

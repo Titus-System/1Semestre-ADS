@@ -1,9 +1,56 @@
 {% extends 'base_teoria.html' %}
 
-{% block title %} {% endblock %}
+{% block title %}vantagens e desvantagens{% endblock %}
 
 {% block head_image %}
+<div class="head_img" style="background-image:url(./static/images/dark_color.png); background-position:0 500px; background-size:cover;"></div>
 {% endblock %}
 
 {% block content %}
+<div class="conteudo_teoria">
+    <h1>Vantagens e Desvantagens do SCRUM</h1>
+    <p>É importante termos em mente que todo sistema, todo método, todo framework e toda ferramenta tem suas funções e limitações. A analogia de que não se pode apertar parafuso com um martelo é clichê, mas é válida. Devemos sempre avaliar qual a melhor ferramenta disponível para cada tarefa. Com esse propósito, elencamos vamos elencar pontos fortes e fracos do framework Scrum com o propósito de lhes ajudar a entender as fronteiras do que foi aqui exposto.</p>
+    <br>
+    <h2>Vantagens</h2>
+            <ol>
+                <li>Maior flexibilidade</li>
+                <dd>Ao invés de seguir um plano rígido, as equipes que escolhem o método Scrum têm a capacidade de se adaptar e responder às mudanças durante o processo de desenvolvimento. Isso permite que os integrantes do time lidem com requisitos em constante evolução e necessidades do cliente com mais facilidade.</dd>
+                <br>
+                <li>Entrega de valor incremental</li>
+                <dd>O Scrum é baseado em ciclos de desenvolvimento chamados de Sprints, nos quais pequenas partes do produto são desenvolvidas e entregues ao longo do tempo. Isso possibilita que o cliente tenha acesso a certas funcionalidades logo em seus estágios iniciais, proporcionando feedback valioso e permitindo ajustes conforme necessário. Ou seja, a entrega de valor é feita de forma incremental, o que pode resultar em maior satisfação do cliente.</dd>
+                <br>
+                <li>Colaboração e comunicação eficazes</li>
+                <dd>O método Scrum é baseado na cultura de colaboração e comunicação entre os membros da equipe. As reuniões diárias, por exemplo, são um dos vários métodos que o Scrum proporciona para facilitar a identificação de problemas e a tomada de decisões rápida e eficaz.</dd>
+                <br>
+                <li>Melhoria Contínua</li>
+                <dd>Grupos que trabalham utilizando Scrum buscam melhorar continuamente. Por meio das retrospectivas realizadas ao final de cada Sprint, a equipe analisa o que funcionou bem e o que precisa ser aprimorado. Essa abordagem permite que a equipe aprenda com seus erros e busque um processo de desenvolvimento cada vez mais eficiente.</dd>
+                <br>
+                <li>Visibilidadae e transparência</li>
+                <dd>O Scrum, que possui transparência como um de seus pilares, possibilita uma visão clara do progresso do projeto. Todos os membros da equipe são capazes de acompanhar as tarefas em andamento, o que já foi concluído e o que está pendente. Isso facilita o monitoramento do projeto para todos os envolvidos.</dd>
+            </ol>
+                <br>
+    <h2>Desvantagens</h2>
+            <ol>
+                <li>Maior dificuldade na definição de prazos</li>
+                <dd>De fato, a abordagem flexível do método Scrum é uma de suas vantagens, mas, às vezes, isso pode dificultar a definição de prazos reais para a conclusão de um projeto. Como as necessidades e os requisitos podem mudar ao longo do tempo, é desafiador estimar com precisão quando o projeto estará concluído. Isso pode ser um problema especialmente para clientes que têm expectativas claras de prazos.</dd>
+                <br>
+                <li>Requer uma equipe altamente autogerenciável</li>
+                <dd>O Scrum pressupõe que a equipe seja autogerenciável e capaz de tomar decisões de forma independente. Entretanto, isso pode ser um desafio para um time que não possua experiência ou maturidade suficiente para assumir essa responsabilidade. A falta de autogerenciamento pode levar a atrasos e problemas de qualidade.</dd>
+                <br>
+                <li>Necessidade de colaboração intensa</li>
+                <dd>O Scrum exige intensa colaboração entre os integrantes da equipe. Embora isso possa ser benéfico em muitos aspectos, pode ser difícil para equipes com membros que moram longe ou que têm diferentes horários de trabalho. A falta de colaboração eficaz pode prejudicar a produtividade.</dd>
+                <br>
+                <li>Risco de sobrecarga de trabalho</li>
+                <dd>O Scrum é baseado em ciclos curtos de desenvolvimento, e isso pode resultar em uma pressão adicional sobre os membros da equipe. A necessidade de entregar tarefas valiosas em prazos curtos pode sobrecarregar e, possivelmente, esgotar o time. É essencial garantir um equilíbrio adequado entre a produtividade e o bem-estar dos membros da equipe.</dd>
+                <br>
+                <li>Requer comprometimento total da equipe</li>
+                <dd>O Scrum funciona melhor quando todos os membros da equipe estão totalmente comprometidos com os objetivos do projeto. Isso significa que cada membro deve estar disponível e dedicado ao projeto durante toda a duração do Sprint. Se houver falta de comprometimento por parte de algum membro, isso pode prejudicar o progresso e a eficácia da equipe.</dd>
+            </ol>
+</div>
 {% endblock %}
+
+{% block voltar %}/apostila/priorizacao{% endblock %}
+
+{% block prox %}/apostila/glossario{% endblock %}
+
+{% block highlight_6 %} class='paginacao_atual' {% endblock %}

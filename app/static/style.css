@@ -46,6 +46,10 @@
     font-size:20px;
 }
 
+.conteudo_teoria dd{
+    font-size:18px;
+}
+
 .paginacao{
     width:660px;
     height:60px;
@@ -65,7 +69,20 @@
     text-decoration:none;
 }
 
-.paginacao a:hover {
+.paginacao a:hover, .paginacao_atual {
     background-color:#8da7b3;
     color: white;
+}
+
+.conteudo_exemplo{
+    background-color:#8da7b3;
+    width:100%;
+    height:auto;
+    margin: auto 0 auto auto;
+    border: 2px solid black;
+}
+
+.conteudo_exemplo h3, .conteudo_exemplo li{
+    font-size:18px;
+    margin-top:0
 }
