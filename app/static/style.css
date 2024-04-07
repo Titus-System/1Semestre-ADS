@@ -1,16 +1,32 @@
 .link_bar{
-    height: 75px;
+    height: 80px;
     background-color: #1f2a47;
     margin: 0 auto;
-    /* border:white solid 2px */
+    position:sticky;
+    top:0
+}
+
+.indice a, .indice ul{
+    text-decoration: none;
+    color:white;
+    list-style-type: square;
+    font-size: 16px
 }
 
 .header_link a{
     color:white;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 24px;
     float:right;
     margin:15px 60px;
+    line-height:center;
+}
+
+.header_hr{
+    margin:0;
+    border:5px solid #f0b267;
+    background-color: #f0b267;
+    opacity:1
 }
 
 .head_img{
@@ -22,12 +38,13 @@
 .body_teoria{
     background-color: #e0e5e8;
     width: 100%;
-    margin: 0 0 150px
+    margin: 0 0 150px;
+    font-family:Helvetica, sans-serif;
 }
 
 .conteudo_teoria{
-    max-width:68%;
-    margin: auto;
+    max-width:60%;
+    margin: 30px auto;
     background-color: #e0e5e8;
 
 }
@@ -40,6 +57,14 @@
 .conteudo_teoria h1{
     text-align: center;
     font-size: 36px;
+    font-weight:bold;
+    margin: 30px auto;
+}
+
+.conteudo_teoria h2{
+    font-size:26px;
+    font-weight: bold;
+    margin-top: 30px;
 }
 
 .conteudo_teoria li{
@@ -48,6 +73,10 @@
 
 .conteudo_teoria dd{
     font-size:18px;
+}
+
+.conteudo_teoria ol, .conteudo_teoria ul{
+    margin:6px auto 6px 30px;
 }
 
 .paginacao{
@@ -78,7 +107,7 @@
     background-color:#8da7b3;
     width:100%;
     height:auto;
-    margin: auto 0 auto auto;
+    margin: auto 0 30px auto;
     border: 2px solid black;
 }
 

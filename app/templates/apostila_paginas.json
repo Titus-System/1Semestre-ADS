@@ -1,0 +1,68 @@
+{
+    "introdução":[
+        "/apostila/introducao",
+        "SCRUM: O que é?",
+        "Quais os pilares do SCRUM?",
+        "Quais os valores do SCRUM?",
+        "Como o SCRUM funciona?"
+    ],
+
+    "Papéis do SCRUM (roles)":[
+        "/apostila/papeis",
+        "P.O. (Proprietário do Produto)",
+        "Scrum Master",
+        "Scrum Team"
+    ],
+
+    "Cerimônias SCRUM (ceremonies)":[
+        "/apostila/cerimonias",
+        "Reunião de planejamento da Sprint (Sprint Planning)",
+        "Reuniões diárias SCRUM",
+        "Reunião de revisão do Sprint",
+        "Reunião de retrospectiva da Sprint"
+    ],
+
+    "Artefatos SCRUM": [
+        "/apostila/artefatos",
+        "Backlog do Produto (Product Backlog)",
+        "História do usuário (user story)",
+        "Meta do Produto",
+        "Backlog da Sprint (Sprint Backlog)",
+        "Meta a Sprint",
+        "Incremento do Produto",
+        "Gráfico de Burndown",
+        "Definição de Pronto",
+        "Definição de Preparado",
+        "Planning Poker"
+    ],
+
+    "Técnicas de Priorização SCRUM": [
+        "/apostila/priorizacao",
+        "Priorização baseada em valor",  
+        "Priorização baseada em esforço",    
+        "Priorização baseada em riscos",   
+        "Priorização baseada em dependências"
+    ],
+
+    "Vantagens e desvantagens":[
+        "/apostila/vantagens-e-desvantagens",
+        "Vantagens do Scrum",
+        "maior flexibilidade",
+        "Entrega de valor incremental",
+        "Colaboração e comunicação eficazes",
+        "Melhoria contínua",
+        "Visibilidade e transparência",
+        "Desvantagens do SCRUM",
+        "Dificuldade na definição de prazos",
+        "Requer uma equipe altamente autogerenciável",
+        "Necessidade de colaboração intensa",
+        "Risco de sobrecarga de trabalho",
+        "Requer comprometimento total da equipe"
+    ],
+
+    "Glossário e Referências":[
+        "/apostila/glossario",
+        "Glossário",
+        "Referências"
+    ]
+}

@@ -1,15 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
     <meta charset="UTF-8">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"> 
     <title>{% block title %} <!-- inserir o nome da página --> {% endblock %}</title>
 </head>
 <body class="body_teoria">
     <!-- cabeçalho -->
-    <header>
+
         <div class="link_bar">
+
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
+                &#9776
+              </button>
+              
+              <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+                <div class="offcanvas-header">
+
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" style="width:240px">
+                        <button class="btn btn-outline-success" type="submit">&#128269</button>
+                    </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="indice">
+                        <h5>Índice</h5>
+                        <ol>
+                            {% for item in paginas %}
+                            <li><a href="/apostila/introducao">{{item}}</a></li>
+                                <ul>
+                                    {% if item == "Vantagens e desvantagens" %}
+                                            <li><a href="{{paginas[item][0]}}" >Vantagens do SCRUM</a></li>
+                                            <ul>
+                                                {% for i in range(2, 7) %}
+                                                <li style="font-size:12px"><a href="{{paginas[item][0]}}" >{{paginas[item][i]}}</a></li>                               
+                                                {%endfor%}
+                                            </ul>
+                                            <br>
+                                            <li><a href="{{paginas[item][0]}}">Desvantagens do SCRUM</a></li>
+                                            <ul>
+                                                {% for i in range(8, 13)%}
+                                                <li style="font-size:12px"><a href="{{paginas[item][0]}}" >{{paginas[item][i]}}</a></li>                               
+                                                {%endfor%}
+                                            </ul>
+                                    {% else %}
+                                        {%for i in range((paginas[item]|length)-1)%}
+                                        <li><a href='{{paginas[item][0]}}'>{{paginas[item][i+1]}}</a></li>
+                                        {%endfor%}
+                                    {%endif%}
+                                </ul>
+                            <br>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+              </div>
+
+
             <img src="" alt="logo">
             <span class="header_link">
                 <a href="#" alt="resultado">resultado</a>
@@ -17,11 +67,11 @@
                 <a href="#" alt="quiz">quiz</a>
                 <a href="#" alt="home">home</a>
             </span>
+            <hr class="header_hr">
         </div>
-        <hr style="margin:0; height:2px;">
-        <!-- inserir imagem principal da página -->
-        {% block head_image %} {% endblock %}
-    </header>
+
+    <!-- inserir imagem principal da página -->
+    {% block head_image %} {% endblock %}
 
     <!-- conteúdo de teoria -->
     {% block content %}
@@ -45,6 +95,6 @@
     <footer>
         
     </footer>
-
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> 
 </body>
 </html>
