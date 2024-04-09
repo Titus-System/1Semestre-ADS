@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"> 
     <title>{% block title %} <!-- inserir o nome da página --> {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
 </head>
 <body class="body_teoria">
     <!-- cabeçalho -->
 
         <div class="link_bar">
 
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
+            <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
                 &#9776
-              </button>
+            </a>
               
               <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
                 <div class="offcanvas-header">
@@ -28,29 +29,14 @@
                 <div class="offcanvas-body">
                     <div class="indice">
                         <h5>Índice</h5>
+                        <!-- construção do indice com loop pelo arquivo json -->
                         <ol>
                             {% for item in paginas %}
-                            <li><a href="/apostila/introducao">{{item}}</a></li>
+                            <li><a href="{{paginas[item][0]}}">{{item}}</a></li>
                                 <ul>
-                                    {% if item == "Vantagens e desvantagens" %}
-                                            <li><a href="{{paginas[item][0]}}" >Vantagens do SCRUM</a></li>
-                                            <ul>
-                                                {% for i in range(2, 7) %}
-                                                <li style="font-size:12px"><a href="{{paginas[item][0]}}" >{{paginas[item][i]}}</a></li>                               
-                                                {%endfor%}
-                                            </ul>
-                                            <br>
-                                            <li><a href="{{paginas[item][0]}}">Desvantagens do SCRUM</a></li>
-                                            <ul>
-                                                {% for i in range(8, 13)%}
-                                                <li style="font-size:12px"><a href="{{paginas[item][0]}}" >{{paginas[item][i]}}</a></li>                               
-                                                {%endfor%}
-                                            </ul>
-                                    {% else %}
-                                        {%for i in range((paginas[item]|length)-1)%}
-                                        <li><a href='{{paginas[item][0]}}'>{{paginas[item][i+1]}}</a></li>
-                                        {%endfor%}
-                                    {%endif%}
+                                    {%for i in range(0,(paginas[item]|length)-1,2)%}
+                                    <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}'>{{paginas[item][i+1]}}</a></li>
+                                    {%endfor%}
                                 </ul>
                             <br>
                             {% endfor %}
@@ -60,7 +46,7 @@
               </div>
 
 
-            <img src="" alt="logo">
+            <a href="#"><img src="/static/images/logo_transp.png" alt="logo"></a>
             <span class="header_link">
                 <a href="#" alt="resultado">resultado</a>
                 <a href="#" alt="apostila">apostila</a>
@@ -77,6 +63,7 @@
     {% block content %}
     {% endblock %}
 
+    <!-- perguntas -->
     {% block perguntas %}
     {% endblock %}
 
