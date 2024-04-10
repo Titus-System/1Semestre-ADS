@@ -109,7 +109,7 @@
 }
 
 .conteudo_exemplo{
-    background-color:#8da7b3;
+    background-color:#eed2af;
     width:100%;
     height:auto;
     margin: auto 0 30px auto;
@@ -118,5 +118,15 @@
 
 .conteudo_exemplo h3, .conteudo_exemplo li{
     font-size:18px;
-    margin-top:0
+    margin:0 auto 15px
+}
+
+.linha_vertical{
+    border-left:2px solid black;
+    height:auto;
+    margin-left: 30px;
+}
+
+.linha_vertical p{
+    margin-left: 10px
 }
