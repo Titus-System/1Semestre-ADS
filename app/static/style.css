@@ -130,3 +130,16 @@
 .linha_vertical p{
     margin-left: 10px
 }
+
+.apostila_indice{
+    color:#1f2a47;
+    text-decoration: none;
+    max-width:50%;
+    margin:auto;
+    text-align:center;
+}
+
+.apostila_indice a{
+    text-decoration: none;
+    color: black
+}
