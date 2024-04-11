@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body> 
+    <header >  
+        <img src="{{url_for('static', filename='images/logo_transp.png')}}" alt="logo">
+        <span style="
+            font-family: fantasy; 
+            color: rgb(13, 13, 67);
+            float:right;
+            height:60px;
+            line-height:60px">
+                <a href="/quiz.html">Quiz</a>
+                <a href="/apostila">Apostila</a>
+                <a href="/quiz.html">Página Quiz</a>
+        </span>
+    </header>
+    {% block quiz %}
+    {% endblock %}
+</body>
+</html>
