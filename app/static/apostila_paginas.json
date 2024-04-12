@@ -1,0 +1,55 @@
+{
+    "introdução":[
+        "/apostila/introducao",
+        "SCRUM: O que é?","oque",
+        "Quais os pilares do SCRUM?","pilares",
+        "Quais os valores do SCRUM?", "valores",
+        "Como o SCRUM funciona?", "funciona"
+    ],
+
+    "Papéis do SCRUM (roles)":[
+        "/apostila/papeis",
+        "P.O. (Proprietário do Produto)","po",
+        "Scrum Master","sm",
+        "Scrum Team","st"
+    ],
+
+    "Cerimônias SCRUM (ceremonies)":[
+        "/apostila/cerimonias",
+        "Reunião de planejamento da Sprint (Sprint Planning)", "planejamento",
+        "Reuniões diárias SCRUM", "daylies",
+        "Reunião de revisão do Sprint", "revisão",
+        "Reunião de retrospectiva da Sprint", "retrospectiva"
+    ],
+
+    "Artefatos SCRUM": [
+        "/apostila/artefatos",
+        "Backlog do Produto (Product Backlog)", "pb",
+        "Backlog da Sprint (Sprint Backlog)", "sb",
+        "Incremento do Produto", "incremento",
+        "Gráfico de Burndown", "burndown",
+        "Definição de Pronto", "dod",
+        "Definição de Preparado", "dor",
+        "Planning Poker", "pp"
+    ],
+
+    "Técnicas de Priorização SCRUM": [
+        "/apostila/priorizacao",
+        "Priorização baseada em valor", "valor",
+        "Priorização baseada em esforço", "esforço",
+        "Priorização baseada em riscos","riscos",
+        "Priorização baseada em dependências", "dependências"
+    ],
+
+    "Vantagens e desvantagens":[
+        "/apostila/vantagens-e-desvantagens",
+        "Vantagens do SCRUM", "vantagens",
+        "Desvantagens do SCRUM", "desvantagens"
+    ],
+
+    "Glossário e Referências":[
+        "/apostila/glossario",
+        "Glossário", "glossário",
+        "Referências", "referências"
+    ]
+}
