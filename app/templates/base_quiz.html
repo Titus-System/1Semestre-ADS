@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
     <meta charset="UTF-8">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}"> 
+    
     <title>{% block title %}Quiz{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+
 </head>
 <body> 
-    <header >  
-        <img src="{{url_for('static', filename='images/logo_transp.png')}}" alt="logo">
-        <span style="
-            font-family: fantasy; 
-            color: rgb(13, 13, 67);
-            float:right;
-            height:60px;
-            line-height:60px">
+    <header class="link_bar">  
+        <img" src="/app/static/images/logo_transp.png" alt="logo">
+        <span>
                 <a href="#">Resultado</a>
                 <a href="/apostila">Apostila</a>
                 <a href="/quiz">Quiz</a>
         </span>
+        <hr class="header_hr">
     </header>
     {% block quiz %}
     {% endblock %}
