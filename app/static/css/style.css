@@ -3,7 +3,8 @@
     background-color: #1f2a47;
     margin: 0 auto;
     position:sticky;
-    top:0
+    top:0;
+    font-family:'Ruda'
 }
 
 .link_bar img{
@@ -44,7 +45,7 @@
     background-color: #e0e5e8;
     width: 100%;
     margin: 0 0 150px;
-    font-family:Helvetica, sans-serif;
+    font-family:'Ruda', 'Helvetica';
 }
 
 .conteudo_teoria{
@@ -85,8 +86,8 @@
 }
 
 .paginacao{
-    width:660px;
-    height:60px;
+    width:fit-content;
+    height:fit-content;
     line-height: 60px;
     position:relative;
     background-color:#1f2a47;
@@ -95,6 +96,7 @@
     text-align:center;
     color:white;
     border-radius: 15px;
+    padding:0 15px;
 }
 
 .paginacao a{
@@ -148,7 +150,27 @@
 
 #quiz_title {
     font-family: 'Ruda';
-    align-content: center;
+    text-align: center;
+}
+
+.body_quiz{
+    background-color: #e0e5e8;
+    width: 100%;
+    margin: 0 0 150px;
+}
+
+.quiz_page{
+    max-width:60%;
+    margin: 30px auto;
+    background-color: #e0e5e8;
+}
+
+.question_box{
+    background-color: white;
+    border-radius: 15px;
+    width:100%;
+    height:fit-content;
+    padding:30px
 }
 
 .num_question {
@@ -162,13 +184,26 @@
 }
 
 .quiz_option {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     font-family: 'Ruda';
+}
+
+.quiz_option input{
+    margin-bottom: 15px;
 }
 
 .button_quiz {
     display: flex;
     flex-direction: column;
     font-family: 'Ruda';
+}
+
+.submit{
+    background-color:#1f2a47;
+    color:white;
+    border-radius: 15px;
+    height: 40px;
+    width: 240px;
+    float:right
 }

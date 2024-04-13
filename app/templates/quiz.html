@@ -5,25 +5,25 @@
     <div class="quiz_page">
 
         <h1 id="quiz_title">Quiz - Cápitulo 1</h1>
+        <div class="question_box">
+                <h3 class="num_question">Questão 1</h3>
 
-        <h3 class="num_question">Questão 1</h3>
+                <p class="question_script">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-        <p class="question_script">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-        <form class="quiz_option">
-            <input type="radio" id="A" name="fav_language" value="A">
-            <label for="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
-
-            <input type="radio" id="B" name="fav_language" value="B">
-            <label for="css">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
-
-            <input type="radio" id="C" name="fav_language" value="C">
-            <label for="javascript">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
-
-            <input type="radio" id="D" name="fav_language" value="D">
-            <label for="javascript">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
-        </form>
-
+                <form class="quiz_option">
+                    <input type="radio" id="A" name="fav_language" value="A">
+                    <label for="A">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
+                    <br>
+                    <input type="radio" id="B" name="fav_language" value="B">
+                    <label for="B">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
+                    <br>
+                    <input type="radio" id="C" name="fav_language" value="C">
+                    <label for="C">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
+                    <br>
+                    <input type="radio" id="D" name="fav_language" value="D">
+                    <label for="D">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </label>
+                </form>
+        </div>
         <div class="nav-quiz">
             <a href="" title="Questão anterior">&#11207;</a>
             <a href="" title="Questão 1">1</a> |
@@ -39,6 +39,15 @@
             <a href="" title="próxima Questão">&#11208;</a>
         </div>
 
+        <div class="paginacao">
+            <a href='{% block voltar %}{% endblock %}' title="página anterior">&#11207;</a>
+            {% for n in range(1, 11) %}
+                <a href="#" title="questão {{n}}" {% if n== 1 %}class="paginacao_atual"{%endif%}>{{n}}</a>{% if n!= 10 %} |
+                {% endif %}
+            {% endfor %}
+                <a href="{% block prox %}{% endblock %}" title="próxima questão">&#11208;</a>
+        </div>
+
         <div class="button_quiz">
             <div id="button-previous">
                 <button class="btn btn-primary">Anterior</button>
@@ -48,6 +57,10 @@
             </div>
             <div class="button_input">
                 <button class="btn btn-input">Enviar questionário</button>
+            </div>
+
+            <div id="submit_btn">
+                <input type="submit" value="Enviar Questionário" class="submit">
             </div>
         </div>
 

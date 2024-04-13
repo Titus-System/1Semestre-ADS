@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}"> 
     <title>{% block title %} <!-- inserir o nome da página --> {% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+
+
 </head>
 <body class="body_teoria">
     <!-- cabeçalho -->
 
-        <div class="link_bar">
+        <header class="link_bar">
 
             <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
                 &#9776
@@ -54,7 +59,7 @@
                 <!-- <a href="#" alt="home">HOME</a> -->
             </span>
             <hr class="header_hr">
-        </div>
+        </header>
 
     <!-- inserir imagem principal da página -->
     {% block head_image %} {% endblock %}

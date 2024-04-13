@@ -15,13 +15,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
 
 </head>
-<body> 
+<body class="body_quiz">
     <header class="link_bar">  
-        <img" src="/app/static/images/logo_transp.png" alt="logo">
-        <span>
-                <a href="#">Resultado</a>
-                <a href="/apostila">Apostila</a>
-                <a href="/quiz">Quiz</a>
+        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
+            &#9776
+        </a>
+          
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+            <div class="offcanvas-header">
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" style="width:240px">
+                    <button class="btn btn-outline-success" type="submit">&#128269</button>
+                </form>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="indice">
+                    <h5>Índice</h5>
+                    <!-- construção do indice com loop pelo arquivo json -->
+                    <ol>
+                        {% for item in paginas %}
+                        <li><a href="{{paginas[item][0]}}">{{item}}</a></li>
+                            <ul>
+                                {%for i in range(0,(paginas[item]|length)-1,2)%}
+                                <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}'>{{paginas[item][i+1]}}</a></li>
+                                {%endfor%}
+                            </ul>
+                        <br>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+          </div>
+
+
+        <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
+        <span class="header_link">
+            <a href="#" alt="resultado">RESULTADO</a>
+            <a href="/apostila" alt="apostila">APOSTILA</a>
+            <a href="/quiz" alt="quiz">QUIZ</a>
+            <!-- <a href="#" alt="home">HOME</a> -->
         </span>
         <hr class="header_hr">
     </header>
