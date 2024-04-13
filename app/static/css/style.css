@@ -143,3 +143,32 @@
     text-decoration: none;
     color: black
 }
+
+/* style - quiz */
+
+#quiz_title {
+    font-family: 'Ruda';
+    align-content: center;
+}
+
+.num_question {
+    font-family: 'Ruda';
+    align-content: center;
+}
+
+.question_script {
+    font-family: 'Ruda';
+    align-content: center;
+}
+
+.quiz_option {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ruda';
+}
+
+.button_quiz {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ruda';
+}
