@@ -35,15 +35,10 @@
                     <h5>Índice</h5>
                     <!-- construção do indice com loop pelo arquivo json -->
                     <ol>
-                        {% for item in paginas %}
-                        <li><a href="{{paginas[item][0]}}">{{item}}</a></li>
-                            <ul>
-                                {%for i in range(0,(paginas[item]|length)-1,2)%}
-                                <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}'>{{paginas[item][i+1]}}</a></li>
-                                {%endfor%}
-                            </ul>
-                        <br>
-                        {% endfor %}
+                        {%for i in range(1, 7)%}
+                            <li><a href="#">Capítulo {{i}}</a></li>
+                            <br>
+                        {%endfor%}
                     </ol>
                 </div>
             </div>
@@ -61,5 +56,7 @@
     </header>
     {% block quiz %}
     {% endblock %}
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
