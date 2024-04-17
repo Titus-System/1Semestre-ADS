@@ -1,0 +1,109 @@
+body {
+  color: #ffffff;
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  color: #00adef;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #9ca0fd;
+}
+
+p {
+  text-align: justify;
+}
+
+hr {
+  color: #ffffff;
+}
+
+.navbar {
+  background-color: #1f1f1f;
+  width: 100%;
+}
+
+.navbar-logo {
+  width: 100px;
+  height: auto;
+  float: left;
+  margin-left: 5px;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar-item {
+  display: inline;
+  float: right;
+  margin-right: 5px;
+}
+
+.navbar-item a {
+  display: block;
+  padding: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  padding: auto 16px;
+}
+
+.index-cover {
+  position: relative;
+  width: 100%;
+}
+
+.index-cover img {
+  width: 100%;
+  height: auto;
+}
+
+.index-cover div {
+  position: absolute;
+  top: 41%;
+  left: 68%;
+  font-size: 32;
+  color: #80a5a6;
+}
+
+.index-guide img {
+  float: right;
+}
+
+.index-guide-text {
+  margin: 214px auto auto 120px;
+}
+
+.index-quiz img {
+  float: left;
+}
+
+.index-quiz-text {
+  margin: 231px 73px auto auto;
+}
+
+.index-tools img {
+  float: right;
+}
+
+.index-tools-text {
+  margin: 214px auto auto 120px;
+}
