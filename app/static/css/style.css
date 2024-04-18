@@ -207,3 +207,9 @@
     width: 240px;
     float:right
 }
+
+
+/* resumo quiz */
+.resumo{
+    border: 2px solid red
+}

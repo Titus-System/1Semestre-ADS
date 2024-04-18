@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import json
 
 app = Flask(__name__)
@@ -11,7 +11,9 @@ def home():
 @app.route("/<name>")
 def get_page(name):
     if name == "apostila":
-        return find_apostila("introducao")
+        return redirect("/apostila/introducao")
+    if name == "quiz":
+        return redirect ("quiz/iniciar")
     return render_template(f"{name}.html")
 
 
@@ -21,6 +23,10 @@ def find_apostila(name):
     apostila_paginas = json.load(open("./static/apostila_paginas.json", encoding='utf-8'))
     return render_template(f"{name}.html", paginas = apostila_paginas)
 
+
+@app.route("/quiz/<name>")
+def quiz_page(name):
+    return render_template(f"{name}.html")
 
 
 
