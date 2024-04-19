@@ -26,6 +26,10 @@
       href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
     <title>Mestre Ágil</title>
   </head>
   <body background="{{url_for('static', filename='images/corpo_home.png')}}">
@@ -36,18 +40,18 @@
         alt="Logo"
       />
       <ul class="navbar-list">
-        <li class="navbar-item"><a href="#">Resultados</a></li>
-        <li class="navbar-item"><a href="#">Apostila</a></li>
-        <li class="navbar-item"><a href="#">Quiz</a></li>
+        <li class="navbar-item"><a href="/avaliacao">Avaliação</a></li>
+        <li class="navbar-item"><a href="/apostila">Apostila</a></li>
+        <li class="navbar-item"><a href="/quiz">Quiz</a></li>
         <li class="navbar-item"><a href="#">Ferramentas</a></li>
       </ul>
     </div>
     <div class="index-cover">
       <img src="{{url_for('static', filename='images/capa.png')}}" alt="Capa" />
       <div>
-        <h1>SCRUM</h1>
+        <h1 class="title">SCRUM</h1>
         <hr />
-        <p>gerencie seu projeto com nosso guia prático</p>
+        <p class="title-small">Gerencie seu projeto com nosso guia prático</p>
       </div>
     </div>
     <div class="index-guide">

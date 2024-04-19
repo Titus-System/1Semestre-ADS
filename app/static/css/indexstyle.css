@@ -1,5 +1,6 @@
 body {
   color: #ffffff;
+  font: "Ruda" serif;
 }
 
 img {
@@ -30,6 +31,7 @@ p {
 
 hr {
   color: #ffffff;
+  width: 600px;
 }
 
 .navbar {
@@ -79,9 +81,14 @@ hr {
 .index-cover div {
   position: absolute;
   top: 41%;
-  left: 68%;
+  left: 67%;
   font-size: 32;
   color: #80a5a6;
+}
+
+.title-small {
+  font-size: 32px;
+  text-align: center;
 }
 
 .index-guide img {
