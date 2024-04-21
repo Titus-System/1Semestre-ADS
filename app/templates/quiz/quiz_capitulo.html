@@ -1,0 +1,57 @@
+{% extends '/quiz/base_quiz.html' %}
+
+{% block title %} Página Quiz {% endblock %}
+{% block quiz %}
+<div class="quiz_page">
+
+    <h1 id="quiz_title">Quiz - {{title}}</h1>
+
+
+    <!--inicio do formulario-->
+
+    <form action="/verificar_respostas/{{capitulo}}" method="POST">
+        {% for key, value in perguntas.items() %}
+            <div class="question_box">
+                <h3 class="num_question">Questão {{key}}</h3>
+
+                <p class="question_script">{{value[0]}}</p>
+
+                <div class="quiz_option">
+                    <input type="radio" id="A{{key}}" name="resposta{{key}}" value="A">
+                    <label for="A{{key}}">{{value[1]}}</label>
+                    <br>
+                    <input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">
+                    <label for="B{{key}}">{{value[2]}}</label>
+                    <br>
+                    <input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">
+                    <label for="C{{key}}">{{value[3]}}</label>
+                    <br>
+                    <input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">
+                    <label for="D{{key}}">{{value[4]}}</label>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+        <br>
+        <button type="submit" value="submit" class="submit">Verificar respostas</button>
+        <br>
+    </form>
+    <br><br>
+    <!--fim do formulario-->
+    <span class="button_quiz">        
+            <a href="/quiz/quiz_resumo"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
+            <a href="/quiz/quiz_capitulo2"><button class="botao_iniciar" id="button_next">Próxima  >></button></a>
+    </span>
+
+    <div class="paginacao">
+        <a href='#' title="página anterior">&#11207;</a>
+        {% for n in range(1, 7) %}
+        <a href="#" title="questão {{n}}" {% if n==1 %}class="paginacao_atual" {%endif%}>{{n}}</a>{% if n!= 10 %} |
+        {% endif %}
+        {% endfor %}
+        <a href="#" title="próxima questão">&#11208;</a>
+    </div>
+
+
+</div>
+{% endblock %}

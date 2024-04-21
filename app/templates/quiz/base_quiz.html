@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}"> 
-    
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+
     <title>{% block title %}Quiz{% endblock %}</title>
 
     <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
@@ -15,17 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
 
 </head>
+
 <body class="body_quiz">
-    <header class="link_bar">  
-        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
+    <header class="link_bar">
+        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            style="color:white; font-size:30px; line-height:60px">
             &#9776
         </a>
-          
-          <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
             <div class="offcanvas-header">
 
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" style="width:240px">
+                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search"
+                        style="width:240px">
                     <button class="btn btn-outline-success" type="submit">&#128269</button>
                 </form>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
@@ -35,17 +40,17 @@
                     <h5>Escolha por onde começar</h5>
                     <ol>
                         {%for i in range(1, 7)%}
-                            <li><a href="#">Capítulo {{i}}</a></li>
-                                <ul>
-                                    <li><a href="#">Resumo</a></li>
-                                    <li><a href="#">Perguntas</a></li>
-                                </ul>
-                            <br>
+                        <li><a href="#">Capítulo {{i}}</a></li>
+                        <ul>
+                            <li><a href="#">Resumo</a></li>
+                            <li><a href="#">Perguntas</a></li>
+                        </ul>
+                        <br>
                         {%endfor%}
                     </ol>
                 </div>
             </div>
-          </div>
+        </div>
 
 
         <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
@@ -57,13 +62,17 @@
         </span>
         <hr class="header_hr">
     </header>
-    
+
     {% block resumo %}
     {% endblock %}
 
     {% block quiz %}
     {% endblock %}
 
+    {% block resultado %}]
+    {% endblock %}
+
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
+
 </html>

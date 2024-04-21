@@ -194,8 +194,6 @@
 }
 
 .button_quiz {
-    display: flex;
-    flex-direction: column;
     font-family: 'Ruda';
 }
 
@@ -208,8 +206,31 @@
     float:right
 }
 
+.botao_iniciar{
+    background-color:#1f2a47;
+    color: white;
+    border-radius: 15px;
+    float:right;
+    width:180px;
+    font-family: 'Ruda';
+}
+
+#button_previous{
+    float:left
+}
+
+#button_next{
+    float:right
+}
 
 /* resumo quiz */
 .resumo{
     border: 2px solid red
+}
+
+/* apresentação do resultado do quiz */
+.resultado{
+    max-width: 80%;
+    margin:auto;
+    left:auto;
 }

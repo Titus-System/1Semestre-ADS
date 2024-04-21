@@ -1,0 +1,13 @@
+{% extends '/quiz/base_quiz.html' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block resultado %}
+<div class="resultado">
+    <br>
+    <h1>Seu aproveitamento foi de {{porcentagem}}</h1>
+    <br>
+    <p>Número de acertos: {{acertos}}</p>
+    <p>Número de erros: {{erros}}</p>
+</div>
+{% endblock %}
