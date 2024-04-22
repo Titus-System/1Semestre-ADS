@@ -85,8 +85,6 @@ def verificar_respostas(capitulo):
     erros = len(perguntas) - acertos
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
 
-    if capitulo == "salvar":
-        return "<h1>salvo</h1>"
 
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
 
