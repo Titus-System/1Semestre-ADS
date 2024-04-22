@@ -1,8 +1,10 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session
 import json
 import arquivos
 
 app = Flask(__name__)
+
+app.secret_key = "chave_secreta"
 
 @app.route("/")
 def home():
@@ -29,7 +31,7 @@ def find_apostila(name):
 #as perguntas são retiradas do arquivo json correspondente a cada capitulo
 @app.route("/quiz/<name>")
 def quiz_page(name):
-    perguntas = arquivos.quiz_capitulo1
+    perguntas = arquivos.quiz_perguntas
     questao = ""
     num_quest = 0
     pagina_anterior = "#"
@@ -50,43 +52,60 @@ def quiz_page(name):
             pagina_anterior = f"assunto{i+1}"
     
     if pagina_anterior in ["quiz_assunto0", "assunto0"]: pagina_anterior = "assunto1"
-    if proxima_pagina == "quiz_assunto7": proxima_pagina = "fim"
+    if proxima_pagina in ["quiz_assunto7", "assunto7"]: proxima_pagina = "resultado"
 
 
     return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
 
 
 
-#rota de verificação das respostas do quiz
-#as respostas do quiz são avaliadas pela função verificar_respostas
-@app.route("/verificar_respostas/<verificar>", methods=["POST", "GET"])
-def verificar_respostas(verificar):
-    perguntas = arquivos.quiz_capitulo1
+#rota para salvar as respostas do usuário
+@app.route("/salvar_respostas/<verificar>", methods=["POST", "GET"])
+def salvar_respostas(verificar):
+    # perguntas = arquivos.quiz_perguntas
 
-    respostas = {}
-    acertos = 0
-    salvar_como = f"resposta{verificar}"
+    # respostas = {}
+    # acertos = 0
 
     try:
-        respostas[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
+        session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
-        respostas[f"resposta{verificar}"] = ""
+        session[f"resposta{verificar}"] = ""
     
-    if perguntas[f"quiz_assunto{verificar}"][5] == respostas[f"resposta{verificar}"]:
-        acertos += 1
+    # if perguntas[f"quiz_assunto{verificar}"][5] == session[f"resposta{verificar}"]:
+    #     acertos += 1
 
 
-    if verificar == "resultado_final":
-        erros = len(perguntas) - acertos
-        porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
-        return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
-
-    with open("salvar_resposta.txt", "a") as file:
-        file.write("resposta" + verificar + "," + respostas[salvar_como]+ "\n")
+    # if verificar == "resultado_final":
+    #     resposta1 = session.get("resposta1", "")
+    #     resposta2 = session.get("resposta2", "")
+    #     erros = len(perguntas) - acertos
+    #     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+    #     return render_template("/quiz/resultado.html", resposta1=resposta1, resposta2=resposta2)
 
     return redirect (f"/quiz/assunto{int(verificar) + 1}")
 
 
+#rota para verificação dos resultados do quiz e visualização da página de resultados
+@app.route("/quiz/resultado")
+def resultado():
+    perguntas = arquivos.quiz_perguntas
+    acertos = 0
+    resposta1 = session.get("resposta1", "")
+    resposta2 = session.get("resposta2", "")
+    resposta3 = session.get("resposta3", "")
+
+    respostas = [resposta1, resposta2, resposta3]
+
+    for i in range(1, len(respostas)+1):
+        if perguntas[f"quiz_assunto{i}"][5] == session[f"resposta{i}"]:
+            acertos += 1
+
+    erros = len(perguntas) - acertos
+    porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+
+
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
 
 
 if __name__ == "__main__":
