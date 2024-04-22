@@ -29,64 +29,64 @@ def find_apostila(name):
 #as perguntas são retiradas do arquivo json correspondente a cada capitulo
 @app.route("/quiz/<name>")
 def quiz_page(name):
-    perguntas = ""
-    capitulo = ""
-    title = ""
-    lista_quiz = arquivos.rotas_quiz
-    todos_quiz = arquivos.todosquiz
+    perguntas = arquivos.quiz_capitulo1
+    questao = ""
+    num_quest = 0
     pagina_anterior = "#"
     proxima_pagina = "#"
 
-    if name in lista_quiz:
+    if name in perguntas:
         page = "quiz_capitulo"
-        capitulo = lista_quiz[lista_quiz.index(name)]
+        questao = perguntas[name]
+        verificar = name
+        print(questao)
+
     else: page = name
-
-    for i in range(len(lista_quiz)):
-        if name == f"quiz_capitulo{i+1}":
-            perguntas = todos_quiz[i]
-            title = f"Capítulo {i+1}"
-            proxima_pagina = f"capitulo{i+2}"
-            pagina_anterior = f"capitulo{i+1}"
     
-    if pagina_anterior == "capitulo0": pagina_anterior = "capitulo1"
-    if proxima_pagina == "capitulo7": proxima_pagina = "fim"
+    for i in range(len(perguntas)):
+        if name == f"quiz_assunto{i+1}":
+            num_quest = i+1
+            proxima_pagina = f"assunto{i+2}"
+            pagina_anterior = f"assunto{i+1}"
+    
+    if pagina_anterior in ["quiz_assunto0", "assunto0"]: pagina_anterior = "assunto1"
+    if proxima_pagina == "quiz_assunto7": proxima_pagina = "fim"
 
 
-    return render_template(f"/quiz/{page}.html", perguntas = perguntas, capitulo = capitulo, title = title, proxima = proxima_pagina, anterior = pagina_anterior)
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
 
 
 
 #rota de verificação das respostas do quiz
 #as respostas do quiz são avaliadas pela função verificar_respostas
-@app.route("/verificar_respostas/<capitulo>", methods=["POST", "GET"])
-def verificar_respostas(capitulo):
-    lista_quiz = arquivos.rotas_quiz
-    todos_quiz = arquivos.todosquiz
-
-    for i in range(len(lista_quiz)):
-        if capitulo == f"quiz_capitulo{i+1}":
-            perguntas = todos_quiz[i]
+@app.route("/verificar_respostas/<verificar>", methods=["POST", "GET"])
+def verificar_respostas(verificar):
+    perguntas = arquivos.quiz_capitulo1
 
     respostas = {}
     acertos = 0
+    salvar_como = f"resposta{verificar}"
 
-
-    for i in range(1, len(perguntas)+1):
-        try:
-            respostas[f"{capitulo}resposta{i}"] = request.form[f"resposta{i}"]
-        except KeyError:
-            respostas[f"{capitulo}resposta{i}"] = ""
+    try:
+        respostas[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
+    except KeyError:
+        respostas[f"resposta{verificar}"] = ""
     
-    for i in range(1, len(perguntas)+1):
-        if perguntas[str(i)][5] == respostas[f"{capitulo}resposta{i}"]:
-            acertos += 1
-
-    erros = len(perguntas) - acertos
-    porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+    if perguntas[f"quiz_assunto{verificar}"][5] == respostas[f"resposta{verificar}"]:
+        acertos += 1
 
 
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
+    if verificar == "resultado_final":
+        erros = len(perguntas) - acertos
+        porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+        return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
+
+    with open("salvar_resposta.txt", "a") as file:
+        file.write("resposta" + verificar + "," + respostas[salvar_como]+ "\n")
+
+    return redirect (f"/quiz/assunto{int(verificar) + 1}")
+
+
 
 
 if __name__ == "__main__":

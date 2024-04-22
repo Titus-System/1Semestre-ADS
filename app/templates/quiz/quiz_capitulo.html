@@ -4,34 +4,33 @@
 {% block quiz %}
 <div class="quiz_page">
 
-    <h1 id="quiz_title">Quiz - {{title}}</h1>
+    <h1 id="quiz_title">Quiz {{num_quest}}</h1>
 
 
     <!--inicio do formulario-->
 
-    <form action="/verificar_respostas/{{capitulo}}" method="POST">
-        {% for key, value in perguntas.items() %}
-            <div class="question_box">
-                <h3 class="num_question">Questão {{key}}</h3>
+    <form action="/verificar_respostas/{{verificar}}" method="POST">
 
-                <p class="question_script">{{value[0]}}</p>
+            <div class="question_box">
+                <h3 class="num_question">Questão {{num_quest}}</h3>
+
+                <p class="question_script">{{questao[0]}}</p>
 
                 <div class="quiz_option">
-                    <input type="radio" id="A{{key}}" name="resposta{{key}}" value="A">
-                    <label for="A{{key}}">{{value[1]}}</label>
+                    <input type="radio" id="A{{num_quest}}" name="resposta{{num_quest}}" value="A">
+                    <label for="A{{num_quest}}">{{questao[1]}}</label>
                     <br>
-                    <input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">
-                    <label for="B{{key}}">{{value[2]}}</label>
+                    <input type="radio" id="B{{num_quest}}" name="resposta{{num_quest}}" value="B">
+                    <label for="B{{num_quest}}">{{questao[2]}}</label>
                     <br>
-                    <input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">
-                    <label for="C{{key}}">{{value[3]}}</label>
+                    <input type="radio" id="C{{num_quest}}" name="resposta{{num_quest}}" value="C">
+                    <label for="C{{num_quest}}">{{questao[3]}}</label>
                     <br>
-                    <input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">
-                    <label for="D{{key}}">{{value[4]}}</label>
+                    <input type="radio" id="D{{num_quest}}" name="resposta{{num_quest}}" value="D">
+                    <label for="D{{num_quest}}">{{questao[4]}}</label>
                 </div>
             </div>
             <br>
-        {% endfor %}
         <button type="submit" value="submit" class="submit">Verificar respostas</button>
         <br>
     </form>
