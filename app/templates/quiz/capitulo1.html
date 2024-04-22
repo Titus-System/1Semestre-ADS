@@ -1,6 +1,6 @@
 {% extends "/quiz/base_quiz.html" %}
 
-{% block title %} {% endblock %}
+{% block title %}Revisão Capítulo 1{% endblock %}
 
 {% block resumo %}
     <div class="quiz_page">
@@ -8,7 +8,12 @@
         <h2>Conceitos fundamentais</h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem accusamus ullam ab atque nemo? Odio veniam nisi iure alias mollitia rem! Velit quae nostrum tempore ad aperiam voluptatem quibusdam. Ullam.</p>
     
-        <a href="/quiz/quiz_capitulo1"><button class="botao_iniciar">Próximo >></button></a>
+        <!--comentário-->
+        <span class="button_quiz">        
+            <a href="/quiz/iniciar"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
+            <a href="/quiz/quiz_capitulo1"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
+        </span>
+        
     
     </div>
 {% endblock %}

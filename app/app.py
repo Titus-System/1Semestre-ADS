@@ -34,6 +34,8 @@ def quiz_page(name):
     title = ""
     lista_quiz = arquivos.rotas_quiz
     todos_quiz = arquivos.todosquiz
+    pagina_anterior = "#"
+    proxima_pagina = "#"
 
     if name in lista_quiz:
         page = "quiz_capitulo"
@@ -44,9 +46,14 @@ def quiz_page(name):
         if name == f"quiz_capitulo{i+1}":
             perguntas = todos_quiz[i]
             title = f"Capítulo {i+1}"
+            proxima_pagina = f"capitulo{i+2}"
+            pagina_anterior = f"capitulo{i+1}"
+    
+    if pagina_anterior == "capitulo0": pagina_anterior = "capitulo1"
+    if proxima_pagina == "capitulo7": proxima_pagina = "fim"
 
 
-    return render_template(f"/quiz/{page}.html", perguntas = perguntas, capitulo = capitulo, title = title)
+    return render_template(f"/quiz/{page}.html", perguntas = perguntas, capitulo = capitulo, title = title, proxima = proxima_pagina, anterior = pagina_anterior)
 
 
 
@@ -64,18 +71,22 @@ def verificar_respostas(capitulo):
     respostas = {}
     acertos = 0
 
+
     for i in range(1, len(perguntas)+1):
         try:
-            respostas[f"resposta{i}"] = request.form[f"resposta{i}"]
+            respostas[f"{capitulo}resposta{i}"] = request.form[f"resposta{i}"]
         except KeyError:
-            respostas[f"resposta{i}"] = ""
+            respostas[f"{capitulo}resposta{i}"] = ""
     
     for i in range(1, len(perguntas)+1):
-        if perguntas[str(i)][5] == respostas[f"resposta{i}"]:
+        if perguntas[str(i)][5] == respostas[f"{capitulo}resposta{i}"]:
             acertos += 1
-    
+
     erros = len(perguntas) - acertos
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+
+    if capitulo == "salvar":
+        return "<h1>salvo</h1>"
 
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
 

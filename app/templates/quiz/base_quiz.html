@@ -40,10 +40,10 @@
                     <h5>Escolha por onde começar</h5>
                     <ol>
                         {%for i in range(1, 7)%}
-                        <li><a href="#">Capítulo {{i}}</a></li>
+                        <li><a href="/quiz/capitulo{{i}}">Capítulo {{i}}</a></li>
                         <ul>
-                            <li><a href="#">Resumo</a></li>
-                            <li><a href="#">Perguntas</a></li>
+                            <li><a href="/quiz/capitulo{{i}}">Resumo</a></li>
+                            <li><a href="/quiz/quiz_capitulo{{i}}">Perguntas</a></li>
                         </ul>
                         <br>
                         {%endfor%}

@@ -32,24 +32,50 @@
             </div>
             <br>
         {% endfor %}
-        <br>
         <button type="submit" value="submit" class="submit">Verificar respostas</button>
         <br>
     </form>
     <br><br>
-    <!--fim do formulario-->
-    <span class="button_quiz">        
-            <a href="/quiz/quiz_resumo"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
-            <a href="/quiz/quiz_capitulo2"><button class="botao_iniciar" id="button_next">Próxima  >></button></a>
+    <span class="button_quiz">
+        <a href="/quiz/{{anterior}}"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
+        <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a>
     </span>
+    <!--fim do formulario-->
+    
+    <br><br>
+    <!-- Botão para acionar modal -->
+    <button type="submit" class="submit" data-bs-toggle="modal" data-bs-target="#ExemploModalCentralizado">
+        Abrir modal de demonstração
+      </button>
+  <!-- Modal -->
+  <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado">verificação</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar" style="background-color: black; color:white; flex:right">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          texto que será exibido dentro do modal
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="paginacao">
-        <a href='#' title="página anterior">&#11207;</a>
+        <a href='{{anterior}}' title="página anterior">&#11207;</a>
         {% for n in range(1, 7) %}
-        <a href="#" title="questão {{n}}" {% if n==1 %}class="paginacao_atual" {%endif%}>{{n}}</a>{% if n!= 10 %} |
+        <a href="/quiz/capitulo{{n}}" title="capítulo {{n}}">{{n}}</a>{% if n!= 6 %} |
         {% endif %}
         {% endfor %}
-        <a href="#" title="próxima questão">&#11208;</a>
+        <a href="{{proxima}}" title="próxima questão">&#11208;</a>
     </div>
 
 
