@@ -73,7 +73,7 @@ def salvar_respostas(verificar):
     try:
         session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
-        session[f"resposta{verificar}"] = ""
+        session[f"resposta{verificar}"] = "E"
     
     # if perguntas[f"quiz_assunto{verificar}"][5] == session[f"resposta{verificar}"]:
     #     acertos += 1
