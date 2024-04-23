@@ -37,6 +37,9 @@ def quiz_page(name):
     pagina_anterior = "#"
     proxima_pagina = "#"
 
+    if name == "assunto7":
+        return redirect("/quiz/resultado")
+
     if name in perguntas:
         page = "quiz_capitulo"
         questao = perguntas[name]
@@ -94,8 +97,11 @@ def resultado():
     resposta1 = session.get("resposta1", "")
     resposta2 = session.get("resposta2", "")
     resposta3 = session.get("resposta3", "")
+    resposta4 = session.get("resposta4", "")
+    resposta5 = session.get("resposta5", "")
+    resposta6 = session.get("resposta6", "")
 
-    respostas = [resposta1, resposta2, resposta3]
+    respostas = [resposta1, resposta2, resposta3, resposta4, resposta5, resposta6]
 
     for i in range(1, len(respostas)+1):
         if perguntas[f"quiz_assunto{i}"][5] == session[f"resposta{i}"]:
