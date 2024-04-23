@@ -5,7 +5,8 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 1"
     ],
     "quiz_assunto2":[
         "Enunciado da pergunta 2",
@@ -13,7 +14,8 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 2"
     ],
     "quiz_assunto3":[
         "Enunciado da pergunta 3",
@@ -21,7 +23,8 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 3"
     ],
     "quiz_assunto4":[
         "Enunciado da pergunta 4",
@@ -29,7 +32,8 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 4"
     ],
     "quiz_assunto5":[
         "Enunciado da pergunta 5",
@@ -37,7 +41,8 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 5"
     ],
     "quiz_assunto6":[
         "Enunciado da pergunta 6",
@@ -45,6 +50,7 @@
         "Alternativa B",
         "Alternativa C",
         "Alternativa D",
-        "A"
+        "A",
+        "dica pergunta 6"
     ]
 }

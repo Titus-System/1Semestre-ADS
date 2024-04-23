@@ -45,7 +45,6 @@ def quiz_page(name):
         questao = perguntas[name]
         verificar = name
         print(questao)
-
     else: page = name
     
     for i in range(len(perguntas)):
@@ -65,27 +64,11 @@ def quiz_page(name):
 #rota para salvar as respostas do usuário
 @app.route("/salvar_respostas/<verificar>", methods=["POST", "GET"])
 def salvar_respostas(verificar):
-    # perguntas = arquivos.quiz_perguntas
-
-    # respostas = {}
-    # acertos = 0
-
     try:
         session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
         session[f"resposta{verificar}"] = "E"
     
-    # if perguntas[f"quiz_assunto{verificar}"][5] == session[f"resposta{verificar}"]:
-    #     acertos += 1
-
-
-    # if verificar == "resultado_final":
-    #     resposta1 = session.get("resposta1", "")
-    #     resposta2 = session.get("resposta2", "")
-    #     erros = len(perguntas) - acertos
-    #     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
-    #     return render_template("/quiz/resultado.html", resposta1=resposta1, resposta2=resposta2)
-
     return redirect (f"/quiz/assunto{int(verificar) + 1}")
 
 
@@ -109,7 +92,6 @@ def resultado():
 
     erros = len(perguntas) - acertos
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
-
 
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
 
