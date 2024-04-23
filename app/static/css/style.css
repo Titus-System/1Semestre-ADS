@@ -230,7 +230,8 @@
 
 /* apresentação do resultado do quiz */
 .resultado{
-    max-width: 80%;
+    max-width: 60%;
     margin:auto;
     left:auto;
 }
+

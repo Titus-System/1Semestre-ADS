@@ -77,6 +77,8 @@ def salvar_respostas(verificar):
 def resultado():
     perguntas = arquivos.quiz_perguntas
     acertos = 0
+    questoes_erradas = {}
+    correcao = arquivos.erro_assunto
     resposta1 = session.get("resposta1", "")
     resposta2 = session.get("resposta2", "")
     resposta3 = session.get("resposta3", "")
@@ -89,11 +91,12 @@ def resultado():
     for i in range(1, len(respostas)+1):
         if perguntas[f"quiz_assunto{i}"][5] == session[f"resposta{i}"]:
             acertos += 1
+        else: questoes_erradas[i] = correcao[f"erro_assunto{i}"]
 
     erros = len(perguntas) - acertos
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
 
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao)
 
 
 if __name__ == "__main__":
