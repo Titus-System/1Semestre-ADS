@@ -30,7 +30,7 @@ def find_apostila(name):
 #contrução do quiz
 #as perguntas são retiradas do arquivo json correspondente a cada capitulo
 @app.route("/quiz/<name>")
-def quiz_page(name):
+def quiz_page(name, sem_resposta=False):
     perguntas = arquivos.quiz_perguntas
     questao = ""
     num_quest = 0
@@ -56,6 +56,9 @@ def quiz_page(name):
     if pagina_anterior in ["quiz_assunto0", "assunto0"]: pagina_anterior = "assunto1"
     if proxima_pagina in ["quiz_assunto7", "assunto7"]: proxima_pagina = "resultado"
 
+    if sem_resposta == True:
+        nao_respondido = "responda a questão para avançar de página"
+        return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido)
 
     return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
 
@@ -67,8 +70,8 @@ def salvar_respostas(verificar):
     try:
         session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
-        session[f"resposta{verificar}"] = "E"
-    
+        return quiz_page(f"quiz_assunto{verificar}", True)
+        
     return redirect (f"/quiz/assunto{int(verificar) + 1}")
 
 
