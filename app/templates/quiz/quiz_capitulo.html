@@ -4,9 +4,24 @@
 {% block quiz %}
 <div class="quiz_page">
 
-  <h1 id="quiz_title">Quiz {{num_quest}}</h1>
+    <!-- modal que será acionado se o usuário não responder a questão -->
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Questão não foi respondida</h5>
+                <button type="button" class="d-flex justify-content-end" data-bs-dismiss="modal" class="">&times;</button></a>
+              </div>
+              <div class="modal-body">
+                <p>Marque uma resposta para poder avançar. Se precisar de uma dica, selecione a opção "Não sei responder..."</p>
+              </div>
+          </div>
+      </div>
+    </div>
   
-  <div class="sem_resposta">{{sem_resposta}}</div>
+
+  <!-- inicio da pagina -->
+  <h1 id="quiz_title">Quiz {{num_quest}}</h1>
 
     <br>
     <!--inicio do formulario-->
@@ -69,11 +84,17 @@
       <!-- fim do modal -->
       
       <br><br><br>
-          <a href="/quiz/{{anterior}}"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
-          <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a> 
-      <br><br>
+      <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a> 
     </form>
+    <a href="/quiz/{{anterior}}"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
     <!--fim do formulario-->
 
 </div>
+
+<script src="{{sem_resposta}}"></script>
+<script>
+  	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+</script>
 {% endblock %}

@@ -57,7 +57,7 @@ def quiz_page(name, sem_resposta=False):
     if proxima_pagina in ["quiz_assunto7", "assunto7"]: proxima_pagina = "resultado"
 
     if sem_resposta == True:
-        nao_respondido = "responda a questão para avançar de página"
+        nao_respondido = arquivos.modal_sem_resposta
         return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido)
 
     return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
