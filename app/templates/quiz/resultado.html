@@ -5,11 +5,29 @@
 {% block resultado %}
 <div class="resultado">
     <br>
-    <h1>Seu aproveitamento foi de {{porcentagem}}</h1>
+    <h1 style="text-align: center">Resultados</h1>
     <br>
-    <p>Número de acertos: {{acertos}}</p>
-    <p>Número de erros: {{erros}}</p>
-    <p>Suas respostas:</p>
-    
+    <h2>Seu aproveitamento foi de {{porcentagem}}</h2>
+    <h5>Número de acertos: {{acertos}}</h5>
+    <h5>Número de erros: {{erros}}</h5>
+    <br>
+    <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
+    <ul style="margin-top:0">
+        {% for i in range(6) %}
+        <li>resposta {{i+1}}: {{respostas[i]}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <p style="margin-bottom: 0;"><strong>Seus erros:</strong></p>
+    <dl style="margin-top:0">
+        {% for key, value in questoes_erradas.items() %}
+        <dt>Questão {{key}}</dt>
+        <dd>{{value}}</dd>
+        <br>
+        {% endfor %}
+    </dl>
+    <br>
+    <a href="/apostila"><button class="botao_iniciar" id="button_next">Seguir para apostila</button></a> 
+
 </div>
 {% endblock %}

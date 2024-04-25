@@ -223,6 +223,15 @@
     float:right
 }
 
+.sem_resposta{
+    background-color:darkred;
+    color: white;
+    text-align:center;
+    font-family: "Ruda";
+    border-radius: 15px;
+}
+
+
 /* resumo quiz */
 .resumo{
     border: 2px solid red
@@ -230,7 +239,8 @@
 
 /* apresentação do resultado do quiz */
 .resultado{
-    max-width: 80%;
+    max-width: 60%;
     margin:auto;
     left:auto;
 }
+
