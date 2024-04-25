@@ -36,7 +36,7 @@ def find_apostila(name):
 #contrução do quiz
 #as perguntas são retiradas do arquivo json correspondente a cada capitulo
 @app.route("/quiz/<name>")
-def quiz_page(name):
+def quiz_page(name, sem_resposta=False):
     perguntas = arquivos.quiz_perguntas
     questao = ""
     num_quest = 0
@@ -51,7 +51,6 @@ def quiz_page(name):
         questao = perguntas[name]
         verificar = name
         print(questao)
-
     else: page = name
     
     for i in range(len(perguntas)):
@@ -63,35 +62,22 @@ def quiz_page(name):
     if pagina_anterior in ["quiz_assunto0", "assunto0"]: pagina_anterior = "assunto1"
     if proxima_pagina in ["quiz_assunto7", "assunto7"]: proxima_pagina = "resultado"
 
+    if sem_resposta == True:
+        nao_respondido = arquivos.modal_sem_resposta
+        return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido, paginas=arquivos.apostila_paginas)
 
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, paginas=arquivos.apostila_paginas)
 
 
 
 #rota para salvar as respostas do usuário
 @app.route("/salvar_respostas/<verificar>", methods=["POST", "GET"])
 def salvar_respostas(verificar):
-    # perguntas = arquivos.quiz_perguntas
-
-    # respostas = {}
-    # acertos = 0
-
     try:
         session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
-        session[f"resposta{verificar}"] = "E"
-    
-    # if perguntas[f"quiz_assunto{verificar}"][5] == session[f"resposta{verificar}"]:
-    #     acertos += 1
-
-
-    # if verificar == "resultado_final":
-    #     resposta1 = session.get("resposta1", "")
-    #     resposta2 = session.get("resposta2", "")
-    #     erros = len(perguntas) - acertos
-    #     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
-    #     return render_template("/quiz/resultado.html", resposta1=resposta1, resposta2=resposta2)
-
+        return quiz_page(f"quiz_assunto{verificar}", True)
+        
     return redirect (f"/quiz/assunto{int(verificar) + 1}")
 
 
@@ -100,6 +86,8 @@ def salvar_respostas(verificar):
 def resultado():
     perguntas = arquivos.quiz_perguntas
     acertos = 0
+    questoes_erradas = {}
+    correcao = arquivos.erro_assunto
     resposta1 = session.get("resposta1", "")
     resposta2 = session.get("resposta2", "")
     resposta3 = session.get("resposta3", "")
@@ -112,12 +100,12 @@ def resultado():
     for i in range(1, len(respostas)+1):
         if perguntas[f"quiz_assunto{i}"][5] == session[f"resposta{i}"]:
             acertos += 1
+        else: questoes_erradas[i] = correcao[f"erro_assunto{i}"]
 
     erros = len(perguntas) - acertos
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
 
-
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem)
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao)
 
 
 if __name__ == "__main__":
