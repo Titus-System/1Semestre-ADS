@@ -157,6 +157,7 @@
     background-color: #e0e5e8;
     width: 100%;
     margin: 0 0 150px;
+    font-family: 'Ruda';
 }
 
 .quiz_page{
@@ -234,3 +235,42 @@
     margin:auto;
     left:auto;
 }
+
+/* pagina ferramentas*/
+.img-ferramentas{
+    height: 100px;
+    padding-top:20px;
+    padding-bottom: 5px;
+}
+
+.botao{
+    width: 200px;
+}
+
+.ferramentas_grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 80%;
+    padding: auto;
+    margin: 100px auto ;
+}
+
+/*pagina produto*/
+
+.pagina-produto{
+    display: grid;
+    grid-template-columns: auto auto ;
+    width: 60%;
+    margin: 10% auto ;
+}
+
+.img-pagina-produto{
+    margin-top: -35px
+}
+
+.text-pagina-produto{
+   text-align: justify;
+   
+   padding-left: 20%;
+}
+

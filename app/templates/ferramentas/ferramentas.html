@@ -1,0 +1,44 @@
+{% extends "/ferramentas/base_ferramentas.html" %}
+
+{% block title %}Ferramentas{% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Modelos Baixaveis</h1>
+<div class="ferramentas_grid">
+<figure style="text-align: center;">
+  <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">
+    
+    <figcaption style="text-align: center;" >
+        <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+            <button type="button" class="btn btn-outline-dark botao">Burndown Chart</button>
+        </a>
+    </figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img class="img-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Sprint Backlog">
+    
+    <figcaption style="text-align: center;" >
+        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
+            <button type="button" class="btn btn-outline-dark botao">Sprint Backlog</button>
+        </a>
+    </figcaption>
+</figure>    
+
+<figure style="text-align: center;">
+  <img class="img-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Product Backlog">
+ 
+    <figcaption style="text-align: center;" >
+        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
+            <button type="button" class="btn btn-outline-dark botao">Product Backlog</button>
+        </a>
+    </figcaption>
+</figure>
+</div>
+        
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+{% endblock %}

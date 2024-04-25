@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}"> 
     
-    <title>Ferramentas</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
 
@@ -41,11 +41,11 @@
                     <!-- construção do indice com loop pelo arquivo json -->
                     <ol>
                         
-                            <li><a href="#">Product Backlog</a></li>
+                            <li><a href="/ferramentas/p_product">Product Backlog</a></li>
                             <br>
-                            <li><a href="#">Sprint Backlog</a></li>
+                            <li><a href="/ferramentas/p_sprint">Sprint Backlog</a></li>
                             <br>
-                            <li><a href="#">Burndown Chart</a></li>
+                            <li><a href="/ferramentas/p_burndown">Burndown Chart</a></li>
                     
                     </ol>
                 </div>
@@ -63,43 +63,8 @@
         <hr class="header_hr">
     </header>
 
-
-    <br>
-    <h1>Modelos Baixaveis</h1>
-
-<figure style="text-align: center;">
-  <img src="{{url_for('static', filename='imagens/image.png')}}" alt="Burndown Chart">
-    <br>
-    <br>
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
-            <button type="button" class="btn btn-outline-dark">Clique aqui para baixar</button>
-        </a>
-    </figcaption>
-</figure>
-
-<figure style="text-align: center;">
-  <img src="{{url_for('static', filename='imagens/image.png')}}" alt="Sprint Backlog">
-    <br>
-    <br>
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
-            <button type="button" class="btn btn-outline-dark">Clique aqui para baixar</button>
-        </a>
-    </figcaption>
-</figure>    
-
-<figure style="text-align: center;">
-  <img src="{{url_for('static', filename='imagens/image.png')}}" alt="Product Backlog">
-    <br>
-    <br>
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
-            <button type="button" class="btn btn-outline-dark">Clique aqui para baixar</button>
-        </a>
-    </figcaption>
-</figure>
-        
+    {% block content %}
+    {% endblock %}
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
 </body>

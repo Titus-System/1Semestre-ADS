@@ -1,0 +1,23 @@
+{% extends "/ferramentas/base_ferramentas.html" %}
+
+{% block title %}Burndown Chart{% endblock %}
+
+{% block content %}
+<br>
+<h1>Modelo Burndown Chart</h1>
+
+<div class="pagina-produto">
+    <figure class="img-pagina-produto" style="text-align: center;">
+        <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" style="height:200px" alt="Burndown Chart">
+       
+          <figcaption style="text-align: center;" >
+              <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+                  <button type="button" class="btn btn-outline-dark botao" style="width:240px">Burndown Chart</button>
+              </a>
+          </figcaption>
+      </figure>
+    
+      <p class="text-pagina-produto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid, vero quia blanditiis earum tempora voluptatibus, saepe itaque qui eum quaerat doloribus ex impedit ipsa autem odit possimus nam sapiente?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias error fuga odit expedita sit doloremque eos officiis voluptates facilis nulla. Odit eveniet neque obcaecati error? Accusantium, laboriosam! Iste, numquam quam!Lorem</p>
+    </div>
+
+{% endblock %}

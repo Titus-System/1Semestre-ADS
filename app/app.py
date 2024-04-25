@@ -17,7 +17,13 @@ def get_page(name):
         return redirect("/apostila/introducao")
     if name == "quiz":
         return redirect ("quiz/iniciar")
+    if name == "ferramentas":
+        return redirect("/ferramentas/ferramentas")
     return render_template(f"{name}.html")
+
+@app.route("/ferramentas/<name>")
+def ferramentas(name):
+    return render_template(f"/ferramentas/{name}.html")
 
 
 @app.route("/apostila/<name>")
