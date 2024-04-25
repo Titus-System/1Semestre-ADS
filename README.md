@@ -2,10 +2,15 @@
 
 > # 1Semestre-ADS
 
-![This is an alt text](app/static/images/logo_transp.png)
+![This is an alt text](./Materiais/Imagens/Arquivos_README/logo.png)
 
 > # Demontração do Produto:
-> (https://github.com/Titus-System/1Semestre-ADS/blob/main/Materiais/slide-apresenta%C3%A7%C3%A3o-1sprint/Apresenta%C3%A7%C3%A3o%20primeira%20sprint%20(1).mp4)
+> 
+
+> # Backlog do Produto
+>
+> ![This is an alt text](./Materiais/Imagens/Arquivos_README/Backlog_do_Produto.png)
+>
 
 > # Padrao para os Commits
 >
