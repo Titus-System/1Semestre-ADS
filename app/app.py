@@ -58,9 +58,9 @@ def quiz_page(name, sem_resposta=False):
 
     if sem_resposta == True:
         nao_respondido = arquivos.modal_sem_resposta
-        return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido)
+        return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido, paginas=arquivos.apostila_paginas)
 
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest)
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, paginas=arquivos.apostila_paginas)
 
 
 

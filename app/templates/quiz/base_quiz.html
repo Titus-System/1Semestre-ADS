@@ -28,6 +28,8 @@
             &#9776
         </a>
 
+<!-- offcanvas indice -->
+
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
             <div class="offcanvas-header">
@@ -43,14 +45,15 @@
                 <div class="indice">
                     <h5>Escolha por onde começar</h5>
                     <ol>
-                        {%for i in range(1, 7)%}
-                        <li><a href="/quiz/capitulo{{i}}">Capítulo {{i}}</a></li>
-                        <ul>
-                            <li><a href="/quiz/capitulo{{i}}">Resumo</a></li>
-                            <li><a href="/quiz/quiz_capitulo{{i}}">Perguntas</a></li>
-                        </ul>
+                        {% for item in paginas %}
+                        <li><a href="{{paginas[item][0]}}" target="_blank">{{item}}</a></li>
+                            <ul>
+                                {%for i in range(0,(paginas[item]|length)-1,2)%}
+                                <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}' target="_blank">{{paginas[item][i+1]}}</a></li>
+                                {%endfor%}
+                            </ul>
                         <br>
-                        {%endfor%}
+                        {% endfor %}
                     </ol>
                 </div>
             </div>
