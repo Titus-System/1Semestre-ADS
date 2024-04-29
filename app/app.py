@@ -108,5 +108,50 @@ def resultado():
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao)
 
 
+@app.route("/avaliacao", methods=["POST", "GET"])
+def avaliacao():
+    apostila_paginas = arquivos.apostila_paginas
+    perguntas = arquivos.quiz_perguntas
+    correcao = arquivos.erro_assunto
+    questoes_erradas = {}
+
+    if request.method == "POST":
+        respostas_avaliacao = {}
+        acertos = 0
+
+        for i in range(1, len(perguntas)+1):
+            respostas_avaliacao[i] = request.form.get(f"respostaquiz_assunto{i}")
+        
+        for key, value in respostas_avaliacao.items():
+            if value == perguntas[f"quiz_assunto{key}"][5]:
+                acertos += 1
+            else:
+                questoes_erradas[key] = correcao[f"erro_assunto{key}"]
+        
+        erros = len(perguntas) - acertos
+        porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+
+        return render_template("resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_avaliacao, questoes_erradas = questoes_erradas, correcao = correcao)
+
+
+    return render_template("avaliacao.html", perguntas = perguntas, apostile_paginas = apostila_paginas)
+
+
+# @app.route("/resultado_avaliacao", methods=["POST", "GET"])
+# def resultado_avaliacao():
+#     perguntas = arquivos.quiz_perguntas
+#     respostas_avaliacao = {}
+#     acertos = 0
+
+#     for i in range(1, len(perguntas)+1):
+#         respostas_avaliacao[i] = request.form.get(f"respostaquiz_assunto{i}")
+    
+#     for key, value in respostas_avaliacao.items():
+#         if value == perguntas[f"quiz_assunto{key}"][5]:
+#             acertos += 1
+
+#     return render_template("resultado_avaliacao.html", perguntas = perguntas, acertos = acertos)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

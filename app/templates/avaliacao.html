@@ -1,0 +1,49 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Avaliação{% endblock %}
+
+<!-- inserir imagem principal da página -->
+{% block head_image %} {% endblock %}
+
+<!-- conteúdo de teoria -->
+{% block quiz %}
+<div class="quiz_page">
+
+<h1 style="text-align: center;">Avalie seus conhecimentos</h1>
+
+
+
+<form action="/avaliacao" method="POST">
+{% for key,value in perguntas.items() %}
+    <div class="question_box">
+        <h3 class="num_question">Questão {{key[-1]}}</h3>
+
+        <p class="question_script">{{value[0]}}</p>
+
+        <div class="quiz_option">
+            <input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>
+            <label for="A{{key}}">{{value[1]}}</label>
+            <br>
+            <input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">
+            <label for="B{{key}}">{{value[2]}}</label>
+            <br>
+            <input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">
+            <label for="C{{key}}">{{value[3]}}</label>
+            <br>
+            <input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">
+            <label for="D{{key}}">{{value[4]}}</label>
+          </div>
+    </div>
+    <br>
+    {% endfor %}
+
+    <button class="botao_iniciar" >conferir resultado</button>
+</form>
+
+
+{% endblock %}
+
+<!-- perguntas -->
+{% block perguntas %}
+{% endblock %}
+</div>

@@ -1,0 +1,56 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Avaliação{% endblock %}
+
+<!-- inserir imagem principal da página -->
+{% block head_image %} {% endblock %}
+
+<!-- conteúdo de teoria -->
+{% block quiz %}
+<div class="quiz_page">
+
+<h1 style="text-align: center;">Resultados da sua avaliação</h1>
+
+
+
+</div>
+
+
+
+<div class="resultado">
+    <br>
+    <h1 style="text-align: center">Resultados</h1>
+    <br>
+    <h2>Seu aproveitamento foi de {{porcentagem}}</h2>
+    <h5>Número de acertos: {{acertos}}</h5>
+    <h5>Número de erros: {{erros}}</h5>
+    <br>
+    <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
+    <ul style="margin-top:0">
+        {% for i in range(6) %}
+        <li>resposta {{i+1}}: {{respostas[i+1]}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <p style="margin-bottom: 0;"><strong>Seus erros:</strong></p>
+    <dl style="margin-top:0">
+        {% for key, value in questoes_erradas.items() %}
+        <dt>Questão {{key}}</dt>
+        <dd>{{value}}</dd>
+        <br>
+        {% endfor %}
+    </dl>
+    <br>
+    <a href="/apostila"><button class="botao_iniciar" id="button_next">Seguir para apostila</button></a>
+    <a href="/avaliacao"><button class="botao_iniciar" id="refazer" style="float: left;">Refazer avaliação</button></a>
+</div>
+
+
+
+{% endblock %}
+
+
+
+<!-- perguntas -->
+{% block perguntas %}
+{% endblock %}
