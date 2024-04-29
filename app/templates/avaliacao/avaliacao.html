@@ -11,9 +11,12 @@
 
 <h1 style="text-align: center;">Avalie seus conhecimentos</h1>
 
-
+<br>
 
 <form action="/avaliacao" method="POST">
+    <label for="nome_usuario">Escreva seu nome:</label>
+    <input type="text" id="nome_usuario" name="nome_usuario" style="border-radius: 5px; border:hidden; width: 240px" required>
+    <br><br>
 {% for key,value in perguntas.items() %}
     <div class="question_box">
         <h3 class="num_question">Questão {{key[-1]}}</h3>

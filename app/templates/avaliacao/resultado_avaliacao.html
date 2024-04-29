@@ -7,20 +7,20 @@
 
 <!-- conteúdo de teoria -->
 {% block quiz %}
-<div class="quiz_page">
-
-<h1 style="text-align: center;">Resultados da sua avaliação</h1>
-
-
-
-</div>
-
 
 
 <div class="resultado">
     <br>
-    <h1 style="text-align: center">Resultados</h1>
+
+    {% if acertos/(respostas|length) * 100 <= 60 %}
+        <h1 style="text-align: center">Você foi reprovado!</h1>
+        <p style="text-align: center">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
+    {% else %}
+        <h1 style="text-align: center">Parabéns! Você foi aprovado!</h1>
+    {% endif %}
+
     <br>
+    
     <h2>Seu aproveitamento foi de {{porcentagem}}</h2>
     <h5>Número de acertos: {{acertos}}</h5>
     <h5>Número de erros: {{erros}}</h5>
