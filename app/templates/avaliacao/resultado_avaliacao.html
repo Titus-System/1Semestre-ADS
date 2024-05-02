@@ -13,22 +13,28 @@
     <br>
 
     {% if acertos/(respostas|length) * 100 <= 60 %}
-        <h1 style="text-align: center">Você foi reprovado!</h1>
+        <h1 style="text-align: center; font-weight: bold;">Você foi reprovado!</h1>
         <p style="text-align: center">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
     {% else %}
-        <h1 style="text-align: center">Parabéns! Você foi aprovado!</h1>
+        <h1 style="text-align: center; font-weight: bold;">Parabéns! Você foi aprovado!</h1>
     {% endif %}
 
     <br>
     
-    <h2>Seu aproveitamento foi de {{porcentagem}}</h2>
-    <h5>Número de acertos: {{acertos}}</h5>
-    <h5>Número de erros: {{erros}}</h5>
+    <h2 style="text-align: center;">Seu aproveitamento foi de <strong>{{porcentagem}}</strong></h2>
+    <div class="resultado_acertos">
+        <img src="{{url_for('static', filename='images/certo_quiz.png')}}" class="img_resultados">
+    <h5>Número de acertos: <strong>{{acertos}}</strong></h5>
+    </div>
+    <div class="resultado_erros">
+        <img src="{{url_for('static', filename='images/errado_quiz.png')}}" class="img_resultados">
+    <h5>Número de erros: <strong>{{erros}}</strong></h5>
+    </div>
     <br>
     <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
     <ul style="margin-top:0">
         {% for i in range(6) %}
-        <li>resposta {{i+1}}: {{respostas[i+1]}}</li>
+        <li>Resposta {{i+1}}: {{respostas[i+1]}}</li>
         {% endfor %}
     </ul>
     <br>
