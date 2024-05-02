@@ -10,7 +10,6 @@ app.secret_key = "chave_secreta"
 def home():
     return render_template ("index.html")
 
-
 @app.route("/<name>")
 def get_page(name):
     if name == "apostila":
@@ -19,6 +18,8 @@ def get_page(name):
         return redirect ("quiz/iniciar")
     if name == "ferramentas":
         return redirect("/ferramentas/ferramentas")
+    if name == "avaliação":
+        return redirect("/avaliacao")
     return render_template(f"{name}.html")
 
 @app.route("/ferramentas/<name>")

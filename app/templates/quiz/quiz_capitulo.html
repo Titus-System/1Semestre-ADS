@@ -9,8 +9,8 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Questão não foi respondida</h5>
-                <button type="button" class="d-flex justify-content-end" data-bs-dismiss="modal" class="">&times;</button></a>
+                <h5 class="modal-title">A questão não foi respondida!&nbsp&nbsp</h5>
+                <button type="button" class="d-flex" data-bs-dismiss="modal">&times;</button></a>
               </div>
               <div class="modal-body">
                 <p>Marque uma resposta para poder avançar. Se precisar de uma dica, selecione a opção "Não sei responder..."</p>
@@ -18,41 +18,61 @@
           </div>
       </div>
     </div>
+
   
 
   <!-- inicio da pagina -->
-  <h1 id="quiz_title">Quiz {{num_quest}}</h1>
+  <br>
+  <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
+  <br>
+  <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
 
-    <br>
     <!--inicio do formulario-->
 
     <form action="/salvar_respostas/{{verificar}}" method="POST">
 
             <div class="question_box">
-                <h3 class="num_question">Questão {{num_quest}}</h3>
-
+              <div class="question_box_1">
+                <br>
+                <!-- <h3 class="num_question">Questão {{num_quest}}</h3> -->
+                <br>
+                <div class="engrenagens-div">
+                  &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
                 <p class="question_script">{{questao[0]}}</p>
+                <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
+                </div>
+                <br>
+              </div>
 
                 <div class="quiz_option">
-                    <input type="radio" id="A{{num_quest}}" name="resposta{{num_quest}}" value="A">
-                    <label for="A{{num_quest}}">{{questao[1]}}</label>
+                  <br>
+                    <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta{{num_quest}}" value="A">
+                    <label for="A{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[1]}}</h6></label>
                     <br>
-                    <input type="radio" id="B{{num_quest}}" name="resposta{{num_quest}}" value="B">
-                    <label for="B{{num_quest}}">{{questao[2]}}</label>
                     <br>
-                    <input type="radio" id="C{{num_quest}}" name="resposta{{num_quest}}" value="C">
-                    <label for="C{{num_quest}}">{{questao[3]}}</label>
+                    <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta{{num_quest}}" value="B">
+                    <label for="B{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[2]}}</h6></label>
                     <br>
-                    <input type="radio" id="D{{num_quest}}" name="resposta{{num_quest}}" value="D">
-                    <label for="D{{num_quest}}">{{questao[4]}}</label>  
+                    <br>
+                    <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta{{num_quest}}" value="C">
+                    <label for="C{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[3]}}</h6></label>
+                    <br>
+                    <br>
+                    <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta{{num_quest}}" value="D">
+                    <label for="D{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[4]}}</h6></label>  
+                    <br>
                   </div>
 
                   <!-- botão dica -->
+                  <br>
+                  <br>
+                  <div class="btn_ns">
                   <button tabindex="0" type="button" class="btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[6]}}" style="float:right">
                     Não sei responder...
                   </button>
+                </div>
                   <br>
-            </div>
+              </div>
             <br>
             <!-- <button type="submit" value="submit" class="submit">Verificar respostas</button>
         <br> -->
@@ -89,6 +109,7 @@
     <a href="/quiz/{{anterior}}"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
     <!--fim do formulario-->
 
+</div>
 </div>
 
 <script src="{{sem_resposta}}"></script>

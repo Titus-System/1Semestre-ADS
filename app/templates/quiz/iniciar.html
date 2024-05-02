@@ -4,21 +4,23 @@
 
 {% block resumo %}
 <div class="quiz_page">
+    <br>
     <h1 id="quiz_title">Entenda o Scrum de forma prática</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequatur minus? Officia quasi laboriosam
+    <p class="quiz_subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequatur minus? Officia quasi laboriosam
         minima incidunt est similique dolore perspiciatis unde nisi omnis, tempore iusto corporis sed at consectetur
         aperiam.</p>
     <br>
-    <div>
-        <h3>Faça o quiz completo</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit sequi minima eius labore quos architecto
+    <div class="quiz_intro">
+    <img class="quiz_image" src="{{url_for('static', filename='images/quiz_iniciar.png')}}">
+    <div class="quiz_text">
+        <h3 class="quiz_subtitle">Faça o quiz completo</h3>
+        <p class="quiz_subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit sequi minima eius labore quos architecto
             voluptas dolores quia odit et, similique placeat accusantium, aperiam sed autem provident. Error, veniam
             ipsa.</p>
         <br>
         <a href="/quiz/assunto1"><button class="botao_iniciar">Iniciar Quiz >></button></a>
-
         <br>
     </div>
-
+    </div>
 </div>
 {% endblock %}
