@@ -12,11 +12,6 @@
 <h1 style="text-align: center; font-weight: bold;">Avalie seus conhecimentos</h1>
 
 <form action="/avaliacao" method="POST">
-    <div class="avaliacao_começo" style="display: flex; justify-content: center;">
-    <label for="nome_usuario" style="display: flex;">Escreva seu nome:&nbsp&nbsp</label>
-    <input type="text" id="nome_usuario" name="nome_usuario" style="border-radius: 5px; border:hidden; width: 240px; display: flex;" required>
-</div>
-    <br><br>
 {% for key,value in perguntas.items() %}
     <div class="question_box">
         <div class="question_box_1">

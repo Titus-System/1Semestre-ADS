@@ -26,23 +26,22 @@
   <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
   <br>
   <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
-
     <!--inicio do formulario-->
-
     <form action="/salvar_respostas/{{verificar}}" method="POST">
-
-            <div class="question_box">
+      <div class="question_box">
+        <!-- <div class="icone_div">
+        </div> -->
               <div class="question_box_1">
-                <br>
                 <!-- <h3 class="num_question">Questão {{num_quest}}</h3> -->
                 <br>
+                <br>
                 <div class="engrenagens-div">
-                  &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
+                  &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
                 <p class="question_script">{{questao[0]}}</p>
-                <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
+                &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
                 </div>
                 <br>
-              </div>
+              </div> 
 
                 <div class="quiz_option">
                   <br>
@@ -103,7 +102,7 @@
         </div> -->
       <!-- fim do modal -->
       
-      <br><br><br>
+      <br><br>
       <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a> 
     </form>
     <a href="/quiz/{{anterior}}"><button class="botao_iniciar" id="button_previous"><<  Anterior</button></a>
