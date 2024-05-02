@@ -136,7 +136,7 @@ def avaliacao():
 
         return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_avaliacao, questoes_erradas = questoes_erradas, correcao = correcao, nome_usuario=nome_usuario, paginas = apostila_paginas)
 
-    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, apostile_paginas = apostila_paginas)
+    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
 
 
 
