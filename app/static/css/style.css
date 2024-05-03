@@ -394,15 +394,25 @@ margin: auto;}
 .img-pagina-produto{
    width: 150px;
    height: auto;
+   padding-top: 35px;
 }
 
 .text-pagina-produto{
    text-align: justify;
-   padding: 0% 15%;
+   padding: 0% 14%;
    
 }
 
 .text-pagina-sobre{
     margin: 5% 10% auto 10%;
     text-align: justify;
+}
+
+/* pagina sprint ferramentas */
+
+.img-pagina-sprint{
+   width: 150px;
+   height: auto;
+   padding-top: 43px;
+
 }
