@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACER</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="body_pacer">
+    <header class="link_bar">
+
+        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" style="color:white; font-size:30px; line-height:60px">
+            &#9776
+        </a>
+          
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+            <div class="offcanvas-header">
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" style="width:240px">
+                    <button class="btn btn-outline-success" type="submit">&#128269</button>
+                </form>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="indice">
+                    <h5>Índice</h5>
+                    <!-- construção do indice com loop pelo arquivo json -->
+                    <ol>
+                        {% for item in paginas %}
+                        <li><a href="{{paginas[item][0]}}">{{item}}</a></li>
+                            <ul>
+                                {%for i in range(0,(paginas[item]|length)-1,2)%}
+                                <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}'>{{paginas[item][i+1]}}</a></li>
+                                {%endfor%}
+                            </ul>
+                        <br>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+          </div>
+
+
+        <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
+        <span class="header_link">
+            <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
+            <a href="/apostila" alt="apostila">APOSTILA</a>
+            <a href="/quiz" alt="quiz">QUIZ</a>
+            <a href="/pacer">PACER</a>
+
+            <!-- <a href="#" alt="home">HOME</a> -->
+        </span>
+        <hr class="header_hr">
+    </header>
+
+    <nav class="teoria_pacer">
+        <h1>Avaliação PACER</h1>
+        
+        <p>Como conduzir a avaliação PACER? <br>
+           O primeiro passo é reunir a equipe para uma avaliação interna, onde cada membro reflete sobre sua própria produtividade, autonomia, colaboração e entrega de resultados. Depois dessa análise em conjunto, é hora de preencher um questionário com os dados das autoavaliações. <br>
+           É importante salientar que cabe ao Scrum Master, preencher esse questionário e auxiliar os membros a entender se suas autoavaliações condizem com a realidade. Ele precisa orientar e esclarecer dúvidas para garantir que todos compreendam o panorama de habilidades individuais e coletivas. <br>
+           Sua intervenção é fundamental para promover uma cultura de autocrítica construtiva e alinhamento estratégico, minimizando diferenças entre percepção e desempenho e direcionando o time rumo à excelência operacional, mantendo a motivação da equipe.</p>
+
+        <p class="assessment_pacer">Considerando a PRODUTIVIDADE do funcionário, avalie de 0 a 3, sendo: <br>
+            0 - REATIVO - Aquele que não possui iniciativa alguma, aguarda alguém dizer o que fazer ou que algum problema surja. E não observa os próximos passos do planejamento. <br>
+            1 - DESFOCADO - Pega muitas atividades gerais e não inicia nenhuma devidamente. Mesmo nas tarefas mais simples tem respostas lentas. <br>
+            2 - ATIVO - Tenta pegar as tarefas mais difícies sempre que disponíveis. Fundamental para alcançar a meta da sprint. Pode se enroscar em pequenos problemas não previstos. <br>
+            3 - PROATIVO - Possui foco nas tarefas mais valiosas. Além da da iniciativa, evita antecipadamente problemas. Tem altissíma produtividade, foco em uma tarefa por vez e sempre bem feita.
+        </p>
+
+        <p class="assessment_pacer">Considerando a AUTONOMIA do funcionário, avalie de 0 a 3, sendo: <br>
+            0 - DIRIGIDO - Não consegue ou não quer iniciar as suas atividades. Sempre precisa de alguém ao lado para progredir nas atividades. <br>
+            1 - GERIDO - Demora demais para iniciar as atividades. Demora para perceber que precisa de ajuda. Demora para entender o que deve ser estudado. E só avança quando alguém lhe diz extamente o que deve ser feito.<br>
+            2 - TREINADO - Recorre a experiências descritas por alguém antes de tomar as atitudes. Repete passos buscando os mesmos resultados. Pouca capacidade criativa.<br>
+            3 - AUTOGESTÃO - Sempre assume as suas responsabilidades com proatividade. Suas estimativas de prazo são precisas. Capacidade analítica e/ou crítica dos desafios que se apresentam.
+        </p>
+
+        <p class="assessment_pacer">Considerando a COLABORAÇÃO do funcionário, avalie de 0 a 3, sendo: <br>
+            0 - AUSENTE - Não aparece nas reuniões e não se interessa pelo projeto.<br>
+            1 - COOPERATIVO - Preucupa-se com a organização, contudo não cumpre seu papel. Prove informação, mas não faz uma comunicação efetiva. Toma decisões individualmente, mas não em equipe.<br>
+            2 - COORDENADO - Compartilha informações. Segue bem os papeis definidos. Comunica-se com frequência. E compartilha as decisões tomadas.<br>
+            3 - COLABORATIVO - A equipe age como se fosse um único organismo. A comunicação é prioridade e sempre remete confiança para todos. As decisões chegam em concenso. Compartilha ideias e recursos.
+        </p>
+
+        <p class="assessment_pacer">Considerando a ENTREGA DE RESULTADOS do funcionário, avalie de 0 a 3, sendo: <br>
+            0 - NÃO HÁ ENTREGAS - Não ocorre entrega de sucesso. Existem pontos que aparentemente não serão resolvíveis no tempo restante.<br>
+            1 - ENTREGAS DUVIDOSAS - Existem dúvidas se a entrega não arrisca o projeto em algumas áreas. Ações urgentes precisam ser tomadas para garantir a entrega.<br>
+            2 - ENTREGAS CONFIÁVEIS - O sucesso é provável. Contudo é necessário uma atenção constante para garantir que riscos não ameacem o projeto.<br>
+            3 - ENTREGAS PERFEITAS - Entregas completas, sem erros, bem documentadas com qualidade.
+        </p>
+
+        <form action="">
+            <label for="qtd_funcionarios">Quantos colaboradores fazem parte da equipe:</label>
+            <select class="control_qtd_funcionarios" id="qtd_funcionarios">
+                <option value="um">1</option>
+                <option value="dois">2</option>
+                <option value="tres">3</option>
+                <option value="quatro">4</option>
+                <option value="cinco">5</option>
+                <option value="seis">6</option>
+                <option value="sete">7</option>
+                <option value="oito">8</option>
+                <option value="nove">9</option>
+                <option value="dez">10</option>
+                <option value="onze">11</option>
+                <option value="doze">12</option>
+                <option value="treze">13</option>
+                <option value="catorze">14</option>
+                <option value="quinze">15</option>
+                <option value="dezesseis">16</option>
+                <option value="dezessete">17</option>
+                <option value="dezoito">18</option>
+                <option value="dezenove">19</option>
+                <option value="vinte">20</option>
+            </select> <br>
+
+            <br><p>Considerando a PRODUTIVIDADE do funcionário '' </p>
+            <input type="radio">
+            <label label for="productivity">0 - REATIVO</label> <br>
+
+            <input type="radio">
+            <label label for="productivity">1 - DESFOCADO</label> <br>
+
+            <input type="radio">
+            <label label for="productivity">2 - ATIVO</label> <br>
+
+            <input type="radio">
+            <label label for="productivity">3 - PROATIVO</label> <br>
+
+            <br><p>Considerando a AUTONOMIA do funcionário '' </p>
+            <input type="radio">
+            <label label for="autonomy">0 - DIRIGIDO</label> <br> 
+
+            <input type="radio">
+            <label label for="autonomy">1 - GERIDO</label> <br>
+
+            <input type="radio">
+            <label label for="autonomy">2 - TREINADO</label> <br>
+
+            <input type="radio">
+            <label label for="autonomy">3 - AUTOGESTÃO</label> <br>
+
+            <br><p>Considerando a COLABORAÇÃO do funcionário '' </p>
+            <input type="radio">
+            <label label for="collaboration">0 - AUSENTE</label> <br>
+
+            <input type="radio">
+            <label label for="collaboration">1 - COOPERATIVO</label> <br>
+
+            <input type="radio">
+            <label label for="collaboration">2 - COORDENADO</label> <br>
+
+            <input type="radio">
+            <label label for="collaboration">3 - COLABORATIVO</label> <br>
+
+            <br><p>Considerando a ENTREGA DE RESULTADOS do funcionário '' </p>
+            <input type="radio">
+            <label label for="results">0 - NÃO HÁ ENTREGAS</label> <br>
+
+            <input type="radio">
+            <label label for="results">1 - ENTREGAS DUVIDOSAS</label> <br>
+
+            <input type="radio">
+            <label label for="results">2 - ENTREGAS CONFIÁVEIS</label> <br>
+
+            <input type="radio">
+            <label label for="results">3 - ENTREGAS PERFEITAS</label> <br>
+        </form>
+    </nav>
+</body>
+
+</html>

@@ -10,7 +10,6 @@ app.secret_key = "chave_secreta"
 def home():
     return render_template ("index.html")
 
-
 @app.route("/<name>")
 def get_page(name):
     if name == "apostila":
@@ -19,6 +18,8 @@ def get_page(name):
         return redirect ("quiz/iniciar")
     if name == "ferramentas":
         return redirect("/ferramentas/ferramentas")
+    if name == "avaliação":
+        return redirect("/avaliacao")
     return render_template(f"{name}.html")
 
 @app.route("/ferramentas/<name>")
@@ -106,6 +107,36 @@ def resultado():
     porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
 
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao)
+
+
+# rota para avaliação e resultado da avaliação
+@app.route("/avaliacao", methods=["POST", "GET"])
+def avaliacao():
+    apostila_paginas = arquivos.apostila_paginas
+    perguntas = arquivos.quiz_perguntas
+    correcao = arquivos.erro_assunto
+    questoes_erradas = {}
+
+    if request.method == "POST":
+        respostas_avaliacao = {}
+        acertos = 0
+
+        for i in range(1, len(perguntas)+1):
+            respostas_avaliacao[i] = request.form.get(f"respostaquiz_assunto{i}")
+        
+        for key, value in respostas_avaliacao.items():
+            if value == perguntas[f"quiz_assunto{key}"][5]:
+                acertos += 1
+            else:
+                questoes_erradas[key] = correcao[f"erro_assunto{key}"]
+        
+        erros = len(perguntas) - acertos
+        porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_avaliacao, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas)
+
+    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
+
 
 
 if __name__ == "__main__":
