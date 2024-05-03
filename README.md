@@ -1,42 +1,67 @@
-# 1Semestre-ADS
+# Titus Systems - 1º Semestre ADS
 
-![This is an alt text](./Materiais/Imagens/Arquivos_README/logo_empresa.png)
-
-> ## Demontração do Produto
+> ![Product logo](./Materiais/Imagens/Arquivos_README/logo.png)
 >
->![This is an alt text](./Materiais/Imagens/Arquivos_README/demonstracao.gif)
+> ## Sobre o Produto
 >
-> ## Backlog do Produto
+> ### Objetivos
 >
-> ![This is an alt text](./Materiais/Imagens/Arquivos_README/Backlog_do_Produto.png)
+> - Criar uma plataforma didática para o ensino do metodo **SCRUM**
+> - Que possua:
+> - - exemplos práticos;
+> - - Metodologia padronizada;
+> - - Um sistema avaliativo para os usuários;
+> - - Linguagem ágil e informal para conformar com a atualidade;
 >
-> ## Sprint 1
+> ### Competências
 >
-> ## Burndown Chart
+> - Utilização de tecnologias de desenvolvimento Front-End:
+> - - **HTML**;
+> - - **CSS**;
+> - - **Bootstrap**;
+> - - **Figma**;
 >
-> ![This is an alt text](./Materiais/Imagens/Arquivos_README/burndownsprint1.jpeg)
+> - Utilização de tecnologias de desenvolvimento Back-End:
+> - - **Python**;
+> - - **Flask**;
+> - - **JavaScript**;
 >
-> ### Sprint Backlog
+> - Tecnicas de desenvolvimento de projetos com o método **Ágil**.
 >
-> ![This is an alt text](./Materiais/Imagens/Arquivos_README/sprint1.jpeg)
+> ### Demonstração do Produto
 >
->## Padrao para os Commits
+> ![gif produto](./Materiais/Imagens/Arquivos_README/demonstracao.gif)
 >
->O que escrever no sumário:
->A primeira parte do sumário para os commits deve conter uma palavra chave para o que foi feito:
+> ### Product backlog
 >
->> - **Codigo {linguagem usada}** em caso de uma adição de codigo.
->> - **Material** em caso de adição de arquivos de texto / slides / documentação / etc.
->> - **Correção {aquivo corrigido}** para casos de alteração de codigo ou material em motivo de corrigir erros.
->> - **Update {arquivo editado}** para casos de adição de codigos ou conteudo em arquivos já criados.
->> - **Organização e limpeza** como argumento único para a alteração de estrutura de diretórios ou embelezamento de codigo.
+> ![backlog print](./Materiais/Imagens/Arquivos_README/Backlog_do_Produto.png)
 >
->A segunda parte pode variar de a cordo com o que for considerado informações importantes que devem ser lidas sem abrir o relatorio.
+> ## Entregas
 >
->Coisas como motivo do commit caso não seja claro ou para definir se é um commit funcional ou se ainda falta alguma outra entrega para que ele funcione corretamente.
-Na descrição do produto pode ficar a criterio do contribuidor, mas por favor tenha um resumo de no minimo duas frases para o que foi feito.
-Caso haja alteração de varios arquivos, mencione todos os arquivos alterados na descrição. E mantenha tipos de commits differentes em commits separados.
+> ### Sprint 1
 >
->**Exemplos:**
->>Edição de codigo junto com correção de erros devem vir em commits separados, mesmo que sejam no mesmo arquivo.
-Adição de material e arquivos de imagens devem ser separadas da adição de arquivos de código.
+> ### Sprint 2
+>
+> ### Sprint 3
+>
+> ### Sprint 4
+>
+> ## A Titus Systems
+>
+>![Business logo](./Materiais/Imagens/Logo/logo_empresa.png)
+>
+> ### Os Integrantes
+>
+> Alunos de Analise e Desenvolvimento de Software da FATEC. Primeiro semestre de 2024.
+>
+> - Product Owner:
+> - - Agatha Wey.
+> - SCRUM Master:
+> - - Karina Ribeiro.
+> - Dev Team:
+> - - Julia Pereira;
+> - - Julia Santiago;
+> - - Marcelo Alves;
+> - - Pegro Garcia;
+> - - Wilson Costa;
+>
