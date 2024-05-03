@@ -5,22 +5,23 @@
 {% block content %}
 <h1 style="padding-top: 2%;">Modelo Sprint Backlog</h1>
 
-<div class="pagina-produto">
-    <figure style="text-align: center;">
-        <img class="img-pagina-sprint" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Sprint Backlog">
-          
-          <figcaption style="text-align: center;" >
-              <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
-                  <button type="button" class="btn btn-outline-dark botao">Sprint Backlog</button>
-              </a>
-          </figcaption>
-    </figure>    
-    
-      <p class="text-pagina-produto"><strong>Como utilizar o modelo:</strong><br>
+<!-- imagem, botão e texto responsivo -->
+<div class="container-sprint-ferramentas">
+    <div class="container-sprint-imagem-botao">
+    <img class="img-pagina-sprint" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Imagem" ><br>
+    <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
+        <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Sprint Backlog</button>
+    </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <p><strong>Como utilizar o modelo:</strong><br>
         No Ranking os números são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas, sub a perspectiva dos desenvolvedores do projeto na coluna responsavel é colocado o nome de quem da sua equipe está encarregado de desenvolver a atividade e por fim na coluna status é determinado o que foi feito e o que ainda está pedente</p>
     </div>
+</div>
+<!-- fim -->
 
-    <div class="text-pagina-sobre">
+<!-- texto de orientação -->
+    <div class="text-pagina-produto-sobre">
         <h1>Orientações gerais sobre Sprint Backlog</h1>
         <br>
         <h6> <strong>Passo 1: Seleção de Itens do Product Backlog:</strong></h6> 
@@ -42,5 +43,7 @@
         <h6> <strong>Passo 6: Revisão e Retrospectiva:</strong> </h6>
             <p>No final do sprint, a equipe revisa o trabalho concluído durante a revisão do sprint, demonstrando as funcionalidades implementadas aos stakeholders. Em seguida, eles realizam uma retrospectiva para refletir sobre o sprint, identificar pontos fortes e áreas de melhoria no processo.</p>
     </div>
+    
+<!-- fim -->
 
 {% endblock %}

@@ -369,7 +369,7 @@ margin: auto;}
     padding-bottom: 5px;
 }
 
-.botao{
+.botao_pagina_ferramentas{
     width: 200px;
 }
 
@@ -397,22 +397,46 @@ margin: auto;}
    padding-top: 35px;
 }
 
-.text-pagina-produto{
-   text-align: justify;
-   padding: 0% 14%;
-   
+.text-pagina-produto-sprint{
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: justify;
+    padding: 
+  
 }
 
-.text-pagina-sobre{
-    margin: 5% 10% auto 10%;
+.text-pagina-produto-sobre{
+    margin: 2% 20% auto 20%;
     text-align: justify;
+    font-size: 16px;
 }
 
 /* pagina sprint ferramentas */
 
 .img-pagina-sprint{
-   width: 150px;
+   max-width: 80%;
    height: auto;
-   padding-top: 43px;
 
+}
+
+.container-sprint-ferramentas{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-sprint-imagem-botao{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }

@@ -1,0 +1,60 @@
+{% extends "/ferramentas/base_ferramentas.html" %}
+
+{% block title %}Product Backlog{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .texto {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .botao {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    @media only screen and (max-width: 600px) {
+        .botao {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div>
+    <img src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Imagem" width="400"><br>
+    <button class="botao">Clique Aqui</button>
+    </div>
+    <div class="texto">
+        <p>Este é um pequeno texto ao lado da imagem.</p>
+    </div>
+    
+</div>
+    
+</body>  
+{% endblock %}

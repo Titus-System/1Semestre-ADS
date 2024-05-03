@@ -5,22 +5,23 @@
 {% block content %}
 <h1 style="padding-top: 2%;">Modelo Product Backlog</h1>
 
-<div class="pagina-produto">
-    <figure style="text-align: center;">
-        <img class="img-pagina-produto" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Product Backlog">
-       
-          <figcaption style="text-align: center;" >
-              <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
-                  <button type="button" class="btn btn-outline-dark botao">Product Backlog</button>
-              </a>
-          </figcaption>
-      </figure>
-    
-      <p class="text-pagina-produto"> <strong>Como utilizar o modelo:</strong><br>
-        No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+<!-- imagem, botão e texto responsivo -->
+    <div class="container-sprint-ferramentas">
+        <div class="container-sprint-imagem-botao">
+        <img class="img-pagina-sprint" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Imagem" ><br>
+        <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
+            <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Product Backlog</button>
+        </a>
+        </div>
+        <div class="text-pagina-produto-sprint">
+            <p> <strong>Como utilizar o modelo:</strong><br>
+                No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+        </div>
     </div>
+<!-- fim -->
 
-    <div class="text-pagina-sobre">
+<!-- texto orientação -->
+    <div class="text-pagina-produto-sobre">
         <h1>Orientações gerais sobre Product Backlog</h1>
         <br>
         <h6> <strong>Passo 1: Inicialização e Priorização:</strong></h6> 
@@ -41,5 +42,5 @@
         <h6> <strong>Passo 6: Avaliação e Retrospectiva:</strong> </h6>
             <p>Após cada sprint, avalie o progresso em relação aos itens do Product Backlog concluídos. Realize uma retrospectiva para identificar o que funcionou bem e o que pode ser melhorado no processo de utilização do backlog.</p>
     </div>
-  
+<!-- fim -->
 {% endblock %}

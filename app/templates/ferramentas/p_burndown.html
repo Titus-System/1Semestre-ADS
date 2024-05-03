@@ -5,22 +5,23 @@
 {% block content %}
 <h1 style="padding-top: 2%;">Modelo Burndown Chart</h1>
 
-<div class="pagina-produto" style="padding-left: 5%;">
-    <figure style="text-align: center;">
-        <img class="img-pagina-produto" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">
-          
-          <figcaption style="text-align: center;" >
-              <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
-                  <button type="button" class="btn btn-outline-dark botao">Burndown Chart</button>
-              </a>
-          </figcaption>
-      </figure>
-    
-      <p class="text-pagina-produto"><strong>Como utilizar o modelo:</strong><br>
-        Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
+<!-- imagem, botão e texto responsivo -->
+    <div class="container-sprint-ferramentas">
+        <div class="container-sprint-imagem-botao">
+        <img class="img-pagina-sprint" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Imagem" ><br>
+        <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+        <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Burndown Chart</button>
+        </a>
+        </div>
+        <div class="text-pagina-produto-sprint">
+            <p><strong>Como utilizar o modelo:</strong><br>
+                Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
+        </div>
     </div>
+<!-- fim -->
 
-    <div class="text-pagina-produto">
+<!-- texto orientação -->
+    <div class="text-pagina-produto-sobre">
         <h1>Orientações gerais sobre Burndown Chart</h1>
         <br>
         <h6> <strong>Passo 1: Definição do Escopo e Duração:</strong></h6> 
@@ -43,5 +44,6 @@
         <h6> <strong>Passo 6: Comunicação e Transparência:</strong> </h6>
             <p>Utilize o Burndown Chart como uma ferramenta de comunicação, compartilhando-o regularmente com toda a equipe e partes interessadas. Isso ajuda a manter todos alinhados com o progresso do trabalho e identifica possíveis problemas rapidamente.</p>
     </div>
+<!-- fim -->
 
 {% endblock %}
