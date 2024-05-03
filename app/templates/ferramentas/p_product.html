@@ -3,21 +3,43 @@
 {% block title %}Product Backlog{% endblock %}
 
 {% block content %}
-<br>
-<h1>Modelo Product Backlog</h1>
+<h1 style="padding-top: 2%;">Modelo Product Backlog</h1>
 
-<div class="pagina-produto">
-<figure class="img-pagina-produto" style="text-align: center;">
-    <img class="img-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" style="height:200px" alt="Product Backlog">
-   
-      <figcaption style="text-align: center;" >
-          <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
-              <button type="button" class="btn btn-outline-dark botao" style="width:240px">Product Backlog</button>
-          </a>
-      </figcaption>
-  </figure>
+<div class="pagina-produto" style="">
+    <figure style="text-align: center;">
+        <img class="img-pagina-produto" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Product Backlog">
+       
+          <figcaption style="text-align: center;" >
+              <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
+                  <button type="button" class="btn btn-outline-dark botao">Product Backlog</button>
+              </a>
+          </figcaption>
+      </figure>
+    
+      <p class="text-pagina-produto"> <strong>Como utilizar o modelo:</strong><br>
+        Na coluna Ranking os numeros são colocados de acordo com a ordem em que eles estão iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+    </div>
 
-  <p class="text-pagina-produto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid, vero quia blanditiis earum tempora voluptatibus, saepe itaque qui eum quaerat doloribus ex impedit ipsa autem odit possimus nam sapiente?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias error fuga odit expedita sit doloremque eos officiis voluptates facilis nulla. Odit eveniet neque obcaecati error? Accusantium, laboriosam! Iste, numquam quam!Lorem</p>
-</div>
+    <div class="text-pagina-sobre">
+        <h1>Orientações gerais sobre Product Backlog</h1>
+        <br>
+        <h6> <strong>Passo 1: Inicialização e Priorização:</strong></h6> 
+            <p>Comece criando uma lista abrangente de todos os requisitos, funcionalidades e melhorias potenciais para o produto. Em seguida, trabalhe com as partes interessadas para priorizar esses itens com base no valor que cada um agrega ao produto.</p>
+            
+        <h6> <strong>Passo 2: Atualização Contínua:</strong></h6>
+            <p>Mantenha o Product Backlog atualizado continuamente à medida que o produto evolui e novos requisitos surgem. Isso pode envolver adicionar novos itens, reavaliar prioridades ou remover itens obsoletos.</p>
+        
+        <h6> <strong>Passo 3: Detalhamento de Itens:</strong></h6>
+            <p>Cada item do Product Backlog deve ser claramente definido e compreensível para todos os membros da equipe. Isso pode incluir descrições detalhadas, critérios de aceitação e qualquer informação relevante para sua implementação.</p>
+
+        <h6> <strong>Passo 4: Colaboração e Transparência:</strong></h6>
+            <p>O Product Backlog é uma ferramenta colaborativa, então é importante envolver todas as partes interessadas na sua criação e manutenção. Mantenha a transparência sobre as decisões de priorização e atualizações no backlog.</p>
+        
+        <h6> <strong>Passo 5: Planejamento de Sprint:</strong></h6>
+            <p>Antes de cada sprint, selecione os itens mais importantes do Product Backlog para inclusão no Sprint Backlog. Certifique-se de que a equipe tenha uma compreensão clara das metas do sprint e das tarefas a serem realizadas.</p>
+
+        <h6> <strong>Passo 6: Avaliação e Retrospectiva:</strong> </h6>
+            <p>Após cada sprint, avalie o progresso em relação aos itens do Product Backlog concluídos. Realize uma retrospectiva para identificar o que funcionou bem e o que pode ser melhorado no processo de utilização do backlog.</p>
+    </div>
   
 {% endblock %}

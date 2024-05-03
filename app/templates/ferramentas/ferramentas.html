@@ -3,8 +3,7 @@
 {% block title %}Ferramentas{% endblock %}
 
 {% block content %}
-    <br>
-    <h1>Modelos Baixaveis</h1>
+    <h1 style="padding-top: 2%;">Modelos Baixaveis</h1>
 <div class="ferramentas_grid">
 <figure style="text-align: center;">
   <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">
@@ -20,7 +19,7 @@
   <img class="img-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Sprint Backlog">
     
     <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
+        <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
             <button type="button" class="btn btn-outline-dark botao">Sprint Backlog</button>
         </a>
     </figcaption>
@@ -30,7 +29,7 @@
   <img class="img-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Product Backlog">
  
     <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
+        <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
             <button type="button" class="btn btn-outline-dark botao">Product Backlog</button>
         </a>
     </figcaption>

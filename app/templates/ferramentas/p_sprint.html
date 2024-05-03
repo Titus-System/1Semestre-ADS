@@ -3,21 +3,43 @@
 {% block title %}Sprint Backlog{% endblock %}
 
 {% block content %}
-<br>
-<h1>Modelo Sprint Backlog</h1>
+<h1 style="padding-top: 2%;">Modelo Sprint Backlog</h1>
 
 <div class="pagina-produto">
-    <figure class="img-pagina-produto" style="text-align: center;">
-        <img class="img-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" style="height:200px" alt="Sprint Backlog">
-       
+    <figure style="text-align: center;">
+        <img class="img-pagina-produto" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Sprint Backlog">
+          
           <figcaption style="text-align: center;" >
-              <a href="{{url_for('static', filename='imagens/curriculo-TI.pdf')}}" download>
-                  <button type="button" class="btn btn-outline-dark botao" style="width:240px">Sprint Backlog</button>
+              <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
+                  <button type="button" class="btn btn-outline-dark botao">Sprint Backlog</button>
               </a>
           </figcaption>
-      </figure>
+    </figure>    
     
       <p class="text-pagina-produto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid, vero quia blanditiis earum tempora voluptatibus, saepe itaque qui eum quaerat doloribus ex impedit ipsa autem odit possimus nam sapiente?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias error fuga odit expedita sit doloremque eos officiis voluptates facilis nulla. Odit eveniet neque obcaecati error? Accusantium, laboriosam! Iste, numquam quam!Lorem</p>
+    </div>
+
+    <div class="text-pagina-produto">
+        <h1>Orientações gerais sobre Sprint Backlog</h1>
+        <br>
+        <h6> <strong>Passo 1: Seleção de Itens do Product Backlog:</strong></h6> 
+            <p>No início de cada sprint, a equipe seleciona os itens mais importantes do Product Backlog para inclusão no Sprint Backlog. Esses itens são escolhidos com base na priorização feita anteriormente e nas metas do sprint.</p>
+            
+        <h6> <strong>Passo 2: Divisão de Tarefas:</strong></h6>
+            <p>Uma vez que os itens do Sprint Backlog são definidos, a equipe trabalha em conjunto para dividir esses itens em tarefas menores e mais gerenciáveis. Cada tarefa deve ser claramente definida e atribuída a um membro da equipe.
+            </p>
+        
+        <h6> <strong>Passo 3: Estimativa de Esforço:</strong></h6>
+            <p>A equipe estima o esforço necessário para completar cada tarefa, usando técnicas como pontuação de história, horas ideais ou pontos de história. Isso ajuda a garantir que o trabalho seja distribuído de forma equitativa e que o sprint seja realista em termos de capacidade.</p>
+
+        <h6> <strong>Passo 4: Monitoramento do Progresso:</strong></h6>
+            <p>Durante o sprint, a equipe monitora o progresso das tarefas do Sprint Backlog diariamente, geralmente durante as reuniões diárias. Isso permite que eles identifiquem rapidamente quaisquer obstáculos ou desafios e ajustem o plano conforme necessário.</p>
+        
+        <h6> <strong>Passo 5: Iteração e Adaptação:</strong></h6>
+            <p>À medida que o sprint avança, a equipe trabalha de forma iterativa para completar as tarefas do Sprint Backlog. Se surgirem novos insights ou requisitos, a equipe pode adaptar o Sprint Backlog conforme necessário para garantir que o produto final atenda às necessidades do cliente.</p>
+
+        <h6> <strong>Passo 6: Revisão e Retrospectiva:</strong> </h6>
+            <p>No final do sprint, a equipe revisa o trabalho concluído durante a revisão do sprint, demonstrando as funcionalidades implementadas aos stakeholders. Em seguida, eles realizam uma retrospectiva para refletir sobre o sprint, identificar pontos fortes e áreas de melhoria no processo.</p>
     </div>
 
 {% endblock %}

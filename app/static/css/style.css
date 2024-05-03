@@ -270,16 +270,22 @@
     display: grid;
     grid-template-columns: auto auto ;
     width: 60%;
-    margin: 10% auto ;
+    margin: 5% auto 5% ;
+    padding-left: 6%;
 }
 
 .img-pagina-produto{
-    margin-top: -35px
+   width: 150px;
+   height: auto;
 }
 
 .text-pagina-produto{
    text-align: justify;
+   padding: 0% 15%;
    
-   padding-left: 20%;
 }
 
+.text-pagina-sobre{
+    margin: 5% 10% auto 10%;
+    text-align: justify;
+}
