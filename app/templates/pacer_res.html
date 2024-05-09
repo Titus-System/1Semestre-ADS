@@ -196,83 +196,14 @@
                 </div>
             </div>
         </div>
+</nav>
 
-        <div class="box_assessment_pacer">
-            <form action="/pacer#qtd_funcionarios" method="POST">
-                <label for="qtd_funcionarios">Quantos colaboradores fazem parte da equipe:</label>
-                <input type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1" >
-                <input type="submit">Gerar PACER</input>
-                </form>
-                </div>
-                <div>
-                <form action="/pacer/ver/{{qtd_funcionarios}}#resultados", method="POST">
-                {% for i in range(qtd_funcionarios) %}
-                <div class="box_assessment_pacer">
-                <br>
-                <label for="nome_funcionario{{i}}">Nome do funcionario:</label>
-                <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}">
-                <br>
-                <p>Considerando a PRODUTIVIDADE do funcionário '' </p>
-                <input type="radio" id="productivity{{i}}" name="productivity{{i}}" value="0">
-                <label label for="productivity{{i}}">0 - REATIVO</label> <br>
+<div class="box_assessment_pacer" id="resultados">
+    {% for key,value in pacer.items() %}
+    <p>{{key}}|{{value}}</p>
+    {% endfor %}
+</div>
 
-                <input type="radio" id="productivity{{i}}" name="productivity{{i}}" value="1">
-                <label label for="productivity{{i}}">1 - DESFOCADO</label> <br>
-
-                <input type="radio" id="productivity{{i}}" name="productivity{{i}}" value="2">
-                <label label for="productivity{{i}}">2 - ATIVO</label> <br>
-
-                <input type="radio" id="productivity{{i}}" name="productivity{{i}}" value="3">
-                <label label for="productivity{{i}}" >3 - PROATIVO</label> <br>
-
-                <br>
-                <p>Considerando a AUTONOMIA do funcionário '' </p>
-                <input type="radio" id="autonomy{{i}}" name="autonomy{{i}}" value="0">
-                <label label for="autonomy{{i}}">0 - DIRIGIDO</label> <br>
-
-                <input type="radio" id="autonomy{{i}}" name="autonomy{{i}}" value="1">
-                <label label for="autonomy{{i}}">1 - GERIDO</label> <br>
-
-                <input type="radio" id="autonomy{{i}}" name="autonomy{{i}}" value="2">
-                <label label for="autonomy{{i}}">2 - TREINADO</label> <br>
-
-                <input type="radio" id="autonomy{{i}}" name="autonomy{{i}}" value="3">
-                <label label for="autonomy{{i}}">3 - AUTOGESTÃO</label> <br>
-
-                <br>
-                <p>Considerando a COLABORAÇÃO do funcionário '' </p>
-                <input type="radio" id="collaboration{{i}}" name="collaboration{{i}}" value="0">
-                <label label for="collaboration{{i}}">0 - AUSENTE</label> <br>
-
-                <input type="radio" id="collaboration{{i}}" name="collaboration{{i}}" value="1">
-                <label label for="collaboration{{i}}">1 - COOPERATIVO</label> <br>
-
-                <input type="radio" id="collaboration{{i}}" name="collaboration{{i}}" value="2">
-                <label label for="collaboration{{i}}">2 - COORDENADO</label> <br>
-
-                <input type="radio" id="collaboration{{i}}" name="collaboration{{i}}" value="3">
-                <label label for="collaboration{{i}}">3 - COLABORATIVO</label> <br>
-
-                <br>
-                <p>Considerando a ENTREGA DE RESULTADOS do funcionário '' </p>
-                <input type="radio" id="results{{i}}" name="results{{i}}" value="0">
-                <label label for="results{{i}}">0 - NÃO HÁ ENTREGAS</label> <br>
-
-                <input type="radio" id="results{{i}}" name="results{{i}}" value="1">
-                <label label for="results{{i}}">1 - ENTREGAS DUVIDOSAS</label> <br>
-
-                <input type="radio" id="results{{i}}" name="results{{i}}" value="2">
-                <label label for="results{{i}}">2 - ENTREGAS CONFIÁVEIS</label> <br>
-
-                <input type="radio" id="results{{i}}" name="results{{i}}" value="3">
-                <label label for="results{{i}}">3 - ENTREGAS PERFEITAS</label> <br>
-            </div>
-            {% endfor %}
-                <input type="submit">Enviar PACER</input>
-            </form>
-        </div>
-
-    </nav>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

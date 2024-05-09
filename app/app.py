@@ -138,6 +138,42 @@ def avaliacao():
     return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
 
 
+#rota para o PACER
+@app.route("/pacer", methods = ["POST", "GET"])
+def pacer_page():
+    qtd_funcionarios = 0
+
+    if request.method == "POST":
+        qtd_funcionarios = int(request.form.get("qtd_funcionarios"))
+        return redirect (f"pacer/{qtd_funcionarios}")
+
+    return render_template("pacer.html", qtd_funcionarios=qtd_funcionarios)
+
+
+#recarrega a pagina com um questionario para cada membro da equipe
+@app.route("/pacer/<name>", methods=["POST", "GET"])
+def get_pacer(name):
+    return render_template ("pacer.html", qtd_funcionarios = int(name))
+
+
+#retorno do PACER para o usuário
+@app.route("/pacer/ver/<name>", methods=["POST", "GET"])
+def pacer_res(name):
+    
+    pacer_funcionarios = {}
+
+    for i in range(int(name)):
+        nome_funcionario = request.form.get(f"nome_funcionario{i}")
+        productivity = request.form.get(f"productivity{i}")
+        autonomy = request.form.get(f"autonomy{i}")
+        collaboration = request.form.get(f"collaboration{i}")
+        results = request.form.get(f"results{i}")
+
+        calculo_final = productivity + autonomy + collaboration + results
+        pacer_funcionarios[nome_funcionario] = [productivity, autonomy, collaboration, results, calculo_final]
+    
+    return render_template("pacer_res.html", pacer= pacer_funcionarios)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
