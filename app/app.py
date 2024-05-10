@@ -147,13 +147,13 @@ def pacer_page():
         qtd_funcionarios = int(request.form.get("qtd_funcionarios"))
         return redirect (f"pacer/{qtd_funcionarios}")
 
-    return render_template("pacer.html", qtd_funcionarios=qtd_funcionarios)
+    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios)
 
 
 #recarrega a pagina com um questionario para cada membro da equipe
 @app.route("/pacer/<name>", methods=["POST", "GET"])
 def get_pacer(name):
-    return render_template ("pacer.html", qtd_funcionarios = int(name))
+    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name))
 
 
 #retorno do PACER para o usuário
@@ -172,7 +172,7 @@ def pacer_res(name):
         calculo_final = productivity + autonomy + collaboration + results
         pacer_funcionarios[nome_funcionario] = [productivity, autonomy, collaboration, results, calculo_final]
     
-    return render_template("pacer_res.html", pacer= pacer_funcionarios)
+    return render_template("/pacer/pacer_res.html", pacer= pacer_funcionarios)
 
 
 if __name__ == "__main__":
