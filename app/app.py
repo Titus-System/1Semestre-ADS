@@ -77,7 +77,8 @@ def salvar_respostas(verificar):
     try:
         session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
     except KeyError:
-        return quiz_page(f"quiz_assunto{verificar}", True)
+        session[f"resposta{verificar}"] = ""
+        # return quiz_page(f"quiz_assunto{verificar}", True)
         
     return redirect (f"/quiz/assunto{int(verificar) + 1}")
 

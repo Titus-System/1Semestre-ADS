@@ -5,7 +5,7 @@
 <div class="quiz_page">
 
     <!-- modal que será acionado se o usuário não responder a questão -->
-    <div id="myModal" class="modal fade">
+    <!-- <div id="myModal" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -17,7 +17,7 @@
               </div>
           </div>
       </div>
-    </div>
+    </div> -->
 
   
 
@@ -29,10 +29,9 @@
     <!--inicio do formulario-->
     <form action="/salvar_respostas/{{verificar}}" method="POST">
       <div class="question_box">
-        <!-- <div class="icone_div">
-        </div> -->
+
               <div class="question_box_1">
-                <!-- <h3 class="num_question">Questão {{num_quest}}</h3> -->
+
                 <br>
                 <br>
                 <div class="engrenagens-div">
@@ -73,35 +72,6 @@
                   <br>
               </div>
             <br>
-            <!-- <button type="submit" value="submit" class="submit">Verificar respostas</button>
-        <br> -->
-
-        <!-- Botão para acionar modal -->
-        <!-- <button type="button" class="submit" data-bs-toggle="modal" data-bs-target="#ExemploModalCentralizado">
-            Salvar resposta
-          </button> -->
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="TituloModalCentralizado">verificação</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar" style="background-color: black; color:white; flex:right">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Salvar resposta e ir para a próxima página?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" value="submit" class="btn btn-primary">Salvar e seguir</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      <!-- fim do modal -->
-      
       <br><br>
       <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a> 
     </form>
