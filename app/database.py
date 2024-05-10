@@ -1,44 +1,88 @@
 import sqlite3
-
-# Connecta o banco de dados
 def initialize_database():
-    # Connecta o banco de dados ou cria ele se nao existir
-    con = sqlite3.connect("database.db")
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
+    """
+        Connect to the database file 'database.db'. Creates one if none is found.
+        Ensure the database contains a 'registro' table. If not, create one with the following schema:
 
-    # cria uma tabela se ela nao existir
+        TABLE "registro"
+            "cpf" TEXT NOT NULL UNIQUE,
+            "nome" TEXT NOT NULL,
+            "nota" INT NOT NULL,
+            "feedback" FLOAT,
+            "comment" TEXT,
+            PRIMARY KEY ("cpf")
+
+        This function initializes the database connection and cursor globally.
+        
+        Returns:
+        None
+    """
+    global con; con = sqlite3.connect("database.db")
+    global cur; cur = con.cursor()
     res = cur.execute("SELECT name FROM sqlite_master WHERE name='registro'")
-    if res.fetchone() is None:
-        cur.execute('''CREATE TABLE "registro" (
-            "cpf"    varchar(20) NOT NULL UNIQUE,
-            "nome"    varchar(100) NOT NULL,
-            "nota"    tinyint(225) NOT NULL,
-            "feedback"    float(1),
-            "comment"    varchar(500),
-            PRIMARY KEY("cpf")
-        )''')
+    if res.fetchall() is None: #Creates the 'registro' table if it doesn't exist.
+        cur.execute('''CREATE TABLE "registro"
+                    "cpf" TEXT NOT NULL UNIQUE,
+                    "nome" TEXT NOT NULL,
+                    "nota" INT NOT NULL,
+                    "feedback" FLOAT,
+                    "comment" TEXT,
+                    PRIMARY KEY ("cpf")
+                    ''')
+def insert_grade(cpf, nome, nota):
+    """
+    Insert or update a grade record into the 'registro' table in the database.
 
-#Inserir uma nota aou final da prova            
-def insertgrade(cpf, nome, nota):
+    Parameters:
+    cpf (str): The CPF of the employee.
+    nome (str): The name of the employee.
+    nota (int): The grade of the employee.
+
+    Returns:
+    None
+    """
+    global con, cur
     data = (cpf, )
     res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", data)
-    if res.fetchone() is not None:
+    if res.fetchall() is not None: #Determines if the employee already has a cpf entry, only altering the grade instead of adding a new entry. (It'll be useful if we implement an user login system... Honestly I'd just borrow peoples IDs and make them get 0 at the test hehehe)
         data = (nota, cpf)
         cur.execute("UPDATE registro SET nota=? WHERE cpf=?", data)
     else:
         data = (cpf, nome, nota)
         cur.execute("INSERT INTO registro (cpf, nome, nota) VALUES(?, ?, ?)", data)
+    con.commit
+def insert_feedback(cpf, feedback, comment):
+    """
+    Insert or update feedback for a student in the 'registro' table of the database.
 
-#inserir um feedback ao final do curso
-def insertfeedback(cpf, feedback, comment):
+    Parameters:
+    cpf (str): The CPF of the employee.
+    feedback (float): The feedback value.
+    comment (str): Optional comment associated with the feedback.
+
+    Returns:
+    bool: True if the feedback was successfully inserted or updated.
+          False if the emplyee with the given CPF does not have an entry in the database.
+    """
+    global con, cur
     data = (cpf, )
-    res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", cpf) #ve se a pessoa fez a prova
-    if res.fetchone() == None:
-        return False #retorna o bool False se nao foi feita a prova
+    res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", data)
+    if res.fetchall() is None: #Determines if the employee has a cpf entry in the database (essentilay if they did the test)
+        return False
+    elif comment: #Determines if the optional comment was provided (It's ugly don't look at it)
+        data = (feedback, comment , cpf)
+        cur.execute("UPDATE registro SET feedback=? comment=? WHERE cpf=?", data)
     else:
         data = (feedback, cpf)
-        res = cur.execute("UPDATE registro SET feedback=? WHERE cpf=?", data)
-        if comment: #ve se o comentario nao é uma string vazia ou None
-            data = (comment, cpf)
-            cur.execute("UPDATE registro SET comment=? WHERE cpf=?", data)
+        cur.execute("UPDATE registro SET feedback=? WHERE cpf=?", data)
+    con.commit  
+def deactivate_database():
+    """
+    This fuction saves any uncommited changes and closes the database connection.
+    It is useful for security reasons to always close a database connection when done using it.
+    
+    Returns:
+    None
+    """
+    con.commit
+    con.close
