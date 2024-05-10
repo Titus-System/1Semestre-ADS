@@ -1,10 +1,13 @@
 from flask import Flask, render_template, redirect, request, session
 import json
 import arquivos
+import database
 
 app = Flask(__name__)
 
 app.secret_key = "chave_secreta"
+
+database.initialize_database() #Inicia o banco de dados
 
 @app.route("/")
 def home():

@@ -1,21 +1,23 @@
 import sqlite3
 
-#Operação para lincar a base de dados ao programa (E criar uma se nao houver)
-con = sqlite3.connect("database.db")
-con.row_factory = sqlite3.Row
-cur = con.cursor()
+# Connecta o banco de dados
+def initialize_database():
+    # Connecta o banco de dados ou cria ele se nao existir
+    con = sqlite3.connect("database.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
 
-#Operação para criar uma tabela caso nao houver
-res = cur.execute("SELECT name FROM sqlite_master WHERE name='registro'")
-if res.fetchone() is None:
-    cur.execute('''CREATE TABLE "registro" (
-	"cpf"	varchar(20) NOT NULL UNIQUE,
-	"nome"	varchar(100) NOT NULL,
-	"nota"	tinyint(225) NOT NULL,
-	"feedback"	float(1),
-	"comment"	varchar(500),
-	PRIMARY KEY("cpf")
-)''')
+    # cria uma tabela se ela nao existir
+    res = cur.execute("SELECT name FROM sqlite_master WHERE name='registro'")
+    if res.fetchone() is None:
+        cur.execute('''CREATE TABLE "registro" (
+            "cpf"    varchar(20) NOT NULL UNIQUE,
+            "nome"    varchar(100) NOT NULL,
+            "nota"    tinyint(225) NOT NULL,
+            "feedback"    float(1),
+            "comment"    varchar(500),
+            PRIMARY KEY("cpf")
+        )''')
 
 #Inserir uma nota aou final da prova            
 def insertgrade(cpf, nome, nota):
