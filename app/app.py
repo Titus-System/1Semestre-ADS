@@ -164,10 +164,10 @@ def pacer_res(name):
 
     for i in range(int(name)):
         nome_funcionario = request.form.get(f"nome_funcionario{i}")
-        productivity = request.form.get(f"productivity{i}")
-        autonomy = request.form.get(f"autonomy{i}")
-        collaboration = request.form.get(f"collaboration{i}")
-        results = request.form.get(f"results{i}")
+        productivity = int(request.form.get(f"productivity{i}"))
+        autonomy = int(request.form.get(f"autonomy{i}"))
+        collaboration = int(request.form.get(f"collaboration{i}"))
+        results = int(request.form.get(f"results{i}"))
 
         calculo_final = productivity + autonomy + collaboration + results
         pacer_funcionarios[nome_funcionario] = [productivity, autonomy, collaboration, results, calculo_final]
