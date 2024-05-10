@@ -1,7 +1,7 @@
 import sqlite3
 
 #Operação para lincar a base de dados ao programa (E criar uma se nao houver)
-con = sqlite3.connect("database.bd")
+con = sqlite3.connect("database.db")
 con.row_factory = sqlite3.Row
 cur = con.cursor()
 
