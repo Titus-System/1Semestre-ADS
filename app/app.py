@@ -159,8 +159,9 @@ def get_pacer(name):
 #retorno do PACER para o usuário
 @app.route("/pacer/ver/<name>", methods=["POST", "GET"])
 def pacer_res(name):
-    
+
     pacer_funcionarios = {}
+    soma_pacer = 0
 
     for i in range(int(name)):
         nome_funcionario = request.form.get(f"nome_funcionario{i}")
@@ -171,8 +172,11 @@ def pacer_res(name):
 
         calculo_final = productivity + autonomy + collaboration + results
         pacer_funcionarios[nome_funcionario] = [productivity, autonomy, collaboration, results, calculo_final]
-    
-    return render_template("/pacer/pacer_res.html", pacer= pacer_funcionarios)
+
+    for i in pacer_funcionarios:
+            soma_pacer += pacer_funcionarios[i][4]
+
+    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer)
 
 
 if __name__ == "__main__":
