@@ -59,6 +59,7 @@
 .conteudo_teoria p{
     text-align: left;
     font-size: 20px;
+    text-align: justify;
 }
 
 .conteudo_teoria h1{
@@ -76,10 +77,12 @@
 
 .conteudo_teoria li{
     font-size:20px;
+    text-align: justify;
 }
 
 .conteudo_teoria dd{
     font-size:18px;
+    text-align: justify;
 }
 
 .conteudo_teoria ol, .conteudo_teoria ul{
@@ -111,6 +114,7 @@
     color: white;
 }
 
+/* quadrado do exemplo - mudar por favor */
 .conteudo_exemplo{
     background-color:#eed2af;
     width:100%;

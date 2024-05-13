@@ -34,7 +34,7 @@ def ferramentas(name):
 def find_apostila(name):
     #arquivo json para guardar as páginas e ser usado para a construção do indice
     apostila_paginas = json.load(open("./static/apostila_paginas.json", encoding='utf-8'))
-    return render_template(f"{name}.html", paginas = arquivos.apostila_paginas)
+    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas)
 
 
 #contrução do quiz
