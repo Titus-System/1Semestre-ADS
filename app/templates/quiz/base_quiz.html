@@ -45,14 +45,11 @@
                 <div class="indice">
                     <h5>Escolha por onde começar</h5>
                     <ol>
-                        {% for item in paginas %}
-                        <li><a href="{{paginas[item][0]}}" target="_blank">{{item}}</a></li>
-                            <ul>
-                                {%for i in range(0,(paginas[item]|length)-1,2)%}
-                                <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}' target="_blank">{{paginas[item][i+1]}}</a></li>
-                                {%endfor%}
-                            </ul>
+                        {% for key, value in perguntas.items() %}
+                        {% if key != "result" %}
+                        <li><a href="/quiz/{{value[0]}}_{{key}}">{{value[9]}}</a></li>
                         <br>
+                        {% endif %}
                         {% endfor %}
                     </ol>
                 </div>
@@ -67,7 +64,6 @@
             <a href="/avaliação" alt="avaliação">AVALIAÇÃO</a>
             <a href="/apostila" alt="apostila">APOSTILA</a>
             <a href="/quiz" alt="quiz">QUIZ</a>
-            <!-- <a href="#" alt="home">HOME</a> -->
         </span>
         <hr class="header_hr">
     </header>

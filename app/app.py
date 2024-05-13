@@ -39,55 +39,58 @@ def find_apostila(name):
 
 #contrução do quiz
 #as perguntas são retiradas do arquivo json correspondente a cada capitulo
-@app.route("/quiz/<name>")
-def quiz_page(name, sem_resposta=False):
+@app.route("/quiz/<name>", methods=["POST", "GET"])
+def quiz_page(name=str):
     perguntas = arquivos.quiz_perguntas
     questao = ""
     num_quest = 0
-    pagina_anterior = "#"
+    page = name
+    pagina_atual = name
     proxima_pagina = "#"
+    pagina_anterior = "#"
 
-    if name == "assunto7":
-        return redirect("/quiz/resultado")
 
-    if name in perguntas:
-        page = "quiz_capitulo"
+    if name in perguntas.keys():
+        page = "pergunta"
         questao = perguntas[name]
-        verificar = name
-        print(questao)
-    else: page = name
+        num_quest = questao[0]
+        proxima_pagina = questao[8]
+        pagina_anterior = f"{questao[0]}_{name}"
     
-    for i in range(len(perguntas)):
-        if name == f"quiz_assunto{i+1}":
-            num_quest = i+1
-            proxima_pagina = f"assunto{i+2}"
-            pagina_anterior = f"assunto{i+1}"
-    
-    if pagina_anterior in ["quiz_assunto0", "assunto0"]: pagina_anterior = "assunto1"
-    if proxima_pagina in ["quiz_assunto7", "assunto7"]: proxima_pagina = "resultado"
+    if request.method == "POST":
+        questao = perguntas[pagina_atual]
+        num_quest = questao[0]
 
-    if sem_resposta == True:
-        nao_respondido = arquivos.modal_sem_resposta
-        return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, sem_resposta=nao_respondido, paginas=arquivos.apostila_paginas)
+        pagina_anterior = f"{questao[0]}_{name}"
+        proxima_pagina = questao[8]
 
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, verificar = num_quest, paginas=arquivos.apostila_paginas)
+        print(proxima_pagina)
+        try:
+            session[f"resposta{num_quest}"] = request.form[f"resposta{num_quest}"]
+        except KeyError:
+            session[f"resposta{num_quest}"] = ""
 
-
-
-#rota para salvar as respostas do usuário
-@app.route("/salvar_respostas/<verificar>", methods=["POST", "GET"])
-def salvar_respostas(verificar):
-    try:
-        session[f"resposta{verificar}"] = request.form[f"resposta{verificar}"]
-    except KeyError:
-        session[f"resposta{verificar}"] = ""
-        # return quiz_page(f"quiz_assunto{verificar}", True)
+        if proxima_pagina == "result":
+            return redirect("/quiz/quiz_resultado")
         
-    return redirect (f"/quiz/assunto{int(verificar) + 1}")
+        return redirect (f"/quiz/{proxima_pagina}")
+    
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas)
+
+
+#função para salvar as respostas do usuário
+def salvar_respostas(num_quest, proxima_pagina):
+    try:
+        session[f"resposta{num_quest}"] = request.form[f"resposta{num_quest}"]
+    except KeyError:
+        session[f"resposta{num_quest}"] = ""
+        
+    return render_template (f"/quiz/{proxima_pagina}.html")
+
 
 
 #rota para verificação dos resultados do quiz e visualização da página de resultados
-@app.route("/quiz/resultado")
+@app.route("/quiz/quiz_resultado")
 def resultado():
     perguntas = arquivos.quiz_perguntas
     acertos = 0
@@ -101,16 +104,18 @@ def resultado():
     resposta6 = session.get("resposta6", "")
 
     respostas = [resposta1, resposta2, resposta3, resposta4, resposta5, resposta6]
+    print(respostas)
 
-    for i in range(1, len(respostas)+1):
-        if perguntas[f"quiz_assunto{i}"][5] == session[f"resposta{i}"]:
+    for i in perguntas:
+        if i == "result": break
+        if perguntas[i][6] == session[f"resposta{perguntas[i][0]}"]:
             acertos += 1
-        else: questoes_erradas[i] = correcao[f"erro_assunto{i}"]
+        else: questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
 
-    erros = len(perguntas) - acertos
-    porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+    erros = len(perguntas)-1 - acertos
+    porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao)
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
 
 
 # rota para avaliação e resultado da avaliação
@@ -122,22 +127,23 @@ def avaliacao():
     questoes_erradas = {}
 
     if request.method == "POST":
-        respostas_avaliacao = {}
+        respostas_prova = {}
         acertos = 0
 
-        for i in range(1, len(perguntas)+1):
-            respostas_avaliacao[i] = request.form.get(f"respostaquiz_assunto{i}")
+        for key, value in perguntas.items():
+            if key == "result": break
+            respostas_prova[key] = request.form.get(f"resposta{key}")
+            
         
-        for key, value in respostas_avaliacao.items():
-            if value == perguntas[f"quiz_assunto{key}"][5]:
+        for key,value in respostas_prova.items():
+            if value == perguntas[key][6]:
                 acertos += 1
-            else:
-                questoes_erradas[key] = correcao[f"erro_assunto{key}"]
+            else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
-        erros = len(perguntas) - acertos
-        porcentagem = f"{(acertos/len(perguntas) * 100):.2f}%"
+        erros = len(perguntas) - 1 - acertos
+        porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
-        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_avaliacao, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas)
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
 
     return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
 
