@@ -1,6 +1,6 @@
 # Titus Systems - 1º Semestre ADS
 
-> ![Product logo](./Materiais/Imagens/Arquivos_README/logo.png)
+> ![Product logo](./Materiais/Imagens/Arquivos_README/logo-nova-ma.png)
 >
 > ## Sobre o Produto
 >
