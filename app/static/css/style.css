@@ -59,6 +59,7 @@
 .conteudo_teoria p{
     text-align: left;
     font-size: 20px;
+    text-align: justify;
 }
 
 .conteudo_teoria h1{
@@ -76,10 +77,12 @@
 
 .conteudo_teoria li{
     font-size:20px;
+    text-align: justify;
 }
 
 .conteudo_teoria dd{
     font-size:18px;
+    text-align: justify;
 }
 
 .conteudo_teoria ol, .conteudo_teoria ul{
@@ -111,6 +114,7 @@
     color: white;
 }
 
+/* quadrado do exemplo - mudar por favor */
 .conteudo_exemplo{
     background-color:#eed2af;
     width:100%;
@@ -439,4 +443,37 @@ margin: auto;}
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.body_pacer {
+    background-color: #e0e5e8;
+    width: 100%;
+    margin: 0 0 150px;
+    font-family: 'Ruda';
+}
+
+.box_teoria_pacer {
+    max-width: 60%;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.box_teoria_pacer h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.box_teoria_pacer p {
+    text-align: justify;
+}
+
+.box_assessment_pacer {
+    max-width: 60%;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
 }

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACER</title>
+
+    <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+</head>
+
+<body class="body_pacer">
+    <header class="link_bar">
+
+        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            style="color:white; font-size:30px; line-height:60px">
+            &#9776
+        </a>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+            <div class="offcanvas-header">
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search"
+                        style="width:240px">
+                    <button class="btn btn-outline-success" type="submit">&#128269</button>
+                </form>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="indice">
+                    <h5>Índice</h5>
+                    <!-- construção do indice com loop pelo arquivo json -->
+                    <ol>
+                        {% for item in paginas %}
+                        <li><a href="{{paginas[item][0]}}">{{item}}</a></li>
+                        <ul>
+                            {%for i in range(0,(paginas[item]|length)-1,2)%}
+                            <li><a href='{{paginas[item][0]}}#{{paginas[item][i+2]}}'>{{paginas[item][i+1]}}</a></li>
+                            {%endfor%}
+                        </ul>
+                        <br>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
+        <span class="header_link">
+            <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
+            <a href="/apostila" alt="apostila">APOSTILA</a>
+            <a href="/quiz" alt="quiz">QUIZ</a>
+            <a href="/pacer">PACER</a>
+
+            <!-- <a href="#" alt="home">HOME</a> -->
+        </span>
+        <hr class="header_hr">
+    </header>
+
+    <nav class="teoria_pacer">
+
+        <div class="box_teoria_pacer">
+            <h1>Avaliação PACER</h1>
+
+            <p>Como conduzir a avaliação PACER? <br>
+                O primeiro passo é reunir a equipe para uma avaliação interna, onde cada membro reflete sobre sua
+                própria produtividade, autonomia, colaboração e entrega de resultados. Depois dessa análise em conjunto,
+                é hora de preencher um questionário com os dados das autoavaliações. <br>
+                É importante salientar que cabe ao Scrum Master, preencher esse questionário e auxiliar os membros a
+                entender se suas autoavaliações condizem com a realidade. Ele precisa orientar e esclarecer dúvidas para
+                garantir que todos compreendam o panorama de habilidades individuais e coletivas. <br>
+                Sua intervenção é fundamental para promover uma cultura de autocrítica construtiva e alinhamento
+                estratégico, minimizando diferenças entre percepção e desempenho e direcionando o time rumo à excelência
+                operacional, mantendo a motivação da equipe.</p>
+
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Parâmetros para PRODUTIVIDADE:
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            0 - REATIVO - Aquele que não possui iniciativa alguma, aguarda alguém dizer o que fazer ou
+                            que algum
+                            problema surja. E não observa os próximos passos do planejamento. <br>
+                            1 - DESFOCADO - Pega muitas atividades gerais e não inicia nenhuma devidamente. Mesmo nas
+                            tarefas mais
+                            simples tem respostas lentas. <br>
+                            2 - ATIVO - Tenta pegar as tarefas mais difícies sempre que disponíveis. Fundamental para
+                            alcançar a
+                            meta da sprint. Pode se enroscar em pequenos problemas não previstos. <br>
+                            3 - PROATIVO - Possui foco nas tarefas mais valiosas. Além da da iniciativa, evita
+                            antecipadamente
+                            problemas. Tem altissíma produtividade, foco em uma tarefa por vez e sempre bem feita.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Parâmetros para AUTONOMIA:
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            0 - DIRIGIDO - Não consegue ou não quer iniciar as suas atividades. Sempre precisa de alguém
+                            ao lado
+                            para progredir nas atividades. <br>
+                            1 - GERIDO - Demora demais para iniciar as atividades. Demora para perceber que precisa de
+                            ajuda. Demora
+                            para entender o que deve ser estudado. E só avança quando alguém lhe diz extamente o que
+                            deve ser
+                            feito.<br>
+                            2 - TREINADO - Recorre a experiências descritas por alguém antes de tomar as atitudes.
+                            Repete passos
+                            buscando os mesmos resultados. Pouca capacidade criativa.<br>
+                            3 - AUTOGESTÃO - Sempre assume as suas responsabilidades com proatividade. Suas estimativas
+                            de prazo são
+                            precisas. Capacidade analítica e/ou crítica dos desafios que se apresentam.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Parâmetros para COLABORAÇÃO:
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            0 - AUSENTE - Não aparece nas reuniões e não se interessa pelo projeto.<br>
+                            1 - COOPERATIVO - Preucupa-se com a organização, contudo não cumpre seu papel. Prove
+                            informação, mas não
+                            faz uma comunicação efetiva. Toma decisões individualmente, mas não em equipe.<br>
+                            2 - COORDENADO - Compartilha informações. Segue bem os papeis definidos. Comunica-se com
+                            frequência. E
+                            compartilha as decisões tomadas.<br>
+                            3 - COLABORATIVO - A equipe age como se fosse um único organismo. A comunicação é prioridade
+                            e sempre
+                            remete confiança para todos. As decisões chegam em concenso. Compartilha ideias e recursos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Parâmetros para ENTREGA DE RESULTADOS:
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            0 - NÃO HÁ ENTREGAS - Não ocorre entrega de sucesso. Existem pontos que aparentemente não
+                            serão
+                            resolvíveis no tempo restante.<br>
+                            1 - ENTREGAS DUVIDOSAS - Existem dúvidas se a entrega não arrisca o projeto em algumas
+                            áreas. Ações
+                            urgentes precisam ser tomadas para garantir a entrega.<br>
+                            2 - ENTREGAS CONFIÁVEIS - O sucesso é provável. Contudo é necessário uma atenção constante
+                            para garantir
+                            que riscos não ameacem o projeto.<br>
+                            3 - ENTREGAS PERFEITAS - Entregas completas, sem erros, bem documentadas com qualidade.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</nav>
+
+<div class="box_assessment_pacer" id="resultados">
+    <h2>Resultado PACER</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Nome do funcionário</th>
+            <th>Resultado PACER</th>
+        </tr>
+    {% for key,value in pacer.items() %}
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value[4]}}</td>
+        </tr>
+    {% endfor %}
+        <tr>
+            <td>Soma final das notas</td>
+            <td>{{soma}}</td>
+        </tr>
+    </table>
+</div>
+
+<a href="/pacer"><button class="botao_iniciar" id="refazer_pacer">Refazer PACER</button></a>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

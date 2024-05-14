@@ -5,7 +5,7 @@
 <div class="quiz_page">
 
     <!-- modal que será acionado se o usuário não responder a questão -->
-    <div id="myModal" class="modal fade">
+    <!-- <div id="myModal" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -17,7 +17,7 @@
               </div>
           </div>
       </div>
-    </div>
+    </div> -->
 
   
 
@@ -27,17 +27,16 @@
   <br>
   <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
     <!--inicio do formulario-->
-    <form action="/salvar_respostas/{{verificar}}" method="POST">
+    <form action="/quiz/{{pagina_atual}}" method="POST">
       <div class="question_box">
-        <!-- <div class="icone_div">
-        </div> -->
+
               <div class="question_box_1">
-                <!-- <h3 class="num_question">Questão {{num_quest}}</h3> -->
+
                 <br>
                 <br>
                 <div class="engrenagens-div">
                   &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
-                <p class="question_script">{{questao[0]}}</p>
+                <p class="question_script">{{questao[1]}}</p>
                 &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
                 </div>
                 <br>
@@ -46,19 +45,19 @@
                 <div class="quiz_option">
                   <br>
                     <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta{{num_quest}}" value="A">
-                    <label for="A{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[1]}}</h6></label>
+                    <label for="A{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[2]}}</h6></label>
                     <br>
                     <br>
                     <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta{{num_quest}}" value="B">
-                    <label for="B{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[2]}}</h6></label>
+                    <label for="B{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[3]}}</h6></label>
                     <br>
                     <br>
                     <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta{{num_quest}}" value="C">
-                    <label for="C{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[3]}}</h6></label>
+                    <label for="C{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[4]}}</h6></label>
                     <br>
                     <br>
                     <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta{{num_quest}}" value="D">
-                    <label for="D{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[4]}}</h6></label>  
+                    <label for="D{{num_quest}}" class="badge rounded-pill bg-dark quiz-alternativa-1"><h6>{{questao[5]}}</h6></label>  
                     <br>
                   </div>
 
@@ -66,42 +65,13 @@
                   <br>
                   <br>
                   <div class="btn_ns">
-                  <button tabindex="0" type="button" class="btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[6]}}" style="float:right">
+                  <button tabindex="0" type="button" class="btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}" style="float:right">
                     Não sei responder...
                   </button>
                 </div>
                   <br>
               </div>
             <br>
-            <!-- <button type="submit" value="submit" class="submit">Verificar respostas</button>
-        <br> -->
-
-        <!-- Botão para acionar modal -->
-        <!-- <button type="button" class="submit" data-bs-toggle="modal" data-bs-target="#ExemploModalCentralizado">
-            Salvar resposta
-          </button> -->
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="TituloModalCentralizado">verificação</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar" style="background-color: black; color:white; flex:right">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Salvar resposta e ir para a próxima página?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" value="submit" class="btn btn-primary">Salvar e seguir</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      <!-- fim do modal -->
-      
       <br><br>
       <a href="/quiz/{{proxima}}"><button class="botao_iniciar" id="button_next">Próximo  >></button></a> 
     </form>

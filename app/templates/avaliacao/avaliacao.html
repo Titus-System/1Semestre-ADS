@@ -15,33 +15,35 @@
 
 <form action="/avaliacao" method="POST">
 {% for key,value in perguntas.items() %}
+    {% if key != "result" %}
     <div class="question_box">
         <div class="question_box_1">
         <br>
         <div class="engrenagens-div">
         &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
-        <h3 class="num_question">Questão {{key[-1]}}:</h3>
+        <h3 class="num_question">Questão {{value[0]}}:</h3>
         <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
     </div>
-        <p class="question_script">{{value[0]}}</p>
+        <p class="question_script">{{value[1]}}</p>
     </div>
     <br>
 
         <div class="quiz_option">
             <input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>
-            <label for="A{{key}}" class="alternativa_avaliacao">&#160&#160{{value[1]}}&#160&#160</label>
+            <label for="A{{key}}" class="alternativa_avaliacao">&#160&#160{{value[2]}}&#160&#160</label>
             <br>
             <input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">
-            <label for="B{{key}}" class="alternativa_avaliacao">&#160&#160{{value[2]}}&#160&#160</label>
+            <label for="B{{key}}" class="alternativa_avaliacao">&#160&#160{{value[3]}}&#160&#160</label>
             <br>
             <input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">
-            <label for="C{{key}}" class="alternativa_avaliacao">&#160&#160{{value[3]}}&#160&#160</label>
+            <label for="C{{key}}" class="alternativa_avaliacao">&#160&#160{{value[4]}}&#160&#160</label>
             <br>
             <input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">
-            <label for="D{{key}}" class="alternativa_avaliacao">&#160&#160{{value[4]}}&#160&#160</label>
+            <label for="D{{key}}" class="alternativa_avaliacao">&#160&#160{{value[5]}}&#160&#160</label>
           </div>
     </div>
     <br>
+    {% endif %}
     {% endfor %}
 
     <button class="botao_iniciar" >Conferir resultado</button>

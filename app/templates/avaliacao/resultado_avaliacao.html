@@ -33,8 +33,8 @@
     <br>
     <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
     <ul style="margin-top:0">
-        {% for i in range(6) %}
-        <li>Resposta {{i+1}}: {{respostas[i+1]}}</li>
+        {% for key, value in respostas.items() %}
+        <li>Resposta {{perguntas[key][0]}}: {{value}}</li>
         {% endfor %}
     </ul>
     <br>
