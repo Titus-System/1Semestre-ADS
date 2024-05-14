@@ -13,8 +13,8 @@ def initialize_database() -> bool:
         cur = con.cursor()
         
         cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, passord BLOB NOT NULL, PRIMARY KEY (cpf))")
-        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NOT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro(cpf))")
-        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NOT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro(cpf))")
+        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
+        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
         
         con.commit()
         
