@@ -38,13 +38,7 @@
 >
 > ## Entregas
 >
-> ### Sprint 1
->
-> ### Sprint 2
->
-> ### Sprint 3
->
-> ### Sprint 4
+> ![Entregas por sprint](./Materiais/Imagens/Arquivos_README/imagem-entregas-por-sprint.png)
 >
 > ## A Titus Systems
 >
@@ -55,7 +49,7 @@
 > Alunos de Analise e Desenvolvimento de Software da FATEC. Primeiro semestre de 2024.
 >
 > - Product Owner:
-> - - Agatha Wey.
+> - - Agatha Wei.
 > - SCRUM Master:
 > - - Karina Ribeiro.
 > - Dev Team:
