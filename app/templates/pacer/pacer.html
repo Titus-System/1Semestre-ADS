@@ -57,16 +57,25 @@
         </div>
 
 
-        <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
+        <a href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
         <span class="header_link">
+            <a href="/pacer">PACER</a>
+            <a href="/avaliacao">AVALIAÇÃO</a>
             <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
             <a href="/apostila" alt="apostila">APOSTILA</a>
             <a href="/quiz" alt="quiz">QUIZ</a>
-            <a href="/pacer">PACER</a>
+            
 
             <!-- <a href="#" alt="home">HOME</a> -->
         </span>
         <hr class="header_hr">
+    </header>
+
+    <!-- inserir imagem principal da página -->
+    {% block head_image %} 
+    <div class="head_img" style="background-image:url(/static/images/image-pacer.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+    {% endblock %}
+      
     </header>
 
     <nav class="teoria_pacer">
