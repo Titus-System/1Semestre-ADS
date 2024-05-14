@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, session
 import json
 import arquivos
 import database
-
+import functions
 app = Flask(__name__)
 
 app.secret_key = "chave_secreta"
@@ -64,11 +64,11 @@ def quiz_page(name=str):
         pagina_anterior = f"{questao[0]}_{name}"
         proxima_pagina = questao[8]
 
-        print(proxima_pagina)
         try:
-            session[f"resposta{num_quest}"] = request.form[f"resposta{num_quest}"]
+            session[f"resposta_{num_quest}"] = request.form[f"resposta_{num_quest}"]
         except KeyError:
-            session[f"resposta{num_quest}"] = ""
+            session[f"resposta_{num_quest}"] = ""
+
 
         if proxima_pagina == "result":
             return redirect("/quiz/quiz_resultado")
@@ -88,6 +88,10 @@ def salvar_respostas(num_quest, proxima_pagina):
     return render_template (f"/quiz/{proxima_pagina}.html")
 
 
+@app.route("/quiz/quiz_resultado_parcial/<numero_pagina>")
+def quiz_resultado_parcial(numero_pagina):
+    return functions.quiz_resultado_parcial(numero_pagina)
+
 
 #rota para verificação dos resultados do quiz e visualização da página de resultados
 @app.route("/quiz/quiz_resultado")
@@ -96,21 +100,19 @@ def resultado():
     acertos = 0
     questoes_erradas = {}
     correcao = arquivos.erro_assunto
-    resposta1 = session.get("resposta1", "")
-    resposta2 = session.get("resposta2", "")
-    resposta3 = session.get("resposta3", "")
-    resposta4 = session.get("resposta4", "")
-    resposta5 = session.get("resposta5", "")
-    resposta6 = session.get("resposta6", "")
-
-    respostas = [resposta1, resposta2, resposta3, resposta4, resposta5, resposta6]
+    respostas = dict(map(lambda key: (key.replace("_", " ").title(), session[key]), filter(lambda key: key.startswith("resposta"), session)))
     print(respostas)
 
     for i in perguntas:
         if i == "result": break
-        if perguntas[i][6] == session[f"resposta{perguntas[i][0]}"]:
-            acertos += 1
-        else: questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
+        try:
+            if perguntas[i][6] == session[f"resposta_{perguntas[i][0]}"]:
+                acertos += 1
+            else: questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
+
+        except KeyError:
+            respostas[f"resposta_{perguntas[i][0]}"] = ""
+            questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
 
     erros = len(perguntas)-1 - acertos
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
