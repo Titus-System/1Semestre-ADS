@@ -100,7 +100,7 @@ def resultado():
     acertos = 0
     questoes_erradas = {}
     correcao = arquivos.erro_assunto
-    respostas = dict(map(lambda key: (key.replace("_", " ").title(), session[key]), filter(lambda key: key.startswith("resposta"), session)))
+    respostas = dict(map(lambda key: (key, session[key]), filter(lambda key: key.startswith("resposta"), session)))
     print(respostas)
 
     for i in perguntas:
