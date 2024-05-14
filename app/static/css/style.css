@@ -1,6 +1,6 @@
 .link_bar{
     height: 80px;
-    background-color: #1f2a47;
+    background-color: #000103;
     margin: 0 auto;
     position:sticky;
     top:0;
@@ -31,14 +31,14 @@
 
 .header_hr{
     margin:0;
-    border:5px solid #f0b267;
-    background-color: #f0b267;
+    border:2px solid #ff695e;
+    background-color:#ff695e;
     opacity:1
 }
 
 .head_img{
-    height:250px;
-    background-color: #1f2a47;
+    height: 250px;
+    background-color: #000103;
     /* border: 2px solid white; */
 }
 

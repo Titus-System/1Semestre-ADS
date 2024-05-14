@@ -2,9 +2,12 @@
 
 {% block title %}Ferramentas{% endblock %}
 
+{% block head_image %}
+        <div class="head_img" style="background-image:url(/static/images/image-ferramentas.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+{% endblock %}
+
 {% block content %}
     <br>
-    <h1>Modelos Baixáveis</h1>
 <div class="ferramentas_grid">
 <figure style="text-align: center;">
   <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">

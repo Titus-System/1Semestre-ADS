@@ -52,7 +52,7 @@
           </div>
 
 
-        <a href="/"><img src="/static/images/logo_transp.png" alt="logo"></a>
+        <a href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
         <span class="header_link">
             <a href="/pacer">PACER</a>
             <a href="/avaliacao">AVALIAÇÃO</a>
@@ -65,6 +65,11 @@
         </span>
         <hr class="header_hr">
     </header>
+
+    <!-- inserir imagem principal da página -->
+    {% block head_image %} 
+    <div class="head_img" style="background-image:url(/static/images/image-pacer.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+    {% endblock %}
 
     <nav class="teoria_pacer">
         <h1>Avaliação PACER</h1>
