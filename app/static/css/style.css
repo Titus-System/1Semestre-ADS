@@ -465,6 +465,15 @@ margin: auto;}
     margin-bottom: 15px;
 }
 
+.card {
+    border: none;
+    background-color: #ffffff;
+}
+
+.card-header {
+    background-color: #ffffff;
+}
+
 .box_teoria_pacer p {
     text-align: justify;
 }
