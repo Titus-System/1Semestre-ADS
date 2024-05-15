@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, bcrypt
 
 def initialize_database() -> bool:
     """
@@ -13,8 +13,8 @@ def initialize_database() -> bool:
         cur = con.cursor()
         
         cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, passord BLOB NOT NULL, PRIMARY KEY (cpf))")
-        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
-        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
+        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
+        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
         
         con.commit()
         
@@ -159,3 +159,69 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
     
     finally:
         con.close
+
+def signup(cpf: str, nome: str, password: str) -> bool:
+    """
+    Function Designed to veryfy if the guest already has an account on the site, once a unique cpf has been provided it will add that to the database.
+    
+    Args:
+        cpf (str): The CPF of the employee.
+        nome (str): The name of the employee
+        passord (str): The passowrd desired
+
+    Returns:
+        bool: True if the account has been successfuly saved.
+              False if the cpf is already associated with another account.
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone()
+        
+        if not res:
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (cpf, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            con.commit()
+            return True
+        
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        con.close()
+
+def login(cpf: str, password: str) -> bool:
+    """
+    Login function, checks credentials against database.
+    
+    Args:
+        cpf (str): Employee's CPF
+        password (str): Employee's password
+
+    Returns:
+        bool: False if user not found or password wrong.
+        tupple: Returns True and the user name if the password and cpf match an entry on the database. Ex.:(True, "John Doe")
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        res = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
+        
+        if res:
+            hashed_password, nome = res
+            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
+                return (True, nome)
+            else:
+                return False
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        con.close()
