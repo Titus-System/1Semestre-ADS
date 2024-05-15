@@ -26,8 +26,73 @@ def initialize_database() -> bool:
         
     finally:
         con.close()
+        
     
-#LOGIN FUNCTTION WILL GO HERE... EVENTUALLY
+def signup(cpf: str, nome: str, password: str) -> bool:
+    """
+    Function Designed to veryfy if the guest already has an account on the site, once a unique cpf has been provided it will add that to the database.
+    
+    Args:
+        cpf (str): The CPF of the employee.
+        nome (str): The name of the employee
+        passord (str): The passowrd desired
+
+    Returns:
+        bool: True if the account has been successfuly saved.
+              False if the cpf is already associated with another account.
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone()
+        
+        if not res:
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (cpf, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            con.commit()
+            return True
+        
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        con.close()
+
+def login(cpf: str, password: str) -> bool:
+    """
+    Login function, checks credentials against database.
+    
+    Args:
+        cpf (str): Employee's CPF
+        password (str): Employee's password
+
+    Returns:
+        bool: False if user not found or password wrong.
+        tupple: Returns True and the user name if the password and cpf match an entry on the database. Ex.:(True, "John Doe")
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        res = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
+        
+        if res:
+            hashed_password, nome = res
+            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
+                return (True, nome)
+            else:
+                return False
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        con.close()
 
 def insert_grade(cpf: str, nota_prova: int) -> bool:
     """
@@ -159,69 +224,3 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
     
     finally:
         con.close
-
-def signup(cpf: str, nome: str, password: str) -> bool:
-    """
-    Function Designed to veryfy if the guest already has an account on the site, once a unique cpf has been provided it will add that to the database.
-    
-    Args:
-        cpf (str): The CPF of the employee.
-        nome (str): The name of the employee
-        passord (str): The passowrd desired
-
-    Returns:
-        bool: True if the account has been successfuly saved.
-              False if the cpf is already associated with another account.
-    """
-    try:
-        con = sqlite3.connect("database.db")
-        cur = con.cursor()
-        
-        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone()
-        
-        if not res:
-            cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (cpf, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
-            con.commit()
-            return True
-        
-        else:
-            return False
-        
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-    
-    finally:
-        con.close()
-
-def login(cpf: str, password: str) -> bool:
-    """
-    Login function, checks credentials against database.
-    
-    Args:
-        cpf (str): Employee's CPF
-        password (str): Employee's password
-
-    Returns:
-        bool: False if user not found or password wrong.
-        tupple: Returns True and the user name if the password and cpf match an entry on the database. Ex.:(True, "John Doe")
-    """
-    try:
-        con = sqlite3.connect("database.db")
-        cur = con.cursor()
-        
-        res = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
-            hashed_password, nome = res
-            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
-                return (True, nome)
-            else:
-                return False
-        else:
-            return False
-        
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-    
-    finally:
-        con.close()
