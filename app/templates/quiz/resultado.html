@@ -22,8 +22,8 @@
         <div class="respostas_txt">
     <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
     <ul style="margin-top:0;">
-        {% for i in range(6) %}
-        <li>Resposta {{i+1}}: {{respostas[i]}}</li>
+        {% for key, value in respostas.items() %}
+        <li>{{key.replace("_", " ").title()}}: {{value}} </li>
         {% endfor %}
     </ul>
         </div>
