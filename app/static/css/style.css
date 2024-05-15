@@ -405,7 +405,6 @@ margin: auto;}
     margin-top: 20px;
     font-size: 16px;
     text-align: justify;
-    padding: 
   
 }
 
@@ -477,3 +476,9 @@ margin: auto;}
     border-radius: 15px;
     padding: 30px;
 }
+
+/* responsividade - avaliação */
+
+/* @media (max-width:774px){
+    .navbar-text{
+        font-size: 15px;}} */
