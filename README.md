@@ -1,6 +1,6 @@
 # Titus Systems - 1º Semestre ADS
 
-> ![Product logo](./Materiais/Imagens/Arquivos_README/logo-nova-ma.png)
+> ![Product logo](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/logo.png)
 >
 > ## Sobre o Produto
 >
@@ -34,15 +34,15 @@
 >
 > ### Product backlog
 >
-> ![backlog print](./Materiais/Imagens/Arquivos_README/Backlog_do_Produto.png)
+> ![backlog print](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/Backlog_do_Produto.png)
 >
 > ## Entregas
 >
-> ![Entregas por sprint](./Materiais/Imagens/Arquivos_README/imagem-entregas-por-sprint.png)
+> ![Entregas por sprint](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/imagem-entregas-por-sprint.png)
 >
 > ## A Titus Systems
 >
->![Business logo](./Materiais/Imagens/Logo/logo_empresa.png)
+> ![Business logo](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/logo_empresa.png)
 >
 > ### Os Integrantes
 >
@@ -59,6 +59,3 @@
 > - - Pegro Garcia;
 > - - Wilson Costa;
 >
-## TEST VIDEO
-
-![THIS IS A VIDEO TEST](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/apresentacao2.mp4)
