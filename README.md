@@ -30,7 +30,7 @@
 >
 > ### Demonstração do Produto
 >
-> ### https://youtu.be/9b7pp-E-mOE
+> [![DEMONSTRACAO PRODUTO](./docs/images/youtube_logo.png)](https://youtu.be/9b7pp-E-mOE)
 >
 > ### Product backlog
 >
@@ -58,4 +58,3 @@
 > - - Marcelo Alves;
 > - - Pegro Garcia;
 > - - Wilson Costa;
->
