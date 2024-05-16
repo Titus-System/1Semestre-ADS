@@ -8,7 +8,7 @@
 
 {% block content %}
     <br>
-<div class="ferramentas_grid">
+<!-- <div class="ferramentas_grid">
 <figure style="text-align: center;">
   <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">
     
@@ -38,7 +38,47 @@
         </a>
     </figcaption>
 </figure>
+</div> -->
+
+<div class="container-home-ferramentas">
+    <div class="container-sprint-imagem-botao">
+    <img class="img-home-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Imagem" ><br>
+    <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Product Backlog</button>
+    </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+        <p> <strong>Como utilizar o modelo:</strong><br>
+            No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+    </div>
 </div>
+
+<div class="container-ferramentas-reverso">
+    <div class="container-sprint-imagem-botao">
+    <img class="img-home-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Imagem" ><br>
+    <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Sprint Backlog</button>
+    </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <p><strong>Como utilizar o modelo:</strong><br>
+        No Ranking os números são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas, sub a perspectiva dos desenvolvedores do projeto na coluna responsavel é colocado o nome de quem da sua equipe está encarregado de desenvolver a atividade e por fim na coluna status é determinado o que foi feito e o que ainda está pedente</p>
+    </div>
+</div>
+
+<div class="container-home-ferramentas">
+    <div class="container-sprint-imagem-botao">
+    <img class="img-home-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Imagem" ><br>
+    <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+    <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Burndown Chart</button>
+    </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+        <p><strong>Como utilizar o modelo:</strong><br>
+            Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
+    </div>
+</div>
+
         
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
