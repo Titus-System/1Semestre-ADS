@@ -103,6 +103,9 @@ def quiz_resultado_final():
     erros = len(perguntas)-1 - acertos
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
+    cpf = login_functions.current_user.id
+    database.save_quiz_state(cpf, acertos, "final")
+
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
 
 

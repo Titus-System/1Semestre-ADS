@@ -31,14 +31,69 @@
                 <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
                 <a href="/apostila" alt="apostila">APOSTILA</a>
                 <a href="/quiz" alt="quiz">QUIZ</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_login">
+                    Open modal
+                  </button>
             </span>
-            <hr class="header_hr">
+                <hr class="header_hr">
         </header>
 
     {% if usuario_encontrado %}
         <p>usuário já existe</p>
     {% endif %}
-    
+        
+                <!-- The Modal -->
+                <div class="modal" id="modal_login">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                  
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">Faça login</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                    
+                            <!-- Modal body -->
+                            <div class="modal-body container">
+                                <div class="row">
+                                    <div id = modal_signup_form>
+                                        <h1>Signup</h1>
+                                        <form actio="/signup" method="post">
+                                            <label for="cpf">CPF:</label>
+                                            <input type="text" id="cpf" name="cpf" required>
+                                            <br>
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" id="nome" name="nome" required>
+                                            <br>
+                                            <label for="password">Senha:</label>
+                                            <input type="password" id="password" name="password" required>
+                                            <br>
+                                            <a href="/sugnup" ><button type="submit">Signup</button></a>
+                                        </form>
+                                        </div>
+
+                                    <div id="modal_login_form">
+                                        <h1>Login</h1>
+                                        <form action="/login" method="post">
+                                            <label for="cpf">CPF:</label>
+                                            <input type="text" id="cpf" name="cpf" required>
+                                            <br>
+                                            <label for="password">Senha:</label>
+                                            <input type="password" id="password" name="password" required>
+                                            <br>
+                                            <a href="/login"><button type="submit">Login</button></a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+                        </div>
+                    </div>
+                </div>
+
+
+      
     <h1>Signup</h1>
     <form method="post">
         <label for="cpf">CPF:</label>
@@ -53,6 +108,7 @@
         <button type="submit">Signup</button>
     </form>
     <a href="/login"><button>Já tenho cadastro</button></a>
-    </body>
+    
+</body>
     
 </html>
