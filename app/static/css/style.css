@@ -528,9 +528,9 @@ margin: auto;}
     background-color: white;
     border-radius: 15px;
     padding: 30px;
-    
+}
    /* passo a passo pagina do quiz */
-   .timeline {
+.timeline {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -599,5 +599,4 @@ margin: auto;}
     position:fixed; 
     bottom:20px; 
     right:20px;
-   
- }
+   }
