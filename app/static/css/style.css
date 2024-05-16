@@ -94,7 +94,7 @@
     height:fit-content;
     line-height: 60px;
     position:relative;
-    background-color:#1f2a47;
+    background-color:#000103;
     margin:150px auto;
     font-size:20px;
     text-align:center;
@@ -110,7 +110,7 @@
 }
 
 .paginacao a:hover, .paginacao_atual {
-    background-color:#8da7b3;
+    background-color: #ff695e;
     color: white;
 }
 
@@ -166,6 +166,7 @@
 .quiz_intro{
     display: flex;
     flex-direction: row;
+    margin-left: ;
 }
 
 .quiz_image{
@@ -223,7 +224,7 @@
     opacity: 0.7;}
 
 .question_box_1{
-    background-color:#45aede;
+    background-color:#000103;
     border-radius: 15px;
     flex-direction: row;
     width: 50%;
@@ -239,8 +240,8 @@
 }
 
 .engrenagem{
-width: 27px;
-height: 26px;
+width: 50px;
+height: 30px;
 margin: auto;}
 
 .icone{
@@ -254,6 +255,7 @@ margin: auto;}
     display: flex;
     justify-content: center;
     height: 29px;
+    color: white;
 }
 
 .quiz_title{
@@ -296,13 +298,13 @@ margin: auto;}
 }
 
 .botao_iniciar{
-    background-color:#1f2a47;
-    color: white;
+    background-color:#66a1bc;
+    color: #000103;
     border-radius: 15px;
-    float:right;
-    width:180px;
+    width:250px;
     font-family: 'Ruda';
-    transition: 0.25s;
+    margin-top: 150px;
+   
 }
 
 .botao_iniciar:hover{
@@ -385,6 +387,55 @@ margin: auto;}
     margin: 100px auto ;
 }
 
+.container-ferramentas-reverso{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-home-ferramentas{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img-home-ferramentas{
+    max-width: 80%;
+    height: auto;
+ 
+ }
+
+ .container-ferramentas-imagem-botao{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ .button_home_page_ferramentas{
+    font-size: 20px;
+    background-color: #000103;
+    color: #ff695e;
+    padding: 4%;
+    width: 250px ;
+    height: 50px;
+ }
+
+
 /*pagina produto*/
 
 .pagina-produto{
@@ -444,6 +495,8 @@ margin: auto;}
     align-items: center;
 }
 
+/* pagina pacer  */
+
 .body_pacer {
     background-color: #e0e5e8;
     width: 100%;
@@ -476,19 +529,74 @@ margin: auto;}
     border-radius: 15px;
     padding: 30px;
 }
-
-.card {
-border: none;
-background-color: #ffffff;
+   /* passo a passo pagina do quiz */
+.timeline {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    max-width: 100%;
+    margin-top: 200px
+  }
+  
+  .step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000103;
+    color: #ff695e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  
+  .step-content {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Ruda'
+  }
+  
+  .button_home_page_quiz{
+    font-size: 25px;
+    background-color: #000103;
+    color: #ff695e;
+    padding: 4%;
+    width: 210px ;
+    height: 100px;
+}
+.button_home_page_quiz:hover{
+   color: #000103;
+   background-color: #ff695e;
+   transition: 0,2s;
 }
 
+/* pagina avaliação */
+.button_avaliacao{
+    font-size: 15px;
+    background-color: #000103;
+    color: #ff695e;
+    padding: 5px;
+    width: 150px;
+ }
 
-.card-header {
-background-color: #ffffff;
-}
-
-/* responsividade - avaliação */
-
-/* @media (max-width:774px){
-    .navbar-text{
-        font-size: 15px;}} */
+ /* botão parar aqui do quiz */
+ .button_parar_aqui{
+    font-size: 15px;
+    background-color: #000103;
+    color: #ff695e;
+    padding: 5px;
+    width: 150px;
+    position:fixed; 
+    bottom:20px; 
+    right:20px;
+   }

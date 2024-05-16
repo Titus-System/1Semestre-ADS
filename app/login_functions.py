@@ -17,9 +17,9 @@ def user_signup():
         nome = request.form['nome']
         password = request.form['password']
         if database.signup(cpf, nome, password):
-            return "usuario criado com sucesso"
+            return redirect("/login")
         else:
-            return "usuario já existe"
+            return render_template("signup.html", usuario_encontrado = True)
     return render_template('signup.html')
 
 
