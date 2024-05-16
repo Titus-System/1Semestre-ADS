@@ -76,7 +76,7 @@ def login(cpf: str, password: str) -> bool:
         cur = con.cursor()
         
         if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
-            hashed_password, nome = res
+            hashed_password, nome = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
             if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
                 return (True, nome)
             else:
@@ -86,7 +86,7 @@ def login(cpf: str, password: str) -> bool:
         
     except sqlite3.Error as e:
         print("SQLite error:", e)
-    
+ 
     finally:
         con.close()
 
