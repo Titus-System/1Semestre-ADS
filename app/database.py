@@ -121,6 +121,7 @@ def insert_grade(cpf: str, nota_prova: int) -> bool:
         return True
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
     
     finally:
         con.close()
@@ -154,6 +155,7 @@ def insert_feedback(cpf: str, feedback: int, comment: str | None) -> bool:
     
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
     
     finally:
         con.close()
@@ -180,10 +182,11 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
             cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
             con.commit()
         else:
-            return False
+            cur.execute("INSER INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
         
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
 
     finally:
         con.close()
