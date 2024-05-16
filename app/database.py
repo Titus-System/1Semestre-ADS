@@ -195,6 +195,41 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
     finally:
         con.close()
         
+# def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[dict]:
+#     """
+#     Retrieve data from the specified table in the database based on the provided CPF and columns.
+
+#     Args:
+#         table (str): The name of the table from which to retrieve data.
+#         columns (Union[str, List[str]]): Either a single column name or a list of column names to retrieve.
+#         cpf (str): The CPF of the employee whose data is to be retrieved.
+
+#     Returns:
+#         [str, list[dict]]: If a single column name is provided, returns a string representing the value of
+#         the selected column for the specified CPF. If a list of column names is provided, returns a list of dictionaries,
+#         where each dictionary represents a row of data for the specified CPF. If the CPF is not found in the registro table,
+#         an empty string is returned. If an error occurs during database access, an empty string is returned.    
+#     """
+#     try:
+#         con = sqlite3.connect("database.db")
+#         cur = con.cursor()
+        
+#         if isinstance(columns, list):
+#             data = []
+#             for i in columns:
+#                 data.append(cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone())  
+#         else:
+#             data = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
+
+#         return data
+    
+#     except sqlite3.Error as e:
+#         print("SQLite error:", e)
+        
+#     finally:
+#         con.close()
+
+
 def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[dict]:
     """
     Retrieve data from the specified table in the database based on the provided CPF and columns.
@@ -215,13 +250,23 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         cur = con.cursor()
         
         if isinstance(columns, list):
-            data = []
-            for i in columns:
-                data.append(cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone())  
+            columns_str = ", ".join(columns)
+            query = f"SELECT {columns_str} FROM {table} WHERE cpf=?"
+            cur.execute(query, (cpf,))
+            data = cur.fetchall()
+            # Transformar o resultado em uma lista de dicionários
+            result = []
+            for row in data:
+                row_dict = {}
+                for idx, col in enumerate(columns):
+                    row_dict[col] = row[idx]
+                result.append(row_dict)
         else:
-            data = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
+            cur.execute(f"SELECT {columns} FROM {table} WHERE cpf=?", (cpf,))
+            data = cur.fetchone()
+            result = data[0] if data else ""
 
-        return data
+        return result
     
     except sqlite3.Error as e:
         print("SQLite error:", e)

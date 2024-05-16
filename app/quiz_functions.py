@@ -15,7 +15,6 @@ def quiz_page(name=str):
 
     posicao = continue_quiz()
 
-
     if name in perguntas.keys():
         page = "pergunta"
         questao = perguntas[name]
@@ -109,6 +108,6 @@ def quiz_resultado_final():
 
 def continue_quiz():
     cpf = login_functions.current_user.id
-    posicao = database.retrieve_data("academico", ["posicao", "nota_quiz"], cpf)
+    posicao = database.retrieve_data("academico", "posicao", cpf)
     print(posicao)
     return posicao
