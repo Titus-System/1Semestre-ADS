@@ -95,7 +95,7 @@ def avaliacao():
         for key, value in perguntas.items():
             if key == "result": break
             respostas_prova[key] = request.form.get(f"resposta{key}")
-            
+        
         
         for key,value in respostas_prova.items():
             if value == perguntas[key][6]:
@@ -106,6 +106,7 @@ def avaliacao():
         porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
         cpf = login_functions.current_user.id
+        print(cpf, acertos)
         database.insert_grade(cpf, acertos)
 
         return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
@@ -157,6 +158,7 @@ def pacer_res(name):
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     return login_functions.user_signup()
+
 
 
 @app.route('/login', methods=['GET', 'POST'])

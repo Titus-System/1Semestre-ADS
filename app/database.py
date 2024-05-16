@@ -174,7 +174,7 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
             cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
             con.commit()
         else:
-            cur.execute("INSER INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
+            cur.execute("INSERT INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
         
     except sqlite3.Error as e:
         print("SQLite error:", e)
