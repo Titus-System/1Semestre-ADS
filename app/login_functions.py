@@ -25,6 +25,7 @@ def user_signup():
 
 def user_login():
     if request.method == 'POST':
+        
         cpf = request.form['cpf']
         password = request.form['password']
         if database.login(cpf, password):
