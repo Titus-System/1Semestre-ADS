@@ -465,15 +465,6 @@ margin: auto;}
     margin-bottom: 15px;
 }
 
-.card {
-    border: none;
-    background-color: #ffffff;
-}
-
-.card-header {
-    background-color: #ffffff;
-}
-
 .box_teoria_pacer p {
     text-align: justify;
 }
@@ -484,6 +475,16 @@ margin: auto;}
     background-color: white;
     border-radius: 15px;
     padding: 30px;
+}
+
+.card {
+border: none;
+background-color: #ffffff;
+}
+
+
+.card-header {
+background-color: #ffffff;
 }
 
 /* responsividade - avaliação */
