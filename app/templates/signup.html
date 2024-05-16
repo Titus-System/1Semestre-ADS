@@ -1,0 +1,17 @@
+{% extends "base_teoria.html" %}
+
+{% block content %}
+    <h1>Signup</h1>
+    <form method="post">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required>
+        <br>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Signup</button>
+    </form>
+{% endblock %}

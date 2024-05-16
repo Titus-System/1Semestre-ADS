@@ -12,7 +12,7 @@ def initialize_database() -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, passord BLOB NOT NULL, PRIMARY KEY (cpf))")
+        cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, password BLOB NOT NULL, PRIMARY KEY (cpf))")
         cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
         cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
         
@@ -35,7 +35,7 @@ def signup(cpf: str, nome: str, password: str) -> bool:
     Args:
         cpf (str): The CPF of the employee.
         nome (str): The name of the employee
-        passord (str): The passowrd desired
+        password (str): The passowrd desired
 
     Returns:
         bool: True if the account has been successfuly saved.
