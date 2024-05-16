@@ -202,18 +202,16 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone():
             if isinstance(columns, list):
+                result = []
                 for i in columns:
-                    result = []
-                    result.append(cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns[i], table, cpf))).fetchone()
-                    return result
+                    res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone()
+                    result.append(res)
             else:
-                result = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
-                return result
-    
+                res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
     except sqlite3.Error as e:
         print("SQLite error:", e)
-    
+        
     finally:
-        con.close
+        con.close()
