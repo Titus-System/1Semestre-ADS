@@ -45,9 +45,7 @@ def signup(cpf: str, nome: str, password: str) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone()
-        
-        if not res:
+        if not cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (cpf, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
             con.commit()
             return True
@@ -77,9 +75,7 @@ def login(cpf: str, password: str) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             hashed_password, nome = res
             if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
                 return (True, nome)
@@ -110,15 +106,14 @@ def insert_grade(cpf: str, nota_prova: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             cur.execute("UPDATE academico SET nota_prova=? WHERE cpf=?", (nota_prova, cpf))
         else:
             cur.execute("INSERT INTO academico (nota_prova, cpf) VALUES (?, ?)", (nota_prova, cpf))
         
         con.commit()
         return True
+    
     except sqlite3.Error as e:
         print("SQLite error:", e)
         return False
@@ -143,19 +138,18 @@ def insert_feedback(cpf: str, feedback: int, comment: str | None) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
-            cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE cpf=?", (feedback, comment, cpf))
+        if cur.execute("SELECT nota_prova FROM academico WHERE cpf=?", (cpf, )).fetchone():
+            if cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )):
+                cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE cpf=?", (feedback, comment, cpf))
+                con.commit()
+            else:
+                cur.execute("INSERT INTO opiniao (feedback, comment, cpf) VALUES (?, ?, ?)", (feedback, comment, cpf))
+                con.commit()
         else:
-            cur.execute("INSERT INTO opiniao (feedback, comment, cpf) VALUES (?, ?, ?)", (feedback, comment, cpf))
-        
-        con.commit()
-        return True
+            return False
     
     except sqlite3.Error as e:
         print("SQLite error:", e)
-        return False
     
     finally:
         con.close()
@@ -176,9 +170,7 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
             con.commit()
         else:
@@ -210,9 +202,7 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             if isinstance(columns, list):
                 for i in columns:
                     result = []
