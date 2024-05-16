@@ -35,13 +35,15 @@ Lorem ipsum
 ```Bash
 git clone https://github.com/Titus-System/1Semestre-ADS.git
 ```
+
 - ### Assece o repositorio e instale as dependencias
 
 ```Bash
 cd /1SEMESTRE-ADS
 pip install -r requirements.txt
 ```
- - ### Ativando o app
+
+- ### Ativando o app
 
  ```Bash
  cd /app
@@ -77,8 +79,8 @@ pip install -r requirements.txt
 
 Lorem ipsum
 
-#### Missao
+### Missao
 
-#### Visao
+### Visao
 
-#### Valores
+### Valores
