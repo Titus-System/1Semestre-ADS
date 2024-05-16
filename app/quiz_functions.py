@@ -13,6 +13,9 @@ def quiz_page(name=str):
     proxima_pagina = "#"
     pagina_anterior = "#"
 
+    posicao = continue_quiz()
+
+
     if name in perguntas.keys():
         page = "pergunta"
         questao = perguntas[name]
@@ -37,7 +40,7 @@ def quiz_page(name=str):
         
         return redirect (f"/quiz/{proxima_pagina}")
     
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas)
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas, continuar=posicao)
 
 
 #função para salvar as respostas do usuário
@@ -102,3 +105,10 @@ def quiz_resultado_final():
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
+
+
+def continue_quiz():
+    cpf = login_functions.current_user.id
+    posicao = database.retrieve_data("academico", ["posicao", "nota_quiz"], cpf)
+    print(posicao)
+    return posicao
