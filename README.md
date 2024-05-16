@@ -1,60 +1,84 @@
-# Titus Systems - 1º Semestre ADS
+# Titus Systems - ADS - 1 SEMESTRE/2024
 
-> ![Product logo](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/logo.png)
+## Mestre Agil
+
+![PRODUCT LOGO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png)
+
+## Sobre o Produto
+
+Lorem ipsum
+
+### Demonstracao do produto
+
+![PRODUCT VIDEO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/apresentacao2.mp4)
+
+### Roadmap
+
+![ROADMAP](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/imagem-entregas-por-sprint.png)
+
+### As Entregas
+
+#### Backlog do Produto
+
+![PRODUCT BACKLOG](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/Backlog_do_Produto.png)
+
+### Tecnologias Utilizadas
+
+![TECH STUFF]()
+
+## Instalacao
+
+ Para instalar este programa voce vai precisar ter no seu computador no minimo Python 3.12 e GIT. Quando tiver estes prontos, siga o paco a pacoo abaixo:
+
+- ### Clonando o repositorio.
+
+```Bash
+git clone https://github.com/Titus-System/1Semestre-ADS.git
+```
+- ### Assece o repositorio e instale as dependencias
+
+```Bash
+cd /1SEMESTRE-ADS
+pip install -r requirements.txt
+```
+ - ### Ativando o app
+
+ ```Bash
+ cd /app
+ flask run
+ ```
+
+ O programa vai abrir uma coneccao na porta 5000 e mostrar o status do servidor, alem de mostrar o endereco do site para que voce possa acessar.
+
+## Sobre os Desenvolvedores
+
+> ### SCRUM TEAM
 >
-> ## Sobre o Produto
+> - SCRUM Master
+> - - Karina Ribeiro
 >
-> ### Objetivos
+> <hr>
 >
-> - Criar uma plataforma didática para o ensino do metodo **SCRUM**
-> - Que possua:
-> - - exemplos práticos;
-> - - Metodologia padronizada;
-> - - Um sistema avaliativo para os usuários;
-> - - Linguagem ágil e informal para conformar com a atualidade;
+> - Product Owner
+> - - Agatha Wei
 >
-> ### Competências
+> <hr>
 >
-> - Utilização de tecnologias de desenvolvimento Front-End:
-> - - **HTML**;
-> - - **CSS**;
-> - - **Bootstrap**;
-> - - **Figma**;
->
-> - Utilização de tecnologias de desenvolvimento Back-End:
-> - - **Python**;
-> - - **Flask**;
-> - - **JavaScript**;
->
-> - Tecnicas de desenvolvimento de projetos com o método **Ágil**.
->
-> ### Demonstração do Produto
->
-> [![DEMONSTRACAO PRODUTO](./docs/images/youtube_logo.png)](https://youtu.be/9b7pp-E-mOE)
->
-> ### Product backlog
->
-> ![backlog print](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/Backlog_do_Produto.png)
->
-> ## Entregas
->
-> ![Entregas por sprint](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/imagem-entregas-por-sprint.png)
->
-> ## A Titus Systems
->
-> ![Business logo](https://github.com/Titus-System/1Semestre-ADS/raw/main/docs/images/logo_empresa.png)
->
-> ### Os Integrantes
->
-> Alunos de Analise e Desenvolvimento de Software da FATEC. Primeiro semestre de 2024.
->
-> - Product Owner:
-> - - Agatha Wei.
-> - SCRUM Master:
-> - - Karina Ribeiro.
-> - Dev Team:
-> - - Julia Pereira;
-> - - Julia Santiago;
-> - - Marcelo Alves;
-> - - Pegro Garcia;
-> - - Wilson Costa;
+> - Dev Team
+> - - Julia Santiago
+> - - Julia Pereira
+> - - Marcelo Alves
+> - - Pedro Garcia
+> - - Wilson Costa
+
+## Titus Systems
+
+![COMPANY LOGO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png)
+
+Lorem ipsum
+
+#### Missao
+
+#### Visao
+
+#### Valores
