@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, bcrypt
 
 def initialize_database() -> bool:
     """
@@ -12,9 +12,9 @@ def initialize_database() -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, passord BLOB NOT NULL, PRIMARY KEY (cpf))")
-        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
-        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id))") #insert connection to registro later
+        cur.execute("CREATE TABLE IF NOT EXISTS registro ( cpf VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, password BLOB NOT NULL, PRIMARY KEY (cpf))")
+        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
+        cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, cpf VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (cpf) REFERENCES registro (cpf))")
         
         con.commit()
         
@@ -26,8 +26,69 @@ def initialize_database() -> bool:
         
     finally:
         con.close()
+        
     
-#LOGIN FUNCTTION WILL GO HERE... EVENTUALLY
+def signup(cpf: str, nome: str, password: str) -> bool:
+    """
+    Function Designed to veryfy if the guest already has an account on the site, once a unique cpf has been provided it will add that to the database.
+    
+    Args:
+        cpf (str): The CPF of the employee.
+        nome (str): The name of the employee
+        password (str): The passowrd desired
+
+    Returns:
+        bool: True if the account has been successfuly saved.
+              False if the cpf is already associated with another account.
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        if not cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (cpf, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            con.commit()
+            return True
+        
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        con.close()
+
+def login(cpf: str, password: str) -> bool:
+    """
+    Login function, checks credentials against database.
+    
+    Args:
+        cpf (str): Employee's CPF
+        password (str): Employee's password
+
+    Returns:
+        bool: False if user not found or password wrong.
+        tupple: Returns True and the user name if the password and cpf match an entry on the database. Ex.:(True, "John Doe")
+    """
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
+            hashed_password, nome = cur.execute("SELECT password, nome FROM registro WHERE cpf=?", (cpf, )).fetchone()
+            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
+                return (True, nome)
+            else:
+                return False
+        else:
+            return False
+        
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+ 
+    finally:
+        con.close()
 
 def insert_grade(cpf: str, nota_prova: int) -> bool:
     """
@@ -45,17 +106,17 @@ def insert_grade(cpf: str, nota_prova: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             cur.execute("UPDATE academico SET nota_prova=? WHERE cpf=?", (nota_prova, cpf))
         else:
             cur.execute("INSERT INTO academico (nota_prova, cpf) VALUES (?, ?)", (nota_prova, cpf))
         
         con.commit()
         return True
+    
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
     
     finally:
         con.close()
@@ -77,15 +138,15 @@ def insert_feedback(cpf: str, feedback: int, comment: str | None) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
-            cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE cpf=?", (feedback, comment, cpf))
+        if cur.execute("SELECT nota_prova FROM academico WHERE cpf=?", (cpf, )).fetchone():
+            if cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )):
+                cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE cpf=?", (feedback, comment, cpf))
+                con.commit()
+            else:
+                cur.execute("INSERT INTO opiniao (feedback, comment, cpf) VALUES (?, ?, ?)", (feedback, comment, cpf))
+                con.commit()
         else:
-            cur.execute("INSERT INTO opiniao (feedback, comment, cpf) VALUES (?, ?, ?)", (feedback, comment, cpf))
-        
-        con.commit()
-        return True
+            return False
     
     except sqlite3.Error as e:
         print("SQLite error:", e)
@@ -109,16 +170,15 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
             cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
             con.commit()
         else:
-            return False
+            cur.execute("INSER INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
         
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
 
     finally:
         con.close()
@@ -142,20 +202,16 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        res = cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone()
-        
-        if res:
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone():
             if isinstance(columns, list):
+                result = []
                 for i in columns:
-                    result = []
-                    result.append(cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns[i], table, cpf))).fetchone()
-                    return result
+                    res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone()
+                    result.append(res)
             else:
-                result = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
-                return result
-    
+                res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
     except sqlite3.Error as e:
         print("SQLite error:", e)
-    
+        
     finally:
-        con.close
+        con.close()

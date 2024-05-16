@@ -1,17 +1,42 @@
-from flask import Flask, render_template, redirect, request, session
-import json
+from flask import Flask, render_template, redirect, request, session, flash, url_for
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import arquivos
 import database
-import functions
+import quiz_functions, login_functions
+
+
 app = Flask(__name__)
 
 app.secret_key = "chave_secreta"
 
 database.initialize_database() #Inicia o banco de dados
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+# Classe de Usuário
+class User(UserMixin):
+    def __init__(self, cpf):
+        self.id = cpf
+
+    def get_id(self):
+        return self.id
+
+
+# Carrega o usuário
+# Função para carregar usuário
+@login_manager.user_loader
+def load_user(cpf):
+    user = User(cpf)
+    user.id = cpf
+    return user
+
+
 @app.route("/")
 def home():
     return render_template ("index.html")
+
 
 @app.route("/<name>")
 def get_page(name):
@@ -25,6 +50,7 @@ def get_page(name):
         return redirect("/avaliacao")
     return render_template(f"{name}.html")
 
+
 @app.route("/ferramentas/<name>")
 def ferramentas(name):
     return render_template(f"/ferramentas/{name}.html")
@@ -32,96 +58,30 @@ def ferramentas(name):
 
 @app.route("/apostila/<name>")
 def find_apostila(name):
-    #arquivo json para guardar as páginas e ser usado para a construção do indice
-    apostila_paginas = json.load(open("./static/apostila_paginas.json", encoding='utf-8'))
     return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas)
 
 
-#contrução do quiz
-#as perguntas são retiradas do arquivo json correspondente a cada capitulo
+#routes to find the quiz pages (concepts and questions)
+#user must be logged in to access
 @app.route("/quiz/<name>", methods=["POST", "GET"])
+@login_required
 def quiz_page(name=str):
-    perguntas = arquivos.quiz_perguntas
-    questao = ""
-    num_quest = 0
-    page = name
-    pagina_atual = name
-    proxima_pagina = "#"
-    pagina_anterior = "#"
-
-
-    if name in perguntas.keys():
-        page = "pergunta"
-        questao = perguntas[name]
-        num_quest = questao[0]
-        proxima_pagina = questao[8]
-        pagina_anterior = f"{questao[0]}_{name}"
-    
-    if request.method == "POST":
-        questao = perguntas[pagina_atual]
-        num_quest = questao[0]
-
-        pagina_anterior = f"{questao[0]}_{name}"
-        proxima_pagina = questao[8]
-
-        try:
-            session[f"resposta_{num_quest}"] = request.form[f"resposta_{num_quest}"]
-        except KeyError:
-            session[f"resposta_{num_quest}"] = ""
-
-
-        if proxima_pagina == "result":
-            return redirect("/quiz/quiz_resultado")
-        
-        return redirect (f"/quiz/{proxima_pagina}")
-    
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas)
-
-
-#função para salvar as respostas do usuário
-def salvar_respostas(num_quest, proxima_pagina):
-    try:
-        session[f"resposta{num_quest}"] = request.form[f"resposta{num_quest}"]
-    except KeyError:
-        session[f"resposta{num_quest}"] = ""
-        
-    return render_template (f"/quiz/{proxima_pagina}.html")
+    return quiz_functions.quiz_page(name)
 
 
 @app.route("/quiz/quiz_resultado_parcial/<numero_pagina>")
 def quiz_resultado_parcial(numero_pagina):
-    return functions.quiz_resultado_parcial(numero_pagina)
+    return quiz_functions.quiz_resultado_parcial(numero_pagina)
 
 
-#rota para verificação dos resultados do quiz e visualização da página de resultados
 @app.route("/quiz/quiz_resultado")
-def resultado():
-    perguntas = arquivos.quiz_perguntas
-    acertos = 0
-    questoes_erradas = {}
-    correcao = arquivos.erro_assunto
-    respostas = dict(map(lambda key: (key, session[key]), filter(lambda key: key.startswith("resposta"), session)))
-    print(respostas)
-
-    for i in perguntas:
-        if i == "result": break
-        try:
-            if perguntas[i][6] == session[f"resposta_{perguntas[i][0]}"]:
-                acertos += 1
-            else: questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
-
-        except KeyError:
-            respostas[f"resposta_{perguntas[i][0]}"] = ""
-            questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
-
-    erros = len(perguntas)-1 - acertos
-    porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
-
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
+def quiz_resultado():
+    return quiz_functions.quiz_resultado_final()
 
 
-# rota para avaliação e resultado da avaliação
+# route to the test; user must be logged in to access
 @app.route("/avaliacao", methods=["POST", "GET"])
+@login_required
 def avaliacao():
     apostila_paginas = arquivos.apostila_paginas
     perguntas = arquivos.quiz_perguntas
@@ -144,6 +104,9 @@ def avaliacao():
         
         erros = len(perguntas) - 1 - acertos
         porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
+
+        cpf = login_functions.current_user.id
+        database.insert_grade(cpf, acertos)
 
         return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
 
@@ -189,6 +152,23 @@ def pacer_res(name):
             soma_pacer += pacer_funcionarios[i][4]
 
     return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer)
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    return login_functions.user_signup()
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return login_functions.user_login()
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
