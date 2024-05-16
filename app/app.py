@@ -66,6 +66,8 @@ def find_apostila(name):
 @app.route("/quiz/<name>", methods=["POST", "GET"])
 @login_required
 def quiz_page(name=str):
+    if name == "final":
+        return redirect("/quiz/iniciar")
     return quiz_functions.quiz_page(name)
 
 
@@ -95,7 +97,6 @@ def avaliacao():
         for key, value in perguntas.items():
             if key == "result": break
             respostas_prova[key] = request.form.get(f"resposta{key}")
-        
         
         for key,value in respostas_prova.items():
             if value == perguntas[key][6]:

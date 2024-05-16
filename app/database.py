@@ -106,14 +106,18 @@ def insert_grade(cpf: str, nota_prova: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
-            cur.execute("UPDATE academico SET nota_prova=? WHERE cpf=?", (nota_prova, cpf))
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone():
+            if cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf,)).fetchone():
+                cur.execute("UPDATE academico SET nota_prova=? WHERE cpf=?", (nota_prova, cpf))
+                con.commit()
+                return True
+            else:
+                cur.execute("INSERT INTO academico (nota_prova, cpf) VALUES (?, ?)", (nota_prova, cpf))
+                con.commit()
+                return True
         else:
-            cur.execute("INSERT INTO academico (nota_prova, cpf) VALUES (?, ?)", (nota_prova, cpf))
+            return False
         
-        con.commit()
-        return True
-    
     except sqlite3.Error as e:
         print("SQLite error:", e)
         return False
@@ -139,12 +143,14 @@ def insert_feedback(cpf: str, feedback: int, comment: str | None) -> bool:
         cur = con.cursor()
         
         if cur.execute("SELECT nota_prova FROM academico WHERE cpf=?", (cpf, )).fetchone():
-            if cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )):
+            if cur.execute("SELECT cpf FROM opiniao WHERE cpf=?", (cpf, )).fetchone():
                 cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE cpf=?", (feedback, comment, cpf))
                 con.commit()
+                return True
             else:
                 cur.execute("INSERT INTO opiniao (feedback, comment, cpf) VALUES (?, ?, ?)", (feedback, comment, cpf))
                 con.commit()
+                return True
         else:
             return False
     
@@ -170,12 +176,18 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf,)).fetchone():
-            cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
-            con.commit()
+        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone():
+            if cur.execute("SELECT cpf FROM academico WHERE cpf=?", (cpf,)).fetchone():
+                cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE cpf=?", (nota_quiz, posicao, cpf))
+                con.commit()
+                return True
+            else:
+                cur.execute("INSERT INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
+                con.commit()
+                return True
         else:
-            cur.execute("INSERT INTO academico (nota_quiz, posicao, cpf) VALUES (?, ?, ?)", (nota_quiz, posicao, cpf))
-        
+            return False
+    
     except sqlite3.Error as e:
         print("SQLite error:", e)
         return False
@@ -183,6 +195,41 @@ def save_quiz_state(cpf: str, nota_quiz: int, posicao: int) -> bool:
     finally:
         con.close()
         
+# def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[dict]:
+#     """
+#     Retrieve data from the specified table in the database based on the provided CPF and columns.
+
+#     Args:
+#         table (str): The name of the table from which to retrieve data.
+#         columns (Union[str, List[str]]): Either a single column name or a list of column names to retrieve.
+#         cpf (str): The CPF of the employee whose data is to be retrieved.
+
+#     Returns:
+#         [str, list[dict]]: If a single column name is provided, returns a string representing the value of
+#         the selected column for the specified CPF. If a list of column names is provided, returns a list of dictionaries,
+#         where each dictionary represents a row of data for the specified CPF. If the CPF is not found in the registro table,
+#         an empty string is returned. If an error occurs during database access, an empty string is returned.    
+#     """
+#     try:
+#         con = sqlite3.connect("database.db")
+#         cur = con.cursor()
+        
+#         if isinstance(columns, list):
+#             data = []
+#             for i in columns:
+#                 data.append(cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone())  
+#         else:
+#             data = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
+
+#         return data
+    
+#     except sqlite3.Error as e:
+#         print("SQLite error:", e)
+        
+#     finally:
+#         con.close()
+
+
 def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[dict]:
     """
     Retrieve data from the specified table in the database based on the provided CPF and columns.
@@ -193,7 +240,7 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         cpf (str): The CPF of the employee whose data is to be retrieved.
 
     Returns:
-        Union[str, list[dict]]: If a single column name is provided, returns a string representing the value of
+        [str, list[dict]]: If a single column name is provided, returns a string representing the value of
         the selected column for the specified CPF. If a list of column names is provided, returns a list of dictionaries,
         where each dictionary represents a row of data for the specified CPF. If the CPF is not found in the registro table,
         an empty string is returned. If an error occurs during database access, an empty string is returned.    
@@ -202,14 +249,25 @@ def retrieve_data(table: str, columns: str | list[str], cpf: str) -> str | list[
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT cpf FROM registro WHERE cpf=?", (cpf, )).fetchone():
-            if isinstance(columns, list):
-                result = []
-                for i in columns:
-                    res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (i, table, cpf)).fetchone()
-                    result.append(res)
-            else:
-                res = cur.execute("SELECT ? FROM ? WHERE cpf=?", (columns, table, cpf)).fetchone()
+        if isinstance(columns, list):
+            columns_str = ", ".join(columns)
+            query = f"SELECT {columns_str} FROM {table} WHERE cpf=?"
+            cur.execute(query, (cpf,))
+            data = cur.fetchall()
+            # Transformar o resultado em uma lista de dicionários
+            result = []
+            for row in data:
+                row_dict = {}
+                for idx, col in enumerate(columns):
+                    row_dict[col] = row[idx]
+                result.append(row_dict)
+        else:
+            cur.execute(f"SELECT {columns} FROM {table} WHERE cpf=?", (cpf,))
+            data = cur.fetchone()
+            result = data[0] if data else ""
+
+        return result
+    
     except sqlite3.Error as e:
         print("SQLite error:", e)
         

@@ -15,7 +15,6 @@ def quiz_page(name=str):
 
     posicao = continue_quiz()
 
-
     if name in perguntas.keys():
         page = "pergunta"
         questao = perguntas[name]
@@ -104,11 +103,14 @@ def quiz_resultado_final():
     erros = len(perguntas)-1 - acertos
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
+    cpf = login_functions.current_user.id
+    database.save_quiz_state(cpf, acertos, "final")
+
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
 
 
 def continue_quiz():
     cpf = login_functions.current_user.id
-    posicao = database.retrieve_data("academico", ["posicao", "nota_quiz"], cpf)
+    posicao = database.retrieve_data("academico", "posicao", cpf)
     print(posicao)
     return posicao
