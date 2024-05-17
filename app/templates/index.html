@@ -47,7 +47,9 @@
         alt="Logo"
       />
       <ul class="navbar-list">
-        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Login</a></li>
+        {% if user_logged_in %}<li class="navbar-item"><a type="button" class="white btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_user"><img src="{{url_for('static', filename='images/person-circle.svg')}}">Perfil</a></li></li>{%endif%}
+        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
+        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
         <li class="navbar-item"><a href="/pacer">PACER</a></li>
         <li class="navbar-item"><a href="/avaliacao">Avaliação</a></li>
         <li class="navbar-item"><a href="/ferramentas">Ferramentas</a></li>
@@ -55,6 +57,30 @@
         <li class="navbar-item"><a href="/quiz">Quiz</a></li>
       </ul>
     </div>
+
+
+
+      <!-- Espaço para mensagens flash -->
+      <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for i in messages %}
+            <div class="modal-body alert alert-dismissible fade show" role="alert">
+              {{i[0]}}: {{i[1]}}
+              <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <script>
+              var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+              registerModal.show();
+            </script>
+          {% endif %}
+        {% endwith %}
+      </div>
+
+
+
+
     <div class="index-cover">
       <img src="{{url_for('static', filename='images/capa.png')}}" alt="Capa" />
       <div>
@@ -65,7 +91,7 @@
     </div>
 
 
-    <!-- The Modal -->
+    <!-- Login Modal -->
     <div class="modal" id="modal_login">
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -79,28 +105,6 @@
               <!-- Modal body -->
               <div class="modal-body container" style="color:black">
                   <div class="row">
-                      <div class="col" id = modal_signup_form>
-                          <h1>Signup</h1>
-                          <form action="/signup" method="post">
-                              <label for="username">Username:</label><br>
-                              <input type="text" id="username" name="username" required>
-                              <br>
-                              <label for="name">Nome:</label><br>
-                              <input type="text" id="name" name="name" required>
-                              <br>
-                              <label for="email">e-mail:</label><br>
-                              <input type="email" id="email" name="email" required>
-                              <br>
-                              <label for="password">Senha:</label><br>
-                              <input type="password" id="password" name="password" required>
-                              <br>
-                              <label for="confirm_password">Senha:</label><br>
-                              <input type="password" id="confirm_password" name="confirm_password" required>
-                              <br>
-                              <a href="/signup" ><button type="submit">Signup</button></a>
-                          </form>
-                          </div>
-
                       <div class="col" id="modal_login_form">
                           <h1>Login</h1>
                           <form action="/login" method="post">
@@ -118,6 +122,88 @@
           </div>
       </div>
     </div>
+
+
+
+        <!-- signup Modal -->
+        <div class="modal" id="modal_signup">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+        
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                  <h4 class="modal-title">Faça login</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+          
+                  <!-- Modal body -->
+                  <div class="modal-body container" style="color:black">
+                      <div class="row">
+                          <div class="col" id = modal_signup_form>
+                              <h1>Signup</h1>
+                              <form action="/signup" method="post">
+                                  <label for="username">Username:</label><br>
+                                  <input type="text" id="username" name="username" required>
+                                  <br>
+                                  <label for="name">Nome:</label><br>
+                                  <input type="text" id="name" name="name" required>
+                                  <br>
+                                  <label for="email">e-mail:</label><br>
+                                  <input type="email" id="email" name="email" required>
+                                  <br>
+                                  <label for="password">Senha:</label><br>
+                                  <input type="password" id="password" name="password" required>
+                                  <br>
+                                  <label for="confirm_password">Senha:</label><br>
+                                  <input type="password" id="confirm_password" name="confirm_password" required>
+                                  <br>
+                                  <a href="/signup" ><button type="submit">Signup</button></a>
+                              </form>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+
+{% if user_logged_in %}
+            <!-- User Modal -->
+    <div class="modal" id="modal_user">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+    
+              <!-- Modal Header -->
+              <div class="modal-header">
+              <h4 class="modal-title" style="color:black">{{current_user.id}}</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+      
+              <!-- Modal body -->
+              <div class="modal-body container" style="color:black">
+                  <div class="row">
+                      <div class="col" id="modal_login_form">
+                          <h1>{{current_user.id}}</h1>
+                          <form action="/login" method="post">
+                              <label for="usrname">Username:</label><br>
+                              <input type="text" id="username" name="username" required>
+                              <br>
+                              <label for="password">Senha:</label><br>
+                              <input type="password" id="password" name="password" required>
+                              <br>
+                              <a href="/login"><button type="submit">Login</button></a>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+{% endif %}
+
+
+
 
 
     <div class="index-guide">

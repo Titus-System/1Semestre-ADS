@@ -35,7 +35,12 @@ def load_user(username):
 
 @app.route("/")
 def home():
-    return render_template ("index.html")
+    try:
+        user_logged_in = current_user.is_authenticated
+        print(user_logged_in)
+    except AttributeError:
+        user_logged_in = False
+    return render_template ("index.html", user_logged_in = user_logged_in)
 
 
 @app.route("/<name>")
@@ -168,10 +173,11 @@ def login():
 
 
 @app.route('/logout')
-@login_required
+# @login_required
 def logout():
     logout_user()
     session.clear()
+    flash("Você não está logado")
     return redirect("/")
 
 
