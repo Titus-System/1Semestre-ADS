@@ -16,10 +16,17 @@ def user_signup():
         cpf = request.form['cpf']
         nome = request.form['nome']
         password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        if password != confirm_password:
+            flash("Senhas não batem!", "Error")
+            return redirect("/signup")
+        
         if database.signup(cpf, nome, password):
+            flash("registro realizado com sucesso!", "Success")
             return redirect("/login")
         else:
-            return render_template("signup.html", usuario_encontrado = True)
+            flash("usuário já está cadastrado", "Error")
+            return render_template("signup.html")
     return render_template('signup.html')
 
 
@@ -35,7 +42,9 @@ def user_login():
             if request.args.get('next'):
                 return redirect (request.args.get('next'))
             else:
-                return redirect("/")
+                flash("Você está logado!", "Success")
+                return render_template("index.html", login_success = True)
         else:
-            return "não encontrado"
+            flash("Usuário não está cadastrado ou a senha está errada", "Error")
+            return redirect ("/login")
     return render_template('login.html')
