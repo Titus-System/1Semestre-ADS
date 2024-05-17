@@ -13,7 +13,11 @@ def quiz_page(name=str):
     proxima_pagina = "#"
     pagina_anterior = "#"
 
-    posicao = continue_quiz()
+    if continue_quiz() == None:
+        print("sem quiz")
+        posicao = "iniciar"
+    else:
+        posicao = continue_quiz()
 
     if name in perguntas.keys():
         page = "pergunta"

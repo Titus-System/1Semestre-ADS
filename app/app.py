@@ -33,14 +33,19 @@ def load_user(username):
     return user
 
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def home():
     try:
         user_logged_in = current_user.is_authenticated
         print(user_logged_in)
     except AttributeError:
         user_logged_in = False
-    return render_template ("index.html", user_logged_in = user_logged_in)
+
+    try:
+        posicao = quiz_functions.continue_quiz()
+    except AttributeError: posicao = "iniciar"
+
+    return render_template ("index.html", user_logged_in = user_logged_in, continuar = posicao)
 
 
 @app.route("/<name>")
@@ -65,6 +70,11 @@ def ferramentas(name):
 def find_apostila(name):
     return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas)
 
+
+@app.route("/quiz/")
+@login_required
+def iniciar():
+    return redirect("/quiz/iniciar")
 
 #routes to find the quiz pages (concepts and questions)
 #user must be logged in to access
@@ -95,6 +105,9 @@ def avaliacao():
     correcao = arquivos.erro_assunto
     questoes_erradas = {}
 
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz()
+
     if request.method == "POST":
         respostas_prova = {}
         acertos = 0
@@ -115,9 +128,9 @@ def avaliacao():
         print(username, acertos)
         database.insert_grade(username, acertos)
 
-        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continunar = continuar)
 
-    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
+    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas, continuar = continuar)
 
 
 #rota para o PACER
@@ -172,7 +185,7 @@ def login():
     return login_functions.user_login()
 
 
-@app.route('/logout')
+@app.route('/logout', methods=["POST", "GET"])
 # @login_required
 def logout():
     logout_user()

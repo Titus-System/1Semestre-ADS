@@ -35,19 +35,65 @@
             <hr class="header_hr">
         </header>
 
-        <div class="teoria_pacer">
-            <h1>Login</h1>
-            <form method="post">
-                <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" name="cpf" required>
-                <br>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-                <br>
-                <button type="submit">Login</button>
-            </form>
-            <a href="/signup"><button>Ainda não tenho cadastro</button></a>
+      <!-- Espaço para mensagens flash -->
+      <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for i in messages %}
+            <div class="modal-body alert alert-dismissible fade show" role="alert">
+              {{i[0]}}: {{i[1]}}
+              <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <script>
+              var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+              registerModal.show();
+            </script>
+          {% endif %}
+        {% endwith %}
+      </div>
+
+
+
+        <div class="row">
+            <div class="col" id = modal_signup_form>
+                <h1>Signup</h1>
+                <form action="/signup" method="post">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" required>
+                    <br>
+                    <label for="name">Nome:</label><br>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="email">e-mail:</label><br>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+                    <label for="password">Senha:</label><br>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <label for="confirm_password">Senha:</label><br>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                    <br>
+                    <a href="/signup" ><button type="submit">Signup</button></a>
+                </form>
+            </div>
+
+            <div class="col" id="modal_login_form">
+                <h1>Login</h1>
+                <form action="/login" method="post">
+                    <label for="usrname">Username:</label><br>
+                    <input type="text" id="username" name="username" required>
+                    <br>
+                    <label for="password">Senha:</label><br>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <a href="/{{next}}"><button type="submit">Login</button></a>
+                </form>
+            </div>
+
+
         </div>
+
     </body>
     
 </html>

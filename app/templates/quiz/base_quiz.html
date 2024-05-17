@@ -44,7 +44,6 @@
             <div class="offcanvas-body">
                 <div class="indice">
                     <h5>Escolha por onde começar</h5>
-                    <a href = /quiz/{{continuar}}><button>continuar de onde eu parei</button></a>
                     <ol>
                         {% for key, value in perguntas.items() %}
                         {% if key != "result" %}
@@ -60,6 +59,9 @@
 
         <a href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
         <span class="header_link">
+            {% if current_user.is_authenticated %}
+            <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal_user"><img src="{{url_for('static', filename='images/person-circle.svg')}}"></a>
+            {%endif%}
             <a href="/pacer" alt="pacer">PACER</a>
             <a href="/avaliação" alt="avaliação">AVALIAÇÃO</a>
             <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
@@ -68,6 +70,32 @@
         </span>
         <hr class="header_hr">
     </header>
+
+
+            <!-- User Modal -->
+    <div class="modal" id="modal_user">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+    
+              <!-- Modal Header -->
+              <div class="modal-header">
+              <h4 class="modal-title" style="color:black">{{current_user.id}}</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+      
+              <!-- Modal body -->
+              <div class="modal-body container" style="color:black">
+                  <div class="row">
+                      <div class="col" id="modal_login_form">
+                          <a href = /quiz/{{continuar}}><button>continuar de onde eu parei</button></a>
+                          <a href="/logout"><button type="submit">Logout</button></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
 
     {% block head_image %} {% endblock %}
 

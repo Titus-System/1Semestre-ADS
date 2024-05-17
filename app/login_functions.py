@@ -44,12 +44,12 @@ def user_login():
                 return redirect (request.args.get('next'))
             else:
                 flash("Você está logado!", "Success")
-                return render_template("index.html", login_success = True)
+                return redirect("/")
         else:
             flash("Usuário não está cadastrado ou a senha está errada", "Error")
             return redirect ("/")
-    return redirect("/")
+    return render_template("login.html")
 
 
 def verify_login():
-    return 
+    return current_user.is_authenticated
