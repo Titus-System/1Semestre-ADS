@@ -1,4 +1,7 @@
-import sqlite3, bcrypt, json
+import sqlite3
+
+from bcrypt import hashpw, checkpw, gensalt
+from json import loads, dumps
 
 def initialize_database() -> bool:
     """
@@ -47,7 +50,7 @@ def signup(username: str, nome: str, password: str, mail: str) -> bool:
         cur = con.cursor()
         
         if not cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
-            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, hashpw(password.encode("utf-8"), gensalt())))
             con.commit()
             return True
         
@@ -78,7 +81,7 @@ def login(username: str, password: str) -> bool:
         
         if cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
             hashed_password, nome = cur.execute("SELECT password, nome FROM registro WHERE username=?", (username,)).fetchone()
-            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
+            if checkpw(password.encode("utf-8"), hashed_password):
                 return (True, nome)
             else:
                 return False
@@ -196,7 +199,7 @@ def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
     finally:
         con.close()
 
-def quiz_answers(answers: json, username: str) -> bool | object:
+def quiz_answers(answers: object, username: str) -> bool | object:
     '''
     Updates the quiz answers in the 'academico' table.
     If a username is provided it will instead return the data saved on said field
@@ -216,11 +219,11 @@ def quiz_answers(answers: json, username: str) -> bool | object:
         if username:
             data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
             if data:
-                return json.loads(data[0])
+                return loads(data[0])
             else:
                 return False
         else:
-            cur.execute("INSERT INTO academico (respostas) VALUES (?) WHERE username=?", (json.dumps(answers), username))
+            cur.execute("INSERT INTO academico (respostas) VALUES (?) WHERE username=?", (dumps(answers), username))
             con.commit()
             return True
     
