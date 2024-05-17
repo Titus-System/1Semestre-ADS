@@ -12,7 +12,7 @@ def initialize_database() -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) NOT NULL UNIQUE, password BLOB NOT NULL, PRIMARY KEY (username))")
+        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) UNIQUE, password BLOB NOT NULL, PRIMARY KEY (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         
