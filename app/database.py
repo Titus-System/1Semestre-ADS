@@ -28,7 +28,7 @@ def initialize_database() -> bool:
         return False
         
     finally:
-        con.close()
+        if con: con.close()
         
     
 def signup(username: str, nome: str, password: str, mail: str) -> bool:
@@ -61,7 +61,7 @@ def signup(username: str, nome: str, password: str, mail: str) -> bool:
         print("SQLite error:", e)
     
     finally:
-        con.close()
+        if con: con.close()
 
 def login(username: str, password: str) -> bool:
     """
@@ -92,7 +92,7 @@ def login(username: str, password: str) -> bool:
         print("SQLite error:", e)
  
     finally:
-        con.close()
+        if con: con.close()
 
 def insert_grade(username: str, nota_prova: int) -> bool:
     """
@@ -127,7 +127,7 @@ def insert_grade(username: str, nota_prova: int) -> bool:
         return False
     
     finally:
-        con.close()
+        if con: con.close()
         
 def insert_feedback(username: str, feedback: int, comment: str | None) -> bool:
     """
@@ -162,7 +162,7 @@ def insert_feedback(username: str, feedback: int, comment: str | None) -> bool:
         print("SQLite error:", e)
     
     finally:
-        con.close()
+        if con: con.close()
         
 def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
     """
@@ -197,7 +197,7 @@ def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
         return False
 
     finally:
-        con.close()
+        if con: con.close()
 
 def quiz_answers(answers: object, username: str) -> bool | object:
     '''
@@ -231,7 +231,7 @@ def quiz_answers(answers: object, username: str) -> bool | object:
         print("SQLite error:", e)
     
     finally:
-        con.close()
+        if con: con.close()
 
 def retrieve_data(table: str, columns: str | list[str], username: str) -> str | list[dict]:   
     try:
@@ -243,13 +243,13 @@ def retrieve_data(table: str, columns: str | list[str], username: str) -> str | 
             if data:
                 result = {col: val for col, val in zip(columns, data)}
             else:
-                result = ''
+                result = ""
         else:
             data = cur.execute(f"SELECT {columns} FROM {table} WHERE username=?", (username,)).fetchone()
             if data:
                 result = data[0]
             else:
-                result = ''
+                result = ""
 
         return result
 
@@ -257,4 +257,4 @@ def retrieve_data(table: str, columns: str | list[str], username: str) -> str | 
         print("SQLite error:", e)
        
     finally:
-        con.close()
+        if con: con.close()
