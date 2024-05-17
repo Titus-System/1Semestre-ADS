@@ -14,14 +14,15 @@ class User(UserMixin):
 def user_signup():
     if request.method == 'POST':
         username = request.form['username']
-        nome = request.form['nome']
+        nome = request.form['name']
+        email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         if password != confirm_password:
             flash("Senhas não batem!", "Error")
             return redirect("/signup")
         
-        if database.signup(username, nome, password):
+        if database.signup(username, nome, password, email):
             flash("registro realizado com sucesso!", "Success")
             return redirect("/login")
         else:
