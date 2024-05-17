@@ -12,7 +12,7 @@ def initialize_database() -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, password BLOB NOT NULL, PRIMARY KEY (username))")
+        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) NOT NULL UNIQUE, password BLOB NOT NULL, PRIMARY KEY (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         
@@ -28,7 +28,7 @@ def initialize_database() -> bool:
         con.close()
         
     
-def signup(username: str, nome: str, password: str) -> bool:
+def signup(username: str, nome: str, password: str, mail: str) -> bool:
     """
     Function Designed to veryfy if the guest already has an account on the site, once a unique username has been provided it will add that to the database.
     
@@ -36,6 +36,7 @@ def signup(username: str, nome: str, password: str) -> bool:
         username (str): The username of the employee.
         nome (str): The name of the employee
         password (str): The passowrd desired
+        mail (str): The email address of the employee
 
     Returns:
         bool: True if the account has been successfuly saved.
@@ -46,7 +47,7 @@ def signup(username: str, nome: str, password: str) -> bool:
         cur = con.cursor()
         
         if not cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
-            cur.execute("INSERT INTO registro VALUES (?, ?, ?)", (username, nome, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
             con.commit()
             return True
         
