@@ -82,14 +82,17 @@
                       <div class="col" id = modal_signup_form>
                           <h1>Signup</h1>
                           <form action="/signup" method="post">
-                              <label for="cpf">CPF:</label><br>
-                              <input type="text" id="cpf" name="cpf" required>
+                              <label for="username">Username:</label><br>
+                              <input type="text" id="username" name="username" required>
                               <br>
                               <label for="nome">Nome:</label><br>
                               <input type="text" id="nome" name="nome" required>
                               <br>
                               <label for="password">Senha:</label><br>
                               <input type="password" id="password" name="password" required>
+                              <br>
+                              <label for="confirm_password">Senha:</label><br>
+                              <input type="password" id="confirm_password" name="confirm_password" required>
                               <br>
                               <a href="/signup" ><button type="submit">Signup</button></a>
                           </form>
@@ -98,8 +101,8 @@
                       <div class="col" id="modal_login_form">
                           <h1>Login</h1>
                           <form action="/login" method="post">
-                              <label for="cpf">CPF:</label><br>
-                              <input type="text" id="cpf" name="cpf" required>
+                              <label for="usrname">Username:</label><br>
+                              <input type="text" id="username" name="username" required>
                               <br>
                               <label for="password">Senha:</label><br>
                               <input type="password" id="password" name="password" required>

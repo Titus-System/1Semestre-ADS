@@ -17,8 +17,8 @@ login_manager.login_view = "login"
 
 # Classe de Usuário
 class User(UserMixin):
-    def __init__(self, cpf):
-        self.id = cpf
+    def __init__(self, username):
+        self.id = username
 
     def get_id(self):
         return self.id
@@ -27,9 +27,9 @@ class User(UserMixin):
 # Carrega o usuário
 # Função para carregar usuário
 @login_manager.user_loader
-def load_user(cpf):
-    user = User(cpf)
-    user.id = cpf
+def load_user(username):
+    user = User(username)
+    user.id = username
     return user
 
 
@@ -106,9 +106,9 @@ def avaliacao():
         erros = len(perguntas) - 1 - acertos
         porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
-        cpf = login_functions.current_user.id
-        print(cpf, acertos)
-        database.insert_grade(cpf, acertos)
+        username = login_functions.current_user.id
+        print(username, acertos)
+        database.insert_grade(username, acertos)
 
         return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
 

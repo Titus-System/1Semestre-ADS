@@ -4,8 +4,8 @@ import database
 
 # Classe de Usuário
 class User(UserMixin):
-    def __init__(self, cpf):
-        self.id = cpf
+    def __init__(self, username):
+        self.id = username
 
     def get_id(self):
         return self.id
@@ -13,7 +13,7 @@ class User(UserMixin):
 
 def user_signup():
     if request.method == 'POST':
-        cpf = request.form['cpf']
+        username = request.form['username']
         nome = request.form['nome']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
@@ -21,7 +21,7 @@ def user_signup():
             flash("Senhas não batem!", "Error")
             return redirect("/signup")
         
-        if database.signup(cpf, nome, password):
+        if database.signup(username, nome, password):
             flash("registro realizado com sucesso!", "Success")
             return redirect("/login")
         else:
@@ -33,11 +33,11 @@ def user_signup():
 def user_login():
     if request.method == 'POST':
         
-        cpf = request.form['cpf']
+        username = request.form['username']
         password = request.form['password']
-        if database.login(cpf, password):
-            user = User(cpf, )
-            user.id = cpf
+        if database.login(username, password):
+            user = User(username, )
+            user.id = username
             login_user(user)
             if request.args.get('next'):
                 return redirect (request.args.get('next'))
