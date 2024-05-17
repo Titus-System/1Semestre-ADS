@@ -1,4 +1,7 @@
-import sqlite3, bcrypt
+import sqlite3
+
+from bcrypt import hashpw, checkpw, gensalt
+from json import loads, dumps
 
 def initialize_database() -> bool:
     """
@@ -13,7 +16,7 @@ def initialize_database() -> bool:
         cur = con.cursor()
         
         cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) UNIQUE, password BLOB NOT NULL, PRIMARY KEY (username))")
-        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
+        cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, respostas , username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         
         con.commit()
@@ -25,7 +28,7 @@ def initialize_database() -> bool:
         return False
         
     finally:
-        con.close()
+        if con: con.close()
         
     
 def signup(username: str, nome: str, password: str, mail: str) -> bool:
@@ -47,7 +50,7 @@ def signup(username: str, nome: str, password: str, mail: str) -> bool:
         cur = con.cursor()
         
         if not cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
-            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())))
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, hashpw(password.encode("utf-8"), gensalt())))
             con.commit()
             return True
         
@@ -58,7 +61,7 @@ def signup(username: str, nome: str, password: str, mail: str) -> bool:
         print("SQLite error:", e)
     
     finally:
-        con.close()
+        if con: con.close()
 
 def login(username: str, password: str) -> bool:
     """
@@ -77,8 +80,8 @@ def login(username: str, password: str) -> bool:
         cur = con.cursor()
         
         if cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
-            hashed_password, nome = cur.execute("SELECT password, nome FROM registro WHERE username=?", (username, )).fetchone()
-            if bcrypt.checkpw(password.encode("utf-8"), hashed_password):
+            hashed_password, nome = cur.execute("SELECT password, nome FROM registro WHERE username=?", (username,)).fetchone()
+            if checkpw(password.encode("utf-8"), hashed_password):
                 return (True, nome)
             else:
                 return False
@@ -89,7 +92,7 @@ def login(username: str, password: str) -> bool:
         print("SQLite error:", e)
  
     finally:
-        con.close()
+        if con: con.close()
 
 def insert_grade(username: str, nota_prova: int) -> bool:
     """
@@ -107,7 +110,7 @@ def insert_grade(username: str, nota_prova: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT username FROM registro WHERE username=?", (username, )).fetchone():
+        if cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
             if cur.execute("SELECT username FROM academico WHERE username=?", (username,)).fetchone():
                 cur.execute("UPDATE academico SET nota_prova=? WHERE username=?", (nota_prova, username))
                 con.commit()
@@ -124,7 +127,7 @@ def insert_grade(username: str, nota_prova: int) -> bool:
         return False
     
     finally:
-        con.close()
+        if con: con.close()
         
 def insert_feedback(username: str, feedback: int, comment: str | None) -> bool:
     """
@@ -143,8 +146,8 @@ def insert_feedback(username: str, feedback: int, comment: str | None) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT nota_prova FROM academico WHERE username=?", (username, )).fetchone():
-            if cur.execute("SELECT username FROM opiniao WHERE username=?", (username, )).fetchone():
+        if cur.execute("SELECT nota_prova FROM academico WHERE username=?", (username,)).fetchone():
+            if cur.execute("SELECT username FROM opiniao WHERE username=?", (username,)).fetchone():
                 cur.execute("UPDATE opiniao SET feedback=?, comment=? WHERE username=?", (feedback, comment, username))
                 con.commit()
                 return True
@@ -159,7 +162,7 @@ def insert_feedback(username: str, feedback: int, comment: str | None) -> bool:
         print("SQLite error:", e)
     
     finally:
-        con.close()
+        if con: con.close()
         
 def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
     """
@@ -177,7 +180,7 @@ def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        if cur.execute("SELECT username FROM registro WHERE username=?", (username, )).fetchone():
+        if cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
             if cur.execute("SELECT username FROM academico WHERE username=?", (username,)).fetchone():
                 cur.execute("UPDATE academico SET nota_quiz=?, posicao=? WHERE username=?", (nota_quiz, posicao, username))
                 con.commit()
@@ -194,51 +197,41 @@ def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
         return False
 
     finally:
-        con.close()
+        if con: con.close()
 
-#def retrieve_data(table: str, columns: str | list[str], username: str) -> str | list[dict]:
-    """
-    Retrieve data from the specified table in the database based on the provided username and columns.
-
-    Args:
-        table (str): The name of the table from which to retrieve data.
-        columns (Union[str, List[str]]): Either a single column name or a list of column names to retrieve.
-        username (str): The username of the employee whose data is to be retrieved.
-
-    Returns:
-        [str, list[dict]]: If a single column name is provided, returns a string representing the value of
-        the selected column for the specified username. If a list of column names is provided, returns a list of dictionaries,
-        where each dictionary represents a row of data for the specified username. If the username is not found in the registro table,
-        an empty string is returned. If an error occurs during database access, an empty string is returned.    
-    """
-#    try:
-#        con = sqlite3.connect("database.db")
-#        cur = con.cursor()
-        
-#        if isinstance(columns, list):
-#            columns_str = ", ".join(columns)
-#            query = f"SELECT {columns_str} FROM {table} WHERE username=?"
-#            cur.execute(query, (username,))
-#            data = cur.fetchall()
-            # Transformar o resultado em uma lista de dicionários
-#            result = []
-#            for row in data:
-#                row_dict = {}
-#                for idx, col in enumerate(columns):
-#                    row_dict[col] = row[idx]
-#                result.append(row_dict)
-#        else:
-#            cur.execute(f"SELECT {columns} FROM {table} WHERE username=?", (username,))
-#            data = cur.fetchone()
-#            result = data[0] if data else ""
-
-#       return result
+def quiz_answers(answers: object, username: str) -> bool | object:
+    '''
+    Updates the quiz answers in the 'academico' table.
+    If a username is provided it will instead return the data saved on said field
     
-#    except sqlite3.Error as e:
-#        print("SQLite error:", e)
+    Args:
+        answers: The loaded JSON file, no dumping is required.
+        username (str): The username of the employee. If you want the function to retrieve data.
         
-#    finally:
-#        con.close()
+    Returns:
+        bool: True if the quiz answers were successfully saved, False if they were not found in the database.
+        object: Returns the loaded JSON file on a python object if a username was provided for the query.
+    '''
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+    
+        if username:
+            data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
+            if data:
+                return loads(data[0])
+            else:
+                return False
+        else:
+            cur.execute("INSERT INTO academico (respostas) VALUES (?) WHERE username=?", (dumps(answers), username))
+            con.commit()
+            return True
+    
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    
+    finally:
+        if con: con.close()
 
 def retrieve_data(table: str, columns: str | list[str], username: str) -> str | list[dict]:   
     try:
@@ -250,13 +243,13 @@ def retrieve_data(table: str, columns: str | list[str], username: str) -> str | 
             if data:
                 result = {col: val for col, val in zip(columns, data)}
             else:
-                result = ''
+                result = ""
         else:
             data = cur.execute(f"SELECT {columns} FROM {table} WHERE username=?", (username,)).fetchone()
             if data:
                 result = data[0]
             else:
-                result = ''
+                result = ""
 
         return result
 
@@ -264,4 +257,4 @@ def retrieve_data(table: str, columns: str | list[str], username: str) -> str | 
         print("SQLite error:", e)
        
     finally:
-        con.close()
+        if con: con.close()
