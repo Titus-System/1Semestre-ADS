@@ -79,9 +79,10 @@ def quiz_resultado_parcial(numero_pagina):
     erros = len(respostas) - acertos
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
-    cpf = login_functions.current_user.id
-    database.save_quiz_state(cpf, acertos, numero_pagina)
-    print(cpf)
+    username = login_functions.current_user.id
+    database.save_quiz_state(username, acertos, numero_pagina)
+    database.save_quiz_answers(respostas, username)
+    print(username)
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
 
 

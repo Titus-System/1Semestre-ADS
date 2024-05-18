@@ -199,7 +199,42 @@ def save_quiz_state(username: str, nota_quiz: int, posicao: int) -> bool:
     finally:
         if con: con.close()
 
-def quiz_answers(answers: object, username: str) -> bool | object:
+# def quiz_answers(answers: object, username: str) -> bool | object:
+#     '''
+#     Updates the quiz answers in the 'academico' table.
+#     If a username is provided it will instead return the data saved on said field
+    
+#     Args:
+#         answers: The loaded JSON file, no dumping is required.
+#         username (str): The username of the employee. If you want the function to retrieve data.
+        
+#     Returns:
+#         bool: True if the quiz answers were successfully saved, False if they were not found in the database.
+#         object: Returns the loaded JSON file on a python object if a username was provided for the query.
+#     '''
+#     try:
+#         con = sqlite3.connect("database.db")
+#         cur = con.cursor()
+    
+#         if username:
+#             data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
+#             if data:
+#                 return loads(data[0])
+#             else:
+#                 return False
+#         else:
+#             cur.execute("INSERT INTO academico (respostas) VALUES (?) WHERE username=?", (dumps(answers), username))
+#             con.commit()
+#             return True
+    
+#     except sqlite3.Error as e:
+#         print("SQLite error:", e)
+    
+#     finally:
+#         if con: con.close()
+
+
+def save_quiz_answers(answers: object, username: str) -> bool | object:
     '''
     Updates the quiz answers in the 'academico' table.
     If a username is provided it will instead return the data saved on said field
@@ -216,22 +251,38 @@ def quiz_answers(answers: object, username: str) -> bool | object:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
     
-        if username:
-            data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
-            if data:
-                return loads(data[0])
-            else:
-                return False
+        if cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone():
+            cur.execute("UPDATE academico SET respostas=? WHERE username=?", (dumps(answers), username))
         else:
-            cur.execute("INSERT INTO academico (respostas) VALUES (?) WHERE username=?", (dumps(answers), username))
-            con.commit()
-            return True
+            cur.execute("INSERT INTO academico (respostas, username) VALUES (?, ?)", (dumps(answers), username))
+        con.commit()
+        return True
     
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        return False
     
     finally:
         if con: con.close()
+
+
+def retrieve_quiz_answers(username: str):
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+
+        data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
+        if data:
+            return loads(data[0])
+        else:
+            return False
+
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+
+    finally:
+        if con: con.close()
+
 
 def retrieve_data(table: str, columns: str | list[str], username: str) -> str | list[dict]:   
     try:
