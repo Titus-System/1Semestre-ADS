@@ -82,7 +82,7 @@ def iniciar():
 @login_required
 def quiz_page(name=str):
     if name == "final":
-        return redirect("/quiz/iniciar")
+        return redirect("/quiz/quiz_resultado")
     return quiz_functions.quiz_page(name)
 
 
