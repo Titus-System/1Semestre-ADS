@@ -1,0 +1,40 @@
+{% extends "base_teoria.html" %}
+
+{% block content %}
+<h1>Página de administrador</h1>
+<h4>O que as pessoas acham do curso:</h4>
+<p>Aqui mostramos a media do feedback dos usuarios</p>
+<h4>Aproveitamento dos usuarios:</h4>
+<p>Aqui mostramos a media das notas do quiz</p>
+<p>Aqui mostramos a media das notas da prova</p>
+<h4>Relação usuario , nota e feedback</h4>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome do usuario</th>
+        <th scope="col">Rendimento no curso</th>
+        <th scope="col">Nota da prova</th>
+        <th scope="col">Feedback</th>
+        <th scope="col">Comentário</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in range(10) %}
+      <tr>
+        <th scope="row">Nome {{i}}</th>
+        <td>56%</td>
+        <td>7</td>
+        <td>5</td>
+        <td>Muito bom o curso! Gostei muito!</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div>
+    <h4>Gráfico de barras</h4>
+    <p>eixo x: nota do feedback | eixo y: número de pessoas</p>
+    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras">
+</div>
+
+{% endblock %}
