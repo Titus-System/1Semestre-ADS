@@ -48,7 +48,7 @@
       />
       <ul class="navbar-list">
         {% if user_logged_in %}
-        <li class="navbar-item"><a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal_user"><img src="{{url_for('static', filename='images/person-circle.svg')}}"></a></li></li>
+        <li class="navbar-item"><a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user">Meu perfil</a></li>
         {% else %}
         <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
         <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
@@ -93,8 +93,10 @@
                               <br>
                               <label for="password">Senha:</label><br>
                               <input type="password" id="password" name="password" required>
-                              <br>
-                              <a><button type="submit">Login</button></a>
+                              <br><br>
+                              <div class="modal-footer">
+                                <a><button class="btn btn-light" type="submit">Login</button></a>
+                              </div>
                           </form>
                       </div>
                   </div>
@@ -133,10 +135,12 @@
                                   <label for="password">Senha:</label><br>
                                   <input type="password" id="password" name="password" required>
                                   <br>
-                                  <label for="confirm_password">Senha:</label><br>
+                                  <label for="confirm_password">Confirme sua senha:</label><br>
                                   <input type="password" id="confirm_password" name="confirm_password" required>
-                                  <br>
-                                  <a href="/signup" ><button type="submit">Signup</button></a>
+                                  <br><br>
+                                  <div class="modal-footer">
+                                    <a href="/signup" ><button class="btn btn-light" type="submit">Signup</button></a>
+                                  </div>
                               </form>
                           </div>
                       </div>
@@ -147,7 +151,7 @@
 
 
 
-{% if user_logged_in %}
+{% if current_user.is_authenticated %}
             <!-- User Modal -->
     <div class="modal" id="modal_user">
       <div class="modal-dialog modal-dialog-centered">
@@ -161,14 +165,14 @@
       
               <!-- Modal body -->
               <div class="modal-body container" style="color:black">
-                  <div class="row">
-                      <div class="col" id="modal_user_links">
-                          {% if is_admin %}<a href="/admin"><buton class="btn btn-primary">Acessar página de administrador</buton></a>{% endif %}
-                          <a href = /quiz/{{continuar}}><button>continuar de onde eu parei</button></a>
-                          <a href = /quiz/quiz_resultado><button>conferir meus resultados</button></a>
-                          <a href="/logout"><button type="submit">Logout</button></a>
-                      </div>
+                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary">Acessar página de administrador</buton></a>{% endif %}<br>
+                    <a href = "/quiz/{{continuar}}"><button class="btn btn-light">continuar de onde eu parei</button></a><br>
+                    <a href = "/quiz/quiz_resultado"><button class="btn btn-light">conferir meus resultados</button></a><br>
                   </div>
+                  
+              <!-- Modal Footer -->
+              <div class="modal-footer">
+                <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
               </div>
           </div>
       </div>

@@ -35,19 +35,19 @@ def load_user(username):
 
 @app.route("/", methods=["POST", "GET"])
 def home():
+    is_admin = False
+
     try:
         user_logged_in = current_user.is_authenticated
         print(user_logged_in)
+        if login_functions.is_admin(current_user.id):
+            is_admin = True
     except AttributeError:
         user_logged_in = False
 
     try:
         posicao = quiz_functions.continue_quiz()
     except AttributeError: posicao = "iniciar"
-
-    if login_functions.is_admin(current_user.id):
-        is_admin = True
-    else: is_Admin = False
 
     return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao)
 
