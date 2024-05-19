@@ -15,7 +15,7 @@ def initialize_database() -> bool:
         con = sqlite3.connect("database.db")
         cur = con.cursor()
         
-        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) UNIQUE, password BLOB NOT NULL, PRIMARY KEY (username))")
+        cur.execute("CREATE TABLE IF NOT EXISTS registro ( username VARCHAR(11) NOT NULL UNIQUE, nome VARCHAR(225) NOT NULL, mail VARCHAR(20) UNIQUE, password BLOB NOT NULL, is_admin BOOLEAN NOT NULL DEFAULT 0, PRIMARY KEY (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS academico ( id INT NULL UNIQUE, nota_prova INT, nota_quiz INT, posicao INT, respostas , username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         cur.execute("CREATE TABLE IF NOT EXISTS opiniao ( id INT NULL UNIQUE, feedback INT, comment VARCHAR(225), date TIMESTAMP DEFAULT CURRENT_DATE, username VARCHAR(11) NOT NULL UNIQUE, PRIMARY KEY (id), FOREIGN KEY (username) REFERENCES registro (username))")
         
@@ -31,7 +31,7 @@ def initialize_database() -> bool:
         if con: con.close()
         
     
-def signup(username: str, nome: str, password: str, mail: str) -> bool:
+def signup(username: str, nome: str, password: str, mail: str, is_admin) -> bool:
     """
     Function Designed to veryfy if the guest already has an account on the site, once a unique username has been provided it will add that to the database.
     
@@ -50,7 +50,7 @@ def signup(username: str, nome: str, password: str, mail: str) -> bool:
         cur = con.cursor()
         
         if not cur.execute("SELECT username FROM registro WHERE username=?", (username,)).fetchone():
-            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?)", (username, nome, mail, hashpw(password.encode("utf-8"), gensalt())))
+            cur.execute("INSERT INTO registro VALUES (?, ?, ?, ?, ?)", (username, nome, mail, hashpw(password.encode("utf-8"), gensalt()), is_admin))
             con.commit()
             return True
         

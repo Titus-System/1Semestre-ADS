@@ -86,7 +86,7 @@
               <!-- Modal body -->
               <div class="modal-body container">
                   <div class="row">
-                      <div class="col" id="modal_login_form">
+                      <div id="modal_login_form">
                           <form action="/login" method="post">
                               <label for="username">Username:</label><br>
                               <input type="text" id="username" name="username" required>
@@ -138,7 +138,7 @@
                                   <br>
                                   <a href="/signup" ><button type="submit">Signup</button></a>
                               </form>
-                              </div>
+                          </div>
                       </div>
                   </div>
               </div>
@@ -162,7 +162,8 @@
               <!-- Modal body -->
               <div class="modal-body container" style="color:black">
                   <div class="row">
-                      <div class="col" id="modal_login_form">
+                      <div class="col" id="modal_user_links">
+                          {% if is_admin %}<a href="/admin"><buton class="btn btn-primary">Acessar página de administrador</buton></a>{% endif %}
                           <a href = /quiz/{{continuar}}><button>continuar de onde eu parei</button></a>
                           <a href = /quiz/quiz_resultado><button>conferir meus resultados</button></a>
                           <a href="/logout"><button type="submit">Logout</button></a>

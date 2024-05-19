@@ -45,7 +45,11 @@ def home():
         posicao = quiz_functions.continue_quiz()
     except AttributeError: posicao = "iniciar"
 
-    return render_template ("index.html", user_logged_in = user_logged_in, continuar = posicao)
+    if login_functions.is_admin(current_user.id):
+        is_admin = True
+    else: is_Admin = False
+
+    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao)
 
 
 @app.route("/<name>")
@@ -190,8 +194,16 @@ def login():
 def logout():
     logout_user()
     session.clear()
-    flash("Você não está logado")
     return redirect("/")
+
+
+@app.route("/admin")
+@login_required
+def admin():
+    if login_functions.is_admin(login_functions.current_user.id):
+        return render_template("admin.html", is_admin=True)
+    flash("É necessário ser administrador para acessar essa página!")
+    return redirect("/login")
 
 
 if __name__ == "__main__":
