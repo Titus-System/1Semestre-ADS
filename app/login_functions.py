@@ -1,7 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import database
-from functools import wraps
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import io
+import base64
+import numpy
 
 # Classe de Usuário
 class User(UserMixin):
@@ -62,3 +67,26 @@ def verify_login():
 
 def is_admin(username):
     return database.retrieve_data("registro", "is_admin", username) == 1
+
+
+def graph(eixo_x, eixo_y):
+    # Criação dos eixos
+    x = numpy.array(eixo_x)
+    y = numpy.array(eixo_y)
+
+    # Criação do gráfico
+    fig, ax = plt.subplots()
+    ax.bar(x, y)
+
+    # Salvar o gráfico em um buffer
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+    buf.close()
+
+    # Fechar a figura para liberar a memória
+    plt.close(fig)
+
+    # Retorna a imagem codificada
+    return image_base64

@@ -13,6 +13,8 @@ def quiz_page(name=str):
     proxima_pagina = "#"
     pagina_anterior = "#"
 
+    is_admin = login_functions.is_admin(login_functions.current_user.id)
+
     if continue_quiz() == None:
         print("sem quiz")
         posicao = "iniciar"
@@ -43,17 +45,18 @@ def quiz_page(name=str):
         
         return redirect (f"/quiz/{proxima_pagina}")
     
-    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas, continuar=posicao)
+    return render_template(f"/quiz/{page}.html", questao = questao, num_quest=num_quest, proxima = proxima_pagina, anterior = pagina_anterior, pagina_atual=pagina_atual, paginas=arquivos.apostila_paginas, perguntas=perguntas, continuar=posicao, is_admin =is_admin)
 
 
 #função para salvar as respostas do usuário
 def salvar_respostas(num_quest, proxima_pagina):
+    is_admin = login_functions.is_admin(login_functions.current_user.id)
     try:
         session[f"resposta{num_quest}"] = request.form[f"resposta{num_quest}"]
     except KeyError:
         session[f"resposta{num_quest}"] = ""
         
-    return render_template (f"/quiz/{proxima_pagina}.html")
+    return render_template (f"/quiz/{proxima_pagina}.html", is_admin=is_admin)
 
 
 def quiz_resultado_parcial(numero_pagina):
@@ -62,6 +65,7 @@ def quiz_resultado_parcial(numero_pagina):
     questoes_erradas = {}
     correcao = arquivos.erro_assunto
     respostas = {}
+    is_admin = login_functions.is_admin(login_functions.current_user.id)
 
     respostas = dict(map(lambda key: (key, session[key]), filter(lambda key: key.startswith("resposta"), session)))
     print(session)
@@ -83,7 +87,7 @@ def quiz_resultado_parcial(numero_pagina):
     database.save_quiz_state(username, acertos, numero_pagina)
     database.save_quiz_answers(respostas, username)
     print(username)
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin)
 
 
 def quiz_resultado_final():
@@ -93,6 +97,7 @@ def quiz_resultado_final():
     correcao = arquivos.erro_assunto
     
     username = login_functions.current_user.id
+    is_admin = login_functions.is_admin(username)
     
     respostas_anteriores = database.retrieve_quiz_answers(username)
     respostas_sessao = dict(map(lambda key: (key, session[key]), filter(lambda key: key.startswith("resposta"), session)))
@@ -121,7 +126,7 @@ def quiz_resultado_final():
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
     database.save_quiz_state(username, acertos, "final")
 
-    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas)
+    return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin)
 
 
 def continue_quiz():
