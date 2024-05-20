@@ -222,10 +222,39 @@ def logout():
 
 @app.route("/admin")
 @login_required
-def admin():
+def admin_page():
+
+    def media(column):
+        soma = 0
+        qtd = 0
+        if len(column) < 1:
+            return "Ainda não há registros"
+        
+        for i in column:
+            if type(i) == int:
+                soma += i
+                qtd += 1
+        return soma/qtd
+
     if login_functions.is_admin(login_functions.current_user.id):
-        graph = login_functions.graph([1, 2, 3, 4, 5], [2, 12, 23, 30, 24])
-        return render_template("admin.html", is_admin=True, graph = graph)
+        notas_prova = database.retrieve_column("academico", "nota_prova")
+        notas_quiz = database.retrieve_column("academico", "nota_quiz")
+        feedbacks = database.retrieve_column("opiniao", "feedback")
+
+        media_prova = media(notas_prova)
+        media_quiz = media(notas_quiz)
+        media_feedback = media(feedbacks)
+
+        feedback_distribution = []
+        for i in range(1, 6):
+            feedback_distribution.append(feedbacks.count(i))
+
+        graph = login_functions.graph([1, 2, 3, 4, 5], feedback_distribution)
+
+        user_data = database.get_user_info()
+
+        return render_template("admin.html", is_admin=True,media_feedback=media_feedback, media_prova=media_prova, media_quiz=media_quiz, graph = graph, user_data=user_data)
+    
     flash("É necessário ser administrador para acessar essa página!")
     return redirect("/login")
 

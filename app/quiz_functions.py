@@ -101,8 +101,8 @@ def quiz_resultado_final():
     
     respostas_anteriores = database.retrieve_quiz_answers(username)
     respostas_sessao = dict(map(lambda key: (key, session[key]), filter(lambda key: key.startswith("resposta"), session)))
-    
-    if respostas_anteriores != None:
+
+    if respostas_anteriores:
         respostas_anteriores.update(respostas_sessao)
         respostas = respostas_anteriores
     else:

@@ -90,3 +90,5 @@ def graph(eixo_x, eixo_y):
 
     # Retorna a imagem codificada
     return image_base64
+
+
