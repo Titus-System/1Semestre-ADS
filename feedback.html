@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Feedback</title>
+    
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+    </head>
+    <body class="body_feed">
+        <div class="form-container">
+            <h1 class="h1_feed">Feedback</h1>
+            <form id="evaluation-form">
+                <label for="rating">De 1 a 5, o que você achou do curso Mestre Ágil?</label>
+                <div class="rating">
+                    <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
+                    <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
+                    <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
+                    <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
+                    <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
+                </div>
+                <label for="suggestion">Gostaria de nos deixar uma sugestão? Escreva no espaço abaixo:</label>
+                <textarea id="suggestion" name="suggestion" rows="4" placeholder="Sua sugestão..."></textarea>
+                <button type="button" onclick="submitForm()">Enviar Feedback</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </body>
+    </html>
