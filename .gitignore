@@ -4,3 +4,4 @@ env/
 __pycache__/
 database.db
 teste.py
+nome.txt

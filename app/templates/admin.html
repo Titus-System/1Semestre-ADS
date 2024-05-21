@@ -1,4 +1,4 @@
-{% extends "base_teoria.html" %}
+{% extends "/pacer/base_pacer.html" %}
 
 {% block script %}
          <!-- DataTables CSS from CDN -->
@@ -28,7 +28,7 @@
 </div>
 <br>
 <h4>Relação usuario , nota e feedback</h4>
-<table class="table table-striped" id="example">
+<table class="table table-striped" id="user_table">
     <thead>
       <tr>
         <th scope="col">Usuário</th>
@@ -66,7 +66,8 @@
 <!-- Initialize DataTables -->
 <script>
   $(document).ready( function () {
-      $('#example').DataTable();
+      $('#user_table').DataTable();
   } );
   </script>
+
 {% endblock %}
