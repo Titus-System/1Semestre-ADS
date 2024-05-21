@@ -309,3 +309,57 @@ def retrieve_data(table: str, columns: str | list[str], username: str) -> str | 
        
     finally:
         if con: con.close()
+
+
+def retrieve_column(table, column):
+    #function returns a list with all values of a single column
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+            
+        fetch = cur.execute(f"SELECT {column} FROM {table}").fetchall()
+        
+        if fetch == []:
+            return fetch
+        
+        return [i[0] for i in fetch if i != None]
+
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+
+    finally:
+        con.close()
+
+
+def get_user_info():
+    try:
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        
+        query = """
+        SELECT 
+            registro.username, 
+            academico.nota_prova, 
+            academico.nota_quiz,  
+            opiniao.feedback, 
+            opiniao.comment
+        FROM registro
+        LEFT JOIN academico ON registro.username = academico.username
+        LEFT JOIN opiniao ON registro.username = opiniao.username
+        """
+        
+        result = cur.execute(query).fetchall()
+        
+        user_info = {}
+        for row in result:
+            username = row[0]
+            attributes = list(row[1:])
+            user_info[username] = attributes
+        
+        return user_info
+    
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+        return None
+    finally:
+        con.close()

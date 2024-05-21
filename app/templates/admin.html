@@ -1,25 +1,45 @@
-{% extends "base_teoria.html" %}
+{% extends "/pacer/base_pacer.html" %}
+
+{% block script %}
+         <!-- DataTables CSS from CDN -->
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+         <!-- jQuery from CDN -->
+         <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+         <!-- DataTables JS from CDN -->
+         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+{% endblock %}
 
 {% block content %}
+<div class="box_teoria_pacer">
 <h1>Página de administrador</h1>
-<h4>O que as pessoas acham do curso:</h4>
-<p>Aqui mostramos a media do feedback dos usuarios</p>
-<h4>Aproveitamento dos usuarios:</h4>
-<p>Aqui mostramos a media das notas do quiz</p>
-<p>Aqui mostramos a media das notas da prova</p>
+<div>
+  <h4>O que as pessoas acham do curso:</h4>
+  <p>Média das notas do feedback: <strong>{{media_feedback}} / 5</strong></p>
+  <figure>
+    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras">
+    <figcaption>eixo x: nota do feedback | eixo y: número de pessoas</figcaption>
+  </figure>
+</div>
+<br>
+<div>
+  <h4>Aproveitamento dos usuarios:</h4>
+  <p>Média das notas do quiz: <strong>{{media_quiz}}</strong></p>
+  <p>Média das notas da prova: <strong>{{media_prova}}</strong></p>
+</div>
+<br>
 <h4>Relação usuario , nota e feedback</h4>
-<table class="table table-striped">
+<table class="table table-striped" id="user_table">
     <thead>
       <tr>
-        <th scope="col">Nome do usuario</th>
-        <th scope="col">Rendimento no curso</th>
-        <th scope="col">Nota da prova</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Quiz</th>
+        <th scope="col">Prova</th>
         <th scope="col">Feedback</th>
         <th scope="col">Comentário</th>
       </tr>
     </thead>
-    <tbody>
-        {% for i in range(10) %}
+    <!-- <tbody>
+        {% for i in range(5) %}
       <tr>
         <th scope="row">Nome {{i}}</th>
         <td>56%</td>
@@ -28,13 +48,26 @@
         <td>Muito bom o curso! Gostei muito!</td>
       </tr>
       {% endfor %}
+    </tbody> -->
+    <tbody>
+      {% for key, value in user_data.items() %}
+      <tr>
+        <th scope="row">{{key}}</th>
+        <td>{{value[1]}}</td>
+        <td>{{value[0]}}</td>
+        <td>{{value[2]}}</td>
+        <td>{{value[3]}} Lorem ipsum, dolor sit amet consectetur adipisicing elit.</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
-
-  <div>
-    <h4>Gráfico de barras</h4>
-    <p>eixo x: nota do feedback | eixo y: número de pessoas</p>
-    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras">
 </div>
+
+<!-- Initialize DataTables -->
+<script>
+  $(document).ready( function () {
+      $('#user_table').DataTable();
+  } );
+  </script>
 
 {% endblock %}

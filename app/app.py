@@ -223,11 +223,7 @@ def logout():
 @app.route("/admin")
 @login_required
 def admin():
-    if login_functions.is_admin(login_functions.current_user.id):
-        graph = login_functions.graph([1, 2, 3, 4, 5], [2, 12, 23, 30, 24])
-        return render_template("admin.html", is_admin=True, graph = graph)
-    flash("É necessário ser administrador para acessar essa página!")
-    return redirect("/login")
+    return login_functions.admin_page()
 
 
 if __name__ == "__main__":
