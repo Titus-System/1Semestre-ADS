@@ -226,5 +226,10 @@ def admin():
     return login_functions.admin_page()
 
 
+@app.route('/feedback')
+def feedback():
+    return render_template ("/feedback/feedback.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
