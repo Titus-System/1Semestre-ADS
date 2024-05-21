@@ -605,3 +605,16 @@ margin: auto;}
     bottom:20px; 
     right:20px;
    }
+
+
+/* login page style */
+   .body_login{
+    background-color: #e0e5e8;
+    width: 100%;
+    font-family:'Ruda', 'Helvetica';
+   }
+
+   .login_content{
+    max-width:fit-content;
+    margin:auto
+   }

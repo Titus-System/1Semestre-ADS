@@ -39,7 +39,12 @@
         alt="Logo"
       />
       <ul class="navbar-list">
-        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Login</a></li>
+        {% if user_logged_in %}
+        <li class="navbar-item"><a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user">Meu perfil</a></li>
+        {% else %}
+        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
+        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+        {%endif%}
         <li class="navbar-item"><a href="/pacer">PACER</a></li>
         <li class="navbar-item"><a href="/avaliacao">Avaliação</a></li>
         <li class="navbar-item"><a href="/ferramentas">Ferramentas</a></li>
@@ -47,6 +52,8 @@
         <li class="navbar-item"><a href="/quiz">Quiz</a></li>
       </ul>
     </div>
+
+
     <div class="index-cover">
       <img src="{{url_for('static', filename='images/capa.png')}}" alt="Capa" />
       <div>
@@ -57,10 +64,10 @@
     </div>
 
 
-    <!-- The Modal -->
+    <!-- Login Modal -->
     <div class="modal" id="modal_login">
       <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+          <div class="modal-content bg-dark">
     
               <!-- Modal Header -->
               <div class="modal-header">
@@ -69,34 +76,19 @@
               </div>
       
               <!-- Modal body -->
-              <div class="modal-body container" style="color:black">
+              <div class="modal-body container">
                   <div class="row">
-                      <div class="col" id = modal_signup_form>
-                          <h1>Signup</h1>
-                          <form action="/signup" method="post">
-                              <label for="cpf">CPF:</label><br>
-                              <input type="text" id="cpf" name="cpf" required>
-                              <br>
-                              <label for="nome">Nome:</label><br>
-                              <input type="text" id="nome" name="nome" required>
-                              <br>
-                              <label for="password">Senha:</label><br>
-                              <input type="password" id="password" name="password" required>
-                              <br>
-                              <a href="/signup" ><button type="submit">Signup</button></a>
-                          </form>
-                          </div>
-
-                      <div class="col" id="modal_login_form">
-                          <h1>Login</h1>
+                      <div id="modal_login_form">
                           <form action="/login" method="post">
-                              <label for="cpf">CPF:</label><br>
-                              <input type="text" id="cpf" name="cpf" required>
+                              <label for="username">Username:</label><br>
+                              <input type="text" id="username" name="username" required>
                               <br>
                               <label for="password">Senha:</label><br>
                               <input type="password" id="password" name="password" required>
-                              <br>
-                              <a href="/login"><button type="submit">Login</button></a>
+                              <br><br>
+                              <div class="modal-footer">
+                                <a><button class="btn btn-light" type="submit">Login</button></a>
+                              </div>
                           </form>
                       </div>
                   </div>
@@ -152,6 +144,151 @@
        
     
 
+
+        <!-- signup Modal -->
+        <div class="modal" id="modal_signup">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content bg-dark">
+        
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                  <h4 class="modal-title">Faça seu cadastro</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+          
+                  <!-- Modal body -->
+                  <div class="modal-body container">
+                      <div class="row">
+                          <div class="col" id = modal_signup_form>
+                              <form action="/signup" method="post">
+                                  <label for="username">Username:</label><br>
+                                  <input type="text" id="username" name="username" required>
+                                  <br>
+                                  <label for="name">Nome:</label><br>
+                                  <input type="text" id="name" name="name" required>
+                                  <br>
+                                  <label for="email">e-mail:</label><br>
+                                  <input type="email" id="email" name="email" required>
+                                  <br>
+                                  <label for="password">Senha:</label><br>
+                                  <input type="password" id="password" name="password" required>
+                                  <br>
+                                  <label for="confirm_password">Confirme sua senha:</label><br>
+                                  <input type="password" id="confirm_password" name="confirm_password" required>
+                                  <br><br>
+                                  <div class="modal-footer">
+                                    <a href="/signup" ><button class="btn btn-light" type="submit">Signup</button></a>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+
+{% if current_user.is_authenticated %}
+            <!-- User Modal -->
+    <div class="modal" id="modal_user">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+    
+              <!-- Modal Header -->
+              <div class="modal-header">
+              <h4 class="modal-title" style="color:black">{{current_user.id}}</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+      
+              <!-- Modal body -->
+              <div class="modal-body container" style="color:black">
+                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary">Acessar página de administrador</buton></a>{% endif %}<br>
+                    <a href = "/quiz/{{continuar}}"><button class="btn btn-light">continuar de onde eu parei</button></a><br>
+                    <a href = "/quiz/quiz_resultado"><button class="btn btn-light">conferir meus resultados</button></a><br>
+                  </div>
+                  
+              <!-- Modal Footer -->
+              <div class="modal-footer">
+                <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
+              </div>
+          </div>
+      </div>
+    </div>
+{% endif %}
+
+
+
+
+
+    <div class="index-guide">
+      <img
+        src="{{url_for('static', filename='images/board_1.png')}}"
+        alt="Guia"
+      />
+      <div class="index-guide-text">
+        <h2>Guia Completo</h2>
+        <h3>Subheading for description or instructions</h3>
+        <p>
+          Body text for your whole article or post. We'll put in some lorem
+          ipsum to show how a filled-out page might look:
+        </p>
+        <p>
+          Excepteur efficient emerging, minim veniam anim aute carefully curated
+          Ginza conversation exquisite perfect nostrud nisi intricate Content.
+          Qui international first-class nulla ut. Punctual adipisicing,
+          essential lovely queen tempor eiusmod irure. Exclusive izakaya
+          charming Scandinavian impeccable aute quality of life soft power
+          pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et
+          Porter destination Toto remarkable officia Helsinki excepteur Basset
+          hound. Zürich sleepy perfect consectetur.
+        </p>
+      </div>
+    </div>
+    <div class="index-quiz">
+      <img
+        src="{{url_for('static', filename='images/reuniao_2.png')}}"
+        alt="Quiz"
+      />
+      <h2>Quiz</h2>
+      <h3>Subheading for description or instructions</h3>
+      <p>
+        Body text for your whole article or post. We'll put in some lorem ipsum
+        to show how a filled-out page might look:
+      </p>
+      <p>
+        Excepteur efficient emerging, minim veniam anim aute carefully curated
+        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
+        international first-class nulla ut. Punctual adipisicing, essential
+        lovely queen tempor eiusmod irure. Exclusive izakaya charming
+        Scandinavian impeccable aute quality of life soft power pariatur
+        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
+        destination Toto remarkable officia Helsinki excepteur Basset hound.
+        Zürich sleepy perfect consectetur.
+      </p>
+    </div>
+    <div class="index-tools">
+      <img
+        src="{{url_for('static', filename='images/icones.png')}}"
+        alt="Ferramentas"
+      />
+      <h2>Ferramentas</h2>
+      <h3>Subheading for description or instructions</h3>
+      <p>
+        Body text for your whole article or post. We'll put in some lorem ipsum
+        to show how a filled-out page might look:
+      </p>
+      <p>
+        Excepteur efficient emerging, minim veniam anim aute carefully curated
+        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
+        international first-class nulla ut. Punctual adipisicing, essential
+        lovely queen tempor eiusmod irure. Exclusive izakaya charming
+        Scandinavian impeccable aute quality of life soft power pariatur
+        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
+        destination Toto remarkable officia Helsinki excepteur Basset hound.
+        Zürich sleepy perfect consectetur.
+      </p>
+    </div>
   </body>
   
 </html>

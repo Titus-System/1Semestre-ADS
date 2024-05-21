@@ -17,8 +17,8 @@ login_manager.login_view = "login"
 
 # Classe de Usuário
 class User(UserMixin):
-    def __init__(self, cpf):
-        self.id = cpf
+    def __init__(self, username):
+        self.id = username
 
     def get_id(self):
         return self.id
@@ -27,15 +27,29 @@ class User(UserMixin):
 # Carrega o usuário
 # Função para carregar usuário
 @login_manager.user_loader
-def load_user(cpf):
-    user = User(cpf)
-    user.id = cpf
+def load_user(username):
+    user = User(username)
+    user.id = username
     return user
 
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def home():
-    return render_template ("index.html")
+    is_admin = False
+
+    try:
+        user_logged_in = current_user.is_authenticated
+        print(user_logged_in)
+        if login_functions.is_admin(current_user.id):
+            is_admin = True
+    except AttributeError:
+        user_logged_in = False
+
+    try:
+        posicao = quiz_functions.continue_quiz()
+    except AttributeError: posicao = "iniciar"
+
+    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao)
 
 
 @app.route("/<name>")
@@ -53,13 +67,26 @@ def get_page(name):
 
 @app.route("/ferramentas/<name>")
 def ferramentas(name):
-    return render_template(f"/ferramentas/{name}.html")
+    try:
+        is_admin = login_functions.is_admin(login_functions.current_user.id)
+    except AttributeError:
+        is_admin = False
+    return render_template(f"/ferramentas/{name}.html", is_admin = is_admin)
 
 
 @app.route("/apostila/<name>")
 def find_apostila(name):
-    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas)
+    try:
+        is_admin = login_functions.is_admin(login_functions.current_user.id)
+    except AttributeError:
+        is_admin = False
+    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas, is_admin=is_admin)
 
+
+@app.route("/quiz/")
+@login_required
+def iniciar():
+    return redirect("/quiz/iniciar")
 
 #routes to find the quiz pages (concepts and questions)
 #user must be logged in to access
@@ -67,7 +94,7 @@ def find_apostila(name):
 @login_required
 def quiz_page(name=str):
     if name == "final":
-        return redirect("/quiz/iniciar")
+        return redirect("/quiz/quiz_resultado")
     return quiz_functions.quiz_page(name)
 
 
@@ -90,6 +117,11 @@ def avaliacao():
     correcao = arquivos.erro_assunto
     questoes_erradas = {}
 
+    is_admin = login_functions.is_admin(login_functions.current_user.id)
+
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz()
+
     if request.method == "POST":
         respostas_prova = {}
         acertos = 0
@@ -106,36 +138,49 @@ def avaliacao():
         erros = len(perguntas) - 1 - acertos
         porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
 
-        cpf = login_functions.current_user.id
-        print(cpf, acertos)
-        database.insert_grade(cpf, acertos)
+        username = login_functions.current_user.id
+        print(username, acertos)
+        database.insert_grade(username, acertos)
 
-        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas)
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continunar = continuar, is_admin=is_admin)
 
-    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas)
+    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas, continuar = continuar, is_admin=is_admin)
 
 
 #rota para o PACER
 @app.route("/pacer", methods = ["POST", "GET"])
 def pacer_page():
+    try:
+        is_admin = login_functions.is_admin(login_functions.current_user.id)
+    except AttributeError:
+        is_admin = False
+    
     qtd_funcionarios = 0
 
     if request.method == "POST":
         qtd_funcionarios = int(request.form.get("qtd_funcionarios"))
         return redirect (f"pacer/{qtd_funcionarios}")
 
-    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios)
+    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin)
 
 
 #recarrega a pagina com um questionario para cada membro da equipe
 @app.route("/pacer/<name>", methods=["POST", "GET"])
 def get_pacer(name):
-    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name))
+    try:
+        is_admin = login_functions.is_admin(login_functions.current_user.id)
+    except AttributeError:
+        is_admin = False
+    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name), is_admin=is_admin)
 
 
 #retorno do PACER para o usuário
 @app.route("/pacer/ver/<name>", methods=["POST", "GET"])
 def pacer_res(name):
+    try:
+        is_admin = login_functions.is_admin(login_functions.current_user.id)
+    except AttributeError:
+        is_admin = False
 
     pacer_funcionarios = {}
     soma_pacer = 0
@@ -153,7 +198,7 @@ def pacer_res(name):
     for i in pacer_funcionarios:
             soma_pacer += pacer_funcionarios[i][4]
 
-    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer)
+    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer, is_admin=is_admin)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -167,12 +212,18 @@ def login():
     return login_functions.user_login()
 
 
-@app.route('/logout')
-@login_required
+@app.route('/logout', methods=["POST", "GET"])
+# @login_required
 def logout():
     logout_user()
     session.clear()
     return redirect("/")
+
+
+@app.route("/admin")
+@login_required
+def admin():
+    return login_functions.admin_page()
 
 
 if __name__ == "__main__":
