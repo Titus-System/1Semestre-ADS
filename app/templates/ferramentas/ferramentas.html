@@ -8,40 +8,9 @@
 
 {% block content %}
     <br>
-<!-- <div class="ferramentas_grid">
-<figure style="text-align: center;">
-  <img class="img-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Burndown Chart">
-    
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
-            <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Burndown Chart</button>
-        </a>
-    </figcaption>
-</figure>
-
-<figure style="text-align: center;">
-  <img class="img-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Sprint Backlog">
-    
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
-            <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Sprint Backlog</button>
-        </a>
-    </figcaption>
-</figure>    
-
-<figure style="text-align: center;">
-  <img class="img-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Product Backlog">
- 
-    <figcaption style="text-align: center;" >
-        <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
-            <button type="button" class="btn btn-outline-dark botao_pagina_ferramentas">Product Backlog</button>
-        </a>
-    </figcaption>
-</figure>
-</div> -->
 
 <div class="container-home-ferramentas">
-    <div class="container-sprint-imagem-botao">
+    <div class="container-ferramentas-img-button">
     <img class="img-home-ferramentas" src="{{url_for('static', filename='images/produto-imagem.png')}}" alt="Imagem" ><br>
     <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
         <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Product Backlog</button>
@@ -54,7 +23,7 @@
 </div>
 
 <div class="container-ferramentas-reverso">
-    <div class="container-sprint-imagem-botao">
+    <div class="container-ferramentas-img-button">
     <img class="img-home-ferramentas" src="{{url_for('static', filename='images/sprint-imagem.png')}}" alt="Imagem" ><br>
     <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
         <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Sprint Backlog</button>
@@ -67,7 +36,7 @@
 </div>
 
 <div class="container-home-ferramentas">
-    <div class="container-sprint-imagem-botao">
+    <div class="container-ferramentas-img-button">
     <img class="img-home-ferramentas" src="{{url_for('static', filename='images/burndown-imagem.png')}}" alt="Imagem" ><br>
     <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
     <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Burndown Chart</button>

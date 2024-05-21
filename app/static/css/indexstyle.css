@@ -3,6 +3,12 @@ body {
   font: "Ruda" serif;
 }
 
+.guia_pratico{
+  color: #ffffff;
+  font: "Ruda" serif;
+  margin: 3%;
+}
+
 img {
   width: 50%;
   height: auto;
@@ -12,6 +18,20 @@ h1 {
   font-size: 64px;
   text-align: center;
   color: #00adef;
+}
+
+.titulo_home{
+  font-size: 64px;
+  text-align: center;
+  color: #00adef;
+  margin-top: 7px;
+}
+
+.titulo_guia{
+  font-size: 50px;
+  text-align: ;
+  color: #00adef;
+  margin-top: 5px;
 }
 
 h2 {
@@ -117,18 +137,67 @@ hr {
   margin: 214px auto auto 120px;
 }
 
-/* .banner {
-  background-image: url('background-image.jpg');
-  background-size: cover;
-  color: #fff;
-  padding: 100px 0;
+
+
+.container-home-reverso{
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: -60px;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.banner h1 {
-  font-size: 3rem;
+.container-home{
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: -100px;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.banner p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-} */
+.container-home-img-button{
+  max-width: 200%;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.img-home{
+  width: 1000px;;
+  height: auto;
+}
+
+.img-home-1{
+  width: 800px;;
+  height: auto;
+}
+
+.button_home_page{
+  font-size: 40px;
+  background-color: #e4e7ec;
+  color: #00adef;
+  width: 400px ;
+  height: 60px;
+}
+.button_home_page:hover{
+  color: #e4e7ec;
+  background-color: #00adef;
+  transition: 0,2s;
+}
+
+.text_home_page{
+  font-size: 20px;
+  text-align: justify;
+}

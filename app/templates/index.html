@@ -14,17 +14,9 @@
     />
     <link
       rel="stylesheet"
-      href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}"
-    />
-    <link
-      rel="stylesheet"
       href="{{url_for('static', filename='css/indexstyle.css')}}"
     />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/static/images/logo_transp.png"
-    />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,7 +31,7 @@
    
 
   </head>
-  <body background="{{url_for('static', filename='images/corpo_home.png')}}">
+  <body style="background: radial-gradient(circle, #041421, #000103);">
     <div class="navbar">
       <img
         class="navbar-logo"
@@ -113,75 +105,53 @@
       </div>
     </div>
 
+<!-- conteudo guia -->
 
-    <div class="index-guide">
-      <img
-        src="{{url_for('static', filename='images/board_1.png')}}"
-        alt="Guia"
-      />
-      <div class="index-guide-text">
-        <h2>Guia Completo</h2>
-        <h3>Subheading for description or instructions</h3>
-        <p>
-          Body text for your whole article or post. We'll put in some lorem
-          ipsum to show how a filled-out page might look:
-        </p>
-        <p>
-          Excepteur efficient emerging, minim veniam anim aute carefully curated
-          Ginza conversation exquisite perfect nostrud nisi intricate Content.
-          Qui international first-class nulla ut. Punctual adipisicing,
-          essential lovely queen tempor eiusmod irure. Exclusive izakaya
-          charming Scandinavian impeccable aute quality of life soft power
-          pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et
-          Porter destination Toto remarkable officia Helsinki excepteur Basset
-          hound. Zürich sleepy perfect consectetur.
-        </p>
-      </div>
-    </div>
-    <div class="index-quiz">
-      <img
-        src="{{url_for('static', filename='images/reuniao_2.png')}}"
-        alt="Quiz"
-      />
-      <h2>Quiz</h2>
-      <h3>Subheading for description or instructions</h3>
-      <p>
-        Body text for your whole article or post. We'll put in some lorem ipsum
-        to show how a filled-out page might look:
-      </p>
-      <p>
-        Excepteur efficient emerging, minim veniam anim aute carefully curated
-        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
-        international first-class nulla ut. Punctual adipisicing, essential
-        lovely queen tempor eiusmod irure. Exclusive izakaya charming
-        Scandinavian impeccable aute quality of life soft power pariatur
-        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
-        destination Toto remarkable officia Helsinki excepteur Basset hound.
-        Zürich sleepy perfect consectetur.
-      </p>
-    </div>
-    <div class="index-tools">
-      <img
-        src="{{url_for('static', filename='images/icones.png')}}"
-        alt="Ferramentas"
-      />
-      <h2>Ferramentas</h2>
-      <h3>Subheading for description or instructions</h3>
-      <p>
-        Body text for your whole article or post. We'll put in some lorem ipsum
-        to show how a filled-out page might look:
-      </p>
-      <p>
-        Excepteur efficient emerging, minim veniam anim aute carefully curated
-        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
-        international first-class nulla ut. Punctual adipisicing, essential
-        lovely queen tempor eiusmod irure. Exclusive izakaya charming
-        Scandinavian impeccable aute quality of life soft power pariatur
-        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
-        destination Toto remarkable officia Helsinki excepteur Basset hound.
-        Zürich sleepy perfect consectetur.
-      </p>
-    </div>
+<div class="titulo_home"><h1>GUIA PRATICO</h1></div>
+
+<div class="guia_pratico">   
+<div class="container-home">
+  <div class="container-home-img-button">
+  <img class="img-home" src="{{url_for('static', filename='images/board_1.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
+      <button type="button" class="button_home_page rounded-pill shadow-lg">Product Backlog</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+      <p> <h6 class="titulo_guia">Como fazer o curso:</h6><br>
+          No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+  </div>
+</div>
+
+<div class="container-home-reverso">
+  <div class="container-home-img-button">
+  <img class="img-home-1" src="{{url_for('static', filename='images/to_do.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
+      <button type="button" class="button_home_page rounded-pill shadow-lg">Sprint Backlog</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+    <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
+      No Ranking os números são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas, sub a perspectiva dos desenvolvedores do projeto na coluna responsavel é colocado o nome de quem da sua equipe está encarregado de desenvolver a atividade e por fim na coluna status é determinado o que foi feito e o que ainda está pedente</p>
+  </div>
+</div>
+
+<div class="container-home">
+  <div class="container-home-img-button">
+  <img class="img-home-1" src="{{url_for('static', filename='images/img_reuniao.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+  <button type="button" class="button_home_page rounded-pill shadow-lg">Burndown Chart</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+      <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
+          Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
+  </div>
+</div>
+</div>    
+       
+    
+
   </body>
   
 </html>

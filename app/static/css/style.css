@@ -191,17 +191,19 @@
     cursor: pointer;
 }
 
-/* .quiz-alternativa-1{
-    border-radius: 15px;
-    width: 100%;
-    background-color: #e0e5e8;
-} */
+.quiz-alternativa-1{
+    color: #000103;
+    font-family: 'Ruda';
+    font-size: 30px;
+}
 
 .quiz_page{
     max-width:60%;
     margin: 30px auto;
     background-color: #e0e5e8;
 }
+
+
 
 .question_box{
     display: grid;
@@ -375,18 +377,6 @@ margin: auto;}
     padding-bottom: 5px;
 }
 
-.botao_pagina_ferramentas{
-    width: 200px;
-}
-
-.ferramentas_grid{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 80%;
-    padding: auto;
-    margin: 100px auto ;
-}
-
 .container-ferramentas-reverso{
     max-width: 800px;
     margin: 0 auto;
@@ -435,6 +425,17 @@ margin: auto;}
     height: 50px;
  }
 
+ .container-ferramentas-img-button{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 /*pagina produto*/
 
@@ -471,6 +472,10 @@ margin: auto;}
    max-width: 80%;
    height: auto;
 
+}
+
+.botao_pagina_ferramentas{
+    width: 200px;
 }
 
 .container-sprint-ferramentas{

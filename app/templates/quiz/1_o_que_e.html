@@ -3,6 +3,7 @@
 {% block title %}Revisão Capítulo 1{% endblock %}
 
 {% block resumo %}
+<div class="rounded-rectangle">
     <div class="quiz_page">
         <h1 id="quiz_title">Assunto 1</h1>
         <br>
@@ -11,9 +12,10 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde enim reiciendis recusandae laborum. Aliquam modi ipsa tenetur. Vitae, hic. Soluta illo nobis veritatis <a href="#" data-bs-toggle="popover" data-bs-trigger="hover"  title="conceito" data-bs-content="breve explicação de termo ou conceito">quibusdam</a> itaque sit, omnis porro aspernatur nemo.</p>
         <!--comentário-->
         <span class="button_quiz">
-            <a href="/quiz/iniciar"><button class="button_avaliacao rounded-pill shadow-lg" id="button_previous"><< Anterior</button></a>
+            <a href="/quiz/iniciar"><button class="button_avaliacao rounded-pill shadow-lg" id="button_previous"> << Anterior</button></a>
             <a href="/quiz/o_que_e"><button class="button_avaliacao rounded-pill shadow-lg" id="button_next">Próximo >></button></a>
         </span>
     </div>
-    <a href="/quiz/quiz_resultado_parcial/1_o_que_e"><button class="button_parar_aqui rounded-pill shadow-lg">Parar aqui</button></a>
+</div>
+    <a href="/quiz/quiz_resultado_parcial/1_o_que_e"><button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button></a>
 {% endblock %}
