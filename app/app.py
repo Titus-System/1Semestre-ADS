@@ -33,6 +33,7 @@ def load_user(username):
     return user
 
 
+@app.route("/home")
 @app.route("/", methods=["POST", "GET"])
 def home():
     is_admin = False
@@ -60,7 +61,7 @@ def get_page(name):
         return redirect ("quiz/iniciar")
     if name == "ferramentas":
         return redirect("/ferramentas/ferramentas")
-    if name == "avaliação":
+    if name == "avaliacao" or name=="avaliação":
         return redirect("/avaliacao")
     return render_template(f"{name}.html")
 
@@ -226,8 +227,14 @@ def admin():
     return login_functions.admin_page()
 
 
-@app.route('/feedback')
+@app.route('/feedback', methods=["POST", "GET"])
+@login_required
 def feedback():
+    if request.method == "POST":
+        feedback = request.form.get('star')
+        comment = request.form.get('suggestion')
+        database.insert_feedback(current_user.id, feedback, comment)
+        return redirect("/home")
     return render_template ("/feedback/feedback.html")
 
 
