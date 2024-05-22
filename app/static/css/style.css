@@ -687,7 +687,7 @@ textarea {
     border-radius: 4px;
 }
 
-button {
+.button_feedback {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -696,6 +696,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button_feedback:hover {
     background-color: #218838;
 }
