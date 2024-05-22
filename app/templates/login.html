@@ -90,6 +90,26 @@
                   <a href="/{{next}}"><button type="submit">Login</button></a>
               </form>
             </div>
+            <div class="col" id="modal_user_update">
+              <h1>Atualize seus dados</h1>
+              <h4>Os campos que forem deixados em branco não serão alterados</h4>
+              <form action="/update_user_info" method="POST">
+                <label for="update_nome">Nome:<br>
+                <input type="text" id="update_nome" name="update_nome"></label>
+                <br>
+                <label for="update_mail">e-mail:<br>
+                <input type="text" id="update_mail" name="update_mail"></label>
+                <br>
+                <label for="update_password">Senha:<br>
+                <input type="password" id="update_password" name="update_password"></label>
+                <br>
+                <label for="update_password_confirm">Confirme a senha:<br>
+                <input type="password" id="update_password_confirm" name="update_password_confirm"></label>
+                <br>
+                <button type="submit" value="submit">Atualizar meus dados</button>
+              </form>
+            </div>
+            
         </div>
       </div>
     </body>
