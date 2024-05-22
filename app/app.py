@@ -49,11 +49,7 @@ def home():
         user_logged_in = False
         user_data = []
 
-    try:
-        posicao = quiz_functions.continue_quiz()
-    except AttributeError: posicao = "iniciar"
-
-    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao, user_data=user_data)
+    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, user_data=user_data)
 
 
 @app.route("/<name>")
