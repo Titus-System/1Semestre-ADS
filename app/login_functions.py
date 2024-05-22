@@ -127,3 +127,18 @@ def admin_page():
     
     flash("É necessário ser administrador para acessar essa página!")
     return redirect("/login")
+
+
+def update_user_info():
+    username = current_user.id
+    update_list = []
+    for i in ["nome", "mail", "password"]:
+        req = request.form.get(f"update_{i}")
+        if req:
+            update_list.append((i, req))
+
+    for column, value in update_list:
+        if value:
+            database.update_user_info("registro", column, username, value)
+
+    return redirect("/")

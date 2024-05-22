@@ -41,16 +41,19 @@ def home():
     try:
         user_logged_in = current_user.is_authenticated
         print(user_logged_in)
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+
         if login_functions.is_admin(current_user.id):
             is_admin = True
     except AttributeError:
         user_logged_in = False
+        user_data = []
 
     try:
         posicao = quiz_functions.continue_quiz()
     except AttributeError: posicao = "iniciar"
 
-    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao)
+    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao, user_data=user_data)
 
 
 @app.route("/<name>")
@@ -206,6 +209,11 @@ def pacer_res(name):
 def signup():
     return login_functions.user_signup()
 
+
+@app.route("/update_user_info", methods=["POST", "GET"])
+@login_required
+def update():
+    return login_functions.update_user_info()
 
 
 @app.route('/login', methods=['GET', 'POST'])

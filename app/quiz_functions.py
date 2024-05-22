@@ -56,7 +56,7 @@ def salvar_respostas(num_quest, proxima_pagina):
     except KeyError:
         session[f"resposta{num_quest}"] = ""
         
-    return render_template (f"/quiz/{proxima_pagina}.html", is_admin=is_admin)
+    return render_template (f"/quiz/{proxima_pagina}.html", is_admin = is_admin)
 
 
 def quiz_resultado_parcial(numero_pagina):
