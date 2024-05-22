@@ -28,7 +28,7 @@
 >
 > ## Instalação
 >
-> Para instalar este programa, voce vai precisar ter no seu computador no mínimo Python 3.12 e GIT. Quando tiver estes prontos, siga o paço a paço abaixo:
+> Para instalar este programa, você vai precisar ter no seu computador no mínimo Python 3.12 e GIT. Quando tiver estes prontos, siga o passo a passo abaixo:
 >
 > - ### Clonando o repositório
 >
