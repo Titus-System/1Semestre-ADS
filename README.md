@@ -1,45 +1,45 @@
 # Titus Systems - ADS - 1 SEMESTRE/2024
 
-> ## Mestre Agil
+> ## Mestre Ágil
 >
-> ![PRODUCT LOGO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png)
+> ![PRODUCT LOGO][logo-mestreagil]
 >
 > ## Sobre o Produto
 >
-> Lorem ipsum
+> Um curso sobre SCRUM que possui o intuito de padronizar os conhecimentos e as práticas de gerenciamento de projetos dos funcionários da empresa FATEC. Utilizando a metodologia ágil em seu desenvolvimento, a plataforma visa estar completamente imersa nos valores e pilares do SRCUM, com uma aparência moderna e minimalista que prioriza a entrega de conteúdo ao usuário, assim como ferramentas padronizadas e métodos avaliativos.
 >
-> ### Demonstracao do produto
+> ### Demonstração do produto
 >
-> ![PRODUCT VIDEO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/apresentacao2.mp4)
+> ![PRODUCT VIDEO][product-video]
 >
 > ### Roadmap
 >
-> ![ROADMAP](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/imagem-entregas-por-sprint.png)
+> ![ROADMAP][roadmap]
 >
 > ### As Entregas
 >
 > #### Backlog do Produto
 >
-> ![PRODUCT BACKLOG](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/Backlog_do_Produto.png)
+> ![PRODUCT BACKLOG][product-backlog]
 >
 > ### Tecnologias Utilizadas
 >
 > ![TECH STUFF]()
 >
-> ## Instalacao
+> ## Instalação
 >
-> Para instalar este programa voce vai precisar ter no seu computador no minimo Python 3.12 e GIT. Quando tiver estes prontos, siga o paco a pacoo abaixo:
+> Para instalar este programa, você vai precisar ter no seu computador no mínimo Python 3.12 e GIT. Quando tiver estes prontos, siga o passo a passo abaixo:
 >
-> - ### Clonando o repositorio.
+> - ### Clonando o repositório
 >
 > ```Bash
 > git clone https://github.com/Titus-System/1Semestre-ADS.git
 > ```
 >
-> - ### Assece o repositorio e instale as dependencias
+> - ### Acesse o repositório e instale as dependências
 >
 > ```Bash
-> d /1SEMESTRE-ADS
+> cd ./1SEMESTRE-ADS/
 > ip install -r requirements.txt
 > ```
 >
@@ -50,7 +50,7 @@
 > flask run
 > ```
 >
-> O programa vai abrir uma coneccao na porta 5000 e mostrar o status do servidor, alem de mostrar o endereco do site para que voce possa acessar.
+> O programa vai abrir uma conexão na porta 5000 e mostrar o status do servidor, além de mostrar o endereço do site para que você possa acessá-lo.
 >
 > ## Sobre os Desenvolvedores
 >
@@ -75,12 +75,23 @@
 >
 > ## Titus Systems
 >
-> ![COMPANY LOGO](https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png)
+> ![COMPANY LOGO][logo-titus]
 >
-> Lorem ipsum
+> ### Missão
 >
-> ### Missao
->
-> ### Visao
+> ### Visão
 >
 > ### Valores
+>
+> - Qualidade
+> - Inovação
+> - Segurança
+> - O cliente no controle
+> - Responsabilidade social
+> - Eficiência
+
+[logo-titus]: https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png
+[product-backlog]: https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/Backlog_do_Produto.png
+[roadmap]: https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/imagem-entregas-por-sprint.png
+[product-video]: https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/apresentacao2.mp4
+[logo-mestreagil]: https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png
