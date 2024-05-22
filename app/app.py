@@ -56,17 +56,17 @@ def home():
     return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao, user_data=user_data)
 
 
-# @app.route("/<name>")
-# def get_page(name):
-#     if name == "apostila":
-#         return redirect("/apostila/introducao")
-#     if name == "quiz":
-#         return redirect ("quiz/iniciar")
-#     if name == "ferramentas":
-#         return redirect("/ferramentas/ferramentas")
-#     if name == "avaliacao" or name=="avaliação":
-#         return redirect("/avaliacao")
-#     return render_template(f"{name}.html")
+@app.route("/<name>")
+def get_page(name):
+    if name == "apostila":
+        return redirect("/apostila/introducao")
+    if name == "quiz":
+        return redirect ("quiz/iniciar")
+    if name == "ferramentas":
+        return redirect("/ferramentas/ferramentas")
+    if name == "avaliacao" or name=="avaliação":
+        return redirect("/avaliacao")
+    return render_template(f"{name}.html")
 
 
 @app.route("/ferramentas/<name>")
@@ -124,7 +124,7 @@ def avaliacao():
     is_admin = login_functions.is_admin(login_functions.current_user.id)
 
     if login_functions.verify_login():
-        continuar = quiz_functions.continue_quiz()
+        continuar = quiz_functions.continue_quiz(current_user.id)
 
     if request.method == "POST":
         respostas_prova = {}

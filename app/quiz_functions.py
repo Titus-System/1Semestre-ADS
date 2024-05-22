@@ -15,11 +15,10 @@ def quiz_page(name=str):
 
     is_admin = login_functions.is_admin(login_functions.current_user.id)
 
-    if continue_quiz() == None:
-        print("sem quiz")
-        posicao = "iniciar"
+    if continue_quiz(login_functions.current_user.id):
+        posicao = continue_quiz(login_functions.current_user.id)
     else:
-        posicao = continue_quiz()
+        posicao = "iniciar"
 
     if name in perguntas.keys():
         page = "pergunta"
@@ -129,8 +128,8 @@ def quiz_resultado_final():
     return render_template("/quiz/resultado.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin)
 
 
-def continue_quiz():
-    cpf = login_functions.current_user.id
-    posicao = database.retrieve_data("academico", "posicao", cpf)
-    print(posicao)
+def continue_quiz(username):
+    posicao = database.retrieve_data("academico", "posicao", username)
+    if posicao == "final":
+        posicao = "iniciar"
     return posicao
