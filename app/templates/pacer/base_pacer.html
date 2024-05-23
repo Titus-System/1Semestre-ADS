@@ -174,14 +174,14 @@
       
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title" style="color:white">{{current_user.id}}</h4>
+                <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
         
                 <!-- Modal body -->
                 <div class="modal-body container" style="color:black">
                     <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
-                    <h4 class="modal-title" style="color:white">E-MAIL: {{current_user.id}}</h4><br>
+                    <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
                       {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary">Acessar página de administrador</buton></a>{% endif %}<br>
                       <a href = "/quiz/{{continuar}}"><button class="btn btn-light">continuar de onde eu parei</button></a><br>
                       <a href = "/quiz/resultado_parcial"><button class="btn btn-light">conferir meus resultados</button></a><br>
