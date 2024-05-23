@@ -146,3 +146,13 @@ def update_user_info():
             database.update_user_info("registro", column, username, value)
 
     return redirect("/")
+
+
+def user_page(username):
+    personal_user_info = database.retrieve_data("registro", ['nome', 'mail'], username)['nome'] #tupla com nome e email
+    admin = is_admin(username)
+    academic_info = database.retrieve_data("academico", ["nota_quiz", "nota_prova", "posicao"], username)['nota_quiz']#retorna uma tupla (nota_quiz, nota_prova, posicao)
+    continuar = academic_info[2]
+    user_feedback = database.retrieve_data("opiniao", "feedback", username)
+    if user_feedback == None or user_feedback =="": user_feedback = "*" 
+    return render_template("user.html", user_data = personal_user_info, is_admin = admin, academic_info = academic_info, continuar = continuar)

@@ -272,6 +272,12 @@ def logout():
     return redirect("/")
 
 
+@app.route("/user")
+@login_required
+def user_page():
+    return login_functions.user_page(current_user.id)
+
+
 @app.route("/admin")
 @login_required
 def admin():
