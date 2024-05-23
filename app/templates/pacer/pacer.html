@@ -159,11 +159,11 @@
         <form action="/pacer#qtd_funcionarios" method="POST">
             <label for="qtd_funcionarios">Quantos colaboradores fazem parte da equipe:</label>
             <input type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1">
-            <button type="submit">Gerar PACER</button>
+            <button type="submit" class="btn btn-secondary btn-sm text-light">Gerar PACER</button>
         </form>
     </div>
-
-    <form action="/pacer/ver/{{qtd_funcionarios}}#resultados" , method="POST">
+{% if qtd_funcionarios %}
+    <form action="/pacer/ver/{{qtd_funcionarios}}#resultados" method="POST">
         {% for i in range(qtd_funcionarios) %}
         <div class="box_assessment_pacer">
             <br>
@@ -227,10 +227,10 @@
             <input type="radio" id="3results{{i}}" name="results{{i}}" value="3">
             <label label for="3results{{i}}">3 - ENTREGAS PERFEITAS</label> <br>
         </div>
-        {% endfor %}
-        <button type="submit">Enviar PACER</button>
+            {% endfor %}
+            <button class="btn btn-secondary pacer_button" type="submit">Enviar PACER</button>
     </form>
-
+{% endif %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

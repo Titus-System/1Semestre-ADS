@@ -110,12 +110,20 @@ def quiz_page(name=str):
     return quiz_functions.quiz_page(name)
 
 
-@app.route("/quiz/quiz_resultado_parcial/<numero_pagina>")
-def quiz_resultado_parcial(numero_pagina):
-    return quiz_functions.quiz_resultado_parcial(numero_pagina)
+@app.route("/quiz/salvar_quiz/<numero_pagina>")
+@login_required
+def save_quiz_answers(numero_pagina):
+    return quiz_functions.save_quiz(numero_pagina)
+
+
+@app.route("/quiz/resultado_parcial")
+@login_required
+def partial_result():
+    return quiz_functions.resultado_parcial(current_user.id)
 
 
 @app.route("/quiz/quiz_resultado")
+@login_required
 def quiz_resultado():
     return quiz_functions.quiz_resultado_final()
 

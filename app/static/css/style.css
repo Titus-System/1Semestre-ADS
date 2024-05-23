@@ -534,6 +534,12 @@ margin: auto;}
     border-radius: 15px;
     padding: 30px;
 }
+
+.pacer_button{
+    margin-left:20%
+}
+
+
    /* passo a passo pagina do quiz */
 .timeline {
     display: flex;
