@@ -95,7 +95,7 @@ def resultado_parcial(username):
         except KeyError: pass
     erros = len(respostas) - acertos
     porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
-    return render_template("/quiz/resultado_parcial.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin, continuar=continuar, user_Data=user_data)
+    return render_template("/quiz/resultado_parcial.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin, continuar=continuar, user_data=user_data)
 
 
 def quiz_resultado_final():
