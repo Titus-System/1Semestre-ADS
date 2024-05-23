@@ -160,22 +160,24 @@
     <!-- User Modal -->
     <div class="modal" id="modal_user">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content bg-dark">
 
                 <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" style="color:black">{{current_user.id}}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              <div class="modal-header"  >
+                <h4 class="modal-title" style="color:white">{{current_user.id}}</h4>
+                <button type="button" class="btn-close btn-light" data-bs-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body container" style="color:black">
+                    <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
+                    <h4 class="modal-title" style="color:white">E-MAIL: {{current_user.id}}</h4><br>
                     {% if is_admin %}<a href="/admin">
                         <buton class="btn btn-secondary">Acessar página de administrador</buton>
                     </a>{% endif %}<br>
-                    <a href="/quiz/{{continuar}}"><button class="btn btn-light">continuar de onde eu
+                    <a href="/quiz/{{continuar}}"><button class="btn text-dark btn-light w-100">continuar de onde eu
                             parei</button></a><br>
-                    <a href="/quiz/quiz_resultado"><button class="btn btn-light">conferir meus
+                    <a href="/quiz/quiz_resultado"><button class="btn text-dark btn-light w-100">conferir meus
                             resultados</button></a><br>
                 </div>
 

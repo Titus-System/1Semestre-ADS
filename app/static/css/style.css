@@ -189,6 +189,8 @@
 
 .quiz-alternativa{
     cursor: pointer;
+    font-family: 'Ruda';
+    text-align: justify;
 }
 
 .quiz-alternativa-1{
@@ -229,7 +231,7 @@
     background-color:#000103;
     border-radius: 15px;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     height: fit-content;
    display: grid;
    margin-top: 40px;}
@@ -268,17 +270,27 @@ margin: auto;}
     font-family: 'Ruda';
     align-content: center;
     justify-content: center;
+    text-align: justify;
     display: flex;
+    color: white;
 }
 
-.question_script{
+.question_script_test{
+    font-family: 'Ruda';
     color: white;
+    align-content: center;
+    justify-content: center;
+    text-align: justify;
+    display: flex;
+    margin: 2%;
 }
 
 .quiz_option {
     /* display: flex;
     flex-direction: column; */
     font-family: 'Ruda';
+    margin: 0, 10px, 0, 10px;
+    justify-content: start;
     
 }
 
