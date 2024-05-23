@@ -201,3 +201,13 @@ hr {
   font-size: 20px;
   text-align: justify;
 }
+
+/* modal meu perfil */
+
+.button_logout{
+  font-size: 15px;
+  background-color: #000103;
+  color: #ff695e;
+  padding: 5px;
+  width: 150px;
+}

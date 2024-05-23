@@ -127,3 +127,21 @@ def admin_page():
     
     flash("É necessário ser administrador para acessar essa página!")
     return redirect("/login")
+
+
+def update_user_info():
+    username = current_user.id
+    update_nome = request.form.get("update_nome")
+    update_mail = request.form.get("update_mail")
+    update_password = request.form.get("update_password")
+    update_password_confirm = request.form.get("update_password_confirm")
+
+    if update_password != update_password_confirm:
+        flash("senhas não batem!")
+        return redirect("/login")
+    
+    for column, value in [("nome", update_nome), ('mail',update_mail), ('password', database.hashpw(update_password.encode("utf-8"), database.gensalt()))]:
+        if value:
+            database.update_user_info("registro", column, username, value)
+
+    return redirect("/")

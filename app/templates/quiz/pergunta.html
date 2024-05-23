@@ -35,29 +35,39 @@
                 <br>
                 <br>
                 <div class="engrenagens-div">
-                  &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+                &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
                 <p class="question_script">{{questao[1]}}</p>
                 &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
                 </div>
                 <br>
               </div> 
 
+                <!-- alternativas quiz -->
                 <div class="quiz_option">
                   <br>
-                    <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
-                    <label for="A{{num_quest}}" class="quiz-alternativa-1"><h6>{{questao[2]}}</h6></label>
+
+                    <label for="A{{num_quest}}" class="quiz-alternativa">
+                      <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
+                      {{questao[2]}}</label>
+                    <br>
+                    <br> 
+
+                    <label for="B{{num_quest}}" class="quiz-alternativa">
+                      <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
+                      {{questao[3]}}</label>            
                     <br>
                     <br>
-                    <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
-                    <label for="B{{num_quest}}" class="quiz-alternativa-1"><h6>{{questao[3]}}</h6></label>
+
+                    
+                    <label for="C{{num_quest}}" class="quiz-alternativa">
+                      <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
+                      {{questao[4]}}</label>
                     <br>
                     <br>
-                    <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
-                    <label for="C{{num_quest}}" class="quiz-alternativa-1"><h6>{{questao[4]}}</h6></label>
-                    <br>
-                    <br>
-                    <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
-                    <label for="D{{num_quest}}" class="quiz-alternativa-1"><h6>{{questao[5]}}</h6></label>  
+
+                    <label for="D{{num_quest}}" class="quiz-alternativa">
+                      <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
+                      {{questao[5]}}</label>  
                     <br>
                   </div>
 

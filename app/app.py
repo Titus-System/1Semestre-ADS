@@ -37,20 +37,21 @@ def load_user(username):
 @app.route("/", methods=["POST", "GET"])
 def home():
     is_admin = False
+    continuar = "iniciar"
 
     try:
         user_logged_in = current_user.is_authenticated
         print(user_logged_in)
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        continuar = quiz_functions.continue_quiz(current_user.id)
+
         if login_functions.is_admin(current_user.id):
             is_admin = True
     except AttributeError:
         user_logged_in = False
+        user_data = []
 
-    try:
-        posicao = quiz_functions.continue_quiz()
-    except AttributeError: posicao = "iniciar"
-
-    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, continuar = posicao)
+    return render_template ("index.html", user_logged_in = user_logged_in, is_admin=is_admin, user_data=user_data, continuar = continuar)
 
 
 @app.route("/<name>")
@@ -72,7 +73,12 @@ def ferramentas(name):
         is_admin = login_functions.is_admin(login_functions.current_user.id)
     except AttributeError:
         is_admin = False
-    return render_template(f"/ferramentas/{name}.html", is_admin = is_admin)
+    
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+    else: continuar = "iniciar"
+    
+    return render_template(f"/ferramentas/{name}.html", is_admin = is_admin, continuar=continuar)
 
 
 @app.route("/apostila/<name>")
@@ -81,7 +87,12 @@ def find_apostila(name):
         is_admin = login_functions.is_admin(login_functions.current_user.id)
     except AttributeError:
         is_admin = False
-    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas, is_admin=is_admin)
+    
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+    else: continuar = "iniciar"
+
+    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas, is_admin=is_admin, continuar = continuar)
 
 
 @app.route("/quiz/")
@@ -99,12 +110,20 @@ def quiz_page(name=str):
     return quiz_functions.quiz_page(name)
 
 
-@app.route("/quiz/quiz_resultado_parcial/<numero_pagina>")
-def quiz_resultado_parcial(numero_pagina):
-    return quiz_functions.quiz_resultado_parcial(numero_pagina)
+@app.route("/quiz/salvar_quiz/<numero_pagina>")
+@login_required
+def save_quiz_answers(numero_pagina):
+    return quiz_functions.save_quiz(numero_pagina)
+
+
+@app.route("/quiz/resultado_parcial")
+@login_required
+def partial_result():
+    return quiz_functions.resultado_parcial(current_user.id)
 
 
 @app.route("/quiz/quiz_resultado")
+@login_required
 def quiz_resultado():
     return quiz_functions.quiz_resultado_final()
 
@@ -121,7 +140,7 @@ def avaliacao():
     is_admin = login_functions.is_admin(login_functions.current_user.id)
 
     if login_functions.verify_login():
-        continuar = quiz_functions.continue_quiz()
+        continuar = quiz_functions.continue_quiz(current_user.id)
 
     if request.method == "POST":
         respostas_prova = {}
@@ -156,13 +175,17 @@ def pacer_page():
     except AttributeError:
         is_admin = False
     
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+    else: continuar = "iniciar"
+
     qtd_funcionarios = 0
 
     if request.method == "POST":
         qtd_funcionarios = int(request.form.get("qtd_funcionarios"))
         return redirect (f"pacer/{qtd_funcionarios}")
 
-    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin)
+    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin, continuar = continuar)
 
 
 #recarrega a pagina com um questionario para cada membro da equipe
@@ -172,7 +195,10 @@ def get_pacer(name):
         is_admin = login_functions.is_admin(login_functions.current_user.id)
     except AttributeError:
         is_admin = False
-    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name), is_admin=is_admin)
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+    else: continuar = "iniciar"
+    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name), is_admin=is_admin, continuar = continuar)
 
 
 #retorno do PACER para o usuário
@@ -182,6 +208,10 @@ def pacer_res(name):
         is_admin = login_functions.is_admin(login_functions.current_user.id)
     except AttributeError:
         is_admin = False
+        
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+    else: continuar = "iniciar"
 
     pacer_funcionarios = {}
     soma_pacer = 0
@@ -199,13 +229,18 @@ def pacer_res(name):
     for i in pacer_funcionarios:
             soma_pacer += pacer_funcionarios[i][4]
 
-    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer, is_admin=is_admin)
+    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer, is_admin=is_admin, continuar = continuar)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     return login_functions.user_signup()
 
+
+@app.route("/update_user_info", methods=["POST", "GET"])
+@login_required
+def update():
+    return login_functions.update_user_info()
 
 
 @app.route('/login', methods=['GET', 'POST'])

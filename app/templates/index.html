@@ -42,14 +42,14 @@
         {% if user_logged_in %}
         <li class="navbar-item"><a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user">Meu perfil</a></li>
         {% else %}
-        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
-        <li class="navbar-item"><a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+        <li class="navbar-item"><a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
+        <li class="navbar-item"><a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
         {%endif%}
         <li class="navbar-item"><a href="/pacer">PACER</a></li>
-        <li class="navbar-item"><a href="/avaliacao">Avaliação</a></li>
-        <li class="navbar-item"><a href="/ferramentas">Ferramentas</a></li>
-        <li class="navbar-item"><a href="/apostila">Apostila</a></li>
-        <li class="navbar-item"><a href="/quiz">Quiz</a></li>
+        <li class="navbar-item"><a href="/ferramentas">FERRAMENTAS</a></li>
+        <li class="navbar-item"><a href="/avaliacao">AVALIAÇÃO</a></li>
+        <li class="navbar-item"><a href="/apostila">APOSTILA</a></li>
+        <li class="navbar-item"><a href="/quiz">QUIZ</a></li>
       </ul>
     </div>
 
@@ -96,54 +96,6 @@
           </div>
       </div>
     </div>
-
-<!-- conteudo guia -->
-
-<div class="titulo_home"><h1>GUIA PRATICO</h1></div>
-
-<div class="guia_pratico">   
-<div class="container-home">
-  <div class="container-home-img-button">
-  <img class="img-home" src="{{url_for('static', filename='images/board_1.png')}}" alt="Imagem" ><br>
-  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
-      <button type="button" class="button_home_page rounded-pill shadow-lg">Product Backlog</button>
-  </a>
-  </div>
-  <div class="text_home_page">
-      <p> <h6 class="titulo_guia">Como fazer o curso:</h6><br>
-          No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
-  </div>
-</div>
-
-<div class="container-home-reverso">
-  <div class="container-home-img-button">
-  <img class="img-home-1" src="{{url_for('static', filename='images/to_do.png')}}" alt="Imagem" ><br>
-  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
-      <button type="button" class="button_home_page rounded-pill shadow-lg">Sprint Backlog</button>
-  </a>
-  </div>
-  <div class="text_home_page">
-    <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
-      No Ranking os números são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas, sub a perspectiva dos desenvolvedores do projeto na coluna responsavel é colocado o nome de quem da sua equipe está encarregado de desenvolver a atividade e por fim na coluna status é determinado o que foi feito e o que ainda está pedente</p>
-  </div>
-</div>
-
-<div class="container-home">
-  <div class="container-home-img-button">
-  <img class="img-home-1" src="{{url_for('static', filename='images/img_reuniao.png')}}" alt="Imagem" ><br>
-  <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
-  <button type="button" class="button_home_page rounded-pill shadow-lg">Burndown Chart</button>
-  </a>
-  </div>
-  <div class="text_home_page">
-      <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
-          Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
-  </div>
-</div>
-</div>    
-       
-    
-
 
         <!-- signup Modal -->
         <div class="modal" id="modal_signup">
@@ -193,19 +145,23 @@
             <!-- User Modal -->
     <div class="modal" id="modal_user">
       <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+          <div class="modal-content bg-dark" >
     
               <!-- Modal Header -->
-              <div class="modal-header">
-              <h4 class="modal-title" style="color:black">{{current_user.id}}</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              <div class="modal-header"  >
+              <h4 class="modal-title" style="color:white">{{current_user.id}}</h4>
+              <button type="button" class="btn-close btn-light" data-bs-dismiss="modal"></button>
               </div>
       
               <!-- Modal body -->
-              <div class="modal-body container" style="color:black">
-                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary">Acessar página de administrador</buton></a>{% endif %}<br>
-                    <a href = "/quiz/{{continuar}}"><button class="btn btn-light">continuar de onde eu parei</button></a><br>
-                    <a href = "/quiz/quiz_resultado"><button class="btn btn-light">conferir meus resultados</button></a><br>
+              <div class="modal-body container ">
+                    <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
+                    <h4 class="modal-title" style="color:white">E-MAIL: {{current_user.id}}</h4><br>
+                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary w-100">Acessar página de administrador</buton></a><br>{% endif %}<br>
+                    <a href = "/quiz/{{continuar}}" ><button class="btn text-dark btn-light w-100">continuar de onde eu parei</button></a><br>
+                    <br>
+                    <a href = "/quiz/quiz_resultado"><button class="btn text-dark btn-light w-100 ">conferir meus resultados</button></a><br>
+                    <br>
                   </div>
                   
               <!-- Modal Footer -->
@@ -217,78 +173,52 @@
     </div>
 {% endif %}
 
+<!-- conteudo guia -->
+
+<div class="titulo_home"><h1>GUIA PRATICO</h1></div>
+
+<div class="guia_pratico">   
+<div class="container-home">
+  <div class="container-home-img-button">
+  <img class="img-home" src="{{url_for('static', filename='images/board_1.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}" download>
+      <button type="button" class="button_home_page rounded-pill shadow-lg">Product Backlog</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+      <p> <h6 class="titulo_guia">Como fazer o curso:</h6><br>
+          No Ranking os numeros são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas e devem ser escritas sobre a perspectiva do cliente e por fim na coluna sprint seram divididas as user storys em sprints que são os momentos em que cada atividade será desenvolvida </p>
+  </div>
+</div>
+
+<div class="container-home-reverso">
+  <div class="container-home-img-button">
+  <img class="img-home-1" src="{{url_for('static', filename='images/to_do.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}" download>
+      <button type="button" class="button_home_page rounded-pill shadow-lg">Sprint Backlog</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+    <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
+      No Ranking os números são colocados de acordo com a ordem em que eles estão dispostos, iniciando pelo "1", as prioridades seram definidadas entre "alta", "media" e "baixa" de acordo com o que agrega mais valor ao resulado final, nas user storys seram escritas as atividades que seram feitas, sub a perspectiva dos desenvolvedores do projeto na coluna responsavel é colocado o nome de quem da sua equipe está encarregado de desenvolver a atividade e por fim na coluna status é determinado o que foi feito e o que ainda está pedente</p>
+  </div>
+</div>
+
+<div class="container-home">
+  <div class="container-home-img-button">
+  <img class="img-home-1" src="{{url_for('static', filename='images/img_reuniao.png')}}" alt="Imagem" ><br>
+  <a href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}" download>
+  <button type="button" class="button_home_page rounded-pill shadow-lg">Burndown Chart</button>
+  </a>
+  </div>
+  <div class="text_home_page">
+      <p><h6 class="titulo_guia">Como utilizar o modelo:</h6><br>
+          Comece definindo as tarefas e estimando o tempo necessário para cada uma. Em seguida, registre o total de trabalho planejado em um gráfico ao longo do tempo. À medida que o projeto avança, atualize o gráfico com o trabalho concluído diariamente. Use o burndown chart para identificar desvios em relação ao planejado e ajustar a equipe ou as metas conforme necessário. Ao final do projeto, analise o gráfico para insights valiosos sobre o desempenho e oportunidades de melhoria.</p>
+  </div>
+</div>
+</div>    
 
 
-
-
-    <div class="index-guide">
-      <img
-        src="{{url_for('static', filename='images/board_1.png')}}"
-        alt="Guia"
-      />
-      <div class="index-guide-text">
-        <h2>Guia Completo</h2>
-        <h3>Subheading for description or instructions</h3>
-        <p>
-          Body text for your whole article or post. We'll put in some lorem
-          ipsum to show how a filled-out page might look:
-        </p>
-        <p>
-          Excepteur efficient emerging, minim veniam anim aute carefully curated
-          Ginza conversation exquisite perfect nostrud nisi intricate Content.
-          Qui international first-class nulla ut. Punctual adipisicing,
-          essential lovely queen tempor eiusmod irure. Exclusive izakaya
-          charming Scandinavian impeccable aute quality of life soft power
-          pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et
-          Porter destination Toto remarkable officia Helsinki excepteur Basset
-          hound. Zürich sleepy perfect consectetur.
-        </p>
-      </div>
-    </div>
-    <div class="index-quiz">
-      <img
-        src="{{url_for('static', filename='images/reuniao_2.png')}}"
-        alt="Quiz"
-      />
-      <h2>Quiz</h2>
-      <h3>Subheading for description or instructions</h3>
-      <p>
-        Body text for your whole article or post. We'll put in some lorem ipsum
-        to show how a filled-out page might look:
-      </p>
-      <p>
-        Excepteur efficient emerging, minim veniam anim aute carefully curated
-        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
-        international first-class nulla ut. Punctual adipisicing, essential
-        lovely queen tempor eiusmod irure. Exclusive izakaya charming
-        Scandinavian impeccable aute quality of life soft power pariatur
-        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
-        destination Toto remarkable officia Helsinki excepteur Basset hound.
-        Zürich sleepy perfect consectetur.
-      </p>
-    </div>
-    <div class="index-tools">
-      <img
-        src="{{url_for('static', filename='images/icones.png')}}"
-        alt="Ferramentas"
-      />
-      <h2>Ferramentas</h2>
-      <h3>Subheading for description or instructions</h3>
-      <p>
-        Body text for your whole article or post. We'll put in some lorem ipsum
-        to show how a filled-out page might look:
-      </p>
-      <p>
-        Excepteur efficient emerging, minim veniam anim aute carefully curated
-        Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui
-        international first-class nulla ut. Punctual adipisicing, essential
-        lovely queen tempor eiusmod irure. Exclusive izakaya charming
-        Scandinavian impeccable aute quality of life soft power pariatur
-        Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
-        destination Toto remarkable officia Helsinki excepteur Basset hound.
-        Zürich sleepy perfect consectetur.
-      </p>
-    </div>
   </body>
   
 </html>

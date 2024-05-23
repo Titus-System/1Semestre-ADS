@@ -1,0 +1,47 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Resultado parcial{% endblock %}
+
+{% block head_image %}{% endblock %}
+
+{% block resultado %}
+<div class="resultado">
+    <br>
+    <h1 style="text-align: center; font-weight: bold;">Resultados</h1>
+    <h2 style="text-align: center;">Seu aproveitamento foi de <strong>{{porcentagem}}</strong></h2>
+    <div class="resultado_1">
+    <div class="resultado_acertos">
+    <img src="{{url_for('static', filename='images/certo_quiz.png')}}" class="img_resultados">
+    <h5>Acertos: <strong>{{acertos}}</strong></h5>
+</div>
+    <div class="resultado_erros">
+    <img src="{{url_for('static', filename='images/errado_quiz.png')}}" class="img_resultados">
+    <h5>Erros: <strong>{{erros}}</strong></h5>
+</div>
+</div>
+    <br>
+    <div class="respostas">
+        <div class="respostas_txt">
+    <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
+    <ul style="margin-top:0;">
+        {% for key, value in respostas.items() %}
+        <li>{{key.replace("_", " ").title()}}: {{value}} </li>
+        {% endfor %}
+    </ul>
+        </div>
+    </div>
+    <div class="erros_resultados">
+    <p style="margin-bottom: 0;"><strong>Seus erros:</strong></p>
+    <dl style="margin-top:0;">
+        {% for key, value in questoes_erradas.items() %}
+        <dt>Questão {{key}}</dt>
+        <dd>{{value}}</dd>
+        <br>
+        {% endfor %}
+    </dl>
+    <br>
+    <a href="/apostila"><button class="botao_iniciar" id="button_next">Seguir para apostila</button></a> 
+
+</div>
+</div>
+{% endblock %}
