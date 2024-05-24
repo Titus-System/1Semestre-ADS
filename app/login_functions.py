@@ -107,7 +107,10 @@ def admin_page():
         return format(soma/qtd, ",.2f")
 
     if is_admin(current_user.id):
-        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        try:
+            user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        except TypeError:
+            user_data = []
         notas_prova = database.retrieve_column("academico", "nota_prova")
         notas_quiz = database.retrieve_column("academico", "nota_quiz")
         feedbacks = database.retrieve_column("opiniao", "feedback")
@@ -146,3 +149,17 @@ def update_user_info():
             database.update_user_info("registro", column, username, value)
 
     return redirect("/")
+
+
+def user_page(username):
+    personal_user_info = database.retrieve_data("registro", ['nome', 'mail'], username)['nome'] #tupla com nome e email
+    admin = is_admin(username)
+    try:
+        academic_info = database.retrieve_data("academico", ["nota_quiz", "nota_prova", "posicao"], username)['nota_quiz']#retorna uma tupla (nota_quiz, nota_prova, posicao)
+        continuar = academic_info[2]
+    except TypeError:
+        academic_info = database.retrieve_data("academico", ["nota_quiz", "nota_prova", "posicao"], username)
+        continuar = "iniciar"
+    user_feedback = database.retrieve_data("opiniao", "feedback", username)
+    if user_feedback == None or user_feedback =="": user_feedback = "*" 
+    return render_template("user.html", user_data = personal_user_info, is_admin = admin, academic_info = academic_info, continuar = continuar)
