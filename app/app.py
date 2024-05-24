@@ -41,8 +41,12 @@ def home():
 
     try:
         user_logged_in = current_user.is_authenticated
-        print(user_logged_in)
-        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        try:
+            user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        except TypeError:
+            logout_user()
+            session.clear()
+            return redirect("/")
         continuar = quiz_functions.continue_quiz(current_user.id)
 
         if login_functions.is_admin(current_user.id):
