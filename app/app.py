@@ -4,7 +4,6 @@ import arquivos
 import database
 import quiz_functions, login_functions
 
-
 app = Flask(__name__)
 
 app.secret_key = "chave_secreta"
@@ -183,7 +182,7 @@ def quiz_resultado():
 @login_required
 def avaliacao():
     apostila_paginas = arquivos.apostila_paginas
-    perguntas = arquivos.quiz_perguntas
+    perguntas = arquivos.perguntas_prova
     correcao = arquivos.erro_assunto
     questoes_erradas = {}
 

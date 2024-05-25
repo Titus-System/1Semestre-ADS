@@ -162,4 +162,4 @@ def user_page(username):
         continuar = "iniciar"
     user_feedback = database.retrieve_data("opiniao", "feedback", username)
     if user_feedback == None or user_feedback =="": user_feedback = "*" 
-    return render_template("user.html", user_data = personal_user_info, is_admin = admin, academic_info = academic_info, continuar = continuar)
+    return render_template("user.html", user_data = personal_user_info, is_admin = admin, academic_info = academic_info, continuar = continuar, user_feedback=user_feedback)
