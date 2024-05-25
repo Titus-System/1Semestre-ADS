@@ -98,7 +98,7 @@ def save_quiz(numero_pagina):
     for key in perguntas:
         if key == "result": break
         try:
-            if perguntas[key][39] == session[f"resposta_{perguntas[key][0]}"]:
+            if perguntas[key][6] == session[f"resposta_{perguntas[key][0]}"]:
                 acertos += 1
         except KeyError: pass
     database.save_quiz_state(username, acertos, numero_pagina)
@@ -118,7 +118,7 @@ def resultado_parcial(username):
     for key in perguntas:
         if key == "result": break
         try:
-            if perguntas[key][39] == respostas[f"resposta_{perguntas[key][0]}"]:
+            if perguntas[key][6] == respostas[f"resposta_{perguntas[key][0]}"]:
                 acertos += 1
             else:
                 questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]

@@ -202,7 +202,7 @@ def avaliacao():
             respostas_prova[key] = request.form.get(f"resposta{key}")
         
         for key,value in respostas_prova.items():
-            if value == perguntas[key][39]:
+            if value == perguntas[key][6]:
                 acertos += 1
             else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
