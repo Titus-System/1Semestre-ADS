@@ -673,6 +673,7 @@ label {
 
 .rating {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-around;
     margin-bottom: 20px;
 }
