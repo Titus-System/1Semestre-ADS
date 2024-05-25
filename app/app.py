@@ -128,7 +128,7 @@ def verdadeiro(page):
         for i in range(1, 5):
             respostas_usuario += request.form[f'resposta_usuario_vf_{i}']
         id_pergunta = page
-        if respostas_usuario == arquivos.quiz_vf[id_pergunta][6]:
+        if respostas_usuario == arquivos.quiz_vf[id_pergunta][9]:
             return "acertou"
         else: return "errou"
     else:
@@ -202,7 +202,7 @@ def avaliacao():
             respostas_prova[key] = request.form.get(f"resposta{key}")
         
         for key,value in respostas_prova.items():
-            if value == perguntas[key][6]:
+            if value == perguntas[key][9]:
                 acertos += 1
             else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
@@ -213,7 +213,7 @@ def avaliacao():
         print(username, acertos)
         database.insert_grade(username, acertos)
 
-        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continunar = continuar, is_admin=is_admin, user_data=user_data)
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continuar = continuar, is_admin=is_admin, user_data=user_data)
 
     return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas, continuar = continuar, is_admin=is_admin, user_data=user_data)
 
