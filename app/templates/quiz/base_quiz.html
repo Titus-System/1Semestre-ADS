@@ -47,7 +47,7 @@
                     <ol>
                         {% for key, value in perguntas.items() %}
                         {% if key != "result" %}
-                        <li><a href="/quiz/{{value[0]}}_{{key}}">{{value[9]}}</a></li>
+                        <li><a href="/quiz/{{value[0]}}_{{key}}">{{value[19]}}</a></li>
                         <br>
                         {% endif %}
                         {% endfor %}
@@ -175,9 +175,9 @@
                     {% if is_admin %}<a href="/admin">
                         <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
                     </a>{% endif %}<br>
-                    <a href="/quiz/{{continuar}}"><button class="btn text-dark btn-light w-100">continuar de onde eu
+                    <a href="/quiz/{{continuar}}"><button class="btn text-dark btn-light w-100">Continuar de onde
                             parei</button></a><br>
-                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus
+                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">Conferir meus
                             resultados</button></a><br>
                     <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
                 </div>

@@ -128,7 +128,7 @@ def verdadeiro(page):
         for i in range(1, 5):
             respostas_usuario += request.form[f'resposta_usuario_vf_{i}']
         id_pergunta = page
-        if respostas_usuario == arquivos.quiz_vf[id_pergunta][9]:
+        if respostas_usuario == arquivos.quiz_vf[id_pergunta][19]:
             return "acertou"
         else: return "errou"
     else:
@@ -202,7 +202,7 @@ def avaliacao():
             respostas_prova[key] = request.form.get(f"resposta{key}")
         
         for key,value in respostas_prova.items():
-            if value == perguntas[key][9]:
+            if value == perguntas[key][19]:
                 acertos += 1
             else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
