@@ -240,7 +240,6 @@ def pacer_page():
 
     return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin, continuar = continuar, user_data=user_data)
 
-
 #recarrega a pagina com um questionario para cada membro da equipe
 @app.route("/pacer/<name>", methods=["POST", "GET"])
 def get_pacer(name):
