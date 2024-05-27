@@ -53,43 +53,60 @@
         {% endwith %}
       </div>
 
-
-      <div class="login_content">
-        <div class="row justify-content-center container">
+<div class="flex_box_login_page">
+      <div class="login_content flex_itens" >
+        <div class="row justify-content-center container" style="width: fit-content;">
             <div class="col" id = modal_signup_form>
-              <h1>Faça seu cadastro</h1>
+              <h1 style="color: white;">Faça seu cadastro</h1>
               <form action="/signup" method="post">
-                  <label for="username">Username:</label><br>
-                  <input type="text" id="username" name="username" required>
+                  <label style="color: white;" for="username">Username:</label><br>
+                  <input class="text_box_login" type="text" id="username" name="username" required>
                   <br>
-                  <label for="name">Nome:</label><br>
-                  <input type="text" id="name" name="name" required>
                   <br>
-                  <label for="email">e-mail:</label><br>
-                  <input type="email" id="email" name="email" required>
+                  <label style="color: white;" for="name">Nome:</label><br>
+                  <input class="text_box_login"  type="text" id="name" name="name" required>
                   <br>
-                  <label for="password">Senha:</label><br>
-                  <input type="password" id="password" name="password" required>
                   <br>
-                  <label for="confirm_password">Senha:</label><br>
-                  <input type="password" id="confirm_password" name="confirm_password" required>
+                  <label style="color: white;" for="email">e-mail:</label><br>
+                  <input class="text_box_login"  type="email" id="email" name="email" required>
                   <br>
-                  <a href="/signup" ><button type="submit">Signup</button></a>
+                  <br>
+                  <label style="color: white;" for="password">Senha:</label><br>
+                  <input class="text_box_login"  type="password" id="password" name="password" required>
+                  <br>
+                  <br>
+                  <label style="color: white;" for="confirm_password">Confirmar Senha:</label><br>
+                  <input class="text_box_login"  type="password" id="confirm_password" name="confirm_password" required>
+                  <br>
+                  <br>
+    </form>
+                  <a href="/signup" ><button class="button_login_page rounded-pill shadow-lg" type="submit"><strong>Signup</strong></button></a>
               </form>
             </div>
+       </div>
+      </div>
 
-            <div class="col" id="modal_login_form">
-              <h1>Faça login</h1>
+      <div class="login_content flex_itens" >
+        <div class="row justify-content-center container" style="width: fit-content;">
+            <div class="col" id = modal_login_form>
+              <h1 style="color: white;">&nbsp&nbsp&nbspFaça seu login&nbsp&nbsp&nbsp</h1>
               <form action="/login" method="post">
-                  <label for="username">Username:</label><br>
-                  <input type="text" id="username" name="username" required>
+                  <label style="color: white;" for="username">Username:</label><br>
+                  <input class="text_box_login" type="text" id="username" name="username" required>
                   <br>
-                  <label for="password">Senha:</label><br>
-                  <input type="password" id="password" name="password" required>
                   <br>
-                  <a href="/{{next}}"><button type="submit">Login</button></a>
+                  <label style="color: white;" for="password">senha:</label><br>
+                  <input class="text_box_login"  type="password" id="password" name="password" required>
+                  <br>
+                  <br>
+                  <a href="/{{next}}"><button class="button_login_page rounded-pill shadow-lg" type="submit"><strong>Login</strong></button></a>
               </form>
             </div>
+        </div>   
+      </div>
+
+    </div>    
+
             <div class="col" id="modal_user_update">
               <h1>Atualize seus dados</h1>
               <h4>Os campos que forem deixados em branco não serão alterados</h4>
@@ -109,6 +126,8 @@
                 <button type="submit" value="submit">Atualizar meus dados</button>
               </form>
             </div>
+
+  </div>          
             
         </div>
       </div>
