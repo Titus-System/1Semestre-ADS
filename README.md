@@ -21,7 +21,7 @@
 10. [Sobre a Empresa](#sobre-a-empresa)
 
 ## Apresentação do projeto
-Veja a demonstração do projeto no [Youtube](https://www.youtube.com/watch?...)
+Veja a demonstração do projeto no [youtube](https://youtu.be/quI6hgsdAgw)
 
 ## Sobre o produto
 Uma plataforma educacional interativa e didática que facilite o aprendizado e a implementação da metodologia SCRUM. A plataforma visa estar completamente imersa nos valores e pilares do SCRUM, priorizando a entrega de conteúdo ao usuário, aliado a ferramentas padronizadas e métodos avaliativos.
