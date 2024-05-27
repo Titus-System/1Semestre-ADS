@@ -4,7 +4,6 @@ import arquivos
 import database
 import quiz_functions, login_functions
 
-
 app = Flask(__name__)
 
 app.secret_key = "chave_secreta"
@@ -41,8 +40,12 @@ def home():
 
     try:
         user_logged_in = current_user.is_authenticated
-        print(user_logged_in)
-        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        try:
+            user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+        except TypeError:
+            logout_user()
+            session.clear()
+            return redirect("/")
         continuar = quiz_functions.continue_quiz(current_user.id)
 
         if login_functions.is_admin(current_user.id):
@@ -76,9 +79,12 @@ def ferramentas(name):
     
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
-    else: continuar = "iniciar"
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data = []
     
-    return render_template(f"/ferramentas/{name}.html", is_admin = is_admin, continuar=continuar)
+    return render_template(f"/ferramentas/{name}.html", is_admin = is_admin, continuar=continuar, user_data = user_data)
 
 
 @app.route("/apostila/<name>")
@@ -90,9 +96,12 @@ def find_apostila(name):
     
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
-    else: continuar = "iniciar"
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data = []
 
-    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas, is_admin=is_admin, continuar = continuar)
+    return render_template(f"/apostila/{name}.html", paginas = arquivos.apostila_paginas, is_admin=is_admin, continuar = continuar, user_data=user_data)
 
 
 @app.route("/quiz/")
@@ -108,6 +117,46 @@ def quiz_page(name=str):
     if name == "final":
         return redirect("/quiz/quiz_resultado")
     return quiz_functions.quiz_page(name)
+
+
+@app.route("/verdadeiro/<page>", methods=["POST", "GET"])
+@login_required
+def verdadeiro(page):
+    respostas_usuario = ""
+    if request.method == 'POST':
+        for i in range(1, 5):
+            respostas_usuario += request.form[f'resposta_usuario_vf_{i}']
+        id_pergunta = page
+        if respostas_usuario == arquivos.quiz_vf[id_pergunta][19]:
+            return "acertou"
+        else: return "errou"
+    else:
+        return render_template('teste_vf.html')
+
+
+@app.route("/associacao/<page>", methods=['GET','POST'])
+def associacao():
+    def resposta(resposta_certa, resposta_usuario):
+        if resposta_usuario == resposta_certa:
+            # acertos += 1
+            return 'Resposta correta!'
+        else:
+            # erros += 1
+            return 'Resposta Falsa!'
+        
+    if request.method == 'POST':
+        resposta_certa_1 = '1'
+        resposta_certa_2 = '2'
+        resposta_certa_3 = '3'
+        resposta_usuario_1 = request.form['resposta_usuario_1']
+        resposta_usuario_2 = request.form['resposta_usuario_2']
+        resposta_usuario_3 = request.form['resposta_usuario_3']
+        resultado_1 = resposta(resposta_certa_2, resposta_usuario_1)
+        resultado_2 = resposta(resposta_certa_1, resposta_usuario_2)
+        resultado_3 = resposta(resposta_certa_3, resposta_usuario_3)
+        return render_template('verdadeiro.html')
+    else:
+        return render_template('associacao.html')
 
 
 @app.route("/quiz/salvar_quiz/<numero_pagina>")
@@ -133,11 +182,12 @@ def quiz_resultado():
 @login_required
 def avaliacao():
     apostila_paginas = arquivos.apostila_paginas
-    perguntas = arquivos.quiz_perguntas
+    perguntas = arquivos.perguntas_prova
     correcao = arquivos.erro_assunto
     questoes_erradas = {}
 
     is_admin = login_functions.is_admin(login_functions.current_user.id)
+    user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
 
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
@@ -162,9 +212,9 @@ def avaliacao():
         print(username, acertos)
         database.insert_grade(username, acertos)
 
-        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continunar = continuar, is_admin=is_admin)
+        return render_template("/avaliacao/resultado_avaliacao.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas_prova, questoes_erradas = questoes_erradas, correcao = correcao, paginas = apostila_paginas, perguntas = perguntas, continuar = continuar, is_admin=is_admin, user_data=user_data)
 
-    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas, continuar = continuar, is_admin=is_admin)
+    return render_template("/avaliacao/avaliacao.html", perguntas = perguntas, paginas = apostila_paginas, continuar = continuar, is_admin=is_admin, user_data=user_data)
 
 
 #rota para o PACER
@@ -177,7 +227,10 @@ def pacer_page():
     
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
-    else: continuar = "iniciar"
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data = []
 
     qtd_funcionarios = 0
 
@@ -185,8 +238,7 @@ def pacer_page():
         qtd_funcionarios = int(request.form.get("qtd_funcionarios"))
         return redirect (f"pacer/{qtd_funcionarios}")
 
-    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin, continuar = continuar)
-
+    return render_template("/pacer/pacer.html", qtd_funcionarios=qtd_funcionarios, is_admin=is_admin, continuar = continuar, user_data=user_data)
 
 #recarrega a pagina com um questionario para cada membro da equipe
 @app.route("/pacer/<name>", methods=["POST", "GET"])
@@ -197,8 +249,11 @@ def get_pacer(name):
         is_admin = False
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
-    else: continuar = "iniciar"
-    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name), is_admin=is_admin, continuar = continuar)
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data = []
+    return render_template ("/pacer/pacer.html", qtd_funcionarios = int(name), is_admin=is_admin, continuar = continuar, user_data=user_data)
 
 
 #retorno do PACER para o usuário
@@ -211,7 +266,10 @@ def pacer_res(name):
         
     if login_functions.verify_login():
         continuar = quiz_functions.continue_quiz(current_user.id)
-    else: continuar = "iniciar"
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data=[]
 
     pacer_funcionarios = {}
     soma_pacer = 0
@@ -229,7 +287,7 @@ def pacer_res(name):
     for i in pacer_funcionarios:
             soma_pacer += pacer_funcionarios[i][4]
 
-    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer, is_admin=is_admin, continuar = continuar)
+    return render_template("/pacer/pacer_res.html", pacer = pacer_funcionarios, soma = soma_pacer, is_admin=is_admin, continuar = continuar, user_data=user_data)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -256,6 +314,12 @@ def logout():
     return redirect("/")
 
 
+@app.route("/user")
+@login_required
+def user_page():
+    return login_functions.user_page(current_user.id)
+
+
 @app.route("/admin")
 @login_required
 def admin():
@@ -265,12 +329,18 @@ def admin():
 @app.route('/feedback', methods=["POST", "GET"])
 @login_required
 def feedback():
+    if login_functions.verify_login():
+        continuar = quiz_functions.continue_quiz(current_user.id)
+        user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+    else:
+        continuar = "iniciar"
+        user_data=[]
     if request.method == "POST":
         feedback = request.form.get('star')
         comment = request.form.get('suggestion')
         database.insert_feedback(current_user.id, feedback, comment)
         return redirect("/home")
-    return render_template ("/feedback/feedback.html")
+    return render_template ("/feedback/feedback.html", continuar=continuar, user_data=user_data)
 
 
 if __name__ == "__main__":
