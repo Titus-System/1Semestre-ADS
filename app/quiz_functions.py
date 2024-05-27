@@ -6,6 +6,8 @@ import login_functions
 
 def quiz_page(name=str):
     perguntas = arquivos.quiz_perguntas
+    quiz_vf = arquivos.quiz_vf
+    quiz_associacao = arquivos.quiz_associacao
     questao = ""
     num_quest = 0
     page = name
@@ -27,6 +29,34 @@ def quiz_page(name=str):
         num_quest = questao[0]
         proxima_pagina = questao[8]
         pagina_anterior = f"{questao[0]}_{name}"
+   
+    elif name in quiz_vf.keys():
+        page = "teste_vf"
+        next_page = quiz_vf[name][8]
+        if request.method =="POST":
+            respostas_usuario = ""
+            for i in range(1, 5):
+                respostas_usuario += request.form[f'resposta_usuario_vf_{i}'].lower()
+            try:
+                session[f"resposta_{quiz_vf[name][0]}"] = respostas_usuario
+            except KeyError:
+                session[f"resposta_{quiz_vf[name][0]}"] = ""
+            return redirect(f"/quiz/{next_page}")
+    
+    elif name in quiz_associacao.keys():
+        page = "teste_associacao"
+        next_page = quiz_associacao[name][8]
+        if request.method =="POST":
+            respostas_usuario = ""
+            for i in range(1, 5):
+                respostas_usuario += request.form[f'resposta_usuario_{i}'].lower()
+            try:
+                session[f"resposta_{quiz_associacao[name][0]}"] = respostas_usuario
+            except KeyError:
+                session[f"resposta_{quiz_associacao[name][0]}"] = ""
+            return redirect(f"/quiz/{next_page}")
+
+        return render_template(f"/quiz/{page}.html", perguntas=perguntas, user_data=user_data, is_admin=is_admin)
     
     if request.method == "POST":
         questao = perguntas[pagina_atual]

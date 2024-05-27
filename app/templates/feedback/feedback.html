@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Feedback</title>
-    
+{% extends "/pacer/base_pacer.html" %}
+
+
+{% block title %}Feedback{% endblock %}
+
+{% block script %}
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
@@ -12,8 +11,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
-    </head>
-    <body class="body_feed">
+{% endblock %}
+
+{% block content %}
+    <div class="body_feed">
         <div class="form-container">
             <h1 class="h1_feed">Feedback</h1>
             <form action="/feedback" method="POST" id="evaluation-form">
@@ -31,5 +32,5 @@
             </form>
             <div id="result"></div>
         </div>
-    </body>
-    </html>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 3{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 3</h1>
+        <br>
+        <h2>Assunto 3: O que é a Daily?</h2>
+        <p>A Daily é uma reunião diária de até 15 minutos destinada a sincronizar as atividades da equipe e ajustar o plano de ação para o dia. No decorrer da reunião, cada membro do time de desenvolvimento responde a três perguntas: o que fez no dia anterior, o que planeja fazer hoje e se há algum impedimento. </p>
+    
+        <a href="/quiz/assunto12"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
+        <a href="/quiz/assunto13"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/13_assunto13" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+{% endblock %}
