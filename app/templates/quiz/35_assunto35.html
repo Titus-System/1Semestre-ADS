@@ -5,14 +5,17 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 5</h1>
-        <br>
-        <h2>Assunto 5: Priorização baseada em dependências</h2>
-        <p>A priorização baseada em dependências é uma abordagem que considera as relações existentes entre as tarefas do backlog para determinar a ordem em que devem ser executadas. Ela é aplicada quando há atividades que têm pré-requisitos ou dependem de outras para serem realizadas. Nesse contexto, a equipe examina as relações entre as atividades e dá prioridade àquelas que são dependentes de outras.
-        Ao identificar e priorizar essas dependências, a equipe de desenvolvimento pode evitar bloqueios e garantir um fluxo de trabalho mais eficiente,permitindo um progresso contínuo e evitando gargalos que comprometam o trabalho.</p>
+        <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto34"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Priorização baseada em dependências</h2>
+                        <p>A priorização baseada em dependências é uma abordagem que considera as relações existentes entre as tarefas do backlog para determinar a ordem em que devem ser executadas. Ela é aplicada quando há atividades que têm pré-requisitos ou dependem de outras para serem realizadas. Nesse contexto, a equipe examina as relações entre as atividades e dá prioridade àquelas que são dependentes de outras.
+                        Ao identificar e priorizar essas dependências, a equipe de desenvolvimento pode evitar bloqueios e garantir um fluxo de trabalho mais eficiente,permitindo um progresso contínuo e evitando gargalos que comprometam o trabalho.</p>
             
-        <a href="/quiz/assunto34"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto35"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+                    </div>
+                    <a href="/quiz/assunto35"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/35_assunto35" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/35_assunto35" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

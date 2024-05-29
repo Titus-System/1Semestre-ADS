@@ -5,12 +5,15 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 3</h1>
-        <br>
-        <h2>Assunto 10: Eventos adicionais</h2>
-        <p>Além dos eventos principais do Scrum, equipes ágeis, muitas vezes, organizam eventos adicionais para atender às necessidades específicas do projeto ou da organização. Esses eventos podem incluir workshops de estimativa, sessões de revisão técnica ou encontros para discutir questões emergentes. Sua principal vantagem é o fato de sua realização ser flexível e adaptável, ou seja, as equipes podem ajustar sua abordagem de acordo com os desafios enfrentados durante o desenvolvimento do produto.</p>
-        <a href="/quiz/assunto19"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto20"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+            <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto19"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Eventos adicionais</h2>
+                        <p>Além dos eventos principais do Scrum, equipes ágeis, muitas vezes, organizam eventos adicionais para atender às necessidades específicas do projeto ou da organização. Esses eventos podem incluir workshops de estimativa, sessões de revisão técnica ou encontros para discutir questões emergentes. Sua principal vantagem é o fato de sua realização ser flexível e adaptável, ou seja, as equipes podem ajustar sua abordagem de acordo com os desafios enfrentados durante o desenvolvimento do produto.</p>
+                    </div>
+                    <a href="/quiz/assunto20"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/20_assunto20" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/20_assunto20" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

@@ -5,13 +5,16 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 5</h1>
-        <br>
-        <h2>Assunto 2: Priorização baseada em valor</h2>
-        <p>No Scrum, a priorização baseada em valor foca em entregar o máximo de valor ao cliente no menor tempo possível. Para determinar o valor de cada tarefa, o P.O considera diversos fatores, como benefícios para o usuário, retorno financeiro e alinhamento estratégico. As tarefas com maior valor são priorizadas para serem desenvolvidas primeiro, garantindo que a equipe esteja sempre focada nas funcionalidades mais importantes e impactantes.</p>
-            
-        <a href="/quiz/assunto31"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto32"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+        <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto31"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Priorização baseada em valor</h2>
+                        <p>No Scrum, a priorização baseada em valor foca em entregar o máximo de valor ao cliente no menor tempo possível. Para determinar o valor de cada tarefa, o P.O considera diversos fatores, como benefícios para o usuário, retorno financeiro e alinhamento estratégico. As tarefas com maior valor são priorizadas para serem desenvolvidas primeiro, garantindo que a equipe esteja sempre focada nas funcionalidades mais importantes e impactantes.</p>
+                    </div>
+                    <a href="/quiz/assunto32"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+     
     </div>
-    <a href="/quiz/salvar_quiz/32_assunto32" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/32_assunto32" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

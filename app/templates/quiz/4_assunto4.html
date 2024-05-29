@@ -5,13 +5,16 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 1</h1>
-        <br>
-        <h2>Assunto 4: Papéis</h2>
-        <p>O responsável por entender os requisitos e o que o cliente realmente deseja é o Proprietário do Produto, enquanto o ScrumMaster, com o Proprietário do Produto e o Time de Desenvolvimento, define o conteúdo e os objetivos de cada Sprint. </p>
-    
-        <a href="/quiz/assunto3"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto4"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
+        <div class="page_assunto_flex">
+            <a href="/quiz/assunto3"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+            <div class="container-assunto">
+                <br>
+                <h2>Papéis</h2>
+                <p>O responsável por entender os requisitos e o que o cliente realmente deseja é o Proprietário do Produto, enquanto o ScrumMaster, com o Proprietário do Produto e o Time de Desenvolvimento, define o conteúdo e os objetivos de cada Sprint. </p>
+            </div>
+            <a href="/quiz/assunto4"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+        </div>
         
     </div>
-    <a href="/quiz/salvar_quiz/4_assunto4" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/4_assunto4" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

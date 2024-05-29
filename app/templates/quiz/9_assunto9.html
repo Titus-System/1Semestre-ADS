@@ -5,14 +5,16 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 2</h1>
-        <br>
-        <h2>Assunto 4: Dev Team</h2>
-        <p>O Time de Desenvolvimento, Development Team, ou Dev Team, é um componente essencial do Scrum, formado pelos responsáveis por transformar as ideias e requisitos do P.O em um produto funcional. Com um tamanho ideal de 3 a 9 membros, o Dev Team trabalha de forma eficiente e coordenada, com o objetivo de garantir qualidade e valor nas entregas.</p>
-        <p>O Dev Team participa ativamente das reuniões de planejamento, desenvolvimento e revisão, comprometendo-se a entregar incrementos de produto que atendam aos padrões de qualidade e às expectativas do cliente. A dedicação à entrega contínua de valor é a principal característica do time, que busca, constantemente, melhorar processos e resultados de revisões e adaptações regulares.</p>
-    
-        <a href="/quiz/assunto8"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto9"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+            <div class="page_assunto_flex">
+                <a href="/quiz/assunto8"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                <div class="container-assunto">
+                    <br>
+                    <h2>Dev Team</h2>
+                    <p>O Time de Desenvolvimento, Development Team, ou Dev Team, é um componente essencial do Scrum, formado pelos responsáveis por transformar as ideias e requisitos do P.O em um produto funcional. Com um tamanho ideal de 3 a 9 membros, o Dev Team trabalha de forma eficiente e coordenada, com o objetivo de garantir qualidade e valor nas entregas.</p>
+                    <p>O Dev Team participa ativamente das reuniões de planejamento, desenvolvimento e revisão, comprometendo-se a entregar incrementos de produto que atendam aos padrões de qualidade e às expectativas do cliente. A dedicação à entrega contínua de valor é a principal característica do time, que busca, constantemente, melhorar processos e resultados de revisões e adaptações regulares.</p>
+                </div>
+                <a href="/quiz/assunto9"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            </div>
     </div>
-    <a href="/quiz/salvar_quiz/9_assunto9" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/9_assunto9" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

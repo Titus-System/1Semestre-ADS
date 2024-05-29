@@ -5,12 +5,15 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 4</h1>
-        <br>
-        <h2>Assunto 7: Membros da Equipe e DoD</h2>
-        <p>Todos os membros da equipe são responsáveis por assegurar a aplicação eficaz da DoD. O P.O deve aceitar somente itens que cumpram os critérios da DoD, o Dev Team deve sempre entregar itens que estejam de acordo com a DoD, o S.M deve garantir que a equipe compreenda e utilize a DoD corretamente e todo o time deve revisar a DoD a cada sprint para realizar os ajustes necessários.</p>
-        <a href="/quiz/assunto26"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto27"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+        <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto26"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Membros da Equipe e DoD</h2>
+                        <p>Todos os membros da equipe são responsáveis por assegurar a aplicação eficaz da DoD. O P.O deve aceitar somente itens que cumpram os critérios da DoD, o Dev Team deve sempre entregar itens que estejam de acordo com a DoD, o S.M deve garantir que a equipe compreenda e utilize a DoD corretamente e todo o time deve revisar a DoD a cada sprint para realizar os ajustes necessários.</p>
+                    </div>
+                    <a href="/quiz/assunto27"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/27_assunto27" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/27_assunto27" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

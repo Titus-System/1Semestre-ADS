@@ -5,13 +5,15 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 6</h1>
-        <br>
-        <h2>Assunto 4: Desvantagens do Scrum (parte 2)</h2>
-        <p>Além das desvantagens anteriormente mencionadas, outras questões importantes precisam ser consideradas ao implementar o Scrum. A intensa colaboração necessária entre os membros da equipe é um aspecto fundamental dessa metodologia, porém pode ser desafiador para equipes dispersas geograficamente ou com rotinas muito diferentes. Além disso, os ciclos curtos de desenvolvimento do Scrum podem gerar pressão adicional sobre a equipe, aumentando o risco de sobrecarga. E, por fim, é necessário o comprometimento total de todos os membros da equipe para o sucesso do Scrum, já que a falta de dedicação de qualquer integrante pode afetar significativamente o progresso e a eficácia do trabalho em equipe.</p>
-        
-        <a href="/quiz/assunto38"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto39"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+        <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto38"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Desvantagens do Scrum (parte 2)</h2>
+                        <p>Além das desvantagens anteriormente mencionadas, outras questões importantes precisam ser consideradas ao implementar o Scrum. A intensa colaboração necessária entre os membros da equipe é um aspecto fundamental dessa metodologia, porém pode ser desafiador para equipes dispersas geograficamente ou com rotinas muito diferentes. Além disso, os ciclos curtos de desenvolvimento do Scrum podem gerar pressão adicional sobre a equipe, aumentando o risco de sobrecarga. E, por fim, é necessário o comprometimento total de todos os membros da equipe para o sucesso do Scrum, já que a falta de dedicação de qualquer integrante pode afetar significativamente o progresso e a eficácia do trabalho em equipe.</p>
+                    </div>
+                    <a href="/quiz/assunto39"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/39_assunto39" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/39_assunto39" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

@@ -28,10 +28,10 @@
   <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
     <!--inicio do formulario-->
     <form action="/quiz/{{pagina_atual}}" method="POST">
-      <div class="question_box">
-
+      <div class="question_box row">
+        <div class="col-2"><a href="/quiz/{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a></div>
+        <div class="col-8">
               <div class="question_box_1">
-
                 <br>
                 <br>
                 <div class="engrenagens-div">
@@ -43,8 +43,8 @@
               </div> 
 
                 <!-- alternativas quiz -->
-                <div class="quiz_option">
-                  <br>
+                   <div class="quiz_option">
+                   <br>
 
                     <label for="A{{num_quest}}" class="quiz-alternativa">
                       <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
@@ -69,25 +69,30 @@
                       <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
                       {{questao[5]}}</label>  
                     <br>
-                  </div>
+                  </div>  
 
                   <!-- botão dica -->
                   <br>
                   <br>
-                  <div class="btn_ns">
-                  <button tabindex="0" type="button" class="btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}" style="float:right">
-                    Não sei responder...
-                  </button>
-                </div>
+                  <div>
+                    <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}" >
+                      Não sei responder...
+                    </button>
                   <br>
+                  <br>
+                  <br><br>
+                  
+                  </div>
               </div>
-            <br>
-      <br><br>
-      <a href="/quiz/{{proxima}}"><button class="button_avaliacao rounded-pill shadow-lg" id="button_next">Próximo  >></button></a>  
+              
+              <div class="col-2"><a href="/quiz/{{proxima}}"><button class="arrow_assunto" id="button_next">&#9654;</button></a></div>
+                  
+                </div>
+                
+      
     </form>
-    <a href="/quiz/{{anterior}}"><button class="button_avaliacao rounded-pill shadow-lg" id="button_previous"><<  Anterior</button></a>
     <!--fim do formulario-->
-
+  
 </div>
 </div>
 

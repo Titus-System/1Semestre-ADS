@@ -5,12 +5,15 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 4</h1>
-        <br>
-        <h2>Assunto 9: Planning Poker</h2>
-        <p>Conhecida também como Scrum Poker, é uma técnica ágil cuja finalidade é priorizar tarefas e estimar o esforço necessário para cumpri-las. Para utilizá-la, cada membro da equipe recebe cartas com valores de uma sequência específica, geralmente baseada na sequência de Fibonacci (ex.: 1, 2, 3, 5, 8, 13). Esses valores, ao final, fornecem uma estimativa do esforço necessário para cumprir todas as fases do Product Backlog.</p>
-        <a href="/quiz/assunto28"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto29"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+        <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto28"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Planning Poker</h2>
+                        <p>Conhecida também como Scrum Poker, é uma técnica ágil cuja finalidade é priorizar tarefas e estimar o esforço necessário para cumpri-las. Para utilizá-la, cada membro da equipe recebe cartas com valores de uma sequência específica, geralmente baseada na sequência de Fibonacci (ex.: 1, 2, 3, 5, 8, 13). Esses valores, ao final, fornecem uma estimativa do esforço necessário para cumprir todas as fases do Product Backlog.</p>
+                    </div>
+                    <a href="/quiz/assunto29"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/29_assunto29" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/29_assunto29" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}

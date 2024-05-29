@@ -5,12 +5,15 @@
 {% block resumo %}
     <div class="quiz_page">
         <h1 id="quiz_title">Capítulo 4</h1>
-        <br>
-        <h2>Assunto 4: Burndown</h2>
-        <p>O Burndown Chart é uma ferramenta do Scrum usada para medir o desempenho durante as Sprints. Administrado pelo S.M, esse gráfico mostra se o grupo está adiantado, atrasado ou no prazo. Ele exibe a quantidade de trabalho restante diariamente, com a altura representando tarefas não completadas e o comprimento representando os dias da Sprint. A queda das colunas indica progresso.</p>
-        <a href="/quiz/assunto23"><button class="botao_iniciar" id="button_previous"><< Anterior</button></a>
-        <a href="/quiz/assunto24"><button class="botao_iniciar" id="button_next">Próximo >></button></a>
-        
+            <div class="page_assunto_flex"></div>
+                <a href="/quiz/assunto23"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Burndown</h2>
+                        <p>O Burndown Chart é uma ferramenta do Scrum usada para medir o desempenho durante as Sprints. Administrado pelo S.M, esse gráfico mostra se o grupo está adiantado, atrasado ou no prazo. Ele exibe a quantidade de trabalho restante diariamente, com a altura representando tarefas não completadas e o comprimento representando os dias da Sprint. A queda das colunas indica progresso.</p>
+                    </div>
+                    <a href="/quiz/assunto24"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
     </div>
-    <a href="/quiz/salvar_quiz/24_assunto24" style="position:fixed; bottom:20px; right:20px"><button class="botao_iniciar" id="parar_quiz">Parar aqui</button></a>
+    <a href="/quiz/salvar_quiz/24_assunto24" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}
