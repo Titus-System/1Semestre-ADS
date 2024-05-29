@@ -109,8 +109,10 @@ def admin_page():
     if is_admin(current_user.id):
         try:
             user_data = database.retrieve_data("registro", ['nome', 'mail'], current_user.id)['nome'] #tupla com nome e email
+            continuar = database.retrieve_data("academico", "posicao", current_user.id)
         except TypeError:
             user_data = []
+            continuar = "iniciar"
         notas_prova = database.retrieve_column("academico", "nota_prova")
         notas_quiz = database.retrieve_column("academico", "nota_quiz")
         feedbacks = database.retrieve_column("opiniao", "feedback")
@@ -127,7 +129,7 @@ def admin_page():
 
         users_results = database.get_user_info()
 
-        return render_template("admin.html", is_admin=True,media_feedback=media_feedback, media_prova=media_prova, media_quiz=media_quiz, graph = graphic, user_data=user_data, users_results=users_results)
+        return render_template("admin.html", is_admin=True,media_feedback=media_feedback, media_prova=media_prova, media_quiz=media_quiz, graph = graphic, user_data=user_data, users_results=users_results, continuar=continuar)
     
     flash("É necessário ser administrador para acessar essa página!")
     return redirect("/login")

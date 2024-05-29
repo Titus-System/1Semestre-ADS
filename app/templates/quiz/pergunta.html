@@ -4,8 +4,8 @@
 {% block quiz %}
 <div class="quiz_page">
 
-    <!-- modal que será acionado se o usuário não responder a questão -->
-    <!-- <div id="myModal" class="modal fade">
+  <!-- modal que será acionado se o usuário não responder a questão -->
+  <!-- <div id="myModal" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -19,87 +19,92 @@
       </div>
     </div> -->
 
-  
+
 
   <!-- inicio da pagina -->
   <br>
   <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
   <br>
   <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
-    <!--inicio do formulario-->
-    <form action="/quiz/{{pagina_atual}}" method="POST">
-      <div class="question_box row">
-        <div class="col-2"><a href="/quiz/{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a></div>
-        <div class="col-8">
-              <div class="question_box_1">
-                <br>
-                <br>
-                <div class="engrenagens-div">
-                &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
-                <p class="question_script">{{questao[1]}}</p>
-                &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
-                </div>
-                <br>
-              </div> 
+  <!--inicio do formulario-->
+  <div class="question_box row">
+    <div class="col-2">
+      <a href="/quiz/{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a>
+    </div>
 
-                <!-- alternativas quiz -->
-                   <div class="quiz_option">
-                   <br>
+    <div class="col-8">
+      <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta">
+        <div class="question_box_1">
+          <br>
+          <br>
+          <div class="engrenagens-div">
+            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+            <p class="question_script">{{questao[1]}}</p>
+            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+          </div>
+          <br>
+        </div>
 
-                    <label for="A{{num_quest}}" class="quiz-alternativa">
-                      <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
-                      {{questao[2]}}</label>
-                    <br>
-                    <br> 
+        <!-- alternativas quiz -->
+        <div class="quiz_option">
+          <br>
 
-                    <label for="B{{num_quest}}" class="quiz-alternativa">
-                      <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
-                      {{questao[3]}}</label>            
-                    <br>
-                    <br>
+          <label for="A{{num_quest}}" class="quiz-alternativa">
+            <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
+            {{questao[2]}}</label>
+          <br>
+          <br>
 
-                    
-                    <label for="C{{num_quest}}" class="quiz-alternativa">
-                      <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
-                      {{questao[4]}}</label>
-                    <br>
-                    <br>
+          <label for="B{{num_quest}}" class="quiz-alternativa">
+            <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
+            {{questao[3]}}</label>
+          <br>
+          <br>
 
-                    <label for="D{{num_quest}}" class="quiz-alternativa">
-                      <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
-                      {{questao[5]}}</label>  
-                    <br>
-                  </div>  
 
-                  <!-- botão dica -->
-                  <br>
-                  <br>
-                  <div>
-                    <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}" >
-                      Não sei responder...
-                    </button>
-                  <br>
-                  <br>
-                  <br><br>
-                  
-                  </div>
-              </div>
-              
-              <div class="col-2"><a href="/quiz/{{proxima}}"><button class="arrow_assunto" id="button_next">&#9654;</button></a></div>
-                  
-                </div>
-                
-      
+          <label for="C{{num_quest}}" class="quiz-alternativa">
+            <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
+            {{questao[4]}}</label>
+          <br>
+          <br>
+
+          <label for="D{{num_quest}}" class="quiz-alternativa">
+            <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
+            {{questao[5]}}</label>
+          <br>
+        </div>
+
+        <!-- botão dica -->
+        <br>
+        <br>
+        <div>
+          <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover"
+            data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}">
+            Não sei responder...
+          </button>
+          <br>
+          <br>
+          <br><br>
+        </div>
+      </div>
     </form>
-    <!--fim do formulario-->
-  
-</div>
-</div>
+    <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto" id="button_next">&#9654;</button>
+  </div>
 
-<script src="{{sem_resposta}}"></script>
+</div>
+<!--fim do formulario-->
+
+</div>
+</div>
 <script>
-  	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
+  document.getElementById('enviar_resposta').addEventListener('click', function() {
+      document.getElementById('pergunta').submit();
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#myModal").modal('show');
+  });
 </script>
 {% endblock %}

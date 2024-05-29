@@ -239,7 +239,7 @@ def retrieve_quiz_answers(username: str):
         cur = con.cursor()
 
         data = cur.execute("SELECT respostas FROM academico WHERE username=?",(username,)).fetchone()
-        if data[0]:
+        if data:
             return loads(data[0])
         else:
             return False
