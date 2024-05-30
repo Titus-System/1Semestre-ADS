@@ -27,22 +27,62 @@
     <!-- cabeçalho -->
 
     <header class="link_bar">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" style="color:white; font-size:30px; line-height:60px">
+                    &#9776
+                </button>
+                <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo" height="30"></a>
+                <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto my-auto mb-lg-0">
+                        <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>&nbsp&nbsp
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user"><img src="/static/images/user_button.svg" style="height:30px"></a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-            style="color:white; font-size:30px; line-height:60px">
-            &#9776
-        </a>
-
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #223c4b; color:white;">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: #223c4b; color:white;">
             <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navegação</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user"><img src="/static/images/user_button.svg" style="height:30px"></a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search"
-                        style="width:240px">
-                    <button class="btn btn-outline-success" type="submit">&#128269</button>
-                </form>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvasmenuLabel" style="background-color: #223c4b; color:white;">
+            <div class="offcanvas-header" data-bs-theme="dark">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Apostila</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div class="indice">
@@ -62,35 +102,17 @@
                 </div>
             </div>
         </div>
-
-
-        <a href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
-        <span class="header_link">
-            {% if current_user.is_authenticated %}
-            <a type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modal_user">Meu
-                perfil</a>
-            {% else %}
-            <a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a>
-            <a type="button" class="white" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a>
-            {%endif%}
-            <a href="/pacer" alt="pacer">PACER</a>
-            <a href="/avaliação" alt="avaliação">AVALIAÇÃO</a>
-            <a href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
-            <a href="/apostila" alt="apostila">APOSTILA</a>
-            <a href="/quiz" alt="quiz">QUIZ</a>
-            <!-- <a href="#" alt="home">HOME</a> -->
-        </span>
         <hr class="header_hr">
     </header>
 
+    <!-- Login Modal -->
     <div class="text-light">
-        <!-- Login Modal -->
         <div class="modal" id="modal_login">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark">
 
                     <!-- Modal Header -->
-                    <div class="modal-header">
+                    <div class="modal-header" data-bs-theme="dark">
                         <h4 class="modal-title">Faça login</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
@@ -125,7 +147,7 @@
                 <div class="modal-content bg-dark">
 
                     <!-- Modal Header -->
-                    <div class="modal-header">
+                    <div class="modal-header" data-bs-theme="dark">
                         <h4 class="modal-title">Faça seu cadastro</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
@@ -171,7 +193,7 @@
             <div class="modal-content bg-dark">
 
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header" data-bs-theme="dark">
                     <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -180,13 +202,12 @@
                 <div class="modal-body container" style="color:black">
                     <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
                     <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
-                    {% if is_admin %}<a href="/admin">
-                        <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
-                    </a>{% endif %}<br>
-                    <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu
-                            parei</button></a><br>
-                    <a href="/quiz/resultado_parcial"><button class="btn btn-light">conferir meus
-                            resultados</button></a><br>
+                    <br>
+                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary w-100">Acessar página de administrador</buton></a><br>{% endif %}<br>
+                    <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu parei</button></a><br>
+                    <br>
+                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus resultados</button></a><br>
+                    <br>
                     <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
                 </div>
 
@@ -198,10 +219,6 @@
         </div>
     </div>
     {% endif %}
-
-
-
-
 
     <!-- inserir imagem principal da página -->
     {% block head_image %} {% endblock %}
@@ -216,18 +233,55 @@
 
     <!-- paginação -->
     <div class="paginacao">
-        <a href='{% block voltar %}{% endblock %}' title="página anterior">&#11207;</a>
-        <a href="/apostila/introducao" title="página 1" {% block highlight_1 %}{% endblock %}>1</a> |
-        <a href="/apostila/papeis" title="página 2" {% block highlight_2 %}{% endblock %}>2</a> |
-        <a href="/apostila/cerimonias" title="página 3" {% block highlight_3 %}{% endblock %}>3</a> |
-        <a href="/apostila/artefatos" title="página 4" {% block highlight_4 %}{% endblock %}>4</a> |
-        <a href="/apostila/priorizacao" title="página 5" {% block highlight_5 %}{% endblock %}>5</a> |
-        <a href="/apostila/vantagens-e-desvantagens" title="página 6" {% block highlight_6 %}{% endblock %}>6</a> |
-        <a href="/apostila/glossario" title="página 7" {% block highlight_7 %}{% endblock %}>7</a>
-        <a href="{% block prox %}{% endblock %}" title="próxima página">&#11208;</a>
+        <nav class="page navigation justify-content-center">
+            <a href='{% block voltar %}{% endblock %}' title="página anterior">&#11207;</a>
+            <a href="/apostila/introducao" title="página 1" {% block highlight_1 %}{% endblock %}>1</a> |
+            <a href="/apostila/papeis" title="página 2" {% block highlight_2 %}{% endblock %}>2</a> |
+            <a href="/apostila/cerimonias" title="página 3" {% block highlight_3 %}{% endblock %}>3</a> |
+            <a href="/apostila/artefatos" title="página 4" {% block highlight_4 %}{% endblock %}>4</a> |
+            <a href="/apostila/priorizacao" title="página 5" {% block highlight_5 %}{% endblock %}>5</a> |
+            <a href="/apostila/vantagens-e-desvantagens" title="página 6" {% block highlight_6 %}{% endblock %}>6</a> |
+            <a href="/apostila/glossario" title="página 7" {% block highlight_7 %}{% endblock %}>7</a>
+            <a href="{% block prox %}{% endblock %}" title="próxima página">&#11208;</a>
+        </nav>
     </div>
-    <footer>
 
+ <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="/static/images/logo-nova-ma.png" style="height:100px">
+                    <p>Nossa plataforma oferece materiais detalhados sobre a metodologia ágil Scrum, ajudando profissionais a aprimorarem suas habilidades em gerenciamento de projetos.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png" style="height: 65px;">
+                    <h5>Titus Systems</h5>
+                    <p>Convidamos você a explorar nossas soluções e descobrir como podemos ajudar sua empresa a alcançar novos patamares de sucesso.</p>
+                </div>
+                <!-- <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div> -->
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contato</h5>
+                    <p>Email: contato@mestreagil.com</p>
+                    <p>Telefone: (12) 99999-9999</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://github.com/Titus-System/1Semestre-ADS" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png" alt="GitHub"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <p class="mb-0">&copy; 2024 Mestre Ágil. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
 
@@ -238,8 +292,9 @@
         })
     </script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 
 </body>
 

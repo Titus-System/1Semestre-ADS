@@ -1,11 +1,15 @@
+body{
+    font-family:'Ruda', 'Courier New', Courier, monospace;
+}
+
 .link_bar{
-    height: 80px;
     background-color: #000103;
     margin: 0 auto;
     position:sticky;
     top:0;
     z-index: 2;
-    font-family:'Ruda'
+    font-family:'Ruda';
+    color:white
 }
 
 .link_bar img{
@@ -23,7 +27,6 @@
 .header_link a{
     color:white;
     text-decoration: none;
-    font-size: 18px;
     float:right;
     margin:25px 35px 0 0;
     line-height:center;
@@ -45,7 +48,6 @@
 .body_teoria{
     background-color: #e0e5e8;
     width: 100%;
-    margin: 0 0 150px;
     font-family:'Ruda', 'Helvetica';
 }
 
@@ -53,35 +55,37 @@
     max-width:60%;
     margin: 30px auto;
     background-color: #e0e5e8;
+    font-size:larger;
 
 }
 
+@media (max-width:1000px){
+    .conteudo_teoria{
+        max-width:90%;
+        font-size:medium;
+    }
+}
+
 .conteudo_teoria p{
-    text-align: left;
-    font-size: 20px;
     text-align: justify;
 }
 
 .conteudo_teoria h1{
     text-align: center;
-    font-size: 36px;
     font-weight:bold;
-    margin: 30px auto;
+    margin: 3vh auto;
 }
 
 .conteudo_teoria h2{
-    font-size:26px;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 1vh;
 }
 
 .conteudo_teoria li{
-    font-size:20px;
     text-align: justify;
 }
 
 .conteudo_teoria dd{
-    font-size:18px;
     text-align: justify;
 }
 
@@ -95,8 +99,7 @@
     line-height: 60px;
     position:relative;
     background-color:#000103;
-    margin:150px auto;
-    font-size:20px;
+    margin:5vh auto 10vh;
     text-align:center;
     color:white;
     border-radius: 15px;
@@ -124,7 +127,6 @@
 }
 
 .conteudo_exemplo h3, .conteudo_exemplo li{
-    font-size:18px;
     margin:0 auto 15px
 }
 
@@ -841,4 +843,19 @@ textarea {
 
 .button_feedback:hover {
     background-color: #218838;
+}
+
+/* rodapé */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
+.footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #d39e00;
+    text-decoration: none;
 }
