@@ -115,6 +115,7 @@ def resultado_parcial(username):
     continuar = database.retrieve_data('academico', 'posicao', username)
     acertos = 0
     questoes_erradas = {}
+    if not respostas: return redirect("/quiz/iniciar")
     for key in perguntas:
         if key == "result": break
         try:
