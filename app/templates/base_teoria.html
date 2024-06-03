@@ -15,7 +15,7 @@
 
     <title>{% block title %}Quiz{% endblock %}</title>
 
-    <link rel="icon" type="image/x-icon" href="/static/images/logo_transp.png">
+    <link rel="icon" type="image/x-icon" href="/static/images/logo-nova-ma.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,12 +29,12 @@
     <header class="link_bar">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" style="color:white; font-size:30px; line-height:60px">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" style="color:white; font-size:30px">
                     &#9776
                 </button>
                 <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo" height="30"></a>
                 <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
+                    <img src="/static/images/user_button.svg" style="height: 30px;">
                 </button>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto my-auto mb-lg-0">
@@ -55,8 +55,8 @@
             </div>
         </nav>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: #223c4b; color:white;">
-            <div class="offcanvas-header">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: #223c4b; color:white; width:180px">
+            <div class="offcanvas-header" data-bs-theme="dark">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navegação</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -122,11 +122,11 @@
                         <div class="row">
                             <div id="modal_login_form">
                                 <form action="/login" method="post">
-                                    <label for="username">Username:</label><br>
-                                    <input type="text" id="username" name="username" required>
+                                    <label for="username">Username:<br>
+                                    <input type="text" id="username" name="username" required></label>
                                     <br>
-                                    <label for="password">Senha:</label><br>
-                                    <input type="password" id="password" name="password" required>
+                                    <label for="password">Senha:<br>
+                                    <input type="password" id="password" name="password" required></label>
                                     <br><br>
                                     <div class="modal-footer">
                                         <a><button class="btn btn-light" type="submit">Login</button></a>
@@ -157,20 +157,20 @@
                         <div class="row">
                             <div class="col" id=modal_signup_form>
                                 <form action="/signup" method="post">
-                                    <label for="username">Username:</label><br>
-                                    <input type="text" id="username" name="username" required>
+                                    <label for="username">Username:<br>
+                                    <input type="text" id="username" name="username" required></label>
                                     <br>
-                                    <label for="name">Nome:</label><br>
-                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">Nome:<br>
+                                    <input type="text" id="name" name="name" required></label>
                                     <br>
-                                    <label for="email">e-mail:</label><br>
-                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">e-mail:<br>
+                                    <input type="email" id="email" name="email" required></label>
                                     <br>
-                                    <label for="password">Senha:</label><br>
-                                    <input type="password" id="password" name="password" required>
+                                    <label for="password">Senha:<br>
+                                    <input type="password" id="password" name="password" required></label>
                                     <br>
-                                    <label for="confirm_password">Confirme sua senha:</label><br>
-                                    <input type="password" id="confirm_password" name="confirm_password" required>
+                                    <label for="confirm_password">Confirme sua senha:<br>
+                                    <input type="password" id="confirm_password" name="confirm_password" required></label>
                                     <br><br>
                                     <div class="modal-footer">
                                         <a href="/signup"><button class="btn btn-light"
