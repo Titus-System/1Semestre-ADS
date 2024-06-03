@@ -774,6 +774,15 @@ margin: auto;}
     }
  }
 
+ @media (max-width:561px){
+    .text_button_av{
+        font-size: 12px;
+    }
+    .button_avaliacao{
+    height: 30px;
+}
+ }
+
  @media (max-width:470px){
     .alternativa_avaliacao{
         font-size: 12px;
@@ -789,8 +798,17 @@ margin: auto;}
 
     .engrenagem{
         width: 41px;
-        height: 23px;}
+        height: 23px;
+    }
 
+    .text_button_av{
+        font-size: 11px;
+    }
+
+    .button_avaliacao{
+        height: 27px;
+    }
+ 
 }
 
 @media (max-width:322px){
@@ -809,6 +827,11 @@ margin: auto;}
     .engrenagem{
         width: 39px;
         height: 21px;}
+
+    .text_button_av{
+        font-size: 10px;
+     }
+    
 
 }
 
