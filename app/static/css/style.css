@@ -739,6 +739,38 @@ margin: auto;}
 
  /* responsividade avaliação */
 
+@media (max-width:990px){
+    .alternativa_avaliacao{
+        font-size: 15px;
+    }
+ }
+
+ @media (max-width:900px){
+    .alternativa_avaliacao{
+        font-size: 14px;
+    }
+ }
+
+ @media (max-width:590px){
+    .alternativa_avaliacao{
+        font-size: 13px;
+    }
+ }
+
+ @media (max-width:470px){
+    .alternativa_avaliacao{
+        font-size: 12px;
+    }
+}
+
+@media (max-width:322px){
+    .alternativa_avaliacao{
+        font-size: 11px;
+    }
+}
+
+
+
  /* botão parar aqui do quiz */
  .button_parar_aqui{
     font-size: 15px;
