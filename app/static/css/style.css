@@ -755,7 +755,11 @@ margin: auto;}
     .question_script_test{
         font-size: 13px;
     }
- }
+    .num_question{
+        font-size: 23px;
+    }
+}
+
 
  @media (max-width:590px){
     .alternativa_avaliacao{
@@ -771,6 +775,11 @@ margin: auto;}
     .question_script_test{
         font-size: 11px;
     }  
+
+    .num_question{
+        font-size: 19px;
+    }
+
 }
 
 @media (max-width:322px){
@@ -782,11 +791,26 @@ margin: auto;}
         font-size: 9px;
     }
 
+    .num_question{
+        font-size: 17px;
+    }
+
 }
 
 @media (max-width:282px){
     .question_script_test{
         font-size: 9px;
+    }
+
+    .num_question{
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width:266px){
+    .num_question{
+        font-size: 14px;
     }
 }
 
