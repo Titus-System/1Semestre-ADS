@@ -751,6 +751,12 @@ margin: auto;}
     }
  }
 
+ @media (max-width:712px){
+    .question_script_test{
+        font-size: 13px;
+    }
+ }
+
  @media (max-width:590px){
     .alternativa_avaliacao{
         font-size: 13px;
@@ -761,14 +767,28 @@ margin: auto;}
     .alternativa_avaliacao{
         font-size: 12px;
     }
+    
+    .question_script_test{
+        font-size: 11px;
+    }  
 }
 
 @media (max-width:322px){
     .alternativa_avaliacao{
         font-size: 11px;
     }
+
+    .question_script_test{
+        font-size: 9px;
+    }
+
 }
 
+@media (max-width:282px){
+    .question_script_test{
+        font-size: 9px;
+    }
+}
 
 
  /* botão parar aqui do quiz */
