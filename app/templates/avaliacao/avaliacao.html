@@ -4,60 +4,60 @@
 
 
 {% block head_image %}
-        <div class="head_img" style="background-image:url(/static/images/image-avaliacao.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+    <div class="head_img" 
+        style="background-image:url(/static/images/image-avaliacao.png); 
+        background-position:center; background-size: contain; 
+        background-repeat: no-repeat;"
+    ></div>
 {% endblock %}
 
 <!-- conteúdo de teoria -->
 {% block quiz %}
-<div class="quiz_page">
+    <div class="quiz_page">
 
-<h1 class="intro_avaliacao">Avalie seus conhecimentos</h1>
+        <h1 class="intro_avaliacao">Avalie seus conhecimentos</h1>
 
-<form action="/avaliacao" method="POST">
-{% for key,value in perguntas.items() %}
-    {% if key != "result" %}
-    <div class="question_box">
-        <div class="question_box_1">
-        <br>
-        <div class="engrenagens-div">
-        &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
-        <h3 class="num_question">Questão {{value[0]}}:</h3>
-        <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
+        <form action="/avaliacao" method="POST">
+
+            {% for key,value in perguntas.items() %}
+                {% if key != "result" %}
+
+                    <div class="question_box">
+                        <div class="question_box_1">
+                            <div class="engrenagens-div">
+                                &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
+                                <h3 class="num_question">Questão {{value[0]}}:</h3>
+                                <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
+                            </div>
+                            <p class="question_script_test">{{value[1]}}</p>
+                        </div>
+                        
+                        <div class="quiz_option">
+                            <div class="alternativa_avaliacao_1">
+                                <label for="A{{key}}" class="alternativa_avaliacao"><input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>&#160&#160{{value[2]}}&#160&#160</label>
+                            </div>
+                            <div class="alternativa_avaliacao_1">
+                                <label for="B{{key}}" class="alternativa_avaliacao" ><input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">&#160&#160{{value[3]}}&#160&#160</label>
+                            </div>
+                            <div class="alternativa_avaliacao_1">
+                                <label for="C{{key}}" class="alternativa_avaliacao"><input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">&#160&#160{{value[4]}}&#160&#160</label>
+                            </div>
+                            <div class="alternativa_avaliacao_1">
+                                <label for="D{{key}}" class="alternativa_avaliacao"><input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">&#160&#160{{value[5]}}&#160&#160</label>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+
+            <button class="button_avaliacao rounded-pill shadow-lg"><p class="text_button_av">Conferir resultado</p></button>
+
+        </form>
+
     </div>
-        <p class="question_script_test">{{value[1]}}</p>
-        <br>
-    </div>
-    <br>
-    <br>
-        <div class="quiz_option">
-            <div class="alternativa_avaliacao_1">
-            <label for="A{{key}}" class="alternativa_avaliacao"><input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>&#160&#160{{value[2]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="B{{key}}" class="alternativa_avaliacao" ><input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">&#160&#160{{value[3]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="C{{key}}" class="alternativa_avaliacao"><input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">&#160&#160{{value[4]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="D{{key}}" class="alternativa_avaliacao"><input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">&#160&#160{{value[5]}}&#160&#160</label>
-            </div>
-          </div>
-        </div>
-    <br>
-    {% endif %}
-    {% endfor %}
-
-    <button class="button_avaliacao rounded-pill shadow-lg"><p class="text_button_av">Conferir resultado</p></button>
-</form>
-
-
 {% endblock %}
 
 <!-- perguntas -->
 {% block perguntas %}
 {% endblock %}
-</div>
