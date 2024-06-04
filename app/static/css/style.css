@@ -279,8 +279,8 @@ body{
     flex-direction: row;
     width: 50%;
     height: fit-content;
-   display: grid;
-   margin-top: 40px;}
+    display: grid;
+    margin-top: 40px;}
 
 .input_vf{
     width:2%;
@@ -1062,11 +1062,12 @@ textarea {
     text-decoration: none;
 }
 
+/*pagina de assunto do quiz para celular*/
+
 @media screen and (max-width: 768px) {
     .quiz_page{
         display: block;
         background-image: none;
-        text-align: center; 
     }
 
     .head_img {
@@ -1075,17 +1076,16 @@ textarea {
     }
 
 
-    .quiz_page{
+    .timeline{
+        display: ;
         margin: 2em 2em;
     }
 
     .page_assunto_flex{
-        text-align: center;
-        text-justify: auto;
-        width: 70vw;
-        margin: 0;
+        text-align: justify;
+        width: 300%;
+        margin: 0%;
     }
 
     
 }
-
