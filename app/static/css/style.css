@@ -117,6 +117,12 @@ body{
     color: white;
 }
 
+@media (max-width:768px){
+    .paginacao a{
+        padding: 5px 10px;
+    }
+}
+
 /* quadrado do exemplo - mudar por favor */
 .conteudo_exemplo{
     background-color:#eed2af;

@@ -206,7 +206,7 @@ def avaliacao():
             else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
         erros = len(perguntas) - acertos
-        porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
+        porcentagem = f"{(acertos/(len(perguntas)) * 100):.2f}%"
 
         username = login_functions.current_user.id
         print(username, acertos)

@@ -1,311 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% block script %}
-  {% endblock %}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  
-  <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    {% block script %}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-  <title>{% block title %}Login{% endblock %}</title>
+    <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 
-  <link rel="icon" type="image/x-icon" href="/static/images/logo-nova-ma.png">
+    <title>{% block title %}Login{% endblock %}</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/images/logo-nova-ma.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
 
 </head>
 
-<body class="body_login">
+<body class="body_login h-100">
     <!-- cabeçalho -->
     <header class="link_bar">
-      <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-              <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" id="originalButton" style="color:white; font-size:30px">
-                  &#9776
-              </button>
-              <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" id="alternateButton" style="color:white; font-size:30px">
-                  &#9776
-              </button>
-              <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
-          
-              <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %} data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
-                  <img src="/static/images/user_button.svg" style="height:40px">
-              </button>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive"
+                    id="alternateButton" style="color:white; font-size:30px">
+                    &#9776
+                </button>
+                <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
 
-              <div class="collapse navbar-collapse">
-                  <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
-                      <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>&nbsp&nbsp
-                      {% if current_user.is_authenticated %}
-                      <li class="navbar-item">
-                          <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal" data-bs-target="#modal_user" style="height:50px; width:50px">
-                              <img src="/static/images/user_button.svg" style="height:40px">
-                          </button>
-                      </li>
-                      {% else %}
-                      <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
-                      {% endif %}
-                  </ul>
-              </div>
-          </div>
-      </nav>
-      <hr class="header_hr">
-  </header>
+                <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %}
+                    data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
+                    <img src="/static/images/user_button.svg" style="height:40px">
+                </button>
 
-      
-
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #223c4b; color:white;">
-      <div class="offcanvas-header" data-bs-theme="dark">
-          <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-          <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
-              <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
-              <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
-              <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
-              <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
-          </ul>
-      </div>
-  </div>
-
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel" style="background-color: #223c4b; color:white; width:180px">
-      <div class="offcanvas-header" data-bs-theme="dark">
-          <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-          <div class="indice">
-              <ul class="navbar-nav">
-                  <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                  <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-
-  <!-- Login Modal -->
-  <div class="text-light">
-      <div class="modal" id="modal_login">
-          <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content bg-dark">
-
-                  <!-- Modal Header -->
-                  <div class="modal-header" data-bs-theme="dark">
-                      <h4 class="modal-title">Faça login</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                  </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body container">
-                      <div class="row">
-                          <div id="modal_login_form">
-                              <form action="/login" method="post">
-                                  <label for="username">Username:<br>
-                                  <input type="text" id="username" name="username" required></label>
-                                  <label for="password">Senha:<br>
-                                  <input type="password" id="password" name="password" required></label>
-                                  <div class="modal-footer">
-                                      <a><button class="btn btn-light" type="submit">Login</button></a>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-
-
-      <!-- signup Modal -->
-      <div class="modal" id="modal_signup">
-          <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content bg-dark">
-
-                  <!-- Modal Header -->
-                  <div class="modal-header" data-bs-theme="dark">
-                      <h4 class="modal-title">Faça seu cadastro</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                  </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body container">
-                      <div class="row">
-                          <div class="col" id=modal_signup_form>
-                              <form action="/signup" method="post">
-                                  <label for="username">Username:<br>
-                                  <input type="text" id="username" name="username" required></label>
-                                  
-                                  <label for="name">Nome:<br>
-                                  <input type="text" id="name" name="name" required></label>
-                                  
-                                  <label for="email">e-mail:<br>
-                                  <input type="email" id="email" name="email" required></label>
-                                  
-                                  <label for="password">Senha:<br>
-                                  <input type="password" id="password" name="password" required></label>
-                                  
-                                  <label for="confirm_password">Confirme sua senha:<br>
-                                  <input type="password" id="confirm_password" name="confirm_password" required></label>
-                                  
-                                  <div class="modal-footer">
-                                      <a href="/signup"><button class="btn btn-light"
-                                              type="submit">Signup</button></a>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-
-  {% if current_user.is_authenticated %}
-  <!-- User Modal -->
-  <div class="modal" id="modal_user">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-dark">
-
-              <!-- Modal Header -->
-              <div class="modal-header" data-bs-theme="dark">
-                  <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-
-              <!-- Modal body -->
-              <div class="modal-body container" style="color:black">
-                  <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
-                  <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
-                  <br>
-                  {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary w-100">Acessar página de administrador</buton></a><br>{% endif %}<br>
-                  <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu parei</button></a><br>
-                  <br>
-                  <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus resultados</button></a><br>
-                  <br>
-                  <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
-              </div>
-
-              <!-- Modal Footer -->
-              <div class="modal-footer">
-                  <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
-              </div>
-          </div>
-      </div>
-  </div>
-  {% endif %}
-
-
-      <!-- Espaço para mensagens flash -->
-      <div class="container mt-4">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-          {% for i in messages %}
-            <div class="modal-body alert alert-dismissible fade show" role="alert">
-              {{i[0]}}: {{i[1]}}
-              <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
+                        <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/ferramentas"
+                                alt="ferramentas">FERRAMENTAS</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/avaliacao"
+                                alt="avaliação">AVALIAÇÃO</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
+                        &nbsp&nbsp
+                        {% if current_user.is_authenticated %}
+                        <li class="navbar-item">
+                            <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modal_user" style="height:50px; width:50px">
+                                <img src="/static/images/user_button.svg" style="height:40px">
+                            </button>
+                        </li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modal_login">Fazer Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-            {% endfor %}
-            <script>
-              var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
-              registerModal.show();
-            </script>
-          {% endif %}
-        {% endwith %}
-      </div>
+        </nav>
+        <hr class="header_hr">
+    </header>
 
-<div class="flex_box_login_page">
-      <div class="login_content flex_itens" >
-        <div class="row justify-content-center container" style="width: fit-content;">
-            <div class="col" id = modal_signup_form>
-              <h1 style="color: white;">Faça seu cadastro</h1>
-              <form action="/signup" method="POST">
-                  <label style="color: white;" for="username">Username:</label><br>
-                  <input class="text_box_login" type="text" id="username" name="username" required>
-                  <br>
-                  <br>
-                  <label style="color: white;" for="name">Nome:</label><br>
-                  <input class="text_box_login"  type="text" id="name" name="name" required>
-                  <br>
-                  <br>
-                  <label style="color: white;" for="email">e-mail:</label><br>
-                  <input class="text_box_login"  type="email" id="email" name="email" required>
-                  <br>
-                  <br>
-                  <label style="color: white;" for="password">Senha:</label><br>
-                  <input class="text_box_login"  type="password" id="password" name="password" required>
-                  <br>
-                  <br>
-                  <label style="color: white;" for="confirm_password">Confirmar Senha:</label><br>
-                  <input class="text_box_login"  type="password" id="confirm_password" name="confirm_password" required>
-                  <br>
-                  <br>
-                  <a href="/signup" ><button class="button_login_page rounded-pill shadow-lg" type="submit"><strong>Signup</strong></button></a>
-              </form>
-            </div>
-       </div>
-      </div>
 
-      <div class="login_content flex_itens" >
-        <div class="row justify-content-center container" style="width: fit-content;">
-            <div class="col" id = modal_login_form>
-              <h1 style="color: white;">&nbsp&nbsp&nbspFaça seu login&nbsp&nbsp&nbsp</h1>
-              <form action="/login" method="post">
-                  <label style="color: white;" for="username">Username:</label><br>
-                  <input class="text_box_login" type="text" id="username" name="username" required>
-                  <br>
-                  <br>
-                  <label style="color: white;" for="password">senha:</label><br>
-                  <input class="text_box_login"  type="password" id="password" name="password" required>
-                  <br>
-                  <br>
-                  <a href="/{{next}}"><button class="button_login_page rounded-pill shadow-lg" type="submit"><strong>Login</strong></button></a>
-              </form>
-            </div>
-        </div>   
-      </div>
 
-    </div>    
-
-            <div class="col" id="modal_user_update">
-              <h1>Atualize seus dados</h1>
-              <h4>Os campos que forem deixados em branco não serão alterados</h4>
-              <form action="/update_user_info" method="POST">
-                <label for="update_nome">Nome:<br>
-                <input type="text" id="update_nome" name="update_nome"></label>
-                <br>
-                <label for="update_mail">e-mail:<br>
-                <input type="text" id="update_mail" name="update_mail"></label>
-                <br>
-                <label for="update_password">Senha:<br>
-                <input type="password" id="update_password" name="update_password"></label>
-                <br>
-                <label for="update_password_confirm">Confirme a senha:<br>
-                <input type="password" id="update_password_confirm" name="update_password_confirm"></label>
-                <br>
-                <button type="submit" value="submit">Atualizar meus dados</button>
-              </form>
-            </div>
-
-  </div>          
-            
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive"
+        aria-labelledby="offcanvasResponsiveLabel" style="background-color: #223c4b; color:white;">
+        <div class="offcanvas-header" data-bs-theme="dark">
+            <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </div>
-      <script>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="/ferramentas"
+                        alt="ferramentas">FERRAMENTAS</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel"
+        style="background-color: #223c4b; color:white; width:180px">
+        <div class="offcanvas-header" data-bs-theme="dark">
+            <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="indice">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal_login">Fazer Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="text-light">
+        <div class="modal" id="modal_login">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header" data-bs-theme="dark">
+                        <h4 class="modal-title">Faça login</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body container">
+                        <div class="row">
+                            <div id="modal_login_form">
+                                <form action="/login" method="post">
+                                    <label for="username">Username:<br>
+                                        <input type="text" id="username" name="username" required></label>
+                                    <label for="password">Senha:<br>
+                                        <input type="password" id="password" name="password" required></label>
+                                    <div class="modal-footer">
+                                        <a><button class="btn btn-light" type="submit">Login</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- signup Modal -->
+        <div class="modal" id="modal_signup">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header" data-bs-theme="dark">
+                        <h4 class="modal-title">Faça seu cadastro</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body container">
+                        <div class="row">
+                            <div class="col" id=modal_signup_form>
+                                <form action="/signup" method="post">
+                                    <label for="username">Username:<br>
+                                        <input type="text" id="username" name="username" required></label>
+
+                                    <label for="name">Nome:<br>
+                                        <input type="text" id="name" name="name" required></label>
+
+                                    <label for="email">e-mail:<br>
+                                        <input type="email" id="email" name="email" required></label>
+
+                                    <label for="password">Senha:<br>
+                                        <input type="password" id="password" name="password" required></label>
+
+                                    <label for="confirm_password">Confirme sua senha:<br>
+                                        <input type="password" id="confirm_password" name="confirm_password"
+                                            required></label>
+
+                                    <div class="modal-footer">
+                                        <a href="/signup"><button class="btn btn-light"
+                                                type="submit">Signup</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% if current_user.is_authenticated %}
+    <!-- User Modal -->
+    <div class="modal" id="modal_user">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+
+                <!-- Modal Header -->
+                <div class="modal-header" data-bs-theme="dark">
+                    <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body container" style="color:black">
+                    <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
+                    <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
+                    <br>
+                    {% if is_admin %}<a href="/admin">
+                        <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
+                    </a><br>{% endif %}<br>
+                    <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu
+                            parei</button></a><br>
+                    <br>
+                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus
+                            resultados</button></a><br>
+                    <br>
+                    <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!-- Espaço para mensagens flash -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for i in messages %}
+        <div class="modal-body alert alert-dismissible fade show" role="alert">
+            {{i[0]}}: {{i[1]}}
+            <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        <script>
+            var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            registerModal.show();
+        </script>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="flex_box_login_page">
+        <div class="login_content flex_itens">
+            <div class="row justify-content-center container" style="width: fit-content;">
+                <div class="col" id=modal_signup_form>
+                    <h1 style="color: white;">Faça seu cadastro</h1>
+                    <form action="/signup" method="POST">
+                        <label style="color: white;" for="username">Username:</label>
+                        <input class="text_box_login" type="text" id="username" name="username" required>
+                        <br>
+                        <br>
+                        <label style="color: white;" for="name">Nome:</label>
+                        <input class="text_box_login" type="text" id="name" name="name" required>
+                        <br>
+                        <br>
+                        <label style="color: white;" for="email">e-mail:</label>
+                        <input class="text_box_login" type="email" id="email" name="email" required>
+                        <br>
+                        <br>
+                        <label style="color: white;" for="password">Senha:</label>
+                        <input class="text_box_login" type="password" id="password" name="password" required>
+                        <br>
+                        <br>
+                        <label style="color: white;" for="confirm_password">Confirmar Senha:</label>
+                        <input class="text_box_login" type="password" id="confirm_password" name="confirm_password"
+                            required>
+                        <br>
+                        <br>
+                        <a href="/signup"><button class="button_login_page rounded-pill shadow-lg"
+                                type="submit"><strong>Signup</strong></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="login_content flex_itens">
+            <div class="row justify-content-center container" style="width: fit-content;">
+                <div class="col" id=modal_login_form>
+                    <h1 style="color: white;">&nbsp&nbsp&nbspFaça seu login&nbsp&nbsp&nbsp</h1>
+                    <form action="/login" method="post">
+                        <label style="color: white;" for="username">Username:</label>
+                        <input class="text_box_login" type="text" id="username" name="username" required>
+                        <br>
+                        <br>
+                        <label style="color: white;" for="password">senha:</label>
+                        <input class="text_box_login" type="password" id="password" name="password" required>
+                        <br>
+                        <br>
+                        <a href="/{{next}}"><button class="button_login_page rounded-pill shadow-lg"
+                                type="submit"><strong>Login</strong></button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
         // Função para verificar o tamanho da tela e alternar os botões
         function alternarBotoes() {
             // Verifica o tamanho da tela
@@ -313,7 +310,7 @@
             // Seleciona os botões
             var originalButton = document.getElementById('originalButton');
             var alternateButton = document.getElementById('alternateButton');
-    
+
             // Se a largura da tela for menor que 1000 pixels, exibe o botão alternativo e oculta o original
             if (screenWidth < 1000) {
                 originalButton.style.display = 'none';
@@ -328,5 +325,6 @@
         window.addEventListener('load', alternarBotoes);
         window.addEventListener('resize', alternarBotoes);
     </script>
-    </body>
+</body>
+
 </html>
