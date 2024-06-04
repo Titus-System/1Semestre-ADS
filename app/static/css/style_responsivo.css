@@ -1,0 +1,109 @@
+/*QUIZ*/
+
+/*pagina inicial quiz*/
+@media screen and (max-width: 768px) {
+   
+    .quiz_page{
+        display: block;
+        background-image: none;
+    }
+    .head_img {
+        width: 100vw;
+
+    }
+
+
+}
+
+
+/*pagina exercicios quiz 1_o_que_e.html*/
+@media screen and (max-width: 768px) {
+
+
+    .timeline{
+        display: block;
+        margin: 2em 2em;
+    }
+
+    .page_assunto_flex{
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: 0%;
+    }
+
+    .quiz_page{
+    width: 100%;
+    }
+
+    .container-assunto{
+        background-color: black;
+        border: solid 2px black;
+        border-radius: 5%;
+        padding: 2%;
+        margin: 0;
+        max-width: 100%;
+        color: #ff695e;
+        font-family: 'Ruda';
+        font-size: 20px;
+    }
+
+    .arrow_assunto {
+        font-size: 18px;
+        padding: 8px 16px;
+        display:inline;
+        justify-items:;
+    }
+
+    .question_box_1{
+        display: block;
+        margin: 0%;
+    }
+}
+
+
+
+
+
+
+
+.quiz_page{
+
+}
+
+.page_assunto_flex{
+
+}
+
+.container-assunto{
+
+}
+
+.arrow_assunto{
+    
+}
+
+/*pagina exercicios quiz*/
+
+/*AVALIAÇÃO*/
+
+/*FERRAMENTAS*/
+
+/*pagina inicial ferramentas*/
+
+/*pagiina product backlog ferramentas*/
+
+/*pagina sprint backlog ferramentas*/
+
+/*pagina burndown ferramentas*/
+
+/*APOSTILA*/
+
+/*PACER*/
+
+/*PAGINA LOGIN*/
+
+/*PAGINA RESULTADOS*/
+
+/*PAGINA ADM*/
+
+/**/
