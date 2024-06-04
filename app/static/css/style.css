@@ -1066,7 +1066,7 @@ textarea {
     .quiz_page{
         display: block;
         background-image: none;
-           
+        text-align: center; 
     }
 
     .head_img {
@@ -1074,12 +1074,16 @@ textarea {
 
     }
 
-    .timeline{
-        display: block;
-    }
 
     .quiz_page{
         margin: 2em 2em;
+    }
+
+    .page_assunto_flex{
+        text-align: center;
+        text-justify: auto;
+        width: 70vw;
+        margin: 0;
     }
 
     
