@@ -11,10 +11,7 @@
         width: 100vw;
 
     }
-
-
 }
-
 
 /*pagina exercicios quiz 1_o_que_e.html*/
 @media screen and (max-width: 768px) {
@@ -62,10 +59,6 @@
 
 
 
-
-
-
-
 .quiz_page{
 
 }
@@ -89,8 +82,90 @@
 /*FERRAMENTAS*/
 
 /*pagina inicial ferramentas*/
+@media screen and (max-width: 760px) {
 
-/*pagiina product backlog ferramentas*/
+    .container-ferramentas-reverso{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .container-home-ferramentas{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .img-home-ferramentas{
+        max-width: 40%;
+        height: auto;
+     
+     }
+
+
+    .text-pagina-produto-sprint{
+        margin-top: 20px;
+        max-width: 500px;
+        font-size: 16px;
+        text-align: justify;
+      
+    }
+}
+
+/*pagina product backlog ferramentas*/
+
+@media screen and (max-width: 760px){
+    
+.img-pagina-sprint{
+    max-width: 40%;
+    height: auto;
+ 
+ }
+ 
+ .botao_pagina_ferramentas{
+     width: 200px;
+ }
+ 
+ .container-sprint-ferramentas{
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 25px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+ }
+ 
+ .container-sprint-imagem-botao{
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 25px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+ .text-pagina-produto-sobre{
+    margin: 7% 5% 20% 5%;
+    text-align: justify;
+    font-size: 16px;
+}
+}
+
+
 
 /*pagina sprint backlog ferramentas*/
 
