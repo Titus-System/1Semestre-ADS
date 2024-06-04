@@ -5,7 +5,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     {% block script %}
     {% endblock %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -15,13 +15,11 @@
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style_responsivo.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
 
-  
     <title>{% block title %}{% endblock %}</title>
-  
+
     <link rel="icon" type="image/x-icon" href="/static/images/logo-nova-ma.png">
-  
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
@@ -30,7 +28,9 @@
             text-align: center;
         }
     </style>
-  </head>
+
+</head>
+
 
 
 <body class="body_quiz">
@@ -74,7 +74,7 @@
         <hr class="header_hr">
     </header>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvasmenuLabel" style="background-color: #223c4b; color:white;">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
             <div class="offcanvas-header" data-bs-theme="dark">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mestre Ágil</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #223c4b; color:white;">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -114,7 +114,7 @@
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Índice Ferramentas
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color :#223c4b;">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color :#223c4b; width:80%">
                         <ol class="text-light">
                             <li><a href="/ferramentas/p_product">Product Backlog</a></li>
                             <br>
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel" style="background-color: #223c4b; color:white; width:180px">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel" style="background-color: #39444b; color:white; width:180px">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>

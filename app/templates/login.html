@@ -74,7 +74,7 @@
 
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive"
-        aria-labelledby="offcanvasResponsiveLabel" style="background-color: #223c4b; color:white;">
+        aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -92,7 +92,7 @@
     </div>
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel"
-        style="background-color: #223c4b; color:white; width:180px">
+        style="background-color: #39444b; color:white; width:180px">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -229,12 +229,12 @@
 
 
     <!-- Espaço para mensagens flash -->
-    <div class="container mt-4">
+    <div class="container mt-4" style="width:50%;">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for i in messages %}
-        <div class="modal-body alert alert-dismissible fade show" role="alert">
-            {{i[0]}}: {{i[1]}}
+        <div class="modal-body alert alert-dismissible show" role="alert">
+            <a style="margin-top:50%">{{i[0]}}: {{i[1]}}</a>
             <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
