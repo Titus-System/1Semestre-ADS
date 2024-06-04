@@ -6,9 +6,8 @@
         style="background-image:url(/static/images/image-pacer.png); background-position:center; background-size: contain; background-repeat: no-repeat;">
     </div>
 
-    </header>
 
-    <nav class="teoria_pacer">
+    <div class="teoria_pacer">
 
         <div class="box_teoria_pacer">
             <h1>Avaliação PACER</h1>
@@ -154,11 +153,11 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
     <div class="box_assessment_pacer">
         <form action="/pacer#qtd_funcionarios" method="POST">
             <label for="qtd_funcionarios">Quantos colaboradores fazem parte da equipe:</label>
-            <input type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1">
+            <input type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1" required>
             <button type="submit" class="btn btn-secondary btn-sm text-light">Gerar PACER</button>
         </form>
     </div>
@@ -166,66 +165,80 @@
     <form action="/pacer/ver/{{qtd_funcionarios}}#resultados" method="POST">
         {% for i in range(qtd_funcionarios) %}
         <div class="box_assessment_pacer">
-            <br>
-            <label for="nome_funcionario{{i}}">Nome do funcionario:</label>
-            <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}">
+            <label for="nome_funcionario{{i}}">Nome do funcionario:
+            <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}"></label>
             <br>
             <p>Considerando a PRODUTIVIDADE do funcionário '' </p>
+            <label label for="0productivity{{i}}">
             <input type="radio" id="0productivity{{i}}" name="productivity{{i}}" value="0">
-            <label label for="0productivity{{i}}">0 - REATIVO</label> <br>
+            0 - REATIVO</label>
 
+            <label label for="1productivity{{i}}">
             <input type="radio" id="1productivity{{i}}" name="productivity{{i}}" value="1">
-            <label label for="1productivity{{i}}">1 - DESFOCADO</label> <br>
+            1 - DESFOCADO</label>
 
+            <label label for="2productivity{{i}}">
             <input type="radio" id="2productivity{{i}}" name="productivity{{i}}" value="2">
-            <label label for="2productivity{{i}}">2 - ATIVO</label> <br>
+            2 - ATIVO</label>
 
+            <label label for="3productivity{{i}}">
             <input type="radio" id="3productivity{{i}}" name="productivity{{i}}" value="3">
-            <label label for="3productivity{{i}}">3 - PROATIVO</label> <br>
-
+            3 - PROATIVO</label>
             <br>
 
-            <p>Considerando a AUTONOMIA do funcionário '' </p>
+            <p>Considerando a AUTONOMIA do funcionário: </p>
 
+            <label label for="0autonomy{{i}}">
             <input type="radio" id="0autonomy{{i}}" name="autonomy{{i}}" value="0">
-            <label label for="0autonomy{{i}}">0 - DIRIGIDO</label> <br>
+            0 - DIRIGIDO</label>
 
+            <label label for="1autonomy{{i}}">
             <input type="radio" id="1autonomy{{i}}" name="autonomy{{i}}" value="1">
-            <label label for="1autonomy{{i}}">1 - GERIDO</label> <br>
+            1 - GERIDO</label>
 
+            <label label for="2autonomy{{i}}">
             <input type="radio" id="2autonomy{{i}}" name="autonomy{{i}}" value="2">
-            <label label for="2autonomy{{i}}">2 - TREINADO</label> <br>
+            2 - TREINADO</label>
 
+            <label label for="3autonomy{{i}}">
             <input type="radio" id="3autonomy{{i}}" name="autonomy{{i}}" value="3">
-            <label label for="3autonomy{{i}}">3 - AUTOGESTÃO</label> <br>
+            3 - AUTOGESTÃO</label>
 
             <br>
             <p>Considerando a COLABORAÇÃO do funcionário '' </p>
+            <label label for="0collaboration{{i}}">
             <input type="radio" id="0collaboration{{i}}" name="collaboration{{i}}" value="0">
-            <label label for="0collaboration{{i}}">0 - AUSENTE</label> <br>
+            0 - AUSENTE</label>
 
+            <label label for="1collaboration{{i}}">
             <input type="radio" id="1collaboration{{i}}" name="collaboration{{i}}" value="1">
-            <label label for="1collaboration{{i}}">1 - COOPERATIVO</label> <br>
+            1 - COOPERATIVO</label>
 
+            <label label for="2collaboration{{i}}">
             <input type="radio" id="2collaboration{{i}}" name="collaboration{{i}}" value="2">
-            <label label for="2collaboration{{i}}">2 - COORDENADO</label> <br>
+            2 - COORDENADO</label>
 
+            <label label for="3collaboration{{i}}">
             <input type="radio" id="3collaboration{{i}}" name="collaboration{{i}}" value="3">
-            <label label for="3collaboration{{i}}">3 - COLABORATIVO</label> <br>
+            3 - COLABORATIVO</label>
 
             <br>
             <p>Considerando a ENTREGA DE RESULTADOS do funcionário '' </p>
+            <label label for="0results{{i}}">
             <input type="radio" id="0results{{i}}" name="results{{i}}" value="0">
-            <label label for="0results{{i}}">0 - NÃO HÁ ENTREGAS</label> <br>
+            0 - NÃO HÁ ENTREGAS</label>
 
+            <label label for="1results{{i}}">
             <input type="radio" id="1results{{i}}" name="results{{i}}" value="1">
-            <label label for="1results{{i}}">1 - ENTREGAS DUVIDOSAS</label> <br>
+            1 - ENTREGAS DUVIDOSAS</label>
 
+            <label label for="2results{{i}}">
             <input type="radio" id="2results{{i}}" name="results{{i}}" value="2">
-            <label label for="2results{{i}}">2 - ENTREGAS CONFIÁVEIS</label> <br>
+            2 - ENTREGAS CONFIÁVEIS</label>
 
+            <label label for="3results{{i}}">
             <input type="radio" id="3results{{i}}" name="results{{i}}" value="3">
-            <label label for="3results{{i}}">3 - ENTREGAS PERFEITAS</label> <br>
+            3 - ENTREGAS PERFEITAS</label>
         </div>
             {% endfor %}
             <button class="btn btn-secondary pacer_button" type="submit">Enviar PACER</button>

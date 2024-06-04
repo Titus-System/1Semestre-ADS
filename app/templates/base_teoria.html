@@ -41,7 +41,7 @@
                 <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %} data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
                     <img src="/static/images/user_button.svg" style="height:40px">
                 </button>
-               
+
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
                         <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
@@ -63,6 +63,8 @@
                 </div>
             </div>
         </nav>
+        <hr class="header_hr">
+    </header>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvasmenuLabel" style="background-color: #223c4b; color:white;">
             <div class="offcanvas-header" data-bs-theme="dark">
@@ -87,8 +89,6 @@
                 </div>
             </div>
         </div>
-        <hr class="header_hr">
-    </header>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #223c4b; color:white;">
         <div class="offcanvas-header" data-bs-theme="dark">
@@ -333,7 +333,6 @@
         function alternarBotoes() {
             // Verifica o tamanho da tela
             var screenWidth = window.innerWidth;
-    
             // Seleciona os botões
             var originalButton = document.getElementById('originalButton');
             var alternateButton = document.getElementById('alternateButton');
@@ -348,7 +347,6 @@
                 alternateButton.style.display = 'none';
             }
         }
-    
         // Chama a função quando a página é carregada e sempre que a janela é redimensionada
         window.addEventListener('load', alternarBotoes);
         window.addEventListener('resize', alternarBotoes);
