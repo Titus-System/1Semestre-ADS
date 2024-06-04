@@ -40,8 +40,9 @@ body{
 .head_img{
     height: 250px;
     background-color: #000103;
-    /* border: 2px solid white; */
 }
+
+/* Pagina teoria */
 
 .body_teoria{
     background-color: #e0e5e8;
@@ -149,6 +150,23 @@ body{
 .apostila_indice a{
     text-decoration: none;
     color: black
+}
+
+/* pagina teoria - video youtube */
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+
+}
+
+.video-container iframe {
+    width: 560px;
+    height: 315px;
+    max-width: 100%;
+
 }
 
 /* style - quiz - assunto */
