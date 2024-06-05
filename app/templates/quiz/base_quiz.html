@@ -81,6 +81,7 @@
         <hr class="header_hr">
     </header>
 
+    {% if boo == True %}
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasmenu"
     aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
     <div class="offcanvas-header">
@@ -100,6 +101,7 @@
             </ol>
         </div>
     </div>
+    {% endif %}
 </div>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
@@ -120,9 +122,9 @@
                 <!-- Botão dropdown -->
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Índice do Quiz
+                      Índice do Curso
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color :#223c4b; width:80%">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color :#39444b; width:90%; ">
                         <!-- construção do indice com loop pelo arquivo json -->
                         <ol class="text-light">
                             {% for key, value in perguntas.items() %}
