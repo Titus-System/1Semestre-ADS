@@ -119,47 +119,6 @@ def quiz_page(name=str):
         return redirect("/quiz/quiz_resultado")
     return quiz_functions.quiz_page(name)
 
-
-@app.route("/verdadeiro/<page>", methods=["POST", "GET"])
-@login_required
-def verdadeiro(page):
-    respostas_usuario = ""
-    if request.method == 'POST':
-        for i in range(1, 5):
-            respostas_usuario += request.form[f'resposta_usuario_vf_{i}']
-        id_pergunta = page
-        if respostas_usuario == arquivos.quiz_vf[id_pergunta][19]:
-            return "acertou"
-        else: return "errou"
-    else:
-        return render_template('teste_vf.html')
-
-
-@app.route("/associacao/<page>", methods=['GET','POST'])
-def associacao():
-    def resposta(resposta_certa, resposta_usuario):
-        if resposta_usuario == resposta_certa:
-            # acertos += 1
-            return 'Resposta correta!'
-        else:
-            # erros += 1
-            return 'Resposta Falsa!'
-        
-    if request.method == 'POST':
-        resposta_certa_1 = '1'
-        resposta_certa_2 = '2'
-        resposta_certa_3 = '3'
-        resposta_usuario_1 = request.form['resposta_usuario_1']
-        resposta_usuario_2 = request.form['resposta_usuario_2']
-        resposta_usuario_3 = request.form['resposta_usuario_3']
-        resultado_1 = resposta(resposta_certa_2, resposta_usuario_1)
-        resultado_2 = resposta(resposta_certa_1, resposta_usuario_2)
-        resultado_3 = resposta(resposta_certa_3, resposta_usuario_3)
-        return render_template('verdadeiro.html')
-    else:
-        return render_template('associacao.html')
-
-
 @app.route("/quiz/salvar_quiz/<numero_pagina>")
 @login_required
 def save_quiz_answers(numero_pagina):
