@@ -1,0 +1,84 @@
+{% extends "/quiz/base_quiz.html" %}
+{% block quiz %}
+<div class="quiz_page">
+  <!-- inicio da pagina -->
+  <br>
+  <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
+  <br>
+  <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
+
+  <div class="question_box row">
+    <div class="col-2">
+      <a href="{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a>
+    </div>
+    <div class="col-8">
+      <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta">
+        <div class="question_box_1">
+          <br><br>
+          <div class="engrenagens-div">
+            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+            <p class="question_script">{{questao[6]}}</p>
+            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+          </div>
+          <br>
+        </div>
+        <br>
+        <!-- inicio das alternativas -->
+        <div class="row">
+          <div class="col">
+            <div class="opção">
+              <p><strong>(&nbsp;1&nbsp;)&nbsp;&nbsp;{{questao[7]}}</strong></p>
+            </div>
+            <div class="opção">
+              <p><strong>(&nbsp;2&nbsp;)&nbsp;&nbsp;{{questao[8]}}</strong></p>
+            </div>
+            <div class="opção">
+              <p><strong>(&nbsp;3&nbsp;)&nbsp;&nbsp;{{questao[9]}}</strong></p>
+            </div>
+            <div class="opção">
+              <p><strong>(&nbsp;4&nbsp;)&nbsp;&nbsp;{{questao[10]}}</strong></p>
+            </div>
+          </div>
+          <div class="col">
+            <div id="opção_1">
+              <label>(<input type="text" id="resposta_usuario_1" name="resposta_usuario_1"
+                  class="input_as">)&nbsp;&nbsp;{{questao[11]}}</label>
+            </div>
+            <div id="opção_2">
+              <label>(<input type="text" id="resposta_usuario_2" name="resposta_usuario_2"
+                  class="input_as">)&nbsp;&nbsp;{{questao[12]}}</label>
+            </div>
+            <div id="opção_3">
+              <label>(<input type="text" id="resposta_usuario_3" name="resposta_usuario_3"
+                  class="input_as">)&nbsp;&nbsp;{{questao[13]}}</label>
+            </div>
+            <div id="opção_4">
+              <label>(<input type="text" id="resposta_usuario_4" name="resposta_usuario_4"
+                  class="input_as">)&nbsp;&nbsp;{{questao[14]}}</label>
+            </div>
+          </div>
+        </div>
+        <!-- fim das alternativas -->
+        <br>
+        <br>
+        <!-- botão dica -->
+
+        <div>
+          <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover"
+            data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[15]}}">
+            Não sei responder...
+          </button>
+          <br>
+          <br>
+          <br><br>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto"
+        id="button_next">&#9654;</button>
+    </div>
+
+  </div>
+  {% endblock %}

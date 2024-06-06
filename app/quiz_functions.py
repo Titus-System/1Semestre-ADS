@@ -6,8 +6,6 @@ import login_functions
 
 def quiz_page(name=str):
     perguntas = arquivos.quiz_perguntas
-    quiz_vf = arquivos.quiz_vf
-    quiz_associacao = arquivos.quiz_associacao
     questao = ""
     num_quest = 0
     page = name
@@ -27,44 +25,38 @@ def quiz_page(name=str):
         page = "pergunta"
         questao = perguntas[name]
         num_quest = questao[0]
-        proxima_pagina = questao[8]
-        pagina_anterior = f"{questao[0]}_{name}"
-   
-    elif name in quiz_vf.keys():
-        page = "teste_vf"
-        next_page = quiz_vf[name][8]
-        if request.method =="POST":
-            respostas_usuario = ""
-            for i in range(1, 5):
-                respostas_usuario += request.form[f'resposta_usuario_vf_{i}'].lower()
-            try:
-                session[f"resposta_{quiz_vf[name][0]}"] = respostas_usuario
-            except KeyError:
-                session[f"resposta_{quiz_vf[name][0]}"] = ""
-            return redirect(f"/quiz/{next_page}")
-    
-    elif name in quiz_associacao.keys():
-        page = "teste_associacao"
-        next_page = quiz_associacao[name][8]
-        if request.method =="POST":
-            respostas_usuario = ""
-            for i in range(1, 5):
-                respostas_usuario += request.form[f'resposta_usuario_{i}'].lower()
-            try:
-                session[f"resposta_{quiz_associacao[name][0]}"] = respostas_usuario
-            except KeyError:
-                session[f"resposta_{quiz_associacao[name][0]}"] = ""
-            return redirect(f"/quiz/{next_page}")
+        tipo_questao = questao[1]
+        pagina_anterior = questao[3]
+        proxima_pagina = questao[4]
 
-        return render_template(f"/quiz/{page}.html", perguntas=perguntas, user_data=user_data, is_admin=is_admin)
-    
+        if tipo_questao == "v_ou_f":
+            page = "pergunta_vf"
+            if request.method == "POST":
+                respostas_usuario = ""
+                for i in range(1, 5):
+                    respostas_usuario += request.form[f'resposta_usuario_vf_{i}'].lower()
+                try:
+                    session[f"resposta_{num_quest}"] = respostas_usuario
+                except KeyError:
+                    session[f"resposta_{num_quest}"] = ""
+                return redirect(f"/quiz/{proxima_pagina}")
+
+        elif tipo_questao == "associacao":
+            page="pergunta_associacao"
+            if request.method =="POST":
+                respostas_usuario = ""
+                for i in range(1, 5):
+                    respostas_usuario += request.form[f'resposta_usuario_{i}'].lower()
+                try:
+                    session[f"resposta_{num_quest}"] = respostas_usuario
+                except KeyError:
+                    session[f"resposta_{num_quest}"] = ""
+                print(session)
+                return redirect(f"/quiz/{proxima_pagina}")
+   
     if request.method == "POST":
         questao = perguntas[pagina_atual]
         num_quest = questao[0]
-
-        pagina_anterior = f"{questao[0]}_{name}"
-        proxima_pagina = questao[8]
-
         try:
             session[f"resposta_{num_quest}"] = request.form[f"resposta_{num_quest}"]
         except KeyError:
@@ -98,7 +90,7 @@ def save_quiz(numero_pagina):
     for key in perguntas:
         if key == "result": break
         try:
-            if perguntas[key][6] == session[f"resposta_{perguntas[key][0]}"]:
+            if perguntas[key][5] == session[f"resposta_{perguntas[key][0]}"]:
                 acertos += 1
         except KeyError: pass
     database.save_quiz_state(username, acertos, numero_pagina)
@@ -119,7 +111,7 @@ def resultado_parcial(username):
     for key in perguntas:
         if key == "result": break
         try:
-            if perguntas[key][6] == respostas[f"resposta_{perguntas[key][0]}"]:
+            if perguntas[key][5] == respostas[f"resposta_{perguntas[key][0]}"]:
                 acertos += 1
             else:
                 questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
@@ -153,7 +145,7 @@ def quiz_resultado_final():
     for i in perguntas:
         if i == "result": break
         try:
-            if perguntas[i][6] == respostas[f"resposta_{perguntas[i][0]}"]:
+            if perguntas[i][5] == respostas[f"resposta_{perguntas[i][0]}"]:
                 acertos += 1
             else: questoes_erradas[perguntas[i][0]] = correcao[f"erro_{perguntas[i][0]}"]
 

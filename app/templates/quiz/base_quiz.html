@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    
+
     <!-- Local Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
-    
+
     <!-- External Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style_responsivo.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    
+
     <!-- Block for additional scripts -->
     {% block script %}
     {% endblock %}
@@ -45,34 +45,45 @@
     <header class="link_bar">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" id="originalButton" style="color:white; font-size:30px">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu"
+                    id="originalButton" style="color:white; font-size:30px">
                     &#9776
                 </button>
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" id="alternateButton" style="color:white; font-size:30px">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive"
+                    id="alternateButton" style="color:white; font-size:30px">
                     &#9776
                 </button>
                 <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
-            
-                <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %} data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
+
+                <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %}
+                    data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
                     <img src="/static/images/user_button.svg" style="height:40px">
                 </button>
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
                         <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>&nbsp&nbsp
+                        <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/ferramentas"
+                                alt="ferramentas">FERRAMENTAS</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/avaliacao"
+                                alt="avaliação">AVALIAÇÃO</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
+                        &nbsp&nbsp
                         {% if current_user.is_authenticated %}
                         <li class="navbar-item">
-                            <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal" data-bs-target="#modal_user" style="height:50px; width:50px">
+                            <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modal_user" style="height:50px; width:50px">
                                 <img src="/static/images/user_button.svg" style="height:40px">
                             </button>
                         </li>
                         {% else %}
-                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modal_login">Fazer Login</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -81,30 +92,30 @@
         <hr class="header_hr">
     </header>
 
-    {% if boo == True %}
+
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasmenu"
-    aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title">QUIZ</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="indice">
-            <h5>Escolha por onde começar</h5>
-            <ol>
-                {% for key, value in perguntas.items() %}
-                {% if key != "result" %}
-                <li><a href="/quiz/{{value[0]}}_{{key}}">{{value[9]}}</a></li>
-                <br>
-                {% endif %}
-                {% endfor %}
-            </ol>
+        aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Mestre Ágil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="indice">
+                <h5>Índice</h5>
+                <ol>
+                    {% for key, value in perguntas.items() %}
+                    {% if key != "result" %}
+                    <li><a href="{{value[3]}}">{{value[2]}}</a></li>
+                    <br>
+                    {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
     </div>
-    {% endif %}
-</div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive"
+        aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -113,7 +124,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="/ferramentas"
+                        alt="ferramentas">FERRAMENTAS</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
             </ul>
@@ -121,26 +133,29 @@
                 <br>
                 <!-- Botão dropdown -->
                 <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Índice do Curso
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Índice
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color :#39444b; width:90%; ">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                        style="background-color :#39444b; width:90%; ">
                         <!-- construção do indice com loop pelo arquivo json -->
                         <ol class="text-light">
                             {% for key, value in perguntas.items() %}
                             {% if key != "result" %}
-                            <li><a href="/quiz/{{value[0]}}_{{key}}">{{value[9]}}</a></li>
+                            <li><a href="{{value[3]}}">{{value[2]}}</a></li>
                             <br>
                             {% endif %}
                             {% endfor %}
                         </ol>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel" style="background-color: #39444b; color:white; width:180px">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel"
+        style="background-color: #39444b; color:white; width:180px">
         <div class="offcanvas-header" data-bs-theme="dark">
             <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -148,8 +163,10 @@
         <div class="offcanvas-body">
             <div class="indice">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Fazer Login</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal_signup">Fazer cadastro</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal_login">Fazer Login</a></li>
                 </ul>
             </div>
         </div>
@@ -173,9 +190,9 @@
                             <div id="modal_login_form">
                                 <form action="/login" method="post">
                                     <label for="username">Username:<br>
-                                    <input type="text" id="username" name="username" required></label>
+                                        <input type="text" id="username" name="username" required></label>
                                     <label for="password">Senha:<br>
-                                    <input type="password" id="password" name="password" required></label>
+                                        <input type="password" id="password" name="password" required></label>
                                     <div class="modal-footer">
                                         <a><button class="btn btn-light" type="submit">Login</button></a>
                                     </div>
@@ -206,20 +223,21 @@
                             <div class="col" id=modal_signup_form>
                                 <form action="/signup" method="post">
                                     <label for="username">Username:<br>
-                                    <input type="text" id="username" name="username" required></label>
-                                    
+                                        <input type="text" id="username" name="username" required></label>
+
                                     <label for="name">Nome:<br>
-                                    <input type="text" id="name" name="name" required></label>
-                                    
+                                        <input type="text" id="name" name="name" required></label>
+
                                     <label for="email">e-mail:<br>
-                                    <input type="email" id="email" name="email" required></label>
-                                    
+                                        <input type="email" id="email" name="email" required></label>
+
                                     <label for="password">Senha:<br>
-                                    <input type="password" id="password" name="password" required></label>
-                                    
+                                        <input type="password" id="password" name="password" required></label>
+
                                     <label for="confirm_password">Confirme sua senha:<br>
-                                    <input type="password" id="confirm_password" name="confirm_password" required></label>
-                                    
+                                        <input type="password" id="confirm_password" name="confirm_password"
+                                            required></label>
+
                                     <div class="modal-footer">
                                         <a href="/signup"><button class="btn btn-light"
                                                 type="submit">Signup</button></a>
@@ -251,10 +269,14 @@
                     <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
                     <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
                     <br>
-                    {% if is_admin %}<a href="/admin"><buton class="btn btn-secondary w-100">Acessar página de administrador</buton></a><br>{% endif %}<br>
-                    <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu parei</button></a><br>
+                    {% if is_admin %}<a href="/admin">
+                        <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
+                    </a><br>{% endif %}<br>
+                    <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu
+                            parei</button></a><br>
                     <br>
-                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus resultados</button></a><br>
+                    <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus
+                            resultados</button></a><br>
                     <br>
                     <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
                 </div>
@@ -280,6 +302,8 @@
     {% block resultado %}
     {% endblock %}
 
+
+    
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -295,7 +319,7 @@
             // Seleciona os botões
             var originalButton = document.getElementById('originalButton');
             var alternateButton = document.getElementById('alternateButton');
-    
+
             // Se a largura da tela for menor que 1000 pixels, exibe o botão alternativo e oculta o original
             if (screenWidth < 1000) {
                 originalButton.style.display = 'none';
@@ -310,6 +334,11 @@
         window.addEventListener('load', alternarBotoes);
         window.addEventListener('resize', alternarBotoes);
     </script>
+    <script>
+        document.getElementById('enviar_resposta').addEventListener('click', function() {
+            document.getElementById('pergunta').submit();
+        });
+      </script>
 </body>
 
 </html>

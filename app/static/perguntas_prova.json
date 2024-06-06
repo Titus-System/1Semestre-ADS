@@ -1,126 +1,146 @@
 {
     "Questão 1":[
         "1",
+        "padrao",
+        "Questão 1",
+        "#prova_1",
+        "proxima_pagina",
+        "D",
         "Qual das seguintes opções NÃO é uma vantagem do Scrum?",
         "Maior adaptabilidade",
         "Entrega incremental de valor",
         "Comunicação eficaz",
         "Flexibilidade na definição de prazos",
-        "D",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
     "Questão 2":[
         "2",
+        "padrao",
+        "Questão 2",
+        "#prova_2",
+        "",
+        "C",
         "Leia as afirmações a seguir e assinale a alternativa correta: I. A Sprint Review é realizada no início de cada Sprint. II. A Sprint Retrospective é realizada no início da Sprint.",
         "Apenas a afirmativa I é verdadeira",
         "Apenas a afirmativa II é verdadeira",
         "As duas afirmativas são falsas",
         "As duas afirmativas são verdadeiras",
-        "C",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
     "Questão 3":[
         "3",
+        "padrao",
+        "Questão 3",
+        "#prova_3",
+        "",
+        "B",
         "Assinale a descrição correta para Sprint Planning.",
         "Refletir sobre a Sprint passada e identificar melhorias",
         "Definir o trabalho a ser realizado na Sprint",
         "Sincronizar as atividades diárias da equipe",
         "Apresentar e inspecionar o incremento do produto",
-        "B",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
     "Questão 4":[
         "4",
+        "padrao",
+        "Questão 4",
+        "#prova_4",
+        "",
+        "C",
         "Qual das seguintes opções é um desafio do Scrum?",
         "Maior adaptabilidade",
         "Entrega incremental de valor",
         "Exigência de autogestão",
         "Visibilidade e transparência",
-        "C",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
     "Questão 5":[
         "5",
+        "padrao",
+        "Questão 5",
+        "#prova_5",
+        "",
+        "A",
         "Qual das seguintes práticas está focada na entrega contínua de valor ao cliente?",
         "Priorização baseada em valor",
         "Priorização baseada em riscos",
         "Priorização baseada em esforço",
         "Priorização baseada em datas",
-        "A",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
 
     "Questão 6":[
         "6",
+        "padrao",
+        "Questão 6",
+        "#prova_6",
+        "",
+        "B",
         "Qual dos seguintes papéis no Scrum, é responsável por maximizar o valor do produto e gerenciar o Product Backlog?",
         "Scrum Master",
         "Product Owner",
         "Dev Team",
         "Stakeholder",
-        "B",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
 
     "Questão 7":[
         "7",
+        "padrao",
+        "Questão 7",
+        "#prova_7",
+        "",
+        "D",
         "Qual fator é considerado na priorização baseada em valor?",
         "Complexidade técnica",
         "Esforço necessário",
         "Dependências entre tarefas",
         "Benefícios para o usuário",
-        "D",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
 
     "Questão 8":[
         "8",
+        "padrao",
+        "Questão 8",
+        "#prova_8",
+        "",
+        "A",
         "Qual é o foco da priorização baseada em riscos?",
         "Abordar os maiores riscos do projeto o mais cedo possível",
         "Completar tarefas de menor esforço primeiro",
         "Organizar tarefas com base em dependências",
         "Completar tarefas de menor esforço primeiro",
-        "A",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
 
     "Questão 9":[
         "9",
+        "padrao",
+        "Questão 9",
+        "#prova_9",
+        "",
+        "B",
         "Qual prática Scrum promove a transparência e possibilita a identificação rápida de problemas?",
         "Sprint Planning",
         "Daily Scrum",
         "Sprint Review",
         "Sprint Retrospective",
-        "B",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ],
     "Questão 10":[
         "10",
+        "padrao",
+        "Questão 10",
+        "#prova_10",
+        "",
+        "C",
         "Qual a descrição correta para a Priorização baseada em esforço?",
         "Foca em tarefas que trazem maior valor ao cliente",
         "Identifica e aborda os maiores riscos antecipadamente",
         "Prioriza tarefas de menor esforço para alcançar rápidas vitórias",
         "Considera as relações de dependência entre tarefas",
-        "C",
-        "dica",
-        "próxima página",
-        "titulo"
+        "dica"
     ]
 }
