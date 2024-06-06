@@ -143,7 +143,7 @@ def quiz_resultado():
 def avaliacao():
     apostila_paginas = arquivos.apostila_paginas
     perguntas = arquivos.perguntas_prova
-    correcao = arquivos.erro_assunto
+    correcao = arquivos.erros_prova
     questoes_erradas = {}
 
     is_admin = login_functions.is_admin(login_functions.current_user.id)
