@@ -15,7 +15,7 @@
 <form action="/avaliacao" method="POST">
 {% for key,value in perguntas.items() %}
     {% if key != "result" %}
-    <div class="question_box">
+    <div class="question_box" id="prova_{{value[0]}}">
         <div class="question_box_1">
         <br>
         <div class="engrenagens-div">
@@ -23,26 +23,26 @@
         <h3 class="num_question">Questão {{value[0]}}:</h3>
         <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
     </div>
-        <p class="question_script_test">{{value[1]}}</p>
+        <p class="question_script_test">{{value[6]}}</p>
         <br>
     </div>
     <br>
     <br>
         <div class="quiz_option">
             <div class="alternativa_avaliacao_1">
-            <label for="A{{key}}" class="alternativa_avaliacao"><input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>&#160&#160{{value[2]}}&#160&#160</label>
+            <label for="A{{key}}" class="alternativa_avaliacao"><input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>&#160&#160{{value[7]}}&#160&#160</label>
             </div>
             <br>
             <div class="alternativa_avaliacao_1">
-            <label for="B{{key}}" class="alternativa_avaliacao" ><input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">&#160&#160{{value[3]}}&#160&#160</label>
+            <label for="B{{key}}" class="alternativa_avaliacao" ><input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">&#160&#160{{value[8]}}&#160&#160</label>
             </div>
             <br>
             <div class="alternativa_avaliacao_1">
-            <label for="C{{key}}" class="alternativa_avaliacao"><input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">&#160&#160{{value[4]}}&#160&#160</label>
+            <label for="C{{key}}" class="alternativa_avaliacao"><input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">&#160&#160{{value[9]}}&#160&#160</label>
             </div>
             <br>
             <div class="alternativa_avaliacao_1">
-            <label for="D{{key}}" class="alternativa_avaliacao"><input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">&#160&#160{{value[5]}}&#160&#160</label>
+            <label for="D{{key}}" class="alternativa_avaliacao"><input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">&#160&#160{{value[10]}}&#160&#160</label>
             </div>
           </div>
         </div>
