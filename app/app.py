@@ -1,7 +1,11 @@
-from flask import Flask, render_template, redirect, request, session, flash, url_for
+from flask import Flask, render_template, redirect, request, session, flash, url_for, send_file
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from reportlab.lib.pagesizes import landscape, A5
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
 import arquivos
 import database
+import io
 import quiz_functions, login_functions
 
 app = Flask(__name__)
@@ -302,6 +306,37 @@ def feedback():
         return redirect("/home")
     return render_template ("/feedback/feedback.html", continuar=continuar, user_data=user_data)
 
+#Rota para gerar o certificado
+
+@app.route('/gerar', methods=['POST'])
+@login_required
+def gerar():
+    nome = database.retrieve_data("registro", "nome", current_user.id)
+
+    # Criar um buffer para armazenar o PDF
+    buffer = io.BytesIO()
+    
+    # Criar um objeto canvas
+    c = canvas.Canvas(buffer, pagesize=landscape(A5))
+    width, height = A5
+
+    # Adicionar uma imagem de fundo (certificado_template.jpeg)
+    template = ImageReader('./static/images/template_certificate.jpeg')
+    c.drawImage(template, 0, 0, width=width, height=height)
+
+    # Adicionar texto ao PDF
+    c.setFont("Helvetica-Bold", 36)
+    c.setFillColorRGB(0, 0, 0)
+    c.drawString(200, 400, nome)
+    
+    # Finalizar o PDF
+    c.showPage()
+    c.save()
+
+    # Mover o buffer para o início
+    buffer.seek(0)
+    
+    return send_file(buffer, as_attachment=True, mimetype='application/pdf', download_name='certificado.pdf')
 
 if __name__ == "__main__":
     app.run(debug=True)
