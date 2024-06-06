@@ -118,13 +118,14 @@
         max-width: fit fit-content;
         font-size: 16px;
         text-align: justify;
+        color: black;
       
     }
 }
 
 /*pagina product backlog ferramentas*/
 
-@media screen and (max-width: 760px){
+@media screen and (max-width: 1200px){
     
 .img-pagina-sprint{
     max-width: 40%;
@@ -162,6 +163,7 @@
     margin: 7% 5% 20% 5%;
     text-align: justify;
     font-size: 16px;
+    color: black;
 }
 }
 
