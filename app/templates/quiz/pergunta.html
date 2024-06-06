@@ -61,26 +61,27 @@
         <br>
         <div>
           <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover"
-            data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[7]}}">
+            data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[11]}}">
             Não sei responder...
           </button>
           <br>
           <br>
           <br><br>
         </div>
-      </div>
+    </div>
     </form>
-    <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto" id="button_next">&#9654;</button>
+    <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto"
+        id="button_next">&#9654;</button>
+    </div>
+
   </div>
+  <!--fim do formulario-->
 
 </div>
-<!--fim do formulario-->
 
-</div>
-</div>
 <script>
-  document.getElementById('enviar_resposta').addEventListener('click', function() {
-      document.getElementById('pergunta').submit();
+  document.getElementById('enviar_resposta').addEventListener('click', function () {
+    document.getElementById('pergunta').submit();
   });
 </script>
 
