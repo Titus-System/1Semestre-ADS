@@ -96,16 +96,16 @@
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasmenu"
         aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title">QUIZ</h5>
+            <h5 class="offcanvas-title">Mestre Ágil</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="indice">
-                <h5>Escolha por onde começar</h5>
+                <h5>Índice</h5>
                 <ol>
                     {% for key, value in perguntas.items() %}
                     {% if key != "result" %}
-                    <li><a href="/quiz/{{value[3]}}">{{value[2]}}</a></li>
+                    <li><a href="{{value[3]}}">{{value[2]}}</a></li>
                     <br>
                     {% endif %}
                     {% endfor %}
@@ -135,7 +135,7 @@
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Índice do Curso
+                        Índice
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                         style="background-color :#39444b; width:90%; ">
@@ -143,7 +143,7 @@
                         <ol class="text-light">
                             {% for key, value in perguntas.items() %}
                             {% if key != "result" %}
-                            <li><a href="/quiz/{{value[3]}}">{{value[2]}}</a></li>
+                            <li><a href="{{value[3]}}">{{value[2]}}</a></li>
                             <br>
                             {% endif %}
                             {% endfor %}

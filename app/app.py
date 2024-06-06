@@ -143,7 +143,7 @@ def quiz_resultado():
 def avaliacao():
     apostila_paginas = arquivos.apostila_paginas
     perguntas = arquivos.perguntas_prova
-    correcao = arquivos.erro_assunto
+    correcao = arquivos.erros_prova
     questoes_erradas = {}
 
     is_admin = login_functions.is_admin(login_functions.current_user.id)
@@ -161,7 +161,7 @@ def avaliacao():
             respostas_prova[key] = request.form.get(f"resposta{key}")
         
         for key,value in respostas_prova.items():
-            if value == perguntas[key][6]:
+            if value == perguntas[key][5]:
                 acertos += 1
             else: questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         
