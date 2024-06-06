@@ -12,7 +12,7 @@ def generate_certificate(name):
     c = canvas.Canvas(buffer, pagesize=letter)
     height, width = letter
 
-    template = ImageReader('static/images/template_certificate.png')
+    template = ImageReader('static/images/template_certificate.jpeg')
     c.drawImage(template, 0, 0, width=width, height=height)
 
     c.setFont("Helvetica-Bold", 36)
