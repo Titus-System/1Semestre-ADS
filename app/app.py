@@ -3,12 +3,14 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from reportlab.lib.pagesizes import landscape, A5
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
+from werkzeug.middleware.proxy_fix import ProxyFix
 import arquivos
 import database
 import io
 import quiz_functions, login_functions
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
 
 app.secret_key = "chave_secreta"
 
@@ -339,4 +341,4 @@ def gerar():
     return send_file(buffer, as_attachment=True, mimetype='application/pdf', download_name='certificado.pdf')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
