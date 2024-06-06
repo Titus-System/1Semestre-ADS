@@ -38,17 +38,6 @@
         <th scope="col">Comentário</th>
       </tr>
     </thead>
-    <!-- <tbody>
-        {% for i in range(5) %}
-      <tr>
-        <th scope="row">Nome {{i}}</th>
-        <td>56%</td>
-        <td>7</td>
-        <td>5</td>
-        <td>Muito bom o curso! Gostei muito!</td>
-      </tr>
-      {% endfor %}
-    </tbody> -->
     <tbody>
       {% for key, value in users_results.items() %}
       <tr>
@@ -56,7 +45,7 @@
         <td>{{value[1]}}</td>
         <td>{{value[0]}}</td>
         <td>{{value[2]}}</td>
-        <td>{{value[3]}} Lorem ipsum, dolor sit amet consectetur adipisicing elit.</td>
+        <td>{{value[3]}}</td>
       </tr>
       {% endfor %}
     </tbody>
