@@ -1,213 +1,35 @@
-body {
-  color: #ffffff;
-  font: "Ruda" serif;
+.head_img{
+    width: 100%;
+    height: auto;
 }
 
-.guia_pratico{
-  color: #ffffff;
-  font: "Ruda" serif;
-  margin: 3%;
+.content_img{
+    width: 100%;
+    height: auto;
 }
 
-img {
-  width: 50%;
-  height: auto;
+.product_intro{
+    font-size: larger;
 }
 
-h1 {
-  font-size: 64px;
-  text-align: center;
-  color: #00adef;
+.title{
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    color: #00adef;
+    font-size: 4rem;
+    padding-top: 5rem;
+    
 }
 
-.titulo_home{
-  font-size: 64px;
-  text-align: center;
-  color: #00adef;
-  margin-top: 7px;
+.sub{
+    font-family: "Ruda", sans-serif;
+    font-size: 3rem;
 }
 
-.titulo_guia{
-  font-size: 50px;
-  text-align: ;
-  color: #00adef;
-  margin-top: 5px;
+.intro_text{
+    margin-bottom: 5rem;
 }
 
-h2 {
-  font-size: 48px;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 18px;
-  font-weight: normal;
-  color: #9ca0fd;
-}
-
-p {
-  text-align: justify;
-}
-
-hr {
-  color: #ffffff;
-  width: 600px;
-}
-
-.navbar {
-  background-color: #000103;
-  width: 100%;
-}
-
-.navbar-logo {
-  width: 80px;
-  height: auto;
-  float: left;
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.navbar-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.navbar-item {
-  display: inline;
-  float: right;
-  margin-right: 5px;
-}
-
-.navbar-item a {
-  display: block;
-  padding: 8px;
-  color: #ffffff;
-  text-decoration: none;
-  text-align: center;
-  padding: auto 16px;
-}
-
-.index-cover {
-  position: relative;
-  width: 100%;
-}
-
-.index-cover img {
-  width: 100%;
-  height: auto;
-}
-
-.index-cover div {
-  position: absolute;
-  top: 41%;
-  left: 67%;
-  font-size: 32;
-  color: #80a5a6;
-}
-
-.title-small {
-  font-size: 32px;
-  text-align: center;
-}
-
-.index-guide img {
-  float: right;
-}
-
-.index-guide-text {
-  margin: 214px auto auto 120px;
-}
-
-.index-quiz img {
-  float: left;
-}
-
-.index-quiz-text {
-  margin: 231px 73px auto auto;
-}
-
-.index-tools img {
-  float: right;
-}
-
-.index-tools-text {
-  margin: 214px auto auto 120px;
-}
-
-
-
-.container-home-reverso{
-  max-width: 100%;
-  margin: 0 auto;
-  margin-bottom: -60px;
-  padding: 25px;
-  text-align: center;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.container-home{
-  max-width: 100%;
-  margin: 0 auto;
-  margin-bottom: -100px;
-  padding: 25px;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.container-home-img-button{
-  max-width: 200%;
-  margin: 0 auto;
-  padding: 25px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.img-home{
-  width: 1000px;;
-  height: auto;
-}
-
-.img-home-1{
-  width: 800px;;
-  height: auto;
-}
-
-.button_home_page{
-  font-size: 40px;
-  background-color: #e4e7ec;
-  color: #00adef;
-  width: 400px ;
-  height: 60px;
-}
-.button_home_page:hover{
-  color: #e4e7ec;
-  background-color: #00adef;
-  transition: 0,2s;
-}
-
-.text_home_page{
-  font-size: 20px;
-  text-align: justify;
-}
-
-/* modal meu perfil */
-
-.button_logout{
-  font-size: 15px;
-  background-color: #000103;
-  color: #ff695e;
-  padding: 5px;
-  width: 150px;
+.left_side_text{
+    padding-left: 3rem;
 }

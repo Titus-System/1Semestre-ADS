@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- css linkups -->
     <link
       rel="stylesheet"
@@ -20,6 +21,7 @@
       rel="stylesheet"
       href="{{url_for('static', filename='css/indexstyle.css')}}"
     />
+
     <!-- font linkup-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,62 +33,108 @@
       href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
       rel="stylesheet"
     />
+
     <!-- Icon and title-->
     <link
       rel="icon"
       type="image/x-icon"
       href="/static/images/logo-nova-ma.png"
     />
-
     <title>Mestre Ágil</title>
   </head>
-  <body>
-    <!-- navbar  html -->
-    <div class="navbar sticky-top">
-      <img
-        class="navbar-logo"
-        src="{{url_for('static', filename='images/logo-nova-ma.png')}}"
-        alt="Logo"
-      />
-      <ul class="navbar-list">
-        <!-- different navbar for logged user -->
-        {% if user_logged_in %}
-        <li class="navbar-item">
-          <a
+  <body style="max-width: 100%; overflow-x: hidden">
+    <!-- navbar -->
+    <header class="link_bar">
+      <nav class="navbar navbar-expand-lg index_nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img src="/static/images/logo-nova-ma.png" alt="logo" />
+          </a>
+          <button
+            class="btn circle navbar-toggler bg-light"
             type="button"
-            class="btn btn-light text-dark"
+            {%if
+            current_user.is_authenticated%}
             data-bs-toggle="modal"
             data-bs-target="#modal_user"
-            >Meu perfil</a
+            {%else%}
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasUser"
+            {%endif%}
+            style="height: 50px; width: 50px"
           >
-        </li>
-        {% else %}
-        <li class="navbar-item">
-          <a
-            type="button"
-            class="btn btn-light text-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#modal_signup"
-            >Fazer cadastro</a
-          >
-        </li>
-        <li class="navbar-item">
-          <a
-            type="button"
-            class="btn btn-light text-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#modal_login"
-            >Fazer Login</a
-          >
-        </li>
-        {%endif%}
-        <li class="navbar-item"><a href="/pacer">PACER</a></li>
-        <li class="navbar-item"><a href="/ferramentas">FERRAMENTAS</a></li>
-        <li class="navbar-item"><a href="/avaliacao">AVALIAÇÃO</a></li>
-        <li class="navbar-item"><a href="/apostila">APOSTILA</a></li>
-        <li class="navbar-item"><a href="/quiz">QUIZ</a></li>
-      </ul>
-    </div>
+            <img src="/static/images/user_button.svg" style="height: 40px" />
+          </button>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto my-auto" style="align-items: center">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/apostila" alt="apostila"
+                  >APOSTILA</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-light"
+                  href="/ferramentas"
+                  alt="ferramentas"
+                  >FERRAMENTAS</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/avaliacao" alt="avaliação"
+                  >AVALIAÇÃO</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/pacer" alt="pacer"
+                  >PACER</a
+                >
+              </li>
+              &nbsp&nbsp {% if current_user.is_authenticated %}
+              <li class="navbar-item">
+                <button
+                  class="btn circle btn-light bg-light"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal_user"
+                  style="height: 50px; width: 50px"
+                >
+                  <img
+                    src="/static/images/user_button.svg"
+                    style="height: 40px"
+                  />
+                </button>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link text-light"
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal_signup"
+                  >Fazer cadastro</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-light"
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal_login"
+                  >Fazer Login</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <hr class="header_hr" />
+    </header>
+
     <!-- Login Modal -->
     <div class="modal" id="modal_login">
       <div class="modal-dialog modal-dialog-centered">
@@ -262,117 +310,112 @@
 
     {% endif %}
 
-    <!-- Page Content -->
     <!-- Page Cover -->
-    <div class="index-cover">
-      <img src="{{url_for('static', filename='images/capa.png')}}" alt="Capa" />
+    <div>
+      <img
+        class="head_img"
+        src="{{url_for('static', filename='images/SCRUM.jpg')}}"
+        alt="Capa"
+      />
     </div>
-    <!-- Content Body -->
-    <div class="guia_pratico">
-      <div class="container-home">
-        <div class="container-home-img-button">
-          <img
-            class="img-home"
-            src="{{url_for('static', filename='images/board_1.png')}}"
-            alt="Imagem"
-          /><br />
-          <a
-            href="{{url_for('static', filename='modelos-ferramentas/Backlog-do-produto.xlsx')}}"
-            download
-          >
-            <button
-              type="button"
-              class="button_home_page rounded-pill shadow-lg"
-            >
-              Product Backlog
-            </button>
-          </a>
-        </div>
-        <div class="text_home_page">
-          <h6 class="titulo_guia">Como fazer o curso:</h6>
-          <br />
-          <p>
-            No Ranking os numeros são colocados de acordo com a ordem em que
-            eles estão dispostos, iniciando pelo "1", as prioridades seram
-            definidadas entre "alta", "media" e "baixa" de acordo com o que
-            agrega mais valor ao resulado final, nas user storys seram escritas
-            as atividades que seram feitas e devem ser escritas sobre a
-            perspectiva do cliente e por fim na coluna sprint seram divididas as
-            user storys em sprints que são os momentos em que cada atividade
-            será desenvolvida
-          </p>
-        </div>
-      </div>
 
-      <div class="container-home-reverso">
-        <div class="container-home-img-button">
-          <img
-            class="img-home-1"
-            src="{{url_for('static', filename='images/to_do.png')}}"
-            alt="Imagem"
-          /><br />
-          <a
-            href="{{url_for('static', filename='modelos-ferramentas/Backlog-da-sprint.xlsx')}}"
-            download
-          >
-            <button
-              type="button"
-              class="button_home_page rounded-pill shadow-lg"
-            >
-              Sprint Backlog
-            </button>
-          </a>
-        </div>
-        <div class="text_home_page">
-          <h6 class="titulo_guia">Como utilizar o modelo:</h6>
-          <br />
-          <p>
-            No Ranking os números são colocados de acordo com a ordem em que
-            eles estão dispostos, iniciando pelo "1", as prioridades seram
-            definidadas entre "alta", "media" e "baixa" de acordo com o que
-            agrega mais valor ao resulado final, nas user storys seram escritas
-            as atividades que seram feitas, sub a perspectiva dos
-            desenvolvedores do projeto na coluna responsavel é colocado o nome
-            de quem da sua equipe está encarregado de desenvolver a atividade e
-            por fim na coluna status é determinado o que foi feito e o que ainda
-            está pedente
-          </p>
-        </div>
+    <!-- Intro Text -->
+    <div class="container expand-lg">
+      <div class="intro_text">
+        <h1 class="text-center title">Mestre Ágil</h1>
+        <p class="text-center product_intro">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+          voluptate ipsam illum. Odit fugiat recusandae laudantium cupiditate
+          sint? Accusantium non culpa maxime beatae, odio facilis fugit vero
+          maiores dolorem? Excepturi cupiditate vero eveniet, accusantium
+          similique illo aspernatur maxime rerum saepe sequi nisi vitae
+          obcaecati doloremque sit inventore libero commodi beatae fuga quo.
+          Rerum deserunt laudantium incidunt quibusdam quod est dicta nam quasi
+          assumenda maxime aut aliquid, explicabo dolore labore architecto
+          accusamus. Nam nulla, dignissimos placeat at quos consequuntur maxime
+          vitae voluptate molestias blanditiis perferendis tempora architecto
+          minus soluta cumque odit, numquam rem eum quia error vero nesciunt
+          dolore dicta ipsa.
+        </p>
       </div>
-
-      <div class="container-home">
-        <div class="container-home-img-button">
-          <img
-            class="img-home-1"
-            src="{{url_for('static', filename='images/img_reuniao.png')}}"
-            alt="Imagem"
-          /><br />
-          <a
-            href="{{url_for('static', filename='modelos-ferramentas/Burndown-modelo.xlsx')}}"
-            download
-          >
-            <button
-              type="button"
-              class="button_home_page rounded-pill shadow-lg"
-            >
-              Burndown Chart
-            </button>
-          </a>
-        </div>
-        <div class="text_home_page">
-          <h6 class="titulo_guia">Como utilizar o modelo:</h6>
-          <br />
-          <p>
-            Comece definindo as tarefas e estimando o tempo necessário para cada
-            uma. Em seguida, registre o total de trabalho planejado em um
-            gráfico ao longo do tempo. À medida que o projeto avança, atualize o
-            gráfico com o trabalho concluído diariamente. Use o burndown chart
-            para identificar desvios em relação ao planejado e ajustar a equipe
-            ou as metas conforme necessário. Ao final do projeto, analise o
-            gráfico para insights valiosos sobre o desempenho e oportunidades de
-            melhoria.
-          </p>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="text-center title sub left_side_text">Avaliação</h2>
+        <p class="text-center left_side_text product_intro">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam saepe
+          libero pariatur corporis consequatur voluptas dolorem est autem,
+          labore temporibus nesciunt recusandae illum porro facilis fugit,
+          asperiores repudiandae qui debitis molestiae laudantium molestias.
+          Aliquid reiciendis, autem veniam error corporis quam. Voluptate quos
+          quibusdam est iure molestiae in blanditiis nisi voluptates fuga?
+          Repudiandae dolorum neque, fugit fugiat repellendus reprehenderit
+          accusantium minima rem placeat consequatur officiis, quod at ea in!
+          Similique quasi commodi odit veritatis! Illo modi molestiae maxime
+          debitis, vitae ex tempore reprehenderit nobis, quae totam, officiis
+          esse recusandae repellendus numquam? Consequatur qui sunt eligendi
+          quis dolorum quibusdam quam reprehenderit modi!
+        </p>
+        <button class="index_button" href="apostila/artefatos.html">Comece o Curso</button>
+      </div>
+      <div class="col-lg-6">
+        <img
+          class="content_img"
+          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
+          alt="avaliacao"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <img
+          class="content_img"
+          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
+          alt="avaliacao"
+        />
+      </div>
+      <div class="col-lg-6">
+        <h2 style="padding-right: 3rem" class="text-center title sub">Pacer</h2>
+        <p class="text-center product_intro">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus ex
+          expedita eligendi! Hic suscipit error repellat laboriosam nemo
+          possimus ipsum quisquam optio a corrupti aperiam, quasi blanditiis
+          explicabo? Aliquam ut doloribus illum tempore dignissimos recusandae
+          adipisci eos, omnis aliquid deserunt animi corporis. Omnis at quasi,
+          dolor adipisci, deleniti repellendus placeat ducimus et iure
+          recusandae fuga, officiis labore quo blanditiis est? Dolorum sapiente
+          quis voluptas sint non autem nemo, minus laudantium dicta deserunt
+          quisquam neque nihil, eos distinctio rerum accusantium et ducimus
+          repellat error nostrum sed placeat ullam. Neque, sit impedit ea
+          dolore, reprehenderit, quaerat nesciunt nobis necessitatibus
+          perspiciatis saepe incidunt?
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="text-center title sub left_side_text">Ferramentas</h2>
+        <p class="text-center left_side_text product_intro">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corporis
+          eligendi nostrum laboriosam reprehenderit, ex dolorum ducimus fugit
+          nulla vero labore natus sed corrupti explicabo consequatur, eaque,
+          laudantium pariatur? Aliquam repellat voluptatem exercitationem
+          eligendi possimus minima rerum aut? Vitae quisquam, amet earum
+          pariatur quas nobis voluptas ut modi sint non nam reiciendis odit
+          molestiae dicta accusamus laborum similique quidem et expedita? Eius
+          ipsa earum eos cupiditate deleniti incidunt, fugiat autem, iste modi
+          laudantium accusamus eligendi et vero adipisci. Quasi laudantium
+          cumque et aut ab temporibus officiis quis, architecto eum praesentium
+          perspiciatis eaque laboriosam doloremque optio dolorum non assumenda
+          harum autem.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <img
+          class="content_img"
+          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
+          alt="avaliacao"
+        />
       </div>
     </div>
     <!-- Page Footer -->
