@@ -1,11 +1,12 @@
-from flask import Flask, render_template, redirect, request, session, make_response
+from flask import Flask, render_template, redirect, request, session, send_file
 from flask_login import LoginManager, UserMixin, logout_user, login_required, current_user
 from werkzeug.middleware.proxy_fix import ProxyFix
+from datetime import date
+from xhtml2pdf import pisa
 import arquivos
 import database
 import quiz_functions, login_functions
-import pdfkit
-from datetime import date
+
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
@@ -311,14 +312,12 @@ def feedback():
 @app.route('/certificado')
 @login_required
 def gerar_pdf():
-    rendered = render_template('certificate_template.html', nome=current_user.id, data=(date.today()))
-    pdf = pdfkit.from_string(rendered, False)
-    
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline; filename=certificado-mestre-agil.pdf'
-    
-    return response
+        
+    pdf = open("CertificadoMestreÁgil.pdf", "w+b")
+    pisa.CreatePDF((render_template('certificate_template.html', nome=('John Doe'), data=(date.today()))), dest=pdf)
+    pdf.close()
+
+    return send_file('Certificado Mestre Ágil.pdf', mimetype='application/pdf',)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
