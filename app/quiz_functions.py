@@ -1,5 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
-import json
+from flask import render_template, redirect, request, session
 import arquivos
 import database
 import login_functions

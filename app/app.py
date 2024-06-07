@@ -1,5 +1,5 @@
-from flask import Flask, render_template, redirect, request, session, flash, url_for, make_response
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask import Flask, render_template, redirect, request, session, make_response
+from flask_login import LoginManager, UserMixin, logout_user, login_required, current_user
 from werkzeug.middleware.proxy_fix import ProxyFix
 import arquivos
 import database
