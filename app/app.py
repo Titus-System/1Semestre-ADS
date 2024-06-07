@@ -1,13 +1,11 @@
-from flask import Flask, render_template, redirect, request, session, flash, url_for, send_file
+from flask import Flask, render_template, redirect, request, session, flash, url_for, make_response
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from reportlab.lib.pagesizes import landscape, A5
-from reportlab.pdfgen import canvas
-from reportlab.lib.utils import ImageReader
 from werkzeug.middleware.proxy_fix import ProxyFix
 import arquivos
 import database
-import io
 import quiz_functions, login_functions
+import pdfkit
+from datetime import date
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
@@ -310,35 +308,17 @@ def feedback():
 
 #Rota para gerar o certificado
 
-@app.route('/gerar', methods=['POST'])
+@app.route('/<nome>')
 @login_required
-def gerar():
-    nome = database.retrieve_data("registro", "nome", current_user.id)
-
-    # Criar um buffer para armazenar o PDF
-    buffer = io.BytesIO()
+def gerar_pdf(nome):
+    rendered = render_template('certificate_template.html', nome=nome, data=(date.today()))
+    pdf = pdfkit.from_string(rendered, False)
     
-    # Criar um objeto canvas
-    c = canvas.Canvas(buffer, pagesize=landscape(A5))
-    width, height = A5
-
-    # Adicionar uma imagem de fundo (certificado_template.jpeg)
-    template = ImageReader('./static/images/template_certificate.jpeg')
-    c.drawImage(template, 0, 0, width=width, height=height)
-
-    # Adicionar texto ao PDF
-    c.setFont("Helvetica-Bold", 36)
-    c.setFillColorRGB(0, 0, 0)
-    c.drawString(200, 400, nome)
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline; filename=certificado-mestre-agil.pdf'
     
-    # Finalizar o PDF
-    c.showPage()
-    c.save()
-
-    # Mover o buffer para o início
-    buffer.seek(0)
-    
-    return send_file(buffer, as_attachment=True, mimetype='application/pdf', download_name='certificado.pdf')
+    return response
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
