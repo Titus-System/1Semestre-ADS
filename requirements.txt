@@ -7,8 +7,7 @@ contourpy==1.2.1
 cycler==0.12.1
 Flask==3.0.3
 Flask-Login==0.6.3
-fonttools==4.51.0
-greenlet==3.0.3
+fonttools==4.53.0
 itsdangerous==2.2.0
 Jinja2==3.1.4
 kiwisolver==1.4.5
@@ -16,10 +15,9 @@ MarkupSafe==2.1.5
 matplotlib==3.9.0
 numpy==1.26.4
 packaging==24.0
-pdfkit==1.0.0
+pillow==10.3.0
 pyparsing==3.1.2
 python-dateutil==2.9.0.post0
+reportlab==4.2.0
 six==1.16.0
-typing_extensions==4.11.0
 Werkzeug==3.0.3
-wkhtmltopdf==0.2

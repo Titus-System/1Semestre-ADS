@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, request, session, send_file
 from flask_login import LoginManager, UserMixin, logout_user, login_required, current_user
 from werkzeug.middleware.proxy_fix import ProxyFix
 from datetime import date
-from xhtml2pdf import pisa
 import arquivos
 import database
 import quiz_functions, login_functions

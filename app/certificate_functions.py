@@ -5,6 +5,7 @@ from reportlab.lib.utils import ImageReader
 from reportlab.lib.units import inch
 from datetime import date as current_time
 from os.path import abspath, dirname, join
+
 def create_certificate(student_name):
     
     script_dir = dirname(abspath(__file__))
