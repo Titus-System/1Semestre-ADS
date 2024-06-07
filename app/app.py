@@ -6,7 +6,7 @@ from xhtml2pdf import pisa
 import arquivos
 import database
 import quiz_functions, login_functions
-
+import certificate_functions
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
@@ -312,12 +312,10 @@ def feedback():
 @app.route('/certificado')
 @login_required
 def gerar_pdf():
-        
-    pdf = open("CertificadoMestreÁgil.pdf", "w+b")
-    pisa.CreatePDF((render_template('certificate_template.html', nome=('John Doe'), data=(date.today()))), dest=pdf)
-    pdf.close()
-
-    return send_file('Certificado Mestre Ágil.pdf', mimetype='application/pdf',)
+    
+    certificate_functions.create_certificate(database.retrieve_data('registro', 'nome', current_user.id))
+    
+    return send_file('certificado.pdf', mimetype='application/pdf',)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
