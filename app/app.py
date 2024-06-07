@@ -308,10 +308,10 @@ def feedback():
 
 #Rota para gerar o certificado
 
-@app.route('/<nome>')
+@app.route('/certificado')
 @login_required
-def gerar_pdf(nome):
-    rendered = render_template('certificate_template.html', nome=nome, data=(date.today()))
+def gerar_pdf():
+    rendered = render_template('certificate_template.html', nome=current_user.id, data=(date.today()))
     pdf = pdfkit.from_string(rendered, False)
     
     response = make_response(pdf)
