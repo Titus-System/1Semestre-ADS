@@ -20,7 +20,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
-
+    <style>
+        .btn:hover {
+            color: #ff695e;
+            background-color: black;
+        }
+    </style>
 </head>
 
 <body class="body_login h-100">
@@ -124,12 +129,19 @@
                     <!-- Modal body -->
                     <div class="modal-body container">
                         <div class="row">
-                            <div id="modal_login_form">
+                            <div class="col contents"
+                                style="background-size: contain; background-repeat: no-repeat; background-position: center; height: 100px; ">
+                                <br>
+                                <img src="/static/images/learning.svg" style="height:100px">
+                            </div>
+                            <div class="col" id="modal_login_form">
                                 <form action="/login" method="post">
                                     <label for="username">Username:<br>
-                                        <input type="text" id="username" name="username" required></label>
+                                        <input class="form-control" type="text" id="username" name="username"
+                                            required></label>
                                     <label for="password">Senha:<br>
-                                        <input type="password" id="password" name="password" required></label>
+                                        <input class="form-control" type="password" id="password" name="password"
+                                            required></label>
                                     <div class="modal-footer">
                                         <a><button class="btn btn-light" type="submit">Login</button></a>
                                     </div>
@@ -144,8 +156,8 @@
 
 
         <!-- signup Modal -->
-        <div class="modal" id="modal_signup">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="modal_signup">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
 
                     <!-- Modal Header -->
@@ -157,23 +169,31 @@
                     <!-- Modal body -->
                     <div class="modal-body container">
                         <div class="row">
+                            <div class="col contents"
+                                style="background-size: contain; background-repeat: no-repeat; background-position: center; height: 100px; ">
+                                <br>
+                                <img src="/static/images/learning.svg" style="height:100px">
+                            </div>
                             <div class="col" id=modal_signup_form>
                                 <form action="/signup" method="post">
                                     <label for="username">Username:<br>
-                                        <input type="text" id="username" name="username" required></label>
+                                        <input class="form-control" type="text" id="username" name="username"
+                                            required></label>
 
                                     <label for="name">Nome:<br>
-                                        <input type="text" id="name" name="name" required></label>
+                                        <input class="form-control" type="text" id="name" name="name" required></label>
 
                                     <label for="email">e-mail:<br>
-                                        <input type="email" id="email" name="email" required></label>
+                                        <input class="form-control" type="email" id="email" name="email"
+                                            required></label>
 
                                     <label for="password">Senha:<br>
-                                        <input type="password" id="password" name="password" required></label>
+                                        <input class="form-control" type="password" id="password" name="password"
+                                            required></label>
 
                                     <label for="confirm_password">Confirme sua senha:<br>
-                                        <input type="password" id="confirm_password" name="confirm_password"
-                                            required></label>
+                                        <input class="form-control" type="password" id="confirm_password"
+                                            name="confirm_password" required></label>
 
                                     <div class="modal-footer">
                                         <a href="/signup"><button class="btn btn-light"
@@ -227,6 +247,11 @@
     </div>
     {% endif %}
 
+    <!-- imagem do cabeçalho -->
+    <div class="head_img"
+        style="background-image:url(/static/images/signup.png); background-position:center; background-size: contain; background-repeat: no-repeat;">
+    </div>
+
 
     <!-- Espaço para mensagens flash -->
     <div class="container mt-4" style="width:50%;">
@@ -245,62 +270,261 @@
         {% endif %}
         {% endwith %}
     </div>
+    <br>
 
-    <div class="flex_box_login_page">
-        <div class="login_content flex_itens">
-            <div class="row justify-content-center container" style="width: fit-content;">
-                <div class="col" id=modal_signup_form>
-                    <h1 style="color: white;">Faça seu cadastro</h1>
-                    <form action="/signup" method="POST">
-                        <label style="color: white;" for="username">Username:</label>
-                        <input class="text_box_login" type="text" id="username" name="username" required>
-                        <br>
-                        <br>
-                        <label style="color: white;" for="name">Nome:</label>
-                        <input class="text_box_login" type="text" id="name" name="name" required>
-                        <br>
-                        <br>
-                        <label style="color: white;" for="email">e-mail:</label>
-                        <input class="text_box_login" type="email" id="email" name="email" required>
-                        <br>
-                        <br>
-                        <label style="color: white;" for="password">Senha:</label>
-                        <input class="text_box_login" type="password" id="password" name="password" required>
-                        <br>
-                        <br>
-                        <label style="color: white;" for="confirm_password">Confirmar Senha:</label>
-                        <input class="text_box_login" type="password" id="confirm_password" name="confirm_password"
-                            required>
-                        <br>
-                        <br>
-                        <a href="/signup"><button class="button_login_page rounded-pill shadow-lg"
-                                type="submit"><strong>Signup</strong></button></a>
-                    </form>
+    <div class="container" style="margin-top:5vh;">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs mb-3 fs-5 fw-bold bg-dark rounded w-75" id="pills-tab" role="tablist">
+                    <li class="nav-item w-50" role="presentation">
+                        <button class="nav-link active w-100" id="pills-profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false" style="color:#ff695e">Login</button>
+                    </li>
+                    <li class="nav-item w-50" role="presentation">
+                        <button class="nav-link w-100" id="pills-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true" style="color:#ff695e">Cadastro</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="col contents">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="mb-4">
+                                        <h3>Registre-se</h3>
+                                        <p class="mb-4">Faça seu cadastro se ainda não possui</p>
+                                    </div>
+                                    <form action="/signup" method="POST">
+                                        <div class="form-group first">
+                                            <label for="username">Username
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    required></label>
+                                        </div>
+                                        <div class="form-group first">
+                                            <label for="name">Nome
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    required></label>
+                                        </div>
+                                        <div class="form-group first">
+                                            <label for="email">e-mail
+                                                <input type="text" class="form-control" id="email" name="email"
+                                                    required></label>
+                                        </div>
+                                        <div class="form-group first">
+                                            <label for="password">Senha
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password" required></label>
+                                        </div>
+                                        <div class="form-group first">
+                                            <label for="confirm_password">Confirme sua senha
+                                                <input type="password" class="form-control" id="confirm_password"
+                                                    name="confirm_password" required></label>
+                                        </div>
+                                        <a href="/signup"><button class="btn button_login_page "
+                                                type="submit"><strong>Fazer
+                                                    cadastro</strong></button></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+                        aria-labelledby="pills-profile-tab">
+                        <div class="col contents">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="mb-4">
+                                        <h3>Login</h3>
+                                        <p class="mb-4">Faça login se já possui cadastro</p>
+                                    </div>
+                                    <form action="/login" method="POST">
+                                        <div class="form-group first">
+                                            <label for="username">Username
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    required></label>
+                                        </div>
+                                        <div class="form-group first">
+                                            <label for="password">Senha
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password" required></label>
+                                        </div>
+                                        <a href="/login"><button class="btn button_login_page"
+                                                type="submit"><strong>Login</strong></button></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="login_content flex_itens">
-            <div class="row justify-content-center container" style="width: fit-content;">
-                <div class="col" id=modal_login_form>
-                    <h1 style="color: white;">&nbsp&nbsp&nbspFaça seu login&nbsp&nbsp&nbsp</h1>
-                    <form action="/login" method="post">
-                        <label style="color: white;" for="username">Username:</label>
-                        <input class="text_box_login" type="text" id="username" name="username" required>
-                        <br>
-                        <br>
-                        <label style="color: white;" for="password">senha:</label>
-                        <input class="text_box_login" type="password" id="password" name="password" required>
-                        <br>
-                        <br>
-                        <a href="/{{next}}"><button class="button_login_page rounded-pill shadow-lg"
-                                type="submit"><strong>Login</strong></button></a>
-                    </form>
-                </div>
+            <div class="col-md-6 contents"
+                style="background: url(/static/images/login.svg); background-size: contain; background-repeat: no-repeat; background-position: center; height:50vh">
             </div>
         </div>
-
     </div>
+
+    <br><br><br>
+    <!-- <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Login</h3>
+                                <p class="mb-4">Faça login se já possui cadastro</p>
+                            </div>
+                            <form action="/login" method="POST">
+                                <div class="form-group first">
+                                    <label for="username">Username
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            required></label>
+                                </div>
+                                <div class="form-group first">
+                                    <label for="password">Senha
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required></label>
+                                </div>
+                                <a href="/login"><button class="btn button_login_page"
+                                        type="submit"><strong>Login</strong></button></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Registre-se</h3>
+                                <p class="mb-4">Faça seu cadastro se ainda não possui</p>
+                            </div>
+                            <form action="/signup" method="POST">
+                                <div class="form-group first">
+                                    <label for="username">Username
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            required></label>
+                                </div>
+                                <div class="form-group first">
+                                    <label for="name">Nome
+                                        <input type="text" class="form-control" id="name" name="name" required></label>
+                                </div>
+                                <div class="form-group first">
+                                    <label for="email">e-mail
+                                        <input type="text" class="form-control" id="email" name="email"
+                                            required></label>
+                                </div>
+                                <div class="form-group first">
+                                    <label for="password">Senha
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required></label>
+                                </div>
+                                <div class="form-group first">
+                                    <label for="confirm_password">Confirme sua senha
+                                        <input type="password" class="form-control" id="confirm_password"
+                                            name="confirm_password" required></label>
+                                </div>
+                                <a href="/signup"><button class="btn button_login_page " type="submit"><strong>Fazer
+                                            cadastro</strong></button></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br> -->
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="/static/images/logo-nova-ma.png" style="height:100px">
+                    <p>Nossa plataforma oferece materiais detalhados sobre a metodologia ágil Scrum, ajudando
+                        profissionais a aprimorarem suas habilidades em gerenciamento de projetos.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png"
+                        style="height: 65px;">
+                    <h5>Titus Systems</h5>
+                    <p>Convidamos você a explorar nossas soluções e descobrir como podemos ajudar sua empresa a
+                        alcançar novos patamares de sucesso.</p>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contato</h5>
+                    <p>Email: contato@mestreagil.com</p>
+                    <p>Telefone: (12) 99999-9999</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://github.com/Titus-System/1Semestre-ADS"
+                                target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png"
+                                    alt="GitHub"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <p class="mb-0">&copy; 2024 Mestre Ágil. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <div class="flex_box_login_page">
+            <div class="login_content flex_itens">
+                <div class="row justify-content-center container" style="width: fit-content;">
+                    <div class="col" id=modal_signup_form>
+                        <h1 style="color: white;">Faça seu cadastro</h1>
+                        <form action="/signup" method="POST">
+                            <label style="color: white;" for="username">Username:</label>
+                            <input class="text_box_login" type="text" id="username" name="username" required>
+                            <br>
+                            <br>
+                            <label style="color: white;" for="name">Nome:</label>
+                            <input class="text_box_login" type="text" id="name" name="name" required>
+                            <br>
+                            <br>
+                            <label style="color: white;" for="email">e-mail:</label>
+                            <input class="text_box_login" type="email" id="email" name="email" required>
+                            <br>
+                            <br>
+                            <label style="color: white;" for="password">Senha:</label>
+                            <input class="text_box_login" type="password" id="password" name="password" required>
+                            <br>
+                            <br>
+                            <label style="color: white;" for="confirm_password">Confirmar Senha:</label>
+                            <input class="text_box_login" type="password" id="confirm_password" name="confirm_password"
+                                required>
+                            <br>
+                            <br>
+                            <a href="/signup"><button class="button_login_page rounded-pill shadow-lg"
+                                    type="submit"><strong>Signup</strong></button></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login_content flex_itens">
+                <div class="row justify-content-center container" style="width: fit-content;">
+                    <div class="col" id=modal_login_form>
+                        <h1 style="color: white;">&nbsp&nbsp&nbspFaça seu login&nbsp&nbsp&nbsp</h1>
+                        <form action="/login" method="post">
+                            <label style="color: white;" for="username">Username:</label>
+                            <input class="text_box_login" type="text" id="username" name="username" required>
+                            <br>
+                            <br>
+                            <label style="color: white;" for="password">senha:</label>
+                            <input class="text_box_login" type="password" id="password" name="password" required>
+                            <br>
+                            <br>
+                            <a href="/{{next}}"><button class="button_login_page rounded-pill shadow-lg"
+                                    type="submit"><strong>Login</strong></button></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
 
     <script>
         // Função para verificar o tamanho da tela e alternar os botões
