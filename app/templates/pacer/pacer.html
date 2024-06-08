@@ -166,11 +166,11 @@
         {% for i in range(qtd_funcionarios) %}
         <div class="box_assessment_pacer">
             <label for="nome_funcionario{{i}}">Nome do funcionario:
-            <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}"></label>
+            <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}" required></label>
             <br>
             <p>Considerando a PRODUTIVIDADE do funcionário '' </p>
             <label label for="0productivity{{i}}">
-            <input type="radio" id="0productivity{{i}}" name="productivity{{i}}" value="0">
+            <input type="radio" id="0productivity{{i}}" name="productivity{{i}}" value="0" required>
             0 - REATIVO</label>
 
             <label label for="1productivity{{i}}">
@@ -189,7 +189,7 @@
             <p>Considerando a AUTONOMIA do funcionário: </p>
 
             <label label for="0autonomy{{i}}">
-            <input type="radio" id="0autonomy{{i}}" name="autonomy{{i}}" value="0">
+            <input type="radio" id="0autonomy{{i}}" name="autonomy{{i}}" value="0" required>
             0 - DIRIGIDO</label>
 
             <label label for="1autonomy{{i}}">
@@ -207,7 +207,7 @@
             <br>
             <p>Considerando a COLABORAÇÃO do funcionário '' </p>
             <label label for="0collaboration{{i}}">
-            <input type="radio" id="0collaboration{{i}}" name="collaboration{{i}}" value="0">
+            <input type="radio" id="0collaboration{{i}}" name="collaboration{{i}}" value="0" required>
             0 - AUSENTE</label>
 
             <label label for="1collaboration{{i}}">
@@ -225,7 +225,7 @@
             <br>
             <p>Considerando a ENTREGA DE RESULTADOS do funcionário '' </p>
             <label label for="0results{{i}}">
-            <input type="radio" id="0results{{i}}" name="results{{i}}" value="0">
+            <input type="radio" id="0results{{i}}" name="results{{i}}" value="0" required>
             0 - NÃO HÁ ENTREGAS</label>
 
             <label label for="1results{{i}}">

@@ -128,77 +128,68 @@
 
     <!-- Login Modal -->
     <div class="text-light">
-        <div class="modal" id="modal_login">
+        <div class="modal fade" id="modal_login">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header" data-bs-theme="dark">
-                        <h4 class="modal-title">Faça login</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-
                     <!-- Modal body -->
-                    <div class="modal-body container">
-                        <div class="row">
-                            <div id="modal_login_form">
-                                <form action="/login" method="post">
-                                    <label for="username">Username:<br>
-                                        <input type="text" id="username" name="username" required></label>
-                                    <label for="password">Senha:<br>
-                                        <input type="password" id="password" name="password" required></label>
-                                    <div class="modal-footer">
-                                        <a><button class="btn btn-light" type="submit">Login</button></a>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="modal-body container" data-bs-theme="dark">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <img src="/static/images/logo-nova-ma.png" style="height: 80px">
                         </div>
+                        <h3 class="text-center mt-4 mb-4">Login</h3>
+                        <form action="/login" method="post" data-bs-theme="light">
+                            <label for="username">Username:<br>
+                                <input class="form-control" type="text" id="username" name="username"
+                                    required></label>
+                            <label for="password">Senha:<br>
+                                <input class="form-control" type="password" id="password" name="password"
+                                    required></label>
+                            <div class="modal-footer">
+                                <a><button class="btn btn-light" type="submit">Login</button></a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
         <!-- signup Modal -->
-        <div class="modal" id="modal_signup">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="modal_signup">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header" data-bs-theme="dark">
-                        <h4 class="modal-title">Faça seu cadastro</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-
                     <!-- Modal body -->
-                    <div class="modal-body container">
-                        <div class="row">
-                            <div class="col" id=modal_signup_form>
-                                <form action="/signup" method="post">
-                                    <label for="username">Username:<br>
-                                        <input type="text" id="username" name="username" required></label>
-
-                                    <label for="name">Nome:<br>
-                                        <input type="text" id="name" name="name" required></label>
-
-                                    <label for="email">e-mail:<br>
-                                        <input type="email" id="email" name="email" required></label>
-
-                                    <label for="password">Senha:<br>
-                                        <input type="password" id="password" name="password" required></label>
-
-                                    <label for="confirm_password">Confirme sua senha:<br>
-                                        <input type="password" id="confirm_password" name="confirm_password"
-                                            required></label>
-
-                                    <div class="modal-footer">
-                                        <a href="/signup"><button class="btn btn-light"
-                                                type="submit">Signup</button></a>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="modal-body container" data-bs-theme="dark">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <img src="/static/images/logo-nova-ma.png" style="height: 80px">
                         </div>
+                        <h3 class="text-center mt-4 mb-4">Cadastre-se</h3>
+                        <form action="/signup" method="post" class="login-form" data-bs-theme="light">
+                            <label for="username">Username:<br>
+                                <input class="form-control" type="text" id="username" name="username"
+                                    required></label>
+
+                            <label for="name">Nome:<br>
+                                <input class="form-control rounded-left" type="text" id="name" name="name" required></label>
+
+                            <label for="email">e-mail:<br>
+                                <input class="form-control" type="email" id="email" name="email"
+                                    required></label>
+
+                            <label for="password">Senha:<br>
+                                <input class="form-control" type="password" id="password" name="password"
+                                    required></label>
+
+                            <label for="confirm_password">Confirme sua senha:<br>
+                                <input class="form-control" type="password" id="confirm_password"
+                                    name="confirm_password" required></label>
+
+                            <div class="modal-footer">
+                                <a href="/signup"><button class="btn btn-light"
+                                        type="submit">Signup</button></a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -208,7 +199,7 @@
 
     {% if current_user.is_authenticated %}
     <!-- User Modal -->
-    <div class="modal" id="modal_user">
+    <div class="modal fade" id="modal_user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-dark">
 
@@ -253,6 +244,38 @@
     <!-- págin admin.html está usando o base_pacer como base -->
     {% block admin %}
     {% endblock %}
+    <br><br><br>
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="/static/images/logo-nova-ma.png" style="height:100px">
+                    <p>Nossa plataforma oferece materiais detalhados sobre a metodologia ágil Scrum, ajudando profissionais a aprimorarem suas habilidades em gerenciamento de projetos.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png" style="height: 65px;">
+                    <h5>Titus Systems</h5>
+                    <p>Convidamos você a explorar nossas soluções e descobrir como podemos ajudar sua empresa a alcançar novos patamares de sucesso.</p>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contato</h5>
+                    <p>Email: contato@mestreagil.com</p>
+                    <p>Telefone: (12) 99999-9999</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://github.com/Titus-System/1Semestre-ADS" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png" alt="GitHub"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <p class="mb-0">&copy; 2024 Mestre Ágil. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
     <script>
         // Função para verificar o tamanho da tela e alternar os botões
         function alternarBotoes() {
@@ -276,8 +299,6 @@
         window.addEventListener('load', alternarBotoes);
         window.addEventListener('resize', alternarBotoes);
     </script>
-
-
 </body>
 
 </html>
