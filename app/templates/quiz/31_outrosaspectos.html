@@ -1,0 +1,19 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 6{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 6</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/desvantagens2"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Outros aspectos do Scrum</h2>
+                        <p>O Scrum não apenas fornece um framework para o desenvolvimento ágil de produtos, mas também promove uma cultura de melhoria contínua e aprendizado nas equipes. Ao adotar o Scrum, as equipes são encorajadas a buscar constantemente maneiras de otimizar seus processos, o que pode resultar em maior eficiência. Além disso, ao oferecer mais autonomia e responsabilidade aos membros da equipe, o Scrum pode contribuir para um ambiente de trabalho mais engajado. No entanto, é importante ressaltar que sua eficácia pode variar dependendo do contexto específico de cada equipe e organização. Nem sempre é uma solução universal e pode exigir ajustes e adaptações para se adequar às necessidades e desafios de cada projeto.</p>
+                    </div>
+                    <a href="/quiz/outrosaspectos"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+    </div>
+    <a href="/quiz/salvar_quiz/31_outrosaspectos" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

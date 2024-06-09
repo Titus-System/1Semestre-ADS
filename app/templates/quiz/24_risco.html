@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 5{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 5</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/valor"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Priorização baseada em riscos</h2>
+                        <p>Por sua vez, a priorização baseada em riscos visa identificar e abordar os maiores riscos de um projeto o mais cedo possível. Os riscos podem incluir incertezas técnicas, complexidades de implementação ou mudanças frequentes nos requisitos. Ao priorizar tarefas de alto risco, a equipe pode resolver esses desafios antecipadamente, reduzindo a probabilidade de problemas significativos mais tarde no projeto.</p>
+                    </div>
+                    <a href="/quiz/risco"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/24_risco" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

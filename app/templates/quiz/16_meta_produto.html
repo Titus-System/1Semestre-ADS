@@ -1,0 +1,21 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 4{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 4</h1>
+            <div class="page_assunto_flex">
+            <a href="/quiz/backlog_refinement"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                <div class="container-assunto">
+                    <br>
+                    <h2>User Stories e Meta do Produto</h2>
+                    <p>Um Product Backlog é composto por um conjunto de “Histórias do Usuário” (ou “User Stories”, em inglês). Uma História do Usuário é uma forma sucinta e precisa de escrever os requisitos do produto, compreendida facilmente por consumidores e membros da equipe. Cada História do Usuário representa um item do Product Backlog e segue o formato: "Como < ator >, quero/preciso/gostaria de < ação > para que < objetivo >."</p>
+                    <p>O compromisso do Product Backlog é a Meta do Produto. Ela refere-se ao objetivo de longo prazo que o Time Scrum pretende alcançar, um olhar para o produto como um todo.</p>
+                </div>
+                <a href="/quiz/meta_produto"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            </div>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/16_meta_produto" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

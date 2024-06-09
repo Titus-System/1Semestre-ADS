@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 2{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 2</h1>
+            <div class="page_assunto_flex">
+                <a href="/quiz/product_owner"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                <div class="container-assunto">
+                    <br>
+                    <h2>Dev Team</h2>
+                    <p>O Time de Desenvolvimento, Development Team, ou Dev Team, é um componente essencial do Scrum, formado pelos responsáveis por transformar as ideias e requisitos do P.O em um produto funcional. Com um tamanho ideal de 3 a 9 membros, o Dev Team trabalha de forma eficiente e coordenada, com o objetivo de garantir qualidade e valor nas entregas.</p>
+                    <p>O Dev Team participa ativamente das reuniões de planejamento, desenvolvimento e revisão, comprometendo-se a entregar incrementos de produto que atendam aos padrões de qualidade e às expectativas do cliente. A dedicação à entrega contínua de valor é a principal característica do time, que busca, constantemente, melhorar processos e resultados de revisões e adaptações regulares.</p>
+                </div>
+                <a href="/quiz/devteam"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            </div>
+    </div>
+    <a href="/quiz/salvar_quiz/7_devteam" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

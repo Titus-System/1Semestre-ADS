@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 5{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 5</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/risco"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Priorização baseada em esforço</h2>
+                        <p>A priorização baseada em esforço, como o próprio nome sugere, foca na avaliação do esforço necessário para completar cada tarefa ou atividade do backlog. Nessa técnica de priorização, tarefas mais simples e que exigem menos esforço são priorizadas para serem desenvolvidas primeiro, permitindo que a equipe alcance rápidas vitórias e mantenha um ritmo constante de progresso. Essa abordagem ajuda a equipe a gerenciar melhor sua carga de trabalho e a evitar sobrecargas.</p>
+                    </div>
+                    <a href="/quiz/esforco"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/25_esforco" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

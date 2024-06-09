@@ -1,0 +1,19 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 2{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 2</h1>
+            <div class="page_assunto_flex">
+                <a href="/quiz/papeis"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                <div class="container-assunto">
+                    <br>
+                    <h2>Scrum Master</h2>
+                    <p>O Scrum Master atua como um facilitador, lidando com obstáculos que possam impedir o progresso da equipe, promovendo a comunicação eficaz entre os membros do time e assegurando que as cerimônias do Scrum sejam realizadas corretamente. Além disso, o S.M ajuda a proteger a equipe de interferências externas e pressões que possam comprometer a produtividade e a qualidade do produto. Apesar de poder ser chamado de “Coordenador do Projeto”, é importante ressaltar que o Scrum Master não pode assumir certas funções, como determinar o modo propício de cumprir o que deve ser feito e cobrar as entregas de final de ciclo do time.</p>
+                </div>
+                <a href="/quiz/master"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            </div>
+    </div>
+    <a href="/quiz/salvar_quiz/7_master" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}
