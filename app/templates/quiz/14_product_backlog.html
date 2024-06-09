@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 4{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 4</h1>
+            <div class="page_assunto_flex">
+                <a href="/quiz/eventos_adicionais"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Product Backlog</h2>
+                        <p>No Scrum, o Product Backlog é uma lista de funcionalidades do produto elaborada pelo P.O junto ao cliente, com contribuições da equipe Scrum para estimar os custos de desenvolvimento. Deve incluir tanto funções visíveis ao cliente quanto requisitos técnicos.</p>
+                    </div>
+                    <a href="/quiz/product_backlog"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+                        
+    </div>
+    <a href="/quiz/salvar_quiz/14_product_backlog" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

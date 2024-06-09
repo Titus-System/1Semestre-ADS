@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 6{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 6</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/vantagens1"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Vantagens do Scrum (parte 2)</h2>
+                        <p>Além das vantagens mencionadas anteriormente, o Scrum promove colaboração e comunicação eficazes entre os membros da equipe por meio de práticas como as reuniões diárias, que facilitam a identificação de problemas e a tomada de decisões. Além disso, a metodologia enfatiza a melhoria contínua, permitindo que a equipe aprenda com seus erros praticando e identifique maneiras de aprimorar o processo de desenvolvimento.</p>
+                        <p>Por fim, também é possível citar a visibilidade e a transparência que o Scrum proporciona ao processo de desenvolvimento. Todos os membros da equipe têm acesso claro ao que foi concluído, ao que está em andamento e ao que ainda não foi iniciado, promovendo um ambiente de trabalho colaborativo e alinhado com os objetivos do projeto.</p>
+                    </div>
+                    <a href="/quiz/vantagens2"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+    </div>
+    <a href="/quiz/salvar_quiz/28_vantagens2" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

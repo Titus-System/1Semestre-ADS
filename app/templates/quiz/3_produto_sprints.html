@@ -1,0 +1,21 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 1{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 1</h1>
+        <div class="page_assunto_flex">
+            <a href="/quiz/pilares_e_valores"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+            <div class="container-assunto">
+                <br>
+                <h2>Produto e Sprints</h2>
+                <p>O produto, no Scrum, refere-se ao resultado do trabalho da equipe de desenvolvimento, ou seja, à solução que a equipe está desenvolvendo para resolver um problema ou atender a uma necessidade específica do cliente. O tempo durante o qual a equipe trabalha para entregar um incremento do produto é chamado de Sprint, e cada uma costuma durar de uma a quatro semanas.</p>
+            </div>
+            <a href="/quiz/produto_sprints"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+        </div>
+
+                
+    </div>
+    <a href="/quiz/salvar_quiz/3_produto_sprints" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

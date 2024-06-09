@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 4{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 4</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/dod"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Definition of Ready</h2>
+                        <p>A Definition of Ready (DoR) é um conjunto de requisitos que um item do backlog deve atender para que esteja adequado para ser realizado durante a Sprint. Sua função é assegurar que a equipe de desenvolvimento tenha todas as informações necessárias sobre determinada tarefa e possa começar a realizá-la.</p>
+                        <p>A DoR ajuda a evitar ambiguidades e bloqueios durante a Sprint, garantindo que a equipe possa trabalhar de forma eficiente e sem interrupções. Assim como a Definition of Done, a DoR deve ser revisitada e ajustada conforme necessário.</p>
+                    </div>
+                    <a href="/quiz/dor"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+    </div>
+    <a href="/quiz/salvar_quiz/20_dor" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

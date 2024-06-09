@@ -1,0 +1,21 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 5{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 5</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/planning_poker"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Introdução aos tipos de priorização</h2>
+                        <p>Para entregar valor de forma contínua, é muito importante manter os backlogs do produto e da sprint organizados, e, para isso, existem diversos modos de classificar as tarefas a serem realizadas.</p>
+                        <p>Um exemplo de técnica comumente aplicada para esse objetivo é a priorização, que pode ser baseada em valor, esforço, riscos ou dependências. Cada priorização possui sua relevância e deve ser utilizada de acordo com as necessidades e características do projeto em questão. Portanto, é importante que toda a equipe esteja alinhada na escolha e aplicação do tipo de priorização, visando sempre a eficiência e a obtenção dos melhores resultados para o produto e para o cliente.</p>
+            
+                    </div>
+                    <a href="/quiz/priorizacao"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+    </div>
+    <a href="/quiz/salvar_quiz/22_priorizacao" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

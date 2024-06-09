@@ -1,0 +1,20 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 4{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 4</h1>
+            <div class="page_assunto_flex">
+            <a href="/quiz/meta_produto"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                <div class="container-assunto">
+                    <br>
+                    <h2>Sprint Backlog</h2>
+                    <p>O Sprint Backlog é criado quando a equipe Scrum escolhe e define os itens do Product Backlog, dividindo-os em tarefas menores para criar as User Stories que deverão ser cumpridas durante a Sprint. A Meta da Sprint, compromisso do Sprint Backlog, é definida pelos Desenvolvedores e pelo P.O durante o Sprint Planning. Ela abrange as metas do Product Backlog que estiverem inclusas na Sprint atual e um plano para entregar o Incremento do Produto (soma de todos os itens completos em uma Sprint), representando o propósito da Sprint dentro do prazo determinado.</p>
+                </div>
+                <a href="/quiz/sprint_backlog"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            </div>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/17_sprint_backlog" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

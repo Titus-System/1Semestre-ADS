@@ -1,0 +1,22 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 3{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 3</h1>
+        <div class="page_assunto_flex">
+            <a href="/quiz/stakeholders_clientes"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+            <div class="container-assunto">
+                <br>
+                <h2>O que é Sprint Planning?</h2>
+                <p>O Scrum propõe uma série de cerimônias que facilitam a comunicação, o planejamento, a inspeção e a adaptação ao longo do processo de trabalho. Começando pelo Sprint Planning, esse evento marca o início de cada Sprint e define o trabalho a ser realizado nela. A equipe Scrum, composta pelo P.O, pelo S.M e pelo time de desenvolvimento, participa desse planejamento.</p>
+                <h2>O que ocorre no Sprint Planning?</h2>
+                <p>Durante o Sprint Planning, o P.O apresenta e detalha os itens prioritários do backlog do produto, respondendo a dúvidas e fornecendo contexto sobre os objetivos da Sprint. A equipe de desenvolvimento discute esses itens, estima o esforço necessário e seleciona aqueles que podem ser completados na Sprint, criando o Sprint Backlog. A equipe de desenvolvimento também decompõe os itens do Sprint Backlog em tarefas específicas, identificando dependências e desafios potenciais. Nesse evento, o S.M deve garantir a participação ativa de todos, resultando em um plano concreto e consensual.</p>
+            </div>
+            <a href="/quiz/sprint_planning"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+        </div>
+        
+    </div>
+    <a href="/quiz/salvar_quiz/9_sprint_planning" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}

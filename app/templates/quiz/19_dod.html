@@ -1,0 +1,21 @@
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 4{% endblock %}
+
+{% block resumo %}
+    <div class="quiz_page">
+        <h1 id="quiz_title">Capítulo 4</h1>
+        <div class="page_assunto_flex">
+                <a href="/quiz/burndown"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
+                    <div class="container-assunto">
+                        <br>
+                        <h2>Definition of Done</h2>
+                        <p>No Scrum, as tarefas são consideradas "prontas" quando atendem à Definition of Done (DoD) estabelecida. A DoD é um acordo firmado entre a equipe que define os critérios para que uma tarefa seja considerada “finalizada”. Ela pode variar por produto, item de backlog, sprint, equipe ou projeto. Isso depende do contexto do desenvolvimento.</p>
+                        <h2>Membros da Equipe e DoD</h2>
+                        <p>Todos os membros da equipe são responsáveis por assegurar a aplicação eficaz da DoD. O P.O deve aceitar somente itens que cumpram os critérios da DoD, o Dev Team deve sempre entregar itens que estejam de acordo com a DoD, o S.M deve garantir que a equipe compreenda e utilize a DoD corretamente e todo o time deve revisar a DoD a cada sprint para realizar os ajustes necessários.</p>
+                    </div>
+                    <a href="/quiz/dod"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+                </div>
+    </div>
+    <a href="/quiz/salvar_quiz/19_dod" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+{% endblock %}
