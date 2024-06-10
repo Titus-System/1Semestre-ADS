@@ -303,7 +303,7 @@ def feedback():
         feedback = request.form.get('star')
         comment = request.form.get('suggestion')
         database.insert_feedback(current_user.id, feedback, comment)
-        return redirect("/home")
+        return redirect("/user")
     return render_template ("/feedback/feedback.html", continuar=continuar, user_data=user_data)
 
 #Rota para gerar o certificado

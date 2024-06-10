@@ -39,7 +39,7 @@
 </head>
 
 
-<body class="body_quiz">
+<body class="body_quiz d-flex flex-column min-vh-100">
     <!-- cabeçalho -->
 
     <header class="link_bar">
@@ -96,7 +96,7 @@
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasmenu"
         aria-labelledby="offcanvasmenuLabel" style="background-color: #39444b; color:white;">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Mestre Ágil</h5>
+            <h5 class="offcanvas-title" style="font-family:'Ruda'">Mestre Ágil</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
         </div>
         <div class="offcanvas-body">
@@ -291,7 +291,7 @@
     {% endif %}
 
 
-    {% block head_image %} {% endblock %}
+    {% block head_image %}<div class="head_img" style="background-image:url(/static/images/image-quiz.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div> {% endblock %}
 
     {% block resumo %}
     {% endblock %}
@@ -301,8 +301,42 @@
 
     {% block resultado %}
     {% endblock %}
+    <!-- <br><br>
+    <div class="text-center mt-4">
+        <a href="/quiz/salvar_quiz/{{pagina_atual}}">
+            <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+        </a>
+    </div> -->
+    <br><br><br><br>
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="/static/images/logo-nova-ma.png" style="height:100px">
+                    <p>Nossa plataforma oferece materiais detalhados sobre a metodologia ágil Scrum, ajudando profissionais a aprimorarem suas habilidades em gerenciamento de projetos.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png" style="height: 65px;">
+                    <h5>Titus Systems</h5>
+                    <p>Convidamos você a explorar nossas soluções e descobrir como podemos ajudar sua empresa a alcançar novos patamares de sucesso.</p>
+                </div>
 
-
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contato</h5>
+                    <p>Email: contato@mestreagil.com</p>
+                    <p>Telefone: (12) 99999-9999</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="https://github.com/Titus-System/1Semestre-ADS" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/github.png" alt="GitHub"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <p class="mb-0">&copy; 2024 Mestre Ágil. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))

@@ -102,7 +102,7 @@ def resultado_parcial(username):
     user_data = database.retrieve_data("registro", ['nome', 'mail'], login_functions.current_user.id)['nome'] #tupla com nome e email
     perguntas = arquivos.quiz_perguntas
     correcao = arquivos.erro_assunto
-    respostas = database.retrieve_quiz_answers(username)
+    respostas ={k:v for k, v in sorted(database.retrieve_quiz_answers(username).items(), key=lambda item: int(item[0][-2:-1].replace("_", "0")))}
     continuar = database.retrieve_data('academico', 'posicao', username)
     acertos = 0
     questoes_erradas = {}
@@ -116,7 +116,7 @@ def resultado_parcial(username):
                 questoes_erradas[perguntas[key][0]] = correcao[f"erro_{perguntas[key][0]}"]
         except KeyError: pass
     erros = len(respostas) - acertos
-    porcentagem = f"{(acertos/(len(perguntas)-1) * 100):.2f}%"
+    porcentagem = f"{(acertos/(len(respostas)) * 100):.2f}%"
     return render_template("/quiz/resultado_parcial.html", acertos = acertos, erros = erros, porcentagem = porcentagem, respostas = respostas, questoes_erradas = questoes_erradas, correcao = correcao, perguntas=perguntas, is_admin=is_admin, continuar=continuar, user_data=user_data)
 
 

@@ -15,47 +15,49 @@
 <div>
   <h4>O que as pessoas acham do curso:</h4>
   <p>Média das notas do feedback: <strong>{{media_feedback}} / 5</strong></p>
-  <figure>
-    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras">
+  <figure style="width:90%">
+    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras" style="max-height: 50vh;">
     <figcaption>eixo x: nota do feedback | eixo y: número de pessoas</figcaption>
   </figure>
 </div>
 <br>
 <div>
   <h4>Aproveitamento dos usuarios:</h4>
-  <p>Média das notas do quiz: <strong>{{media_quiz}}</strong></p>
-  <p>Média das notas da prova: <strong>{{media_prova}}</strong></p>
+  <p>Média das notas do quiz: <strong>{{media_quiz}} / 31</strong></p>
+  <p>Média das notas da prova: <strong>{{media_prova}} / 10</strong></p>
 </div>
 <br>
 <h4>Relação usuario , nota e feedback</h4>
-<table class="table table-striped" id="user_table">
-    <thead>
-      <tr>
-        <th scope="col">Usuário</th>
-        <th scope="col">Quiz</th>
-        <th scope="col">Prova</th>
-        <th scope="col">Feedback</th>
-        <th scope="col">Comentário</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for key, value in users_results.items() %}
-      <tr>
-        <th scope="row">{{key}}</th>
-        <td>{{value[1]}}</td>
-        <td>{{value[0]}}</td>
-        <td>{{value[2]}}</td>
-        <td>{{value[3]}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div>
+    <table class="table table-striped" id="user_table" style="max-width:100%;">
+      <thead>
+        <tr>
+          <th scope="col">Usuário</th>
+          <th scope="col">Quiz</th>
+          <th scope="col">Prova</th>
+          <th scope="col">Feedback</th>
+          <th scope="col">Comentário</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in users_results.items() %}
+        <tr>
+          <th scope="row">{{key}}</th>
+          <td>{{value[1]}}</td>
+          <td>{{value[0]}}</td>
+          <td>{{value[2]}}</td>
+          <td>{{value[3]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- Initialize DataTables -->
 <script>
   $(document).ready( function () {
-      $('#user_table').DataTable();
+      $('#user_table').DataTable({"autoWidth":true});
   } );
   </script>
 

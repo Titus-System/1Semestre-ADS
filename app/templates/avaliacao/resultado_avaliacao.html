@@ -11,16 +11,22 @@
 
 <div class="resultado">
     <br>
-
-    {% if acertos/(respostas|length) * 100 <= 60 %}
-        <h1 style="text-align: center; font-weight: bold;">Você foi reprovado!</h1>
-        <p style="text-align: center">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
-    {% else %}
-        <h1 style="text-align: center; font-weight: bold;">Parabéns! Você foi aprovado!</h1>
-    {% endif %}
-
+    <div>
+        {% if acertos/(respostas|length) * 100 < 70 %}
+            <h1 style="text-align: center; font-weight: bold;">Você foi reprovado!</h1>
+            <p style="text-align: center">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
+        {% else %}
+            <h1 style="text-align: center; font-weight: bold;">Parabéns! Você foi aprovado!</h1>
+            <p style="text-align: center">Você obteve um aproveitamento satisfatório e pode resgatar o seu certificado.</p>
+            <div style="width:fit-content; margin:auto">
+                <a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>
+            </div>
+        {% endif %}
+        <div style="width:fit-content; margin:auto">
+            <a href="/feedback"><button class="btn"><img src="/static/images/star-svg.svg" height="30" width="40">Avalie o nosso site</button></a>
+        </div>
+    </div>
     <br>
-    
     <h2 style="text-align: center;">Seu aproveitamento foi de <strong>{{porcentagem}}</strong></h2>
     <div class="resultado_acertos">
         <img src="{{url_for('static', filename='images/certo_quiz.png')}}" class="img_resultados">
@@ -30,6 +36,8 @@
         <img src="{{url_for('static', filename='images/errado_quiz.png')}}" class="img_resultados">
     <h5>Número de erros: <strong>{{erros}}</strong></h5>
     </div>
+
+    
     <br>
     <p style="margin-bottom: 0;"><strong>Suas respostas:</strong></p>
     <ul style="margin-top:0">
@@ -48,10 +56,9 @@
     </dl>
     <br>
     <a href="/apostila"><button class="button_avaliacao rounded-pill shadow-lg" id="button_next">Seguir para apostila</button></a>
-    <a href="/feedback"><button class="button_avaliacao rounded-pill shadow-lg" id="refazer">Avaliar curso</button></a>
-    <a href="/certificado"><button class="button_avaliacao rounded-pill shadow-lg">Receba Seu Certificado</button>
     <a href="/avaliacao"><button class="button_avaliacao rounded-pill shadow-lg" id="refazer" style="float: left;">Refazer avaliação</button></a>
 </div>
+<br><br><br>
 
 
 

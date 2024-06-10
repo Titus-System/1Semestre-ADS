@@ -1,15 +1,20 @@
 {% extends "/pacer/base_pacer.html" %}
 {% block title %}{{current_user.id}}{% endblock %}
 {% block content %}
+
+<div class="head_img"
+style="background-image:url(/static/images/user_button.svg); background-position:center; background-size: contain; background-repeat: no-repeat;">
+</div>
+
 <div class="box_teoria_pacer">
     <h1>{{current_user.id}}</h1>
     <br>
     <div class="row">
         <div class="col">
             <h2>Informações pessoais</h2>
-            <p>Username:{{current_user.id}}</p>
-            <p>Nome:{{user_data[0]}}</p>
-            <p>E-mail:{{user_data[1]}}</p>
+            <p>Username: {{current_user.id}}</p>
+            <p>Nome: {{user_data[0]}}</p>
+            <p>E-mail: {{user_data[1]}}</p>
         </div>
         
         <div class="accordion col" id="accordionExample">
@@ -51,11 +56,14 @@
     <hr>
     <div>
         <h3>Informaçõs do aluno</h3>
-        <p>Anotações</p>
         <p>Status curso: {{academic_info[2]}}</p>
         <p>Resultado parcial quiz: {{academic_info[0]}}</p>
-        <p>Resultado da prova: {{academic_info[1]}}</p>
-        <p>Feedback do curso: {{user_feedback}} / 5</p>
+        <p>Resultado da prova: {{academic_info[1]}}<br>
+            {% if academic_info[1] >= 7 %}<a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>{% endif %}
+        </p>
+        <p>Feedback do curso: {{user_feedback}} / 5<br>
+            {% if academic_info[1] %}<a href="/feedback"><button class="btn"><img src="/static/images/star-svg.svg" height="30" width="40">Avalie o nosso site</button></a>{% endif %}
+        </p>
     </div>
 </div>
 
