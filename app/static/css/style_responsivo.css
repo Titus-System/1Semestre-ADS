@@ -305,8 +305,18 @@
 
 
 @media(max-width:1000px){
+    .seus_erros_av{
+        margin-left: 16%;
+    }
+    .suas_respostas_av{
+        margin-left: 16%;
+    }
     .textos_correção_av{
-        width: 600px;
+        margin-left: 16%;
+        margin-right: 16%;
+    }
+    .lista_respostas_av{
+        margin-left: 14%;
     }
 }
 
@@ -426,6 +436,81 @@
         font-size: 14.6px;
     }
 }
+
+@media (max-width:590px){
+    .aprovado_reprovado_av{
+        font-size: 26.5px;
+    }
+    .suas_respostas_av{
+        font-size: 14.7px;
+    }
+    .seus_erros_av{
+        font-size: 14.7px;
+    }
+    .lista_respostas_av{
+        font-size: 12.4px;
+    }
+    .textos_correção_av{
+        font-size: 12.4px;
+    }
+    .aproveitamento_av{
+        font-size: 17.55px;
+    }
+    .certificado_avalie_av{
+        font-size: 12.5px;
+    }
+    #img_avalie{
+        position: relative; 
+        bottom: 7.2px;
+    }
+    #img_certificado{
+        position: relative; 
+        bottom: 4.7px;
+    }
+}
+
+@media (max-width:575px){
+    .aprovado_reprovado_av{
+        font-size: 25px;
+    }
+    .desc_resultado_av{
+        font-size: 10.5px;
+    }
+    .certificado_avalie_av{
+        font-size: 12.2px;
+    }
+    .aproveitamento_av{
+        font-size: 17.14px;
+    }
+    .acertos_erros_av{
+        font-size: 14.3px;
+    }
+    .suas_respostas_av{
+        font-size: 14.4px;
+    }
+    .seus_erros_av{
+        font-size: 14.4px;
+    }
+    .lista_respostas_av{
+        font-size: 12.1px;
+    }
+    .textos_correção_av{
+        font-size: 12.1px;
+    }
+}
+
+@media (max-width:540px){
+    .aprovado_reprovado_av{
+        font-size: 24px;
+    }
+    .desc_resultado_av{
+        font-size: 10px;
+    }
+    .aproveitamento_av{
+        font-size: 16.7px;
+    }
+}
+
 
 /*FERRAMENTAS*/
 

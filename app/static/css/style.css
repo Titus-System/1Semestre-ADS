@@ -794,12 +794,12 @@ margin: auto;}
 
 .textos_correção_av{
     margin-top:0
-    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
 }
 
 .lista_respostas_av{
     margin-top:0
-    margin-left: 1%;
 }
 
 .certificado_avalie_av{
@@ -817,7 +817,7 @@ margin: auto;}
 
 .aproveitamento_av{
     text-align: center;
-    font-size: 26px;
+    font-size: 24.5px;
 }
 
 #img_avalie{
@@ -833,13 +833,11 @@ margin: auto;}
 .seus_erros_av{
     margin-bottom: 0;
     font-size: 16px;
-    margin-left: 1%;
 }
 
 .suas_respostas_av{
     margin-bottom: 0;
     font-size: 16px;
-    margin-left: 1%;
 }
     
 .img_resultados{
