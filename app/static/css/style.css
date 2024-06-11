@@ -790,6 +790,34 @@ margin: auto;}
     height: 35px;
 }
 
+/* pagina resultados avaliacao */
+
+.parabens_resultado_av{
+text-align: center; 
+font-weight: bold;"
+}
+
+.aprovado_reprovado_av{
+    text-align: center; 
+    font-weight: bold;
+}
+
+.desc_resultado_av{
+    text-align: center
+}
+
+.aproveitamento_av{
+    text-align: center;
+}
+
+.seus_erros_av{
+    margin-bottom: 0;
+}
+
+.suas_respostas_av{
+    margin-bottom: 0;
+}
+
  /* responsividade avaliação */
 
 @media (max-width:990px){

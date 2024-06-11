@@ -79,6 +79,70 @@
 
 /*AVALIAÇÃO*/
 
+/* pagina resultados avaliação */
+
+@media(max-width:1280px){
+    .aprovado_reprovado_av{
+        font-size: 35px;
+    }
+    .desc_resultado_av{
+        font-size: 15px;}
+    .aproveitamento_av{
+        font-size: 24px;}
+    .acertos_erros_av{
+        font-size: 16.5px;
+    }
+    .lista_respostas_av{
+        font-size: 14px;
+    }
+    .textos_correção_av{
+        font-size: 14px;
+    }
+}
+
+@media(max-width:1230px){
+    .aprovado_reprovado_av{
+        font-size: 34px;
+    }
+    .desc_resultado_av{
+        font-size: 14.5px;}
+    .aproveitamento_av{
+        font-size: 23px;
+    }
+    .acertos_erros_av{
+        font-size: 16px;
+    }
+    .lista_respostas_av{
+        font-size: 13.5px;
+    }
+    .textos_correção_av{
+        font-size: 13.5px;
+    }
+    .refazer{
+        margin-bottom: 9px;
+    }
+}
+
+@media(max-width:1160px){
+    .aprovado_reprovado_av{
+        font-size: 33px;
+    }
+    .desc_resultado_av{
+        font-size: 14px;
+    }
+    .aproveitamento_av{
+        font-size: 22px;
+    }
+    .acertos_erros_av{
+        font-size: 15.5px;
+    }
+    .img_resultados{
+        width: 24px;
+        height: 24px;
+    }
+}
+
+
 /*FERRAMENTAS*/
 
 /*pagina inicial ferramentas*/
