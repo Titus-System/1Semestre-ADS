@@ -794,20 +794,16 @@ margin: auto;}
 
 .textos_correção_av{
     margin-top:0
+    margin-left: 1%;
 }
 
 .lista_respostas_av{
     margin-top:0
+    margin-left: 1%;
 }
 
 .certificado_avalie_av{
-    width:fit-content; 
-    margin:auto;
-}
-
-.parabens_resultado_av{
-text-align: center; 
-font-weight: bold;
+    display: flex;
 }
 
 .aprovado_reprovado_av{
@@ -821,21 +817,37 @@ font-weight: bold;
 
 .aproveitamento_av{
     text-align: center;
+    font-size: 26px;
+}
+
+#img_avalie{
+    position: relative; 
+    bottom: 5px;
+}
+
+#img_certificado{
+    position: relative; 
+    bottom: 3px;
 }
 
 .seus_erros_av{
     margin-bottom: 0;
+    font-size: 16px;
+    margin-left: 1%;
 }
 
 .suas_respostas_av{
     margin-bottom: 0;
+    font-size: 16px;
+    margin-left: 1%;
 }
-.satisfatorio_av{
-    text-align: center
-}
-
+    
 .img_resultados{
     margin-top: 10px;
+}
+
+.acertos_erros_av{
+    font-size: 19.5px;
 }
 
  /* botão parar aqui do quiz */

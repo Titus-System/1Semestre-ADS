@@ -16,25 +16,24 @@
             <h1 class="aprovado_reprovado_av">Você foi reprovado!</h1>
             <p class="desc_resultado_av">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
         {% else %}
-            <h1 class="parabens_resultado_av">Parabéns! Você foi aprovado!</h1>
-            <p class="satisfatorio_av">Você obteve um aproveitamento satisfatório e pode resgatar o seu certificado.</p>
-            <div class="certificado_avalie_av">
-                <a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>
+            <h1 class="aprovado_reprovado_av">Parabéns! Você foi aprovado!</h1>
+            <p class="desc_resultado_av">Você obteve um aproveitamento satisfatório e pode resgatar o seu certificado.</p>
+            <div style="width:fit-content;margin:auto;display: flex;flex-direction: row;">
+                <a href="/certificado" target="_blank" style="display: flex;"><button class="btn" style="display: flex;"><img src="/static/images/certificate-svg.svg" height="30" width="40" id="img_certificado"><p class="certificado_avalie_av">Receba seu certificado</p></button></a>
             </div>
         {% endif %}
-        <div class="certificado_avalie_av">
-            <a href="/feedback"><button class="btn"><img src="/static/images/star-svg.svg" height="30" width="40">Avalie o nosso site</button></a>
+        <div style="width:fit-content;margin:auto;display: flex;flex-direction:row;">
+            <a href="/feedback"><button class="btn" style="display: flex;"><img src="/static/images/star-svg.svg" height="30" width="40" id="img_avalie"><p class="certificado_avalie_av">Avalie o nosso site</p></button></a>
         </div>
     </div>
-    <br>
-    <h2 class="aproveitamento_av">Seu aproveitamento foi de <strong>{{porcentagem}}</strong></h2>
+       <h2 class="aproveitamento_av">Seu aproveitamento foi de <strong>{{porcentagem}}</strong></h2>
     <div class="resultado_acertos">
         <img src="{{url_for('static', filename='images/certo_quiz.png')}}" class="img_resultados">
-    <h5>Número de acertos: <strong>{{acertos}}</strong></h5>
+    <h5 class="acertos_erros_av">Número de acertos: <strong>{{acertos}}</strong></h5>
     </div>
     <div class="resultado_erros">
         <img src="{{url_for('static', filename='images/errado_quiz.png')}}" class="img_resultados">
-    <h5>Número de erros: <strong>{{erros}}</strong></h5>
+    <h5 class="acertos_erros_av">Número de erros: <strong>{{erros}}</strong></h5>
     </div>
 
     

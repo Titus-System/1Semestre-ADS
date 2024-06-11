@@ -258,8 +258,6 @@
     }
     .desc_resultado_av{
         font-size: 15px;}
-    .aproveitamento_av{
-        font-size: 24px;}
     .acertos_erros_av{
         font-size: 16.5px;
     }
@@ -269,6 +267,9 @@
     .textos_correção_av{
         font-size: 14px;
     }
+    .aproveitamento_av{
+        font-size: 24px;
+    }
 }
 
 @media(max-width:1230px){
@@ -276,18 +277,10 @@
         font-size: 34px;
     }
     .desc_resultado_av{
-        font-size: 14.5px;}
+        font-size: 14.5px;
+    }
     .aproveitamento_av{
         font-size: 23px;
-    }
-    .acertos_erros_av{
-        font-size: 16px;
-    }
-    .lista_respostas_av{
-        font-size: 13.5px;
-    }
-    .textos_correção_av{
-        font-size: 13.5px;
     }
     .refazer{
         margin-bottom: 9px;
@@ -304,12 +297,16 @@
     .aproveitamento_av{
         font-size: 22px;
     }
-    .acertos_erros_av{
-        font-size: 15.5px;
-    }
     .img_resultados{
         width: 24px;
         height: 24px;
+    }
+}
+
+
+@media(max-width:1000px){
+    .textos_correção_av{
+        width: 600px;
     }
 }
 
@@ -323,82 +320,110 @@
     .aproveitamento_av{
         font-size: 21px;
     }
-    .acertos_erros_av{
-        font-size: 15px;
-    }
-    .lista_respostas_av{
-        font-size: 13px;
-    }
-    .textos_correção_av{
-        font-size: 13px;
-    }
-    .suas_respostas_av{
-        font-size: 15px;
-    }
-    
-    .seus_erros_av{
-        font-size: 15px;
-    }
     .img_resultados{
         width: 22px;
         height: 22px;
     }
 }
 
-@media (max-width:810px){
+@media (max-width:890px){
+    .aproveitamento_av{
+        font-size: 20px;
+    }
+    .acertos_erros_av{
+        font-size: 16px;
+    }
     .aprovado_reprovado_av{
         font-size: 31px;
     }
     .desc_resultado_av{
         font-size: 13px;
     }
+}
+
+@media (max-width:830px){
+    .aprovado_reprovado_av{
+        font-size: 30px;
+    }
+    .desc_resultado_av{
+        font-size: 13px;
+    }
     .aproveitamento_av{
-        font-size: 19.7px;
-    }
-    .acertos_erros_av{
-        font-size: 14.5px;
-    }
-    .lista_respostas_av{
-        font-size: 12.5px;
-    }
-    .textos_correção_av{
-        font-size: 12.5px;
-    }
-    .suas_respostas_av{
-        font-size: 14px;
-    }
-    .seus_erros_av{
-        font-size: 14px;
+        font-size: 19.3px;
     }
     .text_buttons_av_resultado{
         font-size: 14px;
     }
+    .lista_respostas_av{
+        font-size: 13px;
+    }
+    .textos_correção_av{
+        font-size: 13px;
+    }
+    .seus_erros_av{
+        font-size: 15.8px;
+    }
+    .certificado_avalie_av{
+        font-size: 14.6px;
+    }
+    .suas_respostas_av{
+        font-size: 15.8px;
+    }
+    #img_avalie{
+        position: relative; 
+        bottom: 5.8px;
+    }
 }
 
-@media (max-width:725px){
+@media (max-width:785px){
     .aprovado_reprovado_av{
-        font-size: 30px;
+        font-size: 28.5px;
     }
     .desc_resultado_av{
         font-size: 12px;
     }
     .aproveitamento_av{
-        font-size: 19px;
+        font-size: 18.6px;
     }
     .acertos_erros_av{
-        font-size: 14px;
-    }
-    .textos_correção_av{
-        font-size: 12px;
+        font-size: 14.8px;
     }
     .lista_respostas_av{
-        font-size: 12px;
+        font-size: 12.5px;
+    }
+    .textos_correção_av{
+        font-size: 12.5px;
     }
     .suas_respostas_av{
-        font-size: 13.5px;
+        font-size: 15.2px;
     }
     .seus_erros_av{
-        font-size: 13.5px;
+        font-size: 15.2px;
+    }
+    .certificado_avalie_av{
+        font-size: 13.7px;
+    }
+    .img_resultados{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width:665px){
+    .aprovado_reprovado_av{
+        font-size: 27.5px;
+    }
+    .desc_resultado_av{
+        font-size: 11px;
+    }
+    .certificado_avalie_av{
+        font-size: 13px;
+    }
+    .aproveitamento_av{
+        font-size: 17.9px;
+    }
+    .acertos_erros_av{
+        font-size: 14.6px;
     }
 }
 
