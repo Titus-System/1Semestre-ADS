@@ -15,8 +15,8 @@
 <div>
   <h4>O que as pessoas acham do curso:</h4>
   <p>Média das notas do feedback: <strong>{{media_feedback}} / 5</strong></p>
-  <figure style="width:90%">
-    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras" style="max-height: 50vh;">
+  <figure style="width:100%">
+    <img src="data:image/png;base64,{{ graph }}" alt="Meu Gráfico de Barras" style="max-width:100%;">
     <figcaption>eixo x: nota do feedback | eixo y: número de pessoas</figcaption>
   </figure>
 </div>
@@ -28,23 +28,23 @@
 </div>
 <br>
 <h4>Relação usuario , nota e feedback</h4>
-  <div>
-    <table class="table table-striped" id="user_table" style="max-width:100%;">
+  <div class="table-admin">
+    <table class="table table-striped table-admin" id="user_table">
       <thead>
         <tr>
           <th scope="col">Usuário</th>
-          <th scope="col">Quiz</th>
-          <th scope="col">Prova</th>
+          <!-- <th scope="col">Quiz</th> -->
+          <!-- <th scope="col">Prova</th> -->
           <th scope="col">Feedback</th>
-          <th scope="col">Comentário</th>
+          <th scope="col">Sugestão</th>
         </tr>
       </thead>
       <tbody>
         {% for key, value in users_results.items() %}
         <tr>
           <th scope="row">{{key}}</th>
-          <td>{{value[1]}}</td>
-          <td>{{value[0]}}</td>
+          <!-- <td>{{value[1]}}</td> -->
+          <!-- <td>{{value[0]}}</td> -->
           <td>{{value[2]}}</td>
           <td>{{value[3]}}</td>
         </tr>
