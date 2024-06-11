@@ -792,9 +792,22 @@ margin: auto;}
 
 /* pagina resultados avaliacao */
 
+.textos_correção_av{
+    margin-top:0
+}
+
+.lista_respostas_av{
+    margin-top:0
+}
+
+.certificado_avalie_av{
+    width:fit-content; 
+    margin:auto;
+}
+
 .parabens_resultado_av{
 text-align: center; 
-font-weight: bold;"
+font-weight: bold;
 }
 
 .aprovado_reprovado_av{
@@ -817,178 +830,13 @@ font-weight: bold;"
 .suas_respostas_av{
     margin-bottom: 0;
 }
-
- /* responsividade avaliação */
-
-@media (max-width:990px){
-    .alternativa_avaliacao{
-        font-size: 15px;
-    }
- }
-
- @media (max-width:900px){
-    .alternativa_avaliacao{
-        font-size: 14px;
-    }
- }
-
- @media (max-width:712px){
-    .question_script_test{
-        font-size: 13px;
-    }
-    .num_question{
-        font-size: 23px;
-    }
+.satisfatorio_av{
+    text-align: center
 }
 
-
- @media (max-width:590px){
-    .alternativa_avaliacao{
-        font-size: 13px;
-    }
- }
-
- @media (max-width:561px){
-    .text_button_av{
-        font-size: 12px;
-    }
-    .button_avaliacao{
-    height: 30px;
+.img_resultados{
+    margin-top: 10px;
 }
- }
-
- @media (max-width:470px){
-    .alternativa_avaliacao{
-        font-size: 12px;
-    }
-    
-    .question_script_test{
-        font-size: 11px;
-    }  
-
-    .num_question{
-        font-size: 19px;
-    }
-
-    .engrenagem{
-        width: 41px;
-        height: 23px;
-    }
-
-    .text_button_av{
-        font-size: 11px;
-    }
-
-    .button_avaliacao{
-        height: 27px;
-    }
- 
-}
-
-@media (max-width:422px){
-    .intro_avaliacao{
-        font-size: 29px;
-    }
-}
-
-@media (max-width:394px){
-    .intro_avaliacao{
-        font-size: 28px;
-    }
-}
-
-@media (max-width:326px){
-    .intro_avaliacao{
-        font-size: 26px;
-     }
-}
-
-
-@media (max-width:322px){
-    .alternativa_avaliacao{
-        font-size: 11px;
-    }
-
-    .question_script_test{
-        font-size: 9px;
-    }
-
-    .num_question{
-        font-size: 17px;
-    }
-
-    .engrenagem{
-        width: 39px;
-        height: 21px;}
-
-    .text_button_av{
-        font-size: 10px;
-     }
-}
-
-@media (max-width:305px){
-    .intro_avaliacao{
-        font-size: 25px;
-     }
-    }
-
-@media (max-width:282px){
-    .question_script_test{
-        font-size: 9px;
-    }
-
-    .num_question{
-        font-size: 16px;
-    }
-
-    .engrenagem{
-        width: 37px;
-        height: 19px;}
-
-    .intro_avaliacao{
-        font-size: 24px;
-    }
-    
-}
-
-@media (max-width:269px){
-.intro_avaliacao{
-    font-size: 23px;
-}
-}
-
-@media (max-width:266px){
-    .num_question{
-        font-size: 13.5px;
-    }
-
-    .engrenagem{
-        width: 34px;
-        height: 17px;
-    }
-
-}
-
-@media (max-width:250px){
-.intro_avaliacao{
-    font-size: 22px;}
-}
-
-@media (max-width:245px){
-    .num_question{
-        font-size: 13px;}
-    .engrenagem{
-        width: 29px;
-        height: 17px;
-    }
-    }
-
-@media (max-width:225px){
-    .intro_avaliacao{
-        font-size: 21px;
-    }
-}
-
 
  /* botão parar aqui do quiz */
  .button_parar_aqui{

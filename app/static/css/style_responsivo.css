@@ -79,9 +79,180 @@
 
 /*AVALIAÇÃO*/
 
+ /* pagina avaliação */
+
+ @media (max-width:990px){
+    .alternativa_avaliacao{
+        font-size: 15px;
+    }
+ }
+
+ @media (max-width:900px){
+    .alternativa_avaliacao{
+        font-size: 14px;
+    }
+ }
+
+ @media (max-width:712px){
+    .question_script_test{
+        font-size: 13px;
+    }
+    .num_question{
+        font-size: 23px;
+    }
+}
+
+
+ @media (max-width:590px){
+    .alternativa_avaliacao{
+        font-size: 13px;
+    }
+ }
+
+ @media (max-width:561px){
+    .text_button_av{
+        font-size: 12px;
+    }
+    .button_avaliacao{
+    height: 30px;
+}
+ }
+
+ @media (max-width:470px){
+    .alternativa_avaliacao{
+        font-size: 12px;
+    }
+    
+    .question_script_test{
+        font-size: 11px;
+    }  
+
+    .num_question{
+        font-size: 19px;
+    }
+
+    .engrenagem{
+        width: 41px;
+        height: 23px;
+    }
+
+    .text_button_av{
+        font-size: 11px;
+    }
+
+    .button_avaliacao{
+        height: 27px;
+    }
+ 
+}
+
+@media (max-width:422px){
+    .intro_avaliacao{
+        font-size: 29px;
+    }
+}
+
+@media (max-width:394px){
+    .intro_avaliacao{
+        font-size: 28px;
+    }
+}
+
+@media (max-width:326px){
+    .intro_avaliacao{
+        font-size: 26px;
+     }
+}
+
+
+@media (max-width:322px){
+    .alternativa_avaliacao{
+        font-size: 11px;
+    }
+
+    .question_script_test{
+        font-size: 9px;
+    }
+
+    .num_question{
+        font-size: 17px;
+    }
+
+    .engrenagem{
+        width: 39px;
+        height: 21px;}
+
+    .text_button_av{
+        font-size: 10px;
+     }
+}
+
+@media (max-width:305px){
+    .intro_avaliacao{
+        font-size: 25px;
+     }
+    }
+
+@media (max-width:282px){
+    .question_script_test{
+        font-size: 9px;
+    }
+
+    .num_question{
+        font-size: 16px;
+    }
+
+    .engrenagem{
+        width: 37px;
+        height: 19px;}
+
+    .intro_avaliacao{
+        font-size: 24px;
+    }
+    
+}
+
+@media (max-width:269px){
+.intro_avaliacao{
+    font-size: 23px;
+}
+}
+
+@media (max-width:266px){
+    .num_question{
+        font-size: 13.5px;
+    }
+
+    .engrenagem{
+        width: 34px;
+        height: 17px;
+    }
+
+}
+
+@media (max-width:250px){
+.intro_avaliacao{
+    font-size: 22px;}
+}
+
+@media (max-width:245px){
+    .num_question{
+        font-size: 13px;}
+    .engrenagem{
+        width: 29px;
+        height: 17px;
+    }
+    }
+
+@media (max-width:225px){
+    .intro_avaliacao{
+        font-size: 21px;
+    }
+}
+
 /* pagina resultados avaliação */
 
-@media(max-width:1280px){
+@media(max-width:1320px){
     .aprovado_reprovado_av{
         font-size: 35px;
     }
@@ -142,6 +313,94 @@
     }
 }
 
+@media(max-width:920px){
+    .aprovado_reprovado_av{
+        font-size: 32px;
+    }
+    .desc_resultado_av{
+        font-size: 13.5px;
+    }
+    .aproveitamento_av{
+        font-size: 21px;
+    }
+    .acertos_erros_av{
+        font-size: 15px;
+    }
+    .lista_respostas_av{
+        font-size: 13px;
+    }
+    .textos_correção_av{
+        font-size: 13px;
+    }
+    .suas_respostas_av{
+        font-size: 15px;
+    }
+    
+    .seus_erros_av{
+        font-size: 15px;
+    }
+    .img_resultados{
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width:810px){
+    .aprovado_reprovado_av{
+        font-size: 31px;
+    }
+    .desc_resultado_av{
+        font-size: 13px;
+    }
+    .aproveitamento_av{
+        font-size: 19.7px;
+    }
+    .acertos_erros_av{
+        font-size: 14.5px;
+    }
+    .lista_respostas_av{
+        font-size: 12.5px;
+    }
+    .textos_correção_av{
+        font-size: 12.5px;
+    }
+    .suas_respostas_av{
+        font-size: 14px;
+    }
+    .seus_erros_av{
+        font-size: 14px;
+    }
+    .text_buttons_av_resultado{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:725px){
+    .aprovado_reprovado_av{
+        font-size: 30px;
+    }
+    .desc_resultado_av{
+        font-size: 12px;
+    }
+    .aproveitamento_av{
+        font-size: 19px;
+    }
+    .acertos_erros_av{
+        font-size: 14px;
+    }
+    .textos_correção_av{
+        font-size: 12px;
+    }
+    .lista_respostas_av{
+        font-size: 12px;
+    }
+    .suas_respostas_av{
+        font-size: 13.5px;
+    }
+    .seus_erros_av{
+        font-size: 13.5px;
+    }
+}
 
 /*FERRAMENTAS*/
 

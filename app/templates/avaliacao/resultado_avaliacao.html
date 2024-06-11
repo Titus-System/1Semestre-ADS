@@ -17,12 +17,12 @@
             <p class="desc_resultado_av">Confira seus erros, estude com os nossos materiais e depois tente novamente.</p>
         {% else %}
             <h1 class="parabens_resultado_av">Parabéns! Você foi aprovado!</h1>
-            <p style="text-align: center">Você obteve um aproveitamento satisfatório e pode resgatar o seu certificado.</p>
-            <div style="width:fit-content; margin:auto">
+            <p class="satisfatorio_av">Você obteve um aproveitamento satisfatório e pode resgatar o seu certificado.</p>
+            <div class="certificado_avalie_av">
                 <a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>
             </div>
         {% endif %}
-        <div style="width:fit-content; margin:auto">
+        <div class="certificado_avalie_av">
             <a href="/feedback"><button class="btn"><img src="/static/images/star-svg.svg" height="30" width="40">Avalie o nosso site</button></a>
         </div>
     </div>
@@ -40,14 +40,14 @@
     
     <br>
     <p class="suas_respostas_av"><strong>Suas respostas:</strong></p>
-    <ul style="margin-top:0">
+    <ul class="lista_respostas_av">
         {% for key, value in respostas.items() %}
         <li>Resposta {{perguntas[key][0]}}: {{value}}</li>
         {% endfor %}
     </ul>
     <br>
     <p class="seus_erros_av"><strong>Seus erros:</strong></p>
-    <dl style="margin-top:0">
+    <dl class="textos_correção_av">
         {% for key, value in questoes_erradas.items() %}
         <dt>Questão {{key}}</dt>
         <dd>{{value}}</dd>
