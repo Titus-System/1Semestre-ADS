@@ -268,13 +268,7 @@ div {
 }
 
 .question_box {
-  /* display: grid; */
-  /* place-items: center; */
-  /* background-color: white;
-    border-radius: 15px;
-    width:100%;
-    height:fit-content;
-    padding:30px */
+  margin-bottom: 4rem;
 }
 
 .btn_ns {
@@ -292,12 +286,11 @@ div {
 
 .question_box_1 {
   background-color: #000103;
-  border-radius: 15px;
+  border-radius: 14px;
   flex-direction: row;
   width: 100%;
   height: fit-content;
   display: grid;
-  margin-top: 40px;
 }
 
 .question_box_vf_or_as {
@@ -339,7 +332,7 @@ div {
 .engrenagens-div {
   display: flex;
   justify-content: center;
-  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
 }
 
@@ -793,23 +786,22 @@ input[class="alternativa_avaliacao"]{
 input[class="alternativa_avaliacao"] + label{
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-size: 1rem;
-    margin: 3px auto;
-    border: solid 2px #000103;
+    margin-top: 1rem;
+    margin-bottom: 0;
     border-radius: 14px;
-    padding-left: 3px;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 input[class="alternativa_avaliacao"]:hover + label{
-    border-color: #ff695e;
+    background-color: lightgray;
+    transition: 0.50s;
 }
 
 input[class="alternativa_avaliacao"]:checked + label{
-    background-color:  #000103;
-    border: solid 3px none;
     color: #ff695e;
+    background-color: #000103;
+    transition: 0.25s;
 }
 
 /* pagina resultados avaliacao */
