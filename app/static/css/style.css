@@ -818,10 +818,12 @@ input[class="alternativa_avaliacao"]:checked + label{
   margin-top: 0;
   display: flex;
   flex-direction: column;
+  margin-left: -15%;
 }
 
 .lista_respostas_av {
   margin-top: 0;
+  margin-left: -15%;
 }
 
 .certificado_avalie_av {
@@ -855,11 +857,13 @@ input[class="alternativa_avaliacao"]:checked + label{
 .seus_erros_av {
   margin-bottom: 0;
   font-size: 16px;
+  margin-left: -15%;
 }
 
 .suas_respostas_av {
   margin-bottom: 0;
   font-size: 16px;
+  margin-left: -15%;
 }
 
 .img_resultados {
