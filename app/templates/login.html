@@ -224,13 +224,13 @@
 
 
     <!-- Espaço para mensagens flash -->
-    <div class="container mt-4" style="width:50%;">
+    <div class="container mt-4" style="width:70%;">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for i in messages %}
         <div class="modal-body alert alert-dismissible show" role="alert">
-            <a style="margin-top:50%">{{i[0]}}: {{i[1]}}</a>
-            <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button>
+            <a style="margin-top:50%">{{i[1]}}</a>
+            <!-- <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button> -->
         </div>
         {% endfor %}
         <script>
@@ -242,7 +242,7 @@
     </div>
     <br>
 
-    <div class="container" style="margin-top:5vh;">
+    <div class="container" style="margin-top:3vh;">
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-tabs mb-3 fs-5 fw-bold bg-dark rounded w-75" id="pills-tab" role="tablist">
@@ -329,8 +329,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 contents"
-                style="background: url(/static/images/login.svg); background-size: contain; background-repeat: no-repeat; background-position: center; height:50vh">
+            <div class="col-md-6 contents my-3 mx-auto">
+                <div style="background: url(/static/images/login.svg); background-size: contain; background-repeat: no-repeat; background-position: center; height:50vh;"></div>
             </div>
         </div>
     </div>

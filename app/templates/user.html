@@ -35,18 +35,18 @@ style="background-image:url(/static/images/user_button.svg); background-position
                         <p>Os campos que forem deixados em branco não serão alterados</p>
                         <form action="/update_user_info" method="POST">
                         <label for="update_nome">Nome:<br>
-                        <input type="text" id="update_nome" name="update_nome"></label>
+                        <input class="form-control" type="text" id="update_nome" name="update_nome"></label>
                         <br>
                         <label for="update_mail">e-mail:<br>
-                        <input type="text" id="update_mail" name="update_mail"></label>
+                        <input class="form-control" type="text" id="update_mail" name="update_mail"></label>
                         <br>
                         <label for="update_password">Senha:<br>
-                        <input type="password" id="update_password" name="update_password"></label>
+                        <input class="form-control" type="password" id="update_password" name="update_password"></label>
                         <br>
                         <label for="update_password_confirm">Confirme a senha:<br>
-                        <input type="password" id="update_password_confirm" name="update_password_confirm"></label>
+                        <input class="form-control" type="password" id="update_password_confirm" name="update_password_confirm"></label>
                         <br>
-                        <button type="submit" value="submit">Atualizar meus dados</button>
+                        <button class="btn bg-light text-dark pacer-button mb-3" type="submit" value="submit" style="float:right">Atualizar meus dados</button>
                         </form>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ style="background-image:url(/static/images/user_button.svg); background-position
     <hr>
     <div>
         <h3>Informaçõs do aluno</h3>
-        <p>Status curso: {{academic_info[2]}}</p>
+        <p>Status curso: <a href="/quiz/{{academic_info[2]}}">Continuar de {{academic_info[2]}}</a></p>
         <p>Resultado parcial quiz: {{academic_info[0]}}</p>
         <p>Resultado da prova: {{academic_info[1]}}<br>
             {% if academic_info[1] %}{% if academic_info[1] >= 7 %}<a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>{% endif %}{% endif %}
