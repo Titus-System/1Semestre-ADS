@@ -1,62 +1,92 @@
-{% extends "/quiz/base_quiz.html" %}
-
-{% block title %}Avaliação{% endblock %}
-
-
-{% block head_image %}
-        <div class="head_img" style="background-image:url(/static/images/image-avaliacao.png); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
-{% endblock %}
-
-{% block quiz %}
+{% extends "/quiz/base_quiz.html" %} {% block title %}Avaliação{% endblock %} {%
+block head_image %}
+<div
+  class="head_img"
+  style="
+    background-image: url(/static/images/image-avaliacao.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  "
+></div>
+{% endblock %} {% block quiz %}
 <div class="quiz_page">
+  <h1 class="intro_avaliacao">Avalie seus conhecimentos</h1>
 
-<h1 class="intro_avaliacao">Avalie seus conhecimentos</h1>
-
-<form action="/avaliacao" method="POST">
-{% for key,value in perguntas.items() %}
-    {% if key != "result" %}
+  <form action="/avaliacao" method="POST">
+    {% for key,value in perguntas.items() %} {% if key != "result" %}
     <div class="question_box" id="prova_{{value[0]}}">
-        <div class="question_box_1">
-        <br>
+      <div class="question_box_1">
         <div class="engrenagens-div">
-        &#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
-        <h3 class="num_question">Questão {{value[0]}}:</h3>
-        <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160
-    </div>
-        <p class="question_script_test">{{value[6]}}</p>
-        <br>
-    </div>
-    <br>
-    <br>
-        <div class="quiz_option">
-            <div class="alternativa_avaliacao_1">
-            <label for="A{{key}}" class="alternativa_avaliacao"><input type="radio" id="A{{key}}" name="resposta{{key}}" value="A" required>&#160&#160{{value[7]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="B{{key}}" class="alternativa_avaliacao" ><input type="radio" id="B{{key}}" name="resposta{{key}}" value="B">&#160&#160{{value[8]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="C{{key}}" class="alternativa_avaliacao"><input type="radio" id="C{{key}}" name="resposta{{key}}" value="C">&#160&#160{{value[9]}}&#160&#160</label>
-            </div>
-            <br>
-            <div class="alternativa_avaliacao_1">
-            <label for="D{{key}}" class="alternativa_avaliacao"><input type="radio" id="D{{key}}" name="resposta{{key}}" value="D">&#160&#160{{value[10]}}&#160&#160</label>
-            </div>
-          </div>
+          <img
+            class="engrenagem"
+            src="{{url_for('static', filename='images/engrenagem.png')}}"
+          />
+          <h3 class="num_question">Questão {{value[0]}}:</h3>
+          <img
+            class="engrenagem"
+            src="{{url_for('static', filename='images/engrenagem.png')}}"
+          />
         </div>
-    <br>
-    {% endif %}
-    {% endfor %}
+        <p class="question_script_test">{{value[6]}}</p>
+      </div>
+      <div class="quiz_option">
+        <div class="alternativa_avaliacao_1">
+          <input
+            class="alternativa_avaliacao"
+            type="radio"
+            id="A{{key}}"
+            name="resposta{{key}}"
+            value="A"
+            required
+          />
+          <label for="A{{key}}">{{value[7]}}</label>
+        </div>
 
-    <button class="button_avaliacao rounded-pill shadow-lg"><p class="text_button_av">Conferir resultado</p></button>
-</form>
+        <div class="alternativa_avaliacao_1">
+          <input
+            class="alternativa_avaliacao"
+            type="radio"
+            id="B{{key}}"
+            name="resposta{{key}}"
+            value="B"
+          />
+          <label for="B{{key}}">{{value[8]}}</label>
+        </div>
+
+        <div class="alternativa_avaliacao_1">
+          <input
+            class="alternativa_avaliacao"
+            type="radio"
+            id="C{{key}}"
+            name="resposta{{key}}"
+            value="C"
+          />
+          <label for="C{{key}}">{{value[9]}}</label>
+        </div>
+
+        <div class="alternativa_avaliacao_1">
+          <input
+            class="alternativa_avaliacao"
+            type="radio"
+            id="D{{key}}"
+            name="resposta{{key}}"
+            value="D"
+          />
+          <label for="D{{key}}">{{value[10]}}</label>
+        </div>
+      </div>
+    </div>
+
+    {% endif %} {% endfor %}
+
+    <button class="button_avaliacao rounded-pill shadow-lg">
+      <p class="text_button_av">Conferir resultado</p>
+    </button>
+  </form>
 </div>
 
 {% endblock %}
 
 <!-- perguntas -->
-{% block perguntas %}
-{% endblock %}
-</div>
+{% block perguntas %} {% endblock %}
