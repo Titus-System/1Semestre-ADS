@@ -841,11 +841,13 @@ margin: auto;}
 }
     
 .img_resultados{
-    margin-top: 10px;
+    position: relative;
+    bottom: 3px;
 }
 
 .acertos_erros_av{
     font-size: 19.5px;
+    margin-bottom: 20px;
 }
 
  /* botão parar aqui do quiz */
