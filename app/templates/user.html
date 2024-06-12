@@ -59,7 +59,7 @@ style="background-image:url(/static/images/user_button.svg); background-position
         <p>Status curso: {{academic_info[2]}}</p>
         <p>Resultado parcial quiz: {{academic_info[0]}}</p>
         <p>Resultado da prova: {{academic_info[1]}}<br>
-            {% if academic_info[1] >= 7 %}<a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>{% endif %}
+            {% if academic_info[1] %}{% if academic_info[1] >= 7 %}<a href="/certificado" target="_blank"><button class="btn"><img src="/static/images/certificate-svg.svg" height="30" width="40">Receba seu certificado</button></a>{% endif %}{% endif %}
         </p>
         <p>Feedback do curso: {{user_feedback}} / 5<br>
             {% if academic_info[1] %}<a href="/feedback"><button class="btn"><img src="/static/images/star-svg.svg" height="30" width="40">Avalie o nosso site</button></a>{% endif %}

@@ -988,14 +988,22 @@ textarea {
     color: white;
     padding: 20px 0;
 }
-.footer a {
-    color: #ffc107;
-    text-decoration: none;
+
+.table-admin{
+    max-width:100%;
+    font-size:medium
 }
-.footer a:hover {
-    color: #d39e00;
-    text-decoration: none;
+
+@media (max-width:1000px){
+    .table-admin{
+        font-size:smaller
+    }
+    .table-admin tr{
+        font-size:smaller;
+        max-width:100px
+    }
 }
+
 
 /*pagina de assunto do quiz para celular*/
 

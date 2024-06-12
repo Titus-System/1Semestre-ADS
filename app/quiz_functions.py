@@ -101,12 +101,15 @@ def resultado_parcial(username):
     is_admin = login_functions.is_admin(username)
     user_data = database.retrieve_data("registro", ['nome', 'mail'], login_functions.current_user.id)['nome'] #tupla com nome e email
     perguntas = arquivos.quiz_perguntas
+    respostas = database.retrieve_quiz_answers(username)
     correcao = arquivos.erro_assunto
-    respostas ={k:v for k, v in sorted(database.retrieve_quiz_answers(username).items(), key=lambda item: int(item[0][-2:-1].replace("_", "0")))}
     continuar = database.retrieve_data('academico', 'posicao', username)
     acertos = 0
     questoes_erradas = {}
-    if not respostas: return redirect("/quiz/iniciar")
+    if not respostas:
+        return redirect("/quiz/iniciar")
+    respostas ={k:v for k, v in sorted(respostas.items(), key=lambda item: int(item[0][-2:-1].replace("_", "0")))}
+
     for key in perguntas:
         if key == "result": break
         try:

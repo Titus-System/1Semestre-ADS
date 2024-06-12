@@ -157,18 +157,30 @@
     <div class="box_assessment_pacer">
         <form action="/pacer#qtd_funcionarios" method="POST">
             <label for="qtd_funcionarios">Quantos colaboradores fazem parte da equipe:</label>
-            <input type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1" required>
-            <button type="submit" class="btn btn-secondary btn-sm text-light">Gerar PACER</button>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <input class="form-control" type="number" id="qtd_funcionarios" name="qtd_funcionarios" min="1" required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn bg-dark btn-sm text-light">Gerar PACER</button>
+                </div>
+            </div>
         </form>
     </div>
 {% if qtd_funcionarios %}
     <form action="/pacer/ver/{{qtd_funcionarios}}#resultados" method="POST">
         {% for i in range(qtd_funcionarios) %}
         <div class="box_assessment_pacer">
-            <label for="nome_funcionario{{i}}">Nome do funcionario:
-            <input type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}" required></label>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label class="col-form-label" for="nome_funcionario{{i}}">Nome do funcionario:</label>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" id="nome_funcionario{{i}}" name="nome_funcionario{{i}}" required>
+                </div>
+            </div>
             <br>
-            <p>Considerando a PRODUTIVIDADE do funcionário '' </p>
+            <p>Considerando a PRODUTIVIDADE do funcionário</p>
             <label label for="0productivity{{i}}">
             <input type="radio" id="0productivity{{i}}" name="productivity{{i}}" value="0" required>
             0 - REATIVO</label>
@@ -186,7 +198,7 @@
             3 - PROATIVO</label>
             <br>
 
-            <p>Considerando a AUTONOMIA do funcionário: </p>
+            <p>Considerando a AUTONOMIA do funcionário</p>
 
             <label label for="0autonomy{{i}}">
             <input type="radio" id="0autonomy{{i}}" name="autonomy{{i}}" value="0" required>
@@ -205,7 +217,7 @@
             3 - AUTOGESTÃO</label>
 
             <br>
-            <p>Considerando a COLABORAÇÃO do funcionário '' </p>
+            <p>Considerando a COLABORAÇÃO do funcionário</p>
             <label label for="0collaboration{{i}}">
             <input type="radio" id="0collaboration{{i}}" name="collaboration{{i}}" value="0" required>
             0 - AUSENTE</label>
@@ -223,7 +235,7 @@
             3 - COLABORATIVO</label>
 
             <br>
-            <p>Considerando a ENTREGA DE RESULTADOS do funcionário '' </p>
+            <p>Considerando a ENTREGA DE RESULTADOS do funcionário</p>
             <label label for="0results{{i}}">
             <input type="radio" id="0results{{i}}" name="results{{i}}" value="0" required>
             0 - NÃO HÁ ENTREGAS</label>
@@ -241,7 +253,9 @@
             3 - ENTREGAS PERFEITAS</label>
         </div>
             {% endfor %}
-            <button class="btn btn-secondary pacer_button" type="submit">Enviar PACER</button>
+            <div class="box_assessment_pacer" style="background-color: transparent; padding:0; margin-bottom: 10vh;">
+                <button class="btn bg-dark pacer_button text-light" type="submit" style="float:right">Enviar PACER</button>
+            </div>
     </form>
 {% endif %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

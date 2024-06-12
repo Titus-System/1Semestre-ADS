@@ -145,13 +145,19 @@
             </tr>
             {% endfor %}
             <tr>
-                <td>Soma final das notas</td>
-                <td>{{soma}}</td>
+                <td><strong>Soma final das notas</strong></td>
+                <td><strong>{{soma}}</strong></td>
+            </tr>
+            <tr>
+                <td>Total máximo possível</td>
+                <td>{{(pacer|length)*12}}</td>
             </tr>
         </table>
     </div>
 
-    <a href="/pacer"><button class="btn btn-secondary pacer_button" id="refazer_pacer">Refazer PACER</button></a>
+    <div class="box_assessment_pacer" style="background-color: transparent; padding:0; margin-bottom: 10vh;">
+        <a href="/pacer"><button class="btn bg-dark pacer_button text-light" id="refazer_pacer" style="float:right">Refazer PACER</button></a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
