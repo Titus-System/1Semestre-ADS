@@ -490,7 +490,62 @@
             height: 30px;
         }
         .lista_respostas_av{
-            position: relative;
+            position: relative;@media (min-width: 768px) and (max-width: 1024px){
+    .button_avaliacao.rounded-pill.shadow-lg {
+        height: 60px;
+        width: 150px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .text_buttons_av_resultado {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .resultado h1{
+        font-size: 50px;
+    }
+
+    .desc_resultado_av {
+        font-size: 17px;
+    }
+
+    .certificado_avalie_av {
+        font-size: 15px;
+    }
+
+    .suas_respostas_av, .seus_erros_av {
+        font-size: 20px;
+    }
+
+    .lista_respostas_av, .textos_correção_av {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 700px){
+    .button_avaliacao.rounded-pill.shadow-lg {
+        height: 60px;
+        width: 150px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .text_buttons_av_resultado {
+        margin: 0;
+        font-size: 17px;
+      }
+    
+    .resultado h1{
+        font-size: 45px;
+    }
+
+    .resultado h2{
+        font-size: 25px;
+    }
+    
+}
             right: 4%;
         }
     }
@@ -1109,6 +1164,62 @@
 }
 
 /*PAGINA RESULTADOS*/
+@media (min-width: 768px) and (max-width: 1024px){
+    .button_avaliacao.rounded-pill.shadow-lg {
+        height: 60px;
+        width: 150px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .text_buttons_av_resultado {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .resultado h1{
+        font-size: 50px;
+    }
+
+    .desc_resultado_av {
+        font-size: 17px;
+    }
+
+    .certificado_avalie_av {
+        font-size: 15px;
+    }
+
+    .suas_respostas_av, .seus_erros_av {
+        font-size: 20px;
+    }
+
+    .lista_respostas_av, .textos_correção_av {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 700px){
+    .button_avaliacao.rounded-pill.shadow-lg {
+        height: 60px;
+        width: 150px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .text_buttons_av_resultado {
+        margin: 0;
+        font-size: 17px;
+      }
+    
+    .resultado h1{
+        font-size: 45px;
+    }
+
+    .resultado h2{
+        font-size: 25px;
+    }
+    
+}
 
 /*PAGINA ADM*/
 @media (min-width: 768px) and (max-width: 1024px){
