@@ -11,18 +11,20 @@ block head_image %}
 ></div>
 {% endblock %} {% block quiz %}
 <div class="quiz_page">
-  <h1 class="intro_avaliacao">Avalie seus conhecimentos</h1>
+  <h1 class="intro_avaliacao" style="margin-bottom: 3rem;">Avalie seus conhecimentos</h1>
 
   <form action="/avaliacao" method="POST">
     {% for key,value in perguntas.items() %} {% if key != "result" %}
     <div class="question_box" id="prova_{{value[0]}}">
       <div class="question_box_1">
         <div class="engrenagens-div">
-          
-          <h3 class="num_question">Questão {{value[0]}}:</h3>
-          
+          <img class="engrenagem_av_1" src="{{url_for('static', filename='images/engrenagem.png')}}">
+          <div style="display: flex; flex-direction: column;">
+          <h3 class="num_question" style="margin-top: 1rem; display: flex; justify-content: center;">Questão {{value[0]}}:</h3>
+          <p class="question_script_test" style="margin-bottom: 1rem;">{{value[6]}}</p>
         </div>
-        <p class="question_script_test">{{value[6]}}</p>
+        <img class="engrenagem_av-2" src="{{url_for('static', filename='images/engrenagem.png')}}">
+        </div>
       </div>
       <div class="quiz_option">
         <div class="alternativa_avaliacao_1">

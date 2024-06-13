@@ -769,6 +769,18 @@ div {
   text-align: center;
 }
 
+.engrenagem_av_1{
+  width: 54cpx;
+  height: 31px;
+  margin: auto;
+}
+
+.engrenagem_av-2{
+  width: 54cpx;
+  height: 31px;
+  margin: auto;
+}
+
 .text_button_av {
   font-size: 15px;
 }
