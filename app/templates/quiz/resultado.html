@@ -28,6 +28,7 @@
     </ul>
         </div>
     </div>
+    {% if questoes_erradas|length > 0 %}
     <div class="erros_resultados">
     <p style="margin-bottom: 0;"><strong>Seus erros:</strong></p>
     <dl style="margin-top:0;">
@@ -37,6 +38,8 @@
         <br>
         {% endfor %}
     </dl>
+    </div>
+    {% endif %}
     <br>
     <a href="/apostila"><button class="botao_iniciar" id="button_next">Seguir para apostila</button></a> 
 

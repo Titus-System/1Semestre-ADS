@@ -46,6 +46,7 @@
         {% endfor %}
     </ul>
     <br>
+    {% if questoes_erradas|length > 0 %}
     <p class="seus_erros_av"><strong>Seus erros:</strong></p>
     <dl class="textos_correção_av">
         {% for key, value in questoes_erradas.items() %}
@@ -54,6 +55,7 @@
         <br>
         {% endfor %}
     </dl>
+    {% endif %}
     <br>
     <a href="/apostila"><button class="button_avaliacao rounded-pill shadow-lg" id="button_next"><p class="text_buttons_av_resultado">Seguir para apostila</p></button></a>
     <a href="/avaliacao"><button class="button_avaliacao rounded-pill shadow-lg" id="refazer" style="float: left;"><p class="text_buttons_av_resultado">Refazer avaliação</p></button></a>
