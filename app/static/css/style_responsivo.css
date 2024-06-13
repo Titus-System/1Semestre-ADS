@@ -59,7 +59,7 @@
 
 
 @media screen and (max-width: 768px) {
-    .container-assunto {
+    .box_question {
         background-color: black;
         border: solid 2px black;
         border-radius: 5%;
