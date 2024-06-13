@@ -1081,6 +1081,11 @@
 /*APOSTILA*/
 
 /*PACER*/
+@media (max-width: 400px){
+    .btn.bg-dark.btn-sm.text-light {
+        width: 70px;
+    }
+}
 
 /*PAGINA LOGIN*/
 
