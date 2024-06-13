@@ -19,3 +19,42 @@
     </div>
     <a href="/quiz/salvar_quiz/22_priorizacao" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
 {% endblock %}
+
+
+
+
+
+{% extends "/quiz/base_quiz.html" %}
+
+{% block title %}Revisão Capítulo 5{% endblock %}
+
+{% block resumo %}
+<div class="container mt-4">
+    <div style="text-align:justify">
+        <h1 id="quiz_title">Capítulo 5</h1>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/planning_poker" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
+            </div>
+            <div class="col-9 container mx-2 my-2 box_question box_question">
+                <h2>Introdução aos tipos de priorização</h2>
+                <p>Para entregar valor de forma contínua, é muito importante manter os backlogs do produto e da sprint organizados, e, para isso, existem diversos modos de classificar as tarefas a serem realizadas.</p>
+                <p>Um exemplo de técnica comumente aplicada para esse objetivo é a priorização, que pode ser baseada em valor, esforço, riscos ou dependências. Cada priorização possui sua relevância e deve ser utilizada de acordo com as necessidades e características do projeto em questão. Portanto, é importante que toda a equipe esteja alinhada na escolha e aplicação do tipo de priorização, visando sempre a eficiência e a obtenção dos melhores resultados para o produto e para o cliente.</p>
+            
+            </div>
+            <div class="col-1">
+                <a href="/quiz/priorizacao" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/22_priorizacao">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
