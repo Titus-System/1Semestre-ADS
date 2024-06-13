@@ -1271,11 +1271,17 @@
 
 /*navegador lateral: fazer cadastro ou login*/
 
-/* @media (max-width: 450px) {
-    .nav-link.text-light {
-        list-style-type: none;
+@media (max-width: 450px) {
+    .indice a, .indice ul {
+        text-decoration: none;
+        list-style-type: none !important;
     }
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .indice a, .indice ul {
+        text-decoration: none;
+        list-style-type: none !important;
+    }
+}
