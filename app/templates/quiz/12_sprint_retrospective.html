@@ -3,19 +3,32 @@
 {% block title %}Revisão Capítulo 3{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 3</h1>
-            <div class="page_assunto_flex">
-                <a href="/quiz/sprint_review"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-                <div class="container-assunto">
-                    <br>
-                    <h2>O que é Sprint Retrospective?</h2>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/sprint_review" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
+            </div>
+            <div class="col-9 container mx-2 my-2 box_question">
+                <h2>O que é Sprint Retrospective?</h2>
                     <p>A Sprint Retrospective é um evento chave dentro da estrutura do Scrum, projetado para permitir que as equipes revisem e melhorem continuamente seu desempenho. Realizada no final de cada sprint, essa reunião proporciona um espaço seguro para que os membros da equipe compartilhem suas observações, identifiquem desafios enfrentados durante a sprint e discutam maneiras de superá-los no futuro. Ao abordar tanto os aspectos positivos quanto os negativos do processo, a Sprint Retrospective estimula a colaboração, o aprendizado e a inovação dentro da equipe. Essa reflexão regular não apenas fortalece o compromisso da equipe com a excelência, mas também promove um ambiente de trabalho mais eficaz e gratificante.</p>
                     <h2>O que ocorre na Sprint Retrospective?</h2>
                     <p>Durante a Sprint Retrospective, a equipe Scrum revisa o que funcionou bem e pode ser mantido e o que pode ser aprimorado nas Sprints futuras. É o momento de discutir práticas, ferramentas e interações, com foco em encontrar soluções para problemas e implementar mudanças que aumentarão a eficiência e a qualidade do trabalho.</p>
-                </div>
-                <a href="/quiz/sprint_retrospective"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
             </div>
+            <div class="col-1">
+                <a href="/quiz/sprint_retrospective" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/12_sprint_retrospective">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
     </div>
-    <a href="/quiz/salvar_quiz/12_sprint_retrospective" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}

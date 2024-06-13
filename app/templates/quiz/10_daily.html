@@ -3,19 +3,32 @@
 {% block title %}Revisão Capítulo 3{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 3</h1>
-        <div class="page_assunto_flex">
-            <a href="/quiz/sprint_planning"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-            <div class="container-assunto">
-                <br>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/sprint_planning" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
+            </div>
+            <div class="col-9 container mx-2 my-2 box_question">
                 <h2>O que é a Daily?</h2>
                 <p>A Daily é uma reunião diária de até 15 minutos destinada a sincronizar as atividades da equipe e ajustar o plano de ação para o dia. No decorrer da reunião, cada membro do time de desenvolvimento responde a três perguntas: o que fez no dia anterior, o que planeja fazer hoje e se há algum impedimento. </p>
                 <h2>Benefícios da Daily</h2>
                 <p>A Daily Scrum promove transparência, possibilita a identificação rápida de problemas e garante que todos estejam alinhados com os objetivos da Sprint. Essa prática fomenta a auto-organização e a responsabilidade coletiva, permitindo que a equipe mantenha-se ágil e eficiente diante dos desafios diários.</p>
             </div>
-            <a href="/quiz/daily"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+            <div class="col-1">
+                <a href="/quiz/daily" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/10_daily">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
         </div>
     </div>
-    <a href="/quiz/salvar_quiz/10_daily" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}

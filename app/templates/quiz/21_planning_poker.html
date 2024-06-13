@@ -3,25 +3,38 @@
 {% block title %}Revisão Capítulo 4{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 4</h1>
-        <div class="page_assunto_flex">
-                <a href="/quiz/dor"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-                    <div class="container-assunto">
-                        <br>
-                        <h2>Planning Poker</h2>
-                        <p>Conhecida também como Scrum Poker, é uma técnica ágil cuja finalidade é priorizar tarefas e estimar o esforço necessário para cumpri-las. Para utilizá-la, cada membro da equipe recebe cartas com valores de uma sequência específica, geralmente baseada na sequência de Fibonacci (ex.: 1, 2, 3, 5, 8, 13). Esses valores, ao final, fornecem uma estimativa do esforço necessário para cumprir todas as fases do Product Backlog.</p>
-                        <h2>Como utilizar o Planning Poker?</h2>
-                        <p>Os membros podem usar baralhos impressos ou aplicativos de Planning Poker. Algumas cartas possuem símbolos especiais:</p>
-                        <ul>
-                            <li>Xícara de café: Indica a necessidade de uma pausa.</li>
-                            <li>Interrogação (?): Expressa dúvidas.</li>
-                            <li>0.5 ou ⅕: Indica uma user story muito pequena.</li>
-                        </ul>
-                            <p>O P.O lê uma user story por rodada e os desenvolvedores avaliam sua complexidade, apresentando suas pontuações, suas dúvidas ou seus pedidos de pausa.</p>
-                    </div>
-                    <a href="/quiz/planning_poker"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
-                </div>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/dor" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
+            </div>
+            <div class="col-9 container mx-2 my-2 box_question">
+                <h2>Planning Poker</h2>
+                <p>Conhecida também como Scrum Poker, é uma técnica ágil cuja finalidade é priorizar tarefas e estimar o esforço necessário para cumpri-las. Para utilizá-la, cada membro da equipe recebe cartas com valores de uma sequência específica, geralmente baseada na sequência de Fibonacci (ex.: 1, 2, 3, 5, 8, 13). Esses valores, ao final, fornecem uma estimativa do esforço necessário para cumprir todas as fases do Product Backlog.</p>
+                <h2>Como utilizar o Planning Poker?</h2>
+                <p>Os membros podem usar baralhos impressos ou aplicativos de Planning Poker. Algumas cartas possuem símbolos especiais:</p>
+                    <ul>
+                        <li>Xícara de café: Indica a necessidade de uma pausa.</li>
+                        <li>Interrogação (?): Expressa dúvidas.</li>
+                        <li>0.5 ou ⅕: Indica uma user story muito pequena.</li>
+                    </ul>
+                <p>O P.O lê uma user story por rodada e os desenvolvedores avaliam sua complexidade, apresentando suas pontuações, suas dúvidas ou seus pedidos de pausa.</p>
+            </div>
+            <div class="col-1">
+                <a href="/quiz/planning_poker" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/21_planning_poker">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
     </div>
-    <a href="/quiz/salvar_quiz/21_planning_poker" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}

@@ -3,17 +3,32 @@
 {% block title %}Revisão Capítulo 2{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 2</h1>
-            <div class="page_assunto_flex">
-                <a href="/quiz/devteam"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-                <div class="container-assunto">
-                    <br>
-                    <h2>Utilidade dos papéis e stakeholders e clientes</h2>
-                    <p>Dentro do ecossistema do Scrum, os papéis são como as engrenagens de uma máquina bem ajustada, cada um contribuindo para o funcionamento adequado dela com seus deveres específicos. Embora o Scrum Master, o Product Owner e o Dev Team sejam figuras centrais, há outros papéis que desempenham funções cruciais, como <a href="#" data-bs-toggle="popover" data-bs-trigger="hover"  title="Stakeholders" data-bs-content="Fornecem insights valiosos e feedback ao longo do processo, garantindo que as necessidades e expectativas sejam atendidas.">stakeholders</a> e <a href="#" data-bs-toggle="popover" data-bs-trigger="hover"  title="Clientes" data-bs-content="Definem os requisitos do produto e validam o trabalho concluído.">clientes</a>. Esses papéis, embora menos proeminentes, são igualmente importantes para o sucesso geral do Scrum.</p>
-                </div>
-                <a href="/quiz/stakeholders_clientes"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/devteam" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
             </div>
+            <div class="col-9 container mx-2 my-2 box_question">
+                <h2 class="text-center">Utilidade dos papéis e stakeholders e clientes</h2>
+                <p>Inicialmente, o Scrum foi pensado para ser aplicado apenas em projetos de desenvolvimento de software, mas atualmente é aplicado também em planos de outras naturezas.</p>
+                <p>O Scrum trata-se de uma metodologia ágil criada com o intuito de auxiliar no processo de desenvolver projetos, produtos ou serviços. O principal objetivo por trás de seu uso é diminuir o tempo gasto, mas manter a qualidade do resultado.</p>
+                <p>O Scrum abrange um conjunto de eventos, ferramentas e cargos que contribuem para uma entrega final eficiente, o desenvolvimento do autogerenciamento, o aprendizado com base nas experiências e a adaptação às mudanças.</p>
+            </div>
+            <div class="col-1">
+                <a href="/quiz/stakeholders_clientes" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/8_stakeholders_clientes">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
     </div>
-    <a href="/quiz/salvar_quiz/8_stakeholders_clientes" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}

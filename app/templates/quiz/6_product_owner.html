@@ -3,17 +3,30 @@
 {% block title %}Revisão Capítulo 2{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 2</h1>
-            <div class="page_assunto_flex">
-                <a href="/quiz/master"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-                <div class="container-assunto">
-                    <br>
-                    <h2>Product Owner</h2>
-                    <p>O Product Owner, Proprietário do Produto, ou P.O, por sua vez, representa o responsável por maximizar o valor do produto e gerenciar o backlog dele. Suas principais funções são atuar como a voz do cliente, garantindo que a equipe de desenvolvimento esteja sempre alinhada com suas necessidades e prioridades, definir e priorizar os itens do backlog, assegurando que o time trabalhe nas tarefas mais importantes e entregue o maior valor possível em cada Sprint, esclarecer a visão do produto ao time e tomar decisões rápidas para ajustar o curso do desenvolvimento conforme o necessário.</p>
-                </div>
-                <a href="/quiz/product_owner"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/master" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
             </div>
+            <div class="col-9 container mx-2 my-2 box_question">
+                <h2 class="text-center">Product Owner</h2>
+                <p>O Product Owner, Proprietário do Produto, ou P.O, por sua vez, representa o responsável por maximizar o valor do produto e gerenciar o backlog dele. Suas principais funções são atuar como a voz do cliente, garantindo que a equipe de desenvolvimento esteja sempre alinhada com suas necessidades e prioridades, definir e priorizar os itens do backlog, assegurando que o time trabalhe nas tarefas mais importantes e entregue o maior valor possível em cada Sprint, esclarecer a visão do produto ao time e tomar decisões rápidas para ajustar o curso do desenvolvimento conforme o necessário.</p>
+            </div>
+            <div class="col-1">
+                <a href="/quiz/product_owner" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/6_product_owner">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
     </div>
-    <a href="/quiz/salvar_quiz/6_product_owner" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}
