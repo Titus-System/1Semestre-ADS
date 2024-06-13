@@ -737,7 +737,7 @@ div {
 }
 
 /* pagina avaliação */
-.button_avaliacao {
+.button_avaliacao_conferir {
   font-size: 15px;
   background-color: #000103;
   color: #ff695e;
@@ -767,18 +767,6 @@ div {
 .num_question {
   display: flex;
   text-align: center;
-}
-
-.engrenagem_av_1{
-  width: 54cpx;
-  height: 31px;
-  margin: auto;
-}
-
-.engrenagem_av-2{
-  width: 54cpx;
-  height: 31px;
-  margin: auto;
 }
 
 .text_button_av {
@@ -1043,7 +1031,7 @@ textarea {
   }
 
   .timeline {
-    display: ;
+   
     margin: 2em 2em;
   }
 

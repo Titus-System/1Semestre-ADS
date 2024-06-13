@@ -18,12 +18,12 @@ block head_image %}
     <div class="question_box" id="prova_{{value[0]}}">
       <div class="question_box_1">
         <div class="engrenagens-div">
-          <img class="engrenagem_av_1" src="{{url_for('static', filename='images/engrenagem.png')}}">
+          <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
           <div style="display: flex; flex-direction: column;">
           <h3 class="num_question" style="margin-top: 1rem; display: flex; justify-content: center;">Questão {{value[0]}}:</h3>
           <p class="question_script_test" style="margin-bottom: 1rem;">{{value[6]}}</p>
         </div>
-        <img class="engrenagem_av-2" src="{{url_for('static', filename='images/engrenagem.png')}}">
+        <img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">
         </div>
       </div>
       <div class="quiz_option">
@@ -36,7 +36,7 @@ block head_image %}
             value="A"
             required
           />
-          <label for="A{{key}}">{{value[7]}}</label>
+          <label for="A{{key}}" style="text-align: center;">{{value[7]}}</label>
         </div>
 
         <div class="alternativa_avaliacao_1">
@@ -47,7 +47,7 @@ block head_image %}
             name="resposta{{key}}"
             value="B"
           />
-          <label for="B{{key}}">{{value[8]}}</label>
+          <label for="B{{key}}" style="text-align: center;">{{value[8]}}</label>
         </div>
 
         <div class="alternativa_avaliacao_1">
@@ -58,7 +58,7 @@ block head_image %}
             name="resposta{{key}}"
             value="C"
           />
-          <label for="C{{key}}">{{value[9]}}</label>
+          <label for="C{{key}}" style="text-align: center;" class= "av_alternativa">{{value[9]}}</label>
         </div>
 
         <div class="alternativa_avaliacao_1">
@@ -69,14 +69,14 @@ block head_image %}
             name="resposta{{key}}"
             value="D"
           />
-          <label for="D{{key}}">{{value[10]}}</label>
+          <label for="D{{key}}" style="text-align: center;">{{value[10]}}</label>
         </div>
       </div>
     </div>
 
     {% endif %} {% endfor %}
 
-    <button class="button_avaliacao rounded-pill shadow-lg">
+    <button class="button_avaliacao_conferir rounded-pill shadow-lg">
       <p class="text_button_av">Conferir resultado</p>
     </button>
   </form>
