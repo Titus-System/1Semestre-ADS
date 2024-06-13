@@ -58,11 +58,19 @@
 }
 
 
-
-.quiz_page{
-
+@media screen and (max-width: 768px) {
+    .container-assunto {
+        background-color: black;
+        border: solid 2px black;
+        border-radius: 5%;
+        padding: 2%;
+        margin: 5% 15% 5% 20%;
+        max-width: 50%;
+        color: #ff695e;
+        font-family: "Ruda";
+        font-size: 20px;
+    }
 }
-
 .page_assunto_flex{
 
 }

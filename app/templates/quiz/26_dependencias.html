@@ -3,19 +3,32 @@
 {% block title %}Revisão Capítulo 5{% endblock %}
 
 {% block resumo %}
-    <div class="quiz_page">
+<div class="container mt-4">
+    <div style="text-align:justify">
         <h1 id="quiz_title">Capítulo 5</h1>
-        <div class="page_assunto_flex">
-                <a href="/quiz/esforco"><button id="button_previous" class="arrow_assunto">&#9664;</button></a>
-                    <div class="container-assunto">
-                        <br>
-                        <h2>Priorização baseada em dependências</h2>
-                        <p>A priorização baseada em dependências é uma abordagem que considera as relações existentes entre as tarefas do backlog para determinar a ordem em que devem ser executadas. Ela é aplicada quando há atividades que têm pré-requisitos ou dependem de outras para serem realizadas. Nesse contexto, a equipe examina as relações entre as atividades e dá prioridade àquelas que são dependentes de outras.
-                        Ao identificar e priorizar essas dependências, a equipe de desenvolvimento pode evitar bloqueios e garantir um fluxo de trabalho mais eficiente,permitindo um progresso contínuo e evitando gargalos que comprometam o trabalho.</p>
+        <div class="row d-flex justify-content-between align-items-center flex-wrap">
+            <div class="col-1">
+                <a href="/quiz/esforco" class="mb-3 mb-md-0">
+                    <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+                </a>
+            </div>
+            <div class="col-9 container mx-2 my-2 box_question">
+                <h2>Priorização baseada em dependências</h2>
+                <p>A priorização baseada em dependências é uma abordagem que considera as relações existentes entre as tarefas do backlog para determinar a ordem em que devem ser executadas. Ela é aplicada quando há atividades que têm pré-requisitos ou dependem de outras para serem realizadas. Nesse contexto, a equipe examina as relações entre as atividades e dá prioridade àquelas que são dependentes de outras.
+                Ao identificar e priorizar essas dependências, a equipe de desenvolvimento pode evitar bloqueios e garantir um fluxo de trabalho mais eficiente,permitindo um progresso contínuo e evitando gargalos que comprometam o trabalho.</p>
             
-                    </div>
-                    <a href="/quiz/dependencias"><button id="button_next" class="arrow_assunto">&#9654;</button></a>
-                </div>
+            </div>
+            <div class="col-1">
+                <a href="/quiz/dependencias" class="mb-3 mb-md-0">
+                    <button id="button_next" class="btn arrow_assunto">&#9654;</button>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/quiz/salvar_quiz/26_dependencias">
+                <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+            </a>
+        </div>
     </div>
-    <a href="/quiz/salvar_quiz/26_dependencias" style="position:fixed; bottom:20px; right:20px"><button class="button_parar_aqui rounded-pill shadow-lg" id="parar_quiz">Salvar respostas</button></a>
+</div>
 {% endblock %}
