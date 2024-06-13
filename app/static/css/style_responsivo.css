@@ -1088,6 +1088,16 @@
 }
 
 /*PAGINA LOGIN*/
+@media (max-width: 450px) {
+    .mb-4 h3 {
+        margin-top: 10px;
+    }
+
+    .col-md-6.contents.my-3.mx-auto {
+        margin-top: 40px !important;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1024px){
     .row {
         align-items: center;
