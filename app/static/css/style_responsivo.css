@@ -48,7 +48,7 @@
         font-size: 18px;
         padding: 8px 16px;
         display:inline;
-        justify-items:;
+
     }
 
     .question_box_1{
@@ -89,6 +89,13 @@
 
  /* pagina avaliação */
 
+ @media (max-width:1025px){
+    .button_avaliacao_conferir{
+        height: 30px;
+    }
+
+ }
+
  @media (max-width:990px){
     .alternativa_avaliacao{
         font-size: 15px;
@@ -98,6 +105,18 @@
  @media (max-width:900px){
     .alternativa_avaliacao{
         font-size: 14px;
+    }
+ }
+
+ @media (max-width:819px){
+    .question_script_test{
+        font-size: 14.5px;
+    }
+ }
+
+ @media (max-width:773px){
+    .alternativa_avaliacao{
+        font-size: 13px;
     }
  }
 
@@ -113,9 +132,9 @@
 
  @media (max-width:590px){
     .alternativa_avaliacao{
-        font-size: 13px;
+        font-size: 12px;
     }
- }
+}
 
  @media (max-width:561px){
     .text_button_av{
@@ -128,7 +147,7 @@
 
  @media (max-width:470px){
     .alternativa_avaliacao{
-        font-size: 12px;
+        font-size: 11px;
     }
     
     .question_script_test{
@@ -174,9 +193,6 @@
 
 
 @media (max-width:322px){
-    .alternativa_avaliacao{
-        font-size: 11px;
-    }
 
     .question_script_test{
         font-size: 9px;
@@ -1279,11 +1295,17 @@
 
 /*navegador lateral: fazer cadastro ou login*/
 
-/* @media (max-width: 450px) {
-    .nav-link.text-light {
-        list-style-type: none;
+@media (max-width: 450px) {
+    .indice a, .indice ul {
+        text-decoration: none;
+        list-style-type: none !important;
     }
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .indice a, .indice ul {
+        text-decoration: none;
+        list-style-type: none !important;
+    }
+}

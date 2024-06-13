@@ -5,8 +5,6 @@
   <br>
   <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
   <br>
-  <img class="icone" src="{{url_for('static', filename='images/icone-interrogacao.png')}}">
-
   <div class="question_box row">
     <div class="col-2">
       <a href="{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a>
@@ -79,7 +77,12 @@
     <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto"
         id="button_next">&#9654;</button>
     </div>
-
+    
+    <div class="text-center mt-4">
+      <a href="/quiz/salvar_quiz/{{pagina_atual}}">
+          <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+      </a>
+  </div>
   </div>
 </div>
   {% endblock %}

@@ -9,7 +9,7 @@ style="background-image:url(/static/images/user_button.svg); background-position
 <div class="box_teoria_pacer">
     <h1>{{current_user.id}}</h1>
     <br>
-    <div class="row">
+    <div class="row" class="button_inf" style="display:flex; flex-direction: row; align-items: center;">
         <div class="col">
             <h2>Informações pessoais</h2>
             <p>Username: {{current_user.id}}</p>
@@ -18,12 +18,12 @@ style="background-image:url(/static/images/user_button.svg); background-position
         </div>
         
         <div class="accordion col" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
+            <div class="card" style="background-color: black; border-radius: 15px; color: #FF695E;">
+                <div class="card-header" id="headingOne" style="background-color: black; border-radius: 15px; text-align: center;">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne"
-                            style="color: black; text-decoration: none; font-family: 'Ruda'; ">
+                            style="color: #FF695E; background-color: black; text-decoration: none; font-family: 'Ruda'; font-weight: 800; text-align: center;">
                             Atualizar informações
                         </button>
                     </h5>
@@ -46,7 +46,7 @@ style="background-image:url(/static/images/user_button.svg); background-position
                         <label for="update_password_confirm">Confirme a senha:<br>
                         <input class="form-control" type="password" id="update_password_confirm" name="update_password_confirm"></label>
                         <br>
-                        <button class="btn bg-light text-dark pacer-button mb-3" type="submit" value="submit" style="float:right">Atualizar meus dados</button>
+                        <button class="btn bg-light text-dark pacer-button mb-3" type="submit" value="submit" style="float:right; background-color: #FF695E !important; font-weight: bold;">Atualizar meus dados</button>
                         </form>
                     </div>
                 </div>

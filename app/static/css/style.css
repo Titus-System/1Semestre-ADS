@@ -737,7 +737,7 @@ div {
 }
 
 /* pagina avaliação */
-.button_avaliacao {
+.button_avaliacao_conferir {
   font-size: 15px;
   background-color: #000103;
   color: #ff695e;
@@ -1031,7 +1031,7 @@ textarea {
   }
 
   .timeline {
-    display: ;
+   
     margin: 2em 2em;
   }
 
