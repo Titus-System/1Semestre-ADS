@@ -1088,6 +1088,15 @@
 }
 
 /*PAGINA LOGIN*/
+@media (min-width: 768px) and (max-width: 1024px){
+    .row {
+        align-items: center;
+    }
+
+    .col-md-6.contents.my-3.mx-auto {
+        width: 40%;
+    }
+}
 
 /*PAGINA RESULTADOS*/
 
