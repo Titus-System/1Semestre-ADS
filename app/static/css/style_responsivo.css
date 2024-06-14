@@ -46,9 +46,7 @@
 
     .arrow_assunto {
         font-size: 18px;
-        padding: 8px 16px;
-        display:inline;
-
+        margin:auto;
     }
 
     .question_box_1{
@@ -68,17 +66,7 @@
 
 
 }
-.page_assunto_flex{
 
-}
-
-.container-assunto{
-
-}
-
-.arrow_assunto{
-    
-}
 
 /*pagina exercicios quiz*/
 

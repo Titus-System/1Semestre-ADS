@@ -4,35 +4,35 @@
 {% block quiz %}
 <div class="container mt-4">
   <div style="text-align:justify">
-      <h1 id="quiz_title">Capítulo 1</h1>
+      <h1 id="quiz_title">Questão {{num_quest}}</h1>
       <div class="row d-flex justify-content-between align-items-center flex-wrap">
           <div class="col-1">
-              <a href="{{anterior}}" class="mb-3 mb-md-0">
-                  <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+              <a href="{{anterior}}">
+                  <button class="btn arrow_assunto">&#9664;</button>
               </a>
           </div>
-          <div class="col-9 container mx-2 my-2">
-            <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta">
+          <div class="col-9 container mx-2 my-2 box-question">
+            <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta" style="max-width:100%">
               <div class="question_box_1">
                 <br>
                 <br>
-                <div class="engrenagens-div">
+                <div>
                   <p class="question_script">{{questao[6]}}</p>
                 </div>
                 <br>
               </div>
               <!-- alternativas quiz -->
-              <div class="quiz_option">
+              <div>
                 <br>
       
-                <label for="A{{num_quest}}" class="quiz-alternativa">
-                  <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
+                <label for="A{{num_quest}}">
+                  <input type="radio" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
                   {{questao[7]}}</label>
                 <br>
                 <br>
       
-                <label for="B{{num_quest}}" class="quiz-alternativa">
-                  <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
+                <label for="B{{num_quest}}">
+                  <input type="radio" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
                   {{questao[8]}}</label>
                 <br>
                 <br>
@@ -44,8 +44,8 @@
                 <br>
                 <br>
       
-                <label for="D{{num_quest}}" class="quiz-alternativa">
-                  <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
+                <label for="D{{num_quest}}">
+                  <input type="radio" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
                   {{questao[10]}}</label>
                 <br>
               </div>
@@ -66,9 +66,9 @@
             </form>
           </div>
           <div class="col-1">
-              <a class="mb-3 mb-md-0">
+              <a>
                 <button type="button" id="enviar_resposta" class="btn arrow_assunto"
-                id="button_next">&#9654;</button>
+                id="button_next" style="padding: 0%">&#9654;</button>
               </a>
           </div>
       </div>
