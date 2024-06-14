@@ -46,9 +46,7 @@
 
     .arrow_assunto {
         font-size: 18px;
-        padding: 8px 16px;
-        display:inline;
-
+        margin:auto;
     }
 
     .question_box_1{
@@ -68,30 +66,13 @@
 
 
 }
-.page_assunto_flex{
 
-}
-
-.container-assunto{
-
-}
-
-.arrow_assunto{
-    
-}
 
 /*pagina exercicios quiz*/
 
 /*AVALIAÇÃO*/
 
  /* pagina avaliação */
-
- @media (max-width:1025px){
-    .button_avaliacao_conferir{
-        height: 30px;
-    }
-
-}
 
 @media (max-width:992px){
     .question_box{
@@ -101,6 +82,11 @@
 }
 }
 
+@media (max-width: 991px){
+    .button_avaliacao_conferir{
+        margin-right: 6%;
+      }
+}
 
  @media (max-width:819px){
     .question_script_test{
@@ -108,7 +94,6 @@
     }
     .av_alternativa_text{
         font-size: 15px;
-        height: 6px;
     }
  }
 
@@ -124,6 +109,12 @@
     }
 }
 
+@media (max-width:700px){
+    .button_avaliacao_conferir{
+        height: 35px;
+    }
+}
+
  @media (max-width:561px){
     .text_button_av{
         font-size: 12px;
@@ -133,7 +124,6 @@
 }
 .av_alternativa_text{
     font-size: 14px;
-    height: 5px;
 }
 
  }
@@ -141,7 +131,6 @@
  @media (max-width:525px){
     .av_alternativa_text{
         font-size: 13px;
-        height: 4px;
     }
  }
 
@@ -154,6 +143,10 @@
     .num_question{
         font-size: 19px;
     }
+
+    .custom-btn-size{
+            font-size: 14px;
+        }
 
     .engrenagem{
         width: 41px;
@@ -170,6 +163,18 @@
  
 }
 
+@media (max-width: 425px){
+    .av_alternativa_text{
+        font-size: 12px;
+    }
+    .custom-btn-size{
+        font-size: 13px;
+    }
+    .button_avaliacao_conferir{
+        height: 32px;
+    }
+}
+
 @media (max-width:422px){
     .intro_avaliacao{
         font-size: 29px;
@@ -182,21 +187,22 @@
     }
 }
 
-@media (max-width:326px){
+@media (max-width:375px){
     .intro_avaliacao{
-        font-size: 26px;
-     }
+        font-size: 27px;
+    }
 }
 
+@media (Max-width: 355px){
+    .intro_avaliacao{
+        font-size: 25px;
+    }
+}
 
 @media (max-width:322px){
 
-    .question_script_test{
-        font-size: 9px;
-    }
-
     .num_question{
-        font-size: 17px;
+        font-size: 18px;
     }
 
     .engrenagem{
@@ -214,9 +220,18 @@
      }
     }
 
+@media (max-width: 295px){
+    .av_alternativa_text{
+        font-size: 11px;
+    }
+    .num_question{
+        font-size: 17px;
+    }
+}
+
 @media (max-width:282px){
     .question_script_test{
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .num_question{
@@ -230,6 +245,9 @@
     .intro_avaliacao{
         font-size: 24px;
     }
+    .custom-btn-size{
+        font-size: 12px;
+    }
     
 }
 
@@ -237,12 +255,6 @@
 .intro_avaliacao{
     font-size: 23px;
 }
-}
-
-@media (max-width:266px){
-    .num_question{
-        font-size: 13.5px;
-    }
 
     .engrenagem{
         width: 34px;
@@ -257,17 +269,36 @@
 }
 
 @media (max-width:245px){
-    .num_question{
-        font-size: 13px;}
     .engrenagem{
         width: 29px;
         height: 17px;
     }
     }
 
+@media (max-width:230px){
+    .av_alternativa_text{
+        font-size: 10.5px;
+    }
+    .question_script_test{
+        font-size: 9.5px;
+    }
+    .custom-btn-size{
+        font-size: 11px;
+    }
+    .button_avaliacao_conferir{
+        height: 29px;
+    }
+}
+
 @media (max-width:225px){
     .intro_avaliacao{
         font-size: 21px;
+    }
+}
+
+@media (max-width:215px){
+    .av_alternativa_text{
+        font-size: 10px;
     }
 }
 
@@ -331,7 +362,6 @@
         height: 24px;
     }
 }
-
 
 @media(max-width:1000px){
     .seus_erros_av{

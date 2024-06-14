@@ -38,7 +38,7 @@ block head_image %}
             value="A"
             required
           />
-          <label for="A{{key}}" style="text-align: center;"><p class="av_alternativa_text">{{value[7]}}</p></label>
+          <label for="A{{key}}" style="display: flex; justify-content: center; align-items: center;"><p class="av_alternativa_text">{{value[7]}}</p></label>
         </div>
 
         <div class="alternativa_avaliacao_1">
@@ -49,18 +49,18 @@ block head_image %}
             name="resposta{{key}}"
             value="B"
           />
-          <label for="B{{key}}" style="text-align: center;"><p class="av_alternativa_text">{{value[8]}}</p></label>
+          <label for="B{{key}}" style="display: flex; justify-content: center; align-items: center;"><p class="av_alternativa_text">{{value[8]}}</p></label>
         </div>
 
         <div class="alternativa_avaliacao_1">
           <input
-            class="alternativa_avaliacao"
+            class="alternativa_avaliacao" 
             type="radio"
             id="C{{key}}"
             name="resposta{{key}}"
             value="C"
           />
-          <label for="C{{key}}" style="text-align: center;"><p class="av_alternativa_text">{{value[9]}}</p></label>
+          <label for="C{{key}}" style="display: flex; justify-content: center; align-items: center;" ><p class="av_alternativa_text">{{value[9]}}</p></label>
         </div>
 
         <div class="alternativa_avaliacao_1">
@@ -71,17 +71,17 @@ block head_image %}
             name="resposta{{key}}"
             value="D"
           />
-          <label for="D{{key}}" style="text-align: center;"><p class="av_alternativa_text">{{value[10]}}</p></label>
+          <label for="D{{key}}" style="display: flex; justify-content: center; align-items: center;"><p class="av_alternativa_text">{{value[10]}}</p></label>
         </div>
       </div>
     </div>
     <br>
+    <br>
 
     {% endif %} {% endfor %}
-
-    <button class="button_avaliacao_conferir rounded-pill shadow-lg">
-      <p class="text_button_av">Conferir resultado</p>
-    </button>
+<div class="button_av_conteinder">
+    <button class="button_avaliacao_conferir rounded-pill shadow-lg custom-btn-size">Conferir resultado</button>
+  </div>
   </form>
 </div>
 

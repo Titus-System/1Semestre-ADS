@@ -6,22 +6,22 @@
 ![PRODUCT LOGO][logo-mestreagil]
 
 ## Índice
-1. [Apresentação do projeto](#apresentação-do-projeto)
-2. [Sobre o produto](#sobre-o-produto)
-3. [Desenvolvimento Ágil](#desenvolvimento-ágil)
-4. [Ferramentas e Tecnologias Utilizadas](#ferramentas-e-tecnologias-utilizadas)
-5. [Competências Desenvolvidas](#competências-desenvolvidas)
+1. [Apresentação do Projeto](#apresentação-do-projeto)
+2. [Sobre o produto](#📜-sobre-o-produto)
+3. [Desenvolvimento Ágil](#⚡-desenvolvimento-ágil)
+4. [Ferramentas e Tecnologias Utilizadas](#🖥️-ferramentas-e-tecnologias-utilizadas)
+5. [Competências Desenvolvidas](#📊-competencias-desenvolvidas)
     - [Hard Skills](#hard-skills)
     - [Soft Skills](#soft-skills)
-6. [Cronograma](#cronograma)
-7. [Product Backlog](#product-backlog)
-8. [Roadmap](#roadmap)
-9. [Entregas por Sprint](#entregas-por-sprint)
+6. [Cronograma](#🗓️-cronograma)
+7. [Product Backlog](#📋-product-backlog)
+8. [Roadmap](#🗺️-roadmap)
+9. [Entregas por Sprint](#🔰-entregas-por-sprint)
     - [Sprint 1: Fundamentos](#sprint-1-fundamentos)
     - [Sprint 2: Desenvolvimento das principais funcionalidades](#sprint-2-desenvolvimento-das-principais-funcionalidades)
     - [Sprint 3: Banco de dados e login](#sprint-3-banco-de-dados-e-login)
     - [Sprint 4: Correções e Finalização](#sprint-4-correções-e-finalização)
-10. [Instalação](#instalação)
+10. [Instalação](#💻-instalação)
     - [Clonando o repositório](#clonando-o-repositório)
 11. [Membros da Equipe](#membros-da-equipe)
     - [SCRUM TEAM](#scrum-team)
@@ -37,21 +37,6 @@ Uma plataforma educacional interativa e didática que facilite o aprendizado e a
 O projeto foi feito seguindo o método Ágil SCRUM, dividindo o trabalho em sprints de 21 dias, com reuniões diáras, revisões e retrospectivas ao final. Essa abordagem permitiu uma gestão eficiente do projeto, com foco na entrega contínua de valor ao cliente. Ao longo das sprints, a equipe adquiriu e aprimorou habilidades técnicas e interpessoais, promovendo a resolução ágil de desafios e a adaptação a novas demandas.
 
 # 🖥️ Ferramentas e Tecnologias Utilizadas
-<!-- <p align="center">
-  <img alt="Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
-  <img alt="Flask" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg">
-  <img alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-  <img alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-  <img alt="Bootstrap" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg">
-  <img alt="javascript" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
-  <img alt="sqlite" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg">
-  <img alt="aws" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" />
-  <img alt="nginx" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" />
-  <img alt="Git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg">
-  <img alt="Git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg">
-  <img alt="VSCode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg">
-  <img alt="Figma" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg">
-</p> -->
 
 - <img alt="Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"> **Python**: Programação e desenvolvimento backend
 <br><br>
@@ -105,6 +90,7 @@ Além das habilidades técnicas, o projeto proporcionou o desenvolvimento das se
 - Autogerenciamento;
 - Pensamento crítico e solução de problemas.
 
+<a name="cronograma"></a>
 ## 🗓️ Cronograma
 | Evento       | Data de Início | Data de Término |
 |--------------|----------------|-----------------|

@@ -392,7 +392,7 @@ div {
   /* display: flex;
     flex-direction: column; */
   font-family: "Ruda";
-  justify-content: start;
+  justify-content: left;
 }
 
 .quiz_option input {
@@ -746,7 +746,7 @@ div {
 }
 
 /* pagina avaliação */
-.button_avaliacao_conferir {
+.button_avaliacao_conferir{
   font-size: 15px;
   background-color: #000103;
   color: #ff695e;
@@ -754,7 +754,15 @@ div {
   width: 150px;
 }
 
-.alternativa_avaliacao {
+.button_avaliacao{
+  font-size: 15px;
+  background-color: #000103;
+  color: #ff695e;
+  padding: 5px;
+  width: 150px;
+}
+
+.alternativa_avaliacao{
   font-size: 16px;
 }
 
@@ -773,6 +781,17 @@ div {
   flex-direction: column;
 }
 
+.button_av_conteinder{
+  display: flex;
+  justify-content: right;
+}
+
+.button_avaliacao_conferir{
+  width: fit-content;
+  height: 36px;
+  display: flex;
+}
+
 .question_box{
   display: flex;
   justify-content: center;
@@ -782,8 +801,11 @@ div {
 }
 
 .av_alternativa_text{
-  height: 8px;
-}
+  display: flex; 
+  text-align: center; 
+  margin: 5px;
+  height: fit-content;
+    }
 
 .num_question {
   display: flex;
