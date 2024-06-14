@@ -263,10 +263,11 @@ div {
 
 .quiz_page {
   max-width: 60%;
-  margin: 30px auto;
+  margin: auto;
   background-color: #e0e5e8;
 }
 
+<<<<<<< HEAD
 .box_question {
   background-color: rgb(245, 245, 245);
   border-radius: 30px;
@@ -279,6 +280,9 @@ div {
 .question_box {
   margin-bottom: 4rem;
 }
+=======
+
+>>>>>>> 8e9e70519354adcb896a603ed971889c811a87d8
 
 .btn_ns {
   display: flex;
@@ -771,6 +775,18 @@ div {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.question_box{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.av_alternativa_text{
+  height: 8px;
 }
 
 .num_question {
