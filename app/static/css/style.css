@@ -263,13 +263,11 @@ div {
 
 .quiz_page {
   max-width: 60%;
-  margin: 30px auto;
+  margin: auto;
   background-color: #e0e5e8;
 }
 
-.question_box {
-  margin-bottom: 4rem;
-}
+
 
 .btn_ns {
   display: flex;
@@ -762,6 +760,18 @@ div {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.question_box{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.av_alternativa_text{
+  height: 8px;
 }
 
 .num_question {
