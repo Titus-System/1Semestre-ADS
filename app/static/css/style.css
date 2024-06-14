@@ -743,7 +743,7 @@ div {
   width: 150px;
 }
 
-.alternativa_avaliacao {
+.alternativa_avaliacao{
   font-size: 16px;
 }
 
@@ -771,8 +771,11 @@ div {
 }
 
 .av_alternativa_text{
-  height: 8px;
-}
+  display: flex; 
+  text-align: center; 
+  margin: 5px;
+  height: fit-content;
+    }
 
 .num_question {
   display: flex;
