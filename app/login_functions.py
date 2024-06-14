@@ -148,7 +148,7 @@ def update_user_info():
         return redirect("/login")
     
     for column, value in [("nome", update_nome), ('mail',update_mail), ('password', database.hashpw(update_password.encode("utf-8"), database.gensalt()))]:
-        if value:
+        if bool(value):
             database.update_user_info("registro", column, username, value)
 
     return redirect("/")
