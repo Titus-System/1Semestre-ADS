@@ -2,85 +2,84 @@
 
 {% block title %} Página Quiz {% endblock %}
 {% block quiz %}
-<div class="quiz_page">
-  <!-- inicio da pagina -->
-  <br>
-  <h1 id="quiz_title" style="font-size: 50px;">Pergunta {{num_quest}}</h1>
-  <br>
-  <!--inicio do formulario-->
-  <div class="question_box row">
-    <div class="col-2">
-      <a href="{{anterior}}"><button class="arrow_assunto" id="button_previous">&#9664;</button></a>
-    </div>
-
-    <div class="col-8">
-      <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta">
-        <div class="question_box_1">
-          <br>
-          <br>
-          <div class="engrenagens-div">
-            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
-            <p class="question_script">{{questao[6]}}</p>
-            &#160&#160<img class="engrenagem" src="{{url_for('static', filename='images/engrenagem.png')}}">&#160&#160
+<div class="container mt-4">
+  <div style="text-align:justify">
+      <h1 id="quiz_title">Capítulo 1</h1>
+      <div class="row d-flex justify-content-between align-items-center flex-wrap">
+          <div class="col-1">
+              <a href="{{anterior}}" class="mb-3 mb-md-0">
+                  <button id="button_previous" class="btn arrow_assunto">&#9664;</button>
+              </a>
           </div>
-          <br>
-        </div>
-
-        <!-- alternativas quiz -->
-        <div class="quiz_option">
-          <br>
-
-          <label for="A{{num_quest}}" class="quiz-alternativa">
-            <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
-            {{questao[7]}}</label>
-          <br>
-          <br>
-
-          <label for="B{{num_quest}}" class="quiz-alternativa">
-            <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
-            {{questao[8]}}</label>
-          <br>
-          <br>
-
-
-          <label for="C{{num_quest}}" class="quiz-alternativa">
-            <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
-            {{questao[9]}}</label>
-          <br>
-          <br>
-
-          <label for="D{{num_quest}}" class="quiz-alternativa">
-            <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
-            {{questao[10]}}</label>
-          <br>
-        </div>
-
-        <!-- botão dica -->
-        <br>
-        <br>
-        <div>
-          <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover"
-            data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[11]}}">
-            Não sei responder...
-          </button>
-          <br>
-          <br>
-          <br><br>
-        </div>
-    </div>
-    </form>
-    <div class="col-2"><button type="button" id="enviar_resposta" class="arrow_assunto"
-        id="button_next">&#9654;</button>
-    </div>
-
-  </div>
-  <!--fim do formulario-->
-  <div class="text-center mt-4">
-    <a href="/quiz/salvar_quiz/{{pagina_atual}}">
-        <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
-    </a>
+          <div class="col-9 container mx-2 my-2">
+            <form action="/quiz/{{pagina_atual}}" method="POST" id="pergunta">
+              <div class="question_box_1">
+                <br>
+                <br>
+                <div class="engrenagens-div">
+                  <p class="question_script">{{questao[6]}}</p>
+                </div>
+                <br>
+              </div>
+              <!-- alternativas quiz -->
+              <div class="quiz_option">
+                <br>
+      
+                <label for="A{{num_quest}}" class="quiz-alternativa">
+                  <input type="radio" class="quiz-alternativa" id="A{{num_quest}}" name="resposta_{{num_quest}}" value="A">
+                  {{questao[7]}}</label>
+                <br>
+                <br>
+      
+                <label for="B{{num_quest}}" class="quiz-alternativa">
+                  <input type="radio" class="quiz-alternativa" id="B{{num_quest}}" name="resposta_{{num_quest}}" value="B">
+                  {{questao[8]}}</label>
+                <br>
+                <br>
+      
+      
+                <label for="C{{num_quest}}" class="quiz-alternativa">
+                  <input type="radio" class="quiz-alternativa" id="C{{num_quest}}" name="resposta_{{num_quest}}" value="C">
+                  {{questao[9]}}</label>
+                <br>
+                <br>
+      
+                <label for="D{{num_quest}}" class="quiz-alternativa">
+                  <input type="radio" class="quiz-alternativa" id="D{{num_quest}}" name="resposta_{{num_quest}}" value="D">
+                  {{questao[10]}}</label>
+                <br>
+              </div>
+      
+              <!-- botão dica -->
+              <br>
+              <br>
+              <div>
+                <button tabindex="0" type="button" class="btn_ns" role="button" data-bs-toggle="popover"
+                  data-bs-trigger="focus" title="dica..." data-bs-content="{{questao[11]}}">
+                  Não sei responder...
+                </button>
+                <br>
+                <br>
+                <br><br>
+              </div>
+          
+            </form>
+          </div>
+          <div class="col-1">
+              <a class="mb-3 mb-md-0">
+                <button type="button" id="enviar_resposta" class="btn arrow_assunto"
+                id="button_next">&#9654;</button>
+              </a>
+          </div>
+      </div>
+      <div class="text-center mt-4">
+          <a href="/quiz/salvar_quiz/{{pagina_atual}}">
+              <button class="button_parar_aqui rounded-pill shadow-lg">Salvar respostas</button>
+          </a>
+      </div>
   </div>
 </div>
+
 
 <script>
   document.getElementById('enviar_resposta').addEventListener('click', function () {
