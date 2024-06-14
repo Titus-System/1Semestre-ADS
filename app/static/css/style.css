@@ -267,6 +267,15 @@ div {
   background-color: #e0e5e8;
 }
 
+.box_question {
+  background-color: rgb(245, 245, 245);
+  border-radius: 30px;
+  padding: 2%;
+  color: #000000;
+  font-family: "Ruda";
+  font-size: 20px;
+}
+
 .question_box {
   margin-bottom: 4rem;
 }
@@ -875,9 +884,7 @@ input[class="alternativa_avaliacao"]:checked + label{
   color: #ff695e;
   padding: 5px;
   width: 150px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+
 }
 
 /* login page style */
