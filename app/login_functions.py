@@ -104,6 +104,7 @@ def admin_page():
             if type(i) == int:
                 soma += i
                 qtd += 1
+        if qtd == 0: return "Ainda não há registros"
         return format(soma/qtd, ",.2f")
 
     if is_admin(current_user.id):
