@@ -773,6 +773,17 @@ div {
   flex-direction: column;
 }
 
+.button_av_conteinder{
+  display: flex;
+  justify-content: right;
+}
+
+.button_avaliacao_conferir{
+  width: fit-content;
+  height: 40px;
+  display: flex;
+}
+
 .question_box{
   display: flex;
   justify-content: center;

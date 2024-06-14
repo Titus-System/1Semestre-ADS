@@ -74,13 +74,6 @@
 
  /* pagina avaliação */
 
- @media (max-width:1025px){
-    .button_avaliacao_conferir{
-        height: 30px;
-    }
-
-}
-
 @media (max-width:992px){
     .question_box{
         width: 80%;
@@ -89,6 +82,11 @@
 }
 }
 
+@media (max-width: 991px){
+    .button_avaliacao_conferir{
+        margin-right: 6%;
+      }
+}
 
  @media (max-width:819px){
     .question_script_test{
@@ -108,6 +106,12 @@
     }
     .intro_avaliacao{
         font-size: 31px;
+    }
+}
+
+@media (max-width:700px){
+    .button_avaliacao_conferir{
+        height: 35px;
     }
 }
 
@@ -140,6 +144,10 @@
         font-size: 19px;
     }
 
+    .custom-btn-size{
+            font-size: 14px;
+        }
+
     .engrenagem{
         width: 41px;
         height: 23px;
@@ -158,6 +166,12 @@
 @media (max-width: 425px){
     .av_alternativa_text{
         font-size: 12px;
+    }
+    .custom-btn-size{
+        font-size: 13px;
+    }
+    .button_avaliacao_conferir{
+        height: 32px;
     }
 }
 
@@ -231,6 +245,9 @@
     .intro_avaliacao{
         font-size: 24px;
     }
+    .custom-btn-size{
+        font-size: 12px;
+    }
     
 }
 
@@ -264,6 +281,12 @@
     }
     .question_script_test{
         font-size: 9.5px;
+    }
+    .custom-btn-size{
+        font-size: 11px;
+    }
+    .button_avaliacao_conferir{
+        height: 29px;
     }
 }
 
