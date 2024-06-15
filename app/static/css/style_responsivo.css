@@ -279,9 +279,6 @@
     .av_alternativa_text{
         font-size: 10.5px;
     }
-    .question_script_test{
-        font-size: 9.5px;
-    }
     .custom-btn-size{
         font-size: 11px;
     }
@@ -373,6 +370,7 @@
     .textos_correção_av{
         margin-left: 5%;
         margin-right: 5%;
+        width: 90%;
     }
     .lista_respostas_av{
         margin-left: 5.7%;
@@ -424,9 +422,6 @@
 @media (max-width:830px){
     .aprovado_reprovado_av{
         font-size: 30px;
-    }
-    .desc_resultado_av{
-        font-size: 13px;
     }
     .aproveitamento_av{
         font-size: 19.3px;
@@ -618,7 +613,7 @@
         font-size: 12.4px;
     }
     .desc_resultado_av{
-        font-size: 10.5px;
+        font-size: 10.6px;
     }
     .certificado_avalie_av{
         font-size: 12.2px;
@@ -636,7 +631,7 @@
         font-size: 24px;
     }
     .desc_resultado_av{
-        font-size: 10px;
+        font-size: 10.1px;
     }
     .aproveitamento_av{
         font-size: 16.7px;
@@ -683,7 +678,7 @@
         height: 18px;
     }
     .desc_resultado_av{
-        font-size: 9.75px;
+        font-size: 9.86px;
     }
 }
 
@@ -701,7 +696,7 @@
         font-size: 21px;
     }
     .desc_resultado_av{
-        font-size: 9.5px;
+        font-size: 9.6px;
     }
     .suas_respostas_av{
         font-size: 14.15px;
@@ -725,7 +720,7 @@
     font-size: 11.3px;
 }
 .desc_resultado_av{
-    font-size: 8.7px;
+    font-size: 8.8px;
 }
 #img_avalie{ 
     bottom: 8.2px;
@@ -869,7 +864,7 @@
         font-size: 18px;
 }
 .desc_resultado_av{
-    font-size: 8.2px;
+    font-size: 8.3px;
 }
 .lista_respostas_av{
     position: relative;

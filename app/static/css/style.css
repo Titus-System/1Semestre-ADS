@@ -854,6 +854,7 @@ input[class="alternativa_avaliacao"]:checked + label{
   display: flex;
   flex-direction: column;
   margin-left: -15%;
+  width: 130%;
 }
 
 .lista_respostas_av {
