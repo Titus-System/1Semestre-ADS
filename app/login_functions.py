@@ -104,6 +104,7 @@ def admin_page():
             if type(i) == int:
                 soma += i
                 qtd += 1
+        if qtd == 0: return "Ainda não há registros"
         return format(soma/qtd, ",.2f")
 
     if is_admin(current_user.id):
@@ -147,7 +148,7 @@ def update_user_info():
         return redirect("/login")
     
     for column, value in [("nome", update_nome), ('mail',update_mail), ('password', database.hashpw(update_password.encode("utf-8"), database.gensalt()))]:
-        if value:
+        if bool(value):
             database.update_user_info("registro", column, username, value)
 
     return redirect("/")

@@ -1215,7 +1215,7 @@
 }
 
 /*PAGINA RESULTADOS*/
-@media (min-width: 768px) and (max-width: 1024px){
+/*@media (min-width: 768px) and (max-width: 1024px){
     .button_avaliacao.rounded-pill.shadow-lg {
         height: 60px;
         width: 150px;
@@ -1270,7 +1270,7 @@
         font-size: 25px;
     }
     
-}
+}*/
 
 /*PAGINA ADM*/
 @media (min-width: 768px) and (max-width: 1024px){
