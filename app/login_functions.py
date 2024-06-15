@@ -145,11 +145,14 @@ def update_user_info():
 
     if update_password != update_password_confirm:
         flash("senhas não batem!")
-        return redirect("/login")
+        return redirect("/user")
     
-    for column, value in [("nome", update_nome), ('mail',update_mail), ('password', database.hashpw(update_password.encode("utf-8"), database.gensalt()))]:
-        if bool(value):
-            database.update_user_info("registro", column, username, value)
+    for column, value in [("nome", update_nome), ('mail',update_mail), ('password', update_password)]:
+        if bool(value) == True:
+            if column == "password":
+                database.update_user_info("registro", column, username, database.hashpw(update_password.encode("utf-8"), database.gensalt()))
+            else:
+                database.update_user_info("registro", column, username, value)
 
     return redirect("/")
 

@@ -9,7 +9,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="body_feed">
+<div class="head_img text-center">
+    <img class="img-fluid mt-3" src="/static/images/feedback-svg.svg" style="height:90%;">
+</div>
+<div class="body_feed"> 
     <div class="form-container">
         <h1 class="h1_feed">Feedback</h1>
         <form action="/feedback" method="POST" id="evaluation-form">
@@ -23,7 +26,7 @@
             </div>
             <label for="suggestion">Gostaria de nos deixar uma sugestão? Escreva no espaço abaixo:</label>
             <textarea id="suggestion" name="suggestion" rows="4" placeholder="Sua sugestão..."></textarea>
-            <button class="button_feedback" type="submit" onclick="submitForm()" value="submit">Enviar Feedback</button>
+            <button class="button_feedback rounded-pill shadow-lg" type="submit" onclick="submitForm()" value="submit">Enviar Feedback</button>
         </form>
         <div id="result"></div>
     </div>

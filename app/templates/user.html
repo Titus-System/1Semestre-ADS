@@ -6,6 +6,24 @@
 style="background-image:url(/static/images/user_button.svg); background-position:center; background-size: contain; background-repeat: no-repeat;">
 </div>
 
+<!-- Espaço para mensagens flash -->
+<div class="container mt-4" style="width:70%;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for i in messages %}
+    <div class="modal-body alert alert-dismissible show" role="alert">
+        <a style="margin-top:50%;">{{i[1]}}</a>
+        <!-- <button type="button" class="btn-close white" data-bs-dismiss="alert" aria-label="Close"></button> -->
+    </div>
+    {% endfor %}
+    <script>
+        var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        registerModal.show();
+    </script>
+    {% endif %}
+    {% endwith %}
+</div>
+
 <div class="box_teoria_pacer">
     <h1>{{current_user.id}}</h1>
     <br>

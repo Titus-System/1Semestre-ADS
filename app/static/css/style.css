@@ -960,11 +960,11 @@ input[class="alternativa_avaliacao"]:checked + label{
 /*feedback*/
 .body_feed {
   font-family: "Ruda";
-  background-color: #f0f0f0;
+  background-color: #e0e5e8;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
   margin: 0;
 }
 
@@ -1026,17 +1026,18 @@ textarea {
 }
 
 .button_feedback {
-  background-color: #28a745;
-  color: white;
+  background-color: #000103;
+  color:#ff695e;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.button_feedback:hover {
-  background-color: #218838;
-}
+/* .button_feedback:hover {
+  background-color: #ff695e;
+  color:#000103;
+} */
 
 /* rodapé */
 .footer {
@@ -1068,9 +1069,9 @@ textarea {
     background-image: none;
   }
 
-  .head_img {
+  /* .head_img {
     width: 100vw;
-  }
+  } */
 
   .timeline {
    
