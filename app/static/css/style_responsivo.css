@@ -719,9 +719,6 @@
 .certificado_avalie_av{
     font-size: 11.3px;
 }
-.desc_resultado_av{
-    font-size: 8.8px;
-}
 #img_avalie{ 
     bottom: 8.2px;
 }
@@ -763,6 +760,9 @@
 }
 .seus_erros_av{
     font-size: 13.25px;
+}
+.desc_resultado_av{
+    font-size: 9px;
 }
 }
 
@@ -862,9 +862,6 @@
     }
     .aprovado_reprovado_av{
         font-size: 18px;
-}
-.desc_resultado_av{
-    font-size: 8.3px;
 }
 .lista_respostas_av{
     position: relative;
