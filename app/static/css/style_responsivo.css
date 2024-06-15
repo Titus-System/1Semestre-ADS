@@ -713,9 +713,7 @@
 }
 
 @media (max-width:438px){
-    .aprovado_reprovado_av{
-        font-size: 19.5px;
-}
+
 .certificado_avalie_av{
     font-size: 11.3px;
 }
@@ -802,9 +800,6 @@
     .certificado_avalie_av{
         font-size: 10.4px;
     }
-    .aproveitamento_av{
-        font-size: 12.8px;
-    }
     .acertos_erros_av{
         font-size: 11.8px;
     }
@@ -857,11 +852,8 @@
     .acertos_erros_av{
         font-size: 11.6px;
     }
-    .aproveitamento_av{
-        font-size: 12.6px;
-    }
     .aprovado_reprovado_av{
-        font-size: 18px;
+        font-size: 19.5px;
 }
 .lista_respostas_av{
     position: relative;
@@ -946,7 +938,7 @@
 
 @media (max-width:272px){
     .aprovado_reprovado_av{
-        font-size: 16.7px;
+        font-size: 18.7px;
 }
 }
 
@@ -993,7 +985,7 @@
         font-size: 12px;
     }
     .aproveitamento_av{
-        font-size: 11.8px;
+        font-size: 12px;
     }
 }
 
@@ -1039,9 +1031,6 @@
     }
     .button_avaliacao{
         height: 21px;
-    }
-    .aproveitamento_av{
-        font-size: 10.3px;
     }
     .acertos_erros_av{
         font-size: 10px;
