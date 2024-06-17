@@ -314,7 +314,7 @@ div {
 }
 
 .input_vf {
-  width: 2%;
+  width: 20px;
   border: transparent;
   background-color: transparent;
   text-align: center;
@@ -322,7 +322,7 @@ div {
 }
 
 .input_as {
-  width: 7%;
+  width: 20px;
   border: transparent;
   background-color: transparent;
   text-align: center;
@@ -950,11 +950,12 @@ input[class="alternativa_avaliacao"]:checked + label{
 
 .button_login_page {
   font-size: 15px;
-  background-color: whitesmoke;
-  color: #000103;
+  background-color: #000103;
+  color: #ff695e;
   padding: 5px;
   width: 150px;
   float: right;
+  border-radius: 30px;
 }
 
 /*feedback*/
