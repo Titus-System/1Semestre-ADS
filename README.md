@@ -2,8 +2,10 @@
 
 # Titus Systems - ADS - 1º SEMESTRE/2024
 
-## Mestre Ágil
-![PRODUCT LOGO][logo-mestreagil]
+## <a href="https://mestreagil.ddns.net">🔗 Mestre Ágil</a>
+<p align="center"><a href="https://mestreagil.ddns.net" source="_blank">
+<img width=40% src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png">
+</a></p>
 
 ## Índice
 1. [Apresentação do Projeto](#apresentação-do-projeto)
@@ -28,10 +30,14 @@
 12. [Sobre a Empresa](#sobre-a-empresa)
 
 ## <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png" height=30> Apresentação do projeto
-Veja a demonstração do projeto no [youtube](https://youtu.be/quI6hgsdAgw)
+Acesse o site e navegue pela plataforma:
+<p align="center"><a href="https://mestreagil.ddns.net" source="_blank">
+<img width=50% src="./Materiais/apresentacoes/homepage.png">
+</a></p>
+
 
 ## 📜 Sobre o produto
-Uma plataforma educacional interativa e didática que facilite o aprendizado e a implementação da metodologia SCRUM. A plataforma visa estar completamente imersa nos valores e pilares do SCRUM, priorizando a entrega de conteúdo ao usuário, aliado a ferramentas padronizadas e métodos avaliativos.
+"Mestre Ágil" é uma plataforma educacional interativa e didática que facilite o aprendizado e a implementação da metodologia SCRUM. A plataforma visa estar completamente imersa nos valores e pilares do SCRUM, priorizando a entrega de conteúdo ao usuário, aliado a ferramentas padronizadas e métodos avaliativos.
 
 ## ⚡ Desenvolvimento Ágil
 O projeto foi feito seguindo o método Ágil SCRUM, dividindo o trabalho em sprints de 21 dias, com reuniões diáras, revisões e retrospectivas ao final. Essa abordagem permitiu uma gestão eficiente do projeto, com foco na entrega contínua de valor ao cliente. Ao longo das sprints, a equipe adquiriu e aprimorou habilidades técnicas e interpessoais, promovendo a resolução ágil de desafios e a adaptação a novas demandas.
@@ -55,6 +61,8 @@ O projeto foi feito seguindo o método Ágil SCRUM, dividindo o trabalho em spri
 - <img alt="nginx" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" /> **NGINX**: Configuração de tráfego https
 <br><br>
 - <img alt="Git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"><img alt="Git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"> **Git & GitHub**: Controle de versões e colaborações no código
+<br><br>
+- <img alt="VSCode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"> **VSCode**: IDE de desenvolvimento
 <br><br>
 - <img alt="Figma" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"> **Figma**: Criação de wireframes e design do site
 <br><br>
@@ -90,7 +98,7 @@ Além das habilidades técnicas, o projeto proporcionou o desenvolvimento das se
 - Autogerenciamento;
 - Pensamento crítico e solução de problemas.
 
-<a name="cronograma"></a>
+
 ## 🗓️ Cronograma
 | Evento       | Data de Início | Data de Término |
 |--------------|----------------|-----------------|
@@ -101,10 +109,12 @@ Além das habilidades técnicas, o projeto proporcionou o desenvolvimento das se
 | Sprint 4     | 27/05          | 16/06           |
 
 ### 📋 Product Backlog
-![PRODUCT-BACKLOG][product-backlog]
+![PRODUCT-BACKLOG](/Materiais/apresentacoes/product-backlog.png)
 
 ### 🗺️ Roadmap
-![ROADMAP][roadmap]
+![ROADMAP](/Materiais/apresentacoes/imagem-entregas-por-sprint.png)
+
+
 
 ### 🔰 Entregas por Sprint
 1. *Sprint 1. Fundamentos*: 
