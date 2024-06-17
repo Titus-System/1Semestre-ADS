@@ -41,7 +41,7 @@ Veja uma exibição no youtube:
 🔗 Acesse o site e navegue pela plataforma:
 <p align="center">
 <img width=50% src="./Materiais/apresentacoes/homepage.png">
-</a></p>
+</p></a>
 
 
 ## 📜 Sobre o produto
