@@ -30,8 +30,16 @@
 12. [Sobre a Empresa](#sobre-a-empresa)
 
 ## <img src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo.png" height=30> Apresentação do projeto
-Acesse o site e navegue pela plataforma:
-<p align="center"><a href="https://mestreagil.ddns.net" source="_blank">
+
+<a href="https://youtu.be/EJ0NXAXMdkQ" source="_blank">
+Veja uma exibição no youtube:
+<p align="center">
+<img width=30% src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg">
+</a></p>
+
+<a href="https://mestreagil.ddns.net" source="_blank">
+🔗 Acesse o site e navegue pela plataforma:
+<p align="center">
 <img width=50% src="./Materiais/apresentacoes/homepage.png">
 </a></p>
 

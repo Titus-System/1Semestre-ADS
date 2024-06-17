@@ -1,364 +1,488 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- css linkups -->
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/normalize.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/style.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/indexstyle.css')}}"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- font linkup-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
-      rel="stylesheet"
-    />
+  <!-- css linkups -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/indexstyle.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style_responsivo.css')}}" />
 
-    <!-- Icon and title-->
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/static/images/logo-nova-ma.png"
-    />
-    <title>Mestre Ágil</title>
-  </head>
-  <body style="max-width: 100%; overflow-x: hidden">
-    <!-- navbar -->
-    <header class="link_bar">
-      <nav class="navbar navbar-expand-lg" style="z-index:1;">
-          <div class="container-fluid">
+  <!-- font linkup-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
 
-              <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive"
-                  id="alternateButton" style="color:white; font-size:30px">
-                  &#9776
+  <!-- Icon and title-->
+  <link rel="icon" type="image/x-icon" href="/static/images/logo-nova-ma.png" />
+  <title>Mestre Ágil</title>
+</head>
+
+<body style="max-width: 100%; overflow-x: hidden;">
+  <!-- navbar -->
+  <header class="link_bar">
+    <nav class="navbar navbar-expand-lg" style="z-index:1;">
+      <div class="container-fluid">
+
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive"
+          id="alternateButton" style="color:white; font-size:30px">
+          &#9776
+        </button>
+        <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
+
+        <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %}
+          data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
+          <img src="/static/images/user_button.svg" style="height:40px">
+        </button>
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
+            <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas">FERRAMENTAS</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação">AVALIAÇÃO</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
+            &nbsp&nbsp
+            {% if current_user.is_authenticated %}
+            <li class="navbar-item">
+              <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal"
+                data-bs-target="#modal_user" style="height:50px; width:50px">
+                <img src="/static/images/user_button.svg" style="height:40px">
               </button>
-              <a class="navbar-brand" href="/"><img src="/static/images/logo-nova-ma.png" alt="logo"></a>
-
-              <button class="btn circle navbar-toggler bg-light" type="button" {% if current_user.is_authenticated %}
-                  data-bs-toggle="modal" data-bs-target="#modal_user" {% else %} data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasUser" {% endif %} style="height:50px; width:50px">
-                  <img src="/static/images/user_button.svg" style="height:40px">
-              </button>
-
-              <div class="collapse navbar-collapse">
-                  <ul class="navbar-nav ms-auto my-auto" style="align-items: center;">
-                      <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz">QUIZ</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila">APOSTILA</a>
-                      </li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/ferramentas"
-                              alt="ferramentas">FERRAMENTAS</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/avaliacao"
-                              alt="avaliação">AVALIAÇÃO</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer">PACER</a></li>
-                      &nbsp&nbsp
-                      {% if current_user.is_authenticated %}
-                      <li class="navbar-item">
-                          <button class="btn circle btn-light bg-light" type="button" data-bs-toggle="modal"
-                              data-bs-target="#modal_user" style="height:50px; width:50px">
-                              <img src="/static/images/user_button.svg" style="height:40px">
-                          </button>
-                      </li>
-                      {% else %}
-                      <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
-                              data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                      <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
-                              data-bs-target="#modal_login">Fazer Login</a></li>
-                      {% endif %}
-                  </ul>
-              </div>
-          </div>
-      </nav>
-      <hr class="header_hr">
+            </li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                data-bs-target="#modal_signup">Fazer cadastro</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                data-bs-target="#modal_login">Fazer Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr class="header_hr">
   </header>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvasmenuLabel"
-      style="background-color: #39444b; color:white;">
-      <div class="offcanvas-header" data-bs-theme="dark">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mestre Ágil</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-      </div>
+    style="background-color: #39444b; color:white;">
+    <div class="offcanvas-header" data-bs-theme="dark">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mestre Ágil</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+    </div>
   </div>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasResponsive"
-      aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
-      <div class="offcanvas-header" data-bs-theme="dark">
-          <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz"><img src="/static/images/quiz-svg.svg" height="20" width="50">QUIZ</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila"><img src="/static/images/apostila-svg.svg" height="20" width="50">APOSTILA</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas"><img src="/static/images/ferramentas-svg.svg" height="20" width="50">FERRAMENTAS</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação"><img src="/static/images/avaliacao-svg.svg" height="20" width="50">AVALIAÇÃO</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer"><img src="/static/images/pacer-svg.svg" height="20" width="50">PACER</a></li>
+    aria-labelledby="offcanvasResponsiveLabel" style="background-color: #39444b; color:white;">
+    <div class="offcanvas-header" data-bs-theme="dark">
+      <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Mestre Ágil</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-light" href="/quiz" alt="quiz"><img
+              src="/static/images/quiz-svg.svg" height="20" width="50">QUIZ</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="/apostila" alt="apostila"><img
+              src="/static/images/apostila-svg.svg" height="20" width="50">APOSTILA</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="/ferramentas" alt="ferramentas"><img
+              src="/static/images/ferramentas-svg.svg" height="20" width="50">FERRAMENTAS</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="/avaliacao" alt="avaliação"><img
+              src="/static/images/avaliacao-svg.svg" height="20" width="50">AVALIAÇÃO</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="/pacer" alt="pacer"><img
+              src="/static/images/pacer-svg.svg" height="20" width="50">PACER</a></li>
       </ul>
-      </div>
+    </div>
   </div>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel"
-      style="background-color: #39444b; color:white; width:180px">
-      <div class="offcanvas-header" data-bs-theme="dark">
-          <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    style="background-color: #39444b; color:white; width:180px">
+    <div class="offcanvas-header" data-bs-theme="dark">
+      <h5 class="offcanvas-title" id="offcanvasUserLabel"></h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="indice">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+              data-bs-target="#modal_signup">Fazer cadastro</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
+              data-bs-target="#modal_login">Fazer Login</a></li>
+        </ul>
       </div>
-      <div class="offcanvas-body">
-          <div class="indice">
-              <ul class="navbar-nav">
-                  <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
-                          data-bs-target="#modal_signup">Fazer cadastro</a></li>
-                  <li class="nav-item"><a class="nav-link text-light" href="#" data-bs-toggle="modal"
-                          data-bs-target="#modal_login">Fazer Login</a></li>
-              </ul>
-          </div>
-      </div>
+    </div>
   </div>
 
   <!-- Login Modal -->
   <div class="text-light">
-      <div class="modal fade" id="modal_login">
-          <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content bg-dark">
-                  <!-- Modal body -->
-                  <div class="modal-body container" data-bs-theme="dark">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
-                      <div class="icon d-flex align-items-center justify-content-center">
-                          <img src="/static/images/logo-nova-ma.png" style="height: 80px">
-                      </div>
-                      <h3 class="text-center mt-4 mb-4">Login</h3>
-                      <form action="/login" method="post" data-bs-theme="light">
-                          <label for="username">Username:<br>
-                              <input class="form-control" type="text" id="username" name="username"
-                                  required></label>
-                          <label for="password">Senha:<br>
-                              <input class="form-control" type="password" id="password" name="password"
-                                  required></label>
-                          <div class="modal-footer">
-                              <a><button class="btn btn-light" type="submit">Login</button></a>
-                          </div>
-                      </form>
-                  </div>
+    <div class="modal fade" id="modal_login">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <!-- Modal body -->
+          <div class="modal-body container" data-bs-theme="dark">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
+            <div class="icon d-flex align-items-center justify-content-center">
+              <img src="/static/images/logo-nova-ma.png" style="height: 80px">
+            </div>
+            <h3 class="text-center mt-4 mb-4">Login</h3>
+            <form action="/login" method="post" data-bs-theme="light">
+              <label for="username">Username:<br>
+                <input class="form-control" type="text" id="username" name="username" required></label>
+              <label for="password">Senha:<br>
+                <input class="form-control" type="password" id="password" name="password" required></label>
+              <div class="modal-footer">
+                <a><button class="btn btn-light" type="submit">Login</button></a>
               </div>
+            </form>
           </div>
+        </div>
       </div>
+    </div>
 
-      <!-- signup Modal -->
-      <div class="modal fade" id="modal_signup">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content bg-dark">
-                  <!-- Modal body -->
-                  <div class="modal-body container" data-bs-theme="dark">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
-                      <div class="icon d-flex align-items-center justify-content-center">
-                          <img src="/static/images/logo-nova-ma.png" style="height: 80px">
-                      </div>
-                      <h3 class="text-center mt-4 mb-4">Cadastre-se</h3>
-                      <form action="/signup" method="post" class="login-form" data-bs-theme="light">
-                          <label for="username">Username:<br>
-                              <input class="form-control" type="text" id="username" name="username"
-                                  required></label>
+    <!-- signup Modal -->
+    <div class="modal fade" id="modal_signup">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+          <!-- Modal body -->
+          <div class="modal-body container" data-bs-theme="dark">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" style="float:right"></button><br>
+            <div class="icon d-flex align-items-center justify-content-center">
+              <img src="/static/images/logo-nova-ma.png" style="height: 80px">
+            </div>
+            <h3 class="text-center mt-4 mb-4">Cadastre-se</h3>
+            <form action="/signup" method="post" class="login-form" data-bs-theme="light">
+              <label for="username">Username:<br>
+                <input class="form-control" type="text" id="username" name="username" required></label>
 
-                          <label for="name">Nome:<br>
-                              <input class="form-control rounded-left" type="text" id="name" name="name" required></label>
+              <label for="name">Nome:<br>
+                <input class="form-control rounded-left" type="text" id="name" name="name" required></label>
 
-                          <label for="email">e-mail:<br>
-                              <input class="form-control" type="email" id="email" name="email"
-                                  required></label>
+              <label for="email">e-mail:<br>
+                <input class="form-control" type="email" id="email" name="email" required></label>
 
-                          <label for="password">Senha:<br>
-                              <input class="form-control" type="password" id="password" name="password"
-                                  required></label>
+              <label for="password">Senha:<br>
+                <input class="form-control" type="password" id="password" name="password" required></label>
 
-                          <label for="confirm_password">Confirme sua senha:<br>
-                              <input class="form-control" type="password" id="confirm_password"
-                                  name="confirm_password" required></label>
+              <label for="confirm_password">Confirme sua senha:<br>
+                <input class="form-control" type="password" id="confirm_password" name="confirm_password"
+                  required></label>
 
-                          <div class="modal-footer">
-                              <a href="/signup"><button class="btn btn-light"
-                                      type="submit">Signup</button></a>
-                          </div>
-                      </form>
-                  </div>
+              <div class="modal-footer">
+                <a href="/signup"><button class="btn btn-light" type="submit">Signup</button></a>
               </div>
+            </form>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
 
   {% if current_user.is_authenticated %}
   <!-- User Modal -->
   <div class="modal fade" id="modal_user">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-dark">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
 
-              <!-- Modal Header -->
-              <div class="modal-header" data-bs-theme="dark">
-                  <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
+        <!-- Modal Header -->
+        <div class="modal-header" data-bs-theme="dark">
+          <h4 class="modal-title" style="color:white">{{user_data[0]}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
 
-              <!-- Modal body -->
-              <div class="modal-body container" style="color:black">
-                  <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
-                  <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
-                  <br>
-                  {% if is_admin %}<a href="/admin">
-                      <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
-                  </a><br>{% endif %}<br>
-                  <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu
-                          parei</button></a><br>
-                  <br>
-                  <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus
-                          resultados</button></a><br>
-                  <br>
-                  <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
-              </div>
+        <!-- Modal body -->
+        <div class="modal-body container" style="color:black">
+          <h4 class="modal-title" style="color:white">USERNAME: {{current_user.id}}</h4><br>
+          <h4 class="modal-title" style="color:white">E-MAIL: {{user_data[1]}}</h4><br>
+          <br>
+          {% if is_admin %}<a href="/admin">
+            <buton class="btn btn-secondary w-100">Acessar página de administrador</buton>
+          </a><br>{% endif %}<br>
+          <a href="/quiz/{{continuar}}"><button class="btn btn-light w-100">continuar de onde eu
+              parei</button></a><br>
+          <br>
+          <a href="/quiz/resultado_parcial"><button class="btn btn-light w-100">conferir meus
+              resultados</button></a><br>
+          <br>
+          <a href="/user"><button class="btn btn-light w-100">Meu perfil</button></a><br>
+        </div>
 
-              <!-- Modal Footer -->
-              <div class="modal-footer">
-                  <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
-              </div>
-          </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <a href="/logout"><button class="btn btn-light" type="submit">Logout</button></a>
+        </div>
       </div>
+    </div>
   </div>
   {% endif %}
-  
-    <!-- Page Cover -->
-    <div>
-      <img
-        class="head_img"
-        src="{{url_for('static', filename='images/SCRUM.jpg')}}"
-        alt="Capa"
-      />
-    </div>
 
-    <!-- Intro Text -->
-    <div class="container expand-lg">
-      <div class="intro_text">
-        <h1 class="text-center title">Mestre Ágil</h1>
-        <br>
-        <p class="text-center product_intro">
-          Criado com o principal objetivo de possibilitar um aprendizado padronizado, rápido e satisfatório, o site “Mestre Ágil” dispõe de todos os recursos necessários para que a metodologia ágil Scrum possa ser dominada e aplicada. É importante ressaltar que, para navegar pelo site adequadamente, é necessário cadastrar-se. É possível acessar algumas páginas sem um cadastro, mas ele é essencial para cumprir o curso com êxito e tornar-se um profissional mais capacitado. As principais funcionalidades do site estão nas páginas Apostila, Quiz, Ferramentas, Avaliação e PACER.
-        </p>
-      </div>
+  <!-- Page Cover -->
+  <div>
+    <img class="head_img" src="{{url_for('static', filename='images/SCRUM.jpg')}}" alt="Capa" />
+  </div>
+
+  <!-- Intro Text -->
+  <div class="w-100 align-items-center mb-5">
+    <div class="mx-auto product_intro" style="text-align: justify;">
+      <h1 class="text-center title">Mestre Ágil</h1>
+      <br>
+      <p>Ser Ágil significa adotar um conjunto de princípios e práticas que visam a flexibilidade, eficiência e melhoria
+        contínua no desenvolvimento de projetos. Especificamente, ser ágil envolve: <strong>Adaptabilidade, Colaboração,
+          Entrega de Valor, Transparência, Melhoria Contínua, Simplicidade e Autonomia.</strong> Esses princípios ajudam
+        a garantir que os projetos sejam entregues de maneira mais eficaz, atendendo às necessidades dos clientes e
+        adaptando-se rapidamente a quaisquer mudanças no ambiente de negócios.</p>
+      <p>
+        Criado com o principal objetivo de possibilitar um aprendizado padronizado, rápido e satisfatório, o site
+        “Mestre Ágil” dispõe de todos os recursos necessários para que a metodologia ágil Scrum possa ser dominada e
+        aplicada. É importante ressaltar que, para navegar pelo site adequadamente, é necessário cadastrar-se. É
+        possível acessar algumas páginas sem um cadastro, mas ele é essencial para cumprir o curso com êxito e tornar-se
+        um profissional mais capacitado. As principais funcionalidades do site estão nas páginas Apostila, Quiz,
+        Ferramentas, Avaliação e PACER.
+      </p>
+      <p>
+        Nossa plataforma educacional foi cuidadosamente desenvolvida para oferecer uma compreensão aprofundada e prática
+        da metodologia Scrum. Através de um conteúdo interativo e didático, os usuários terão acesso a ferramentas
+        padronizadas e métodos avaliativos que facilitam a implementação eficaz dessa abordagem ágil em seus projetos.
+        Com recursos intuitivos e uma estrutura de aprendizado bem-organizada, a plataforma capacita os profissionais a
+        explorar, aprender e aplicar o Scrum com confiança, resultando em um desempenho superior e na realização de
+        resultados excepcionais em seus empreendimentos.
+      </p>
     </div>
+  </div>
+  <h1 class="w-100 title" style="text-align: center; font-size:2rem;">Explore os nossos recursos para gerir o seu
+    projeto</h1>
+  <div class="container-home-ferramentas my-4">
+    <div class="container-ferramentas-img-button">
+      <img class="img-home-ferramentas" src="{{url_for('static', filename='images/quiz-svg.svg')}}" alt="Imagem"
+        style="height:120px"><br>
+      <a href="/quiz">
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Iniciar Quiz</button>
+      </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <h4 style="color:#00adef">QUIZ</h4>
+      <p>O nosso curso é organizado em forma de quiz para maior aproveitamento do aluno. Os nossos conteúdos são
+        orientados à rápida compreensão dos conceitos básicos, dos Papéis, Artefatos e Eventos do SCRUM. Nossas
+        explicações são rápidas, curtas e pragmáticas, voltadas ao aluno que busca um meio de entender e aplicar o ACRUM
+        em seus projetos. Enfim, somos Ágeis.</p>
+    </div>
+  </div>
+
+  <div class="container-ferramentas-reverso my-4">
+    <div class="container-ferramentas-img-button">
+      <img class="img-home-ferramentas" src="{{url_for('static', filename='images/apostila-svg.svg')}}"
+        alt="Imagem"><br>
+      <a href="/apostila">
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Acessar Apostila</button>
+      </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <h4 style="color:#00adef">APOSTILA</h4>
+      <p>Sem precisar passar por todo o quiz, você pode consultar termos, conceitos e referências de forma rápida e
+        objetiva. Conte também com exemplos práticos para melhor entendimento e clareza dos Papéis, Eventos e Artefatos.
+        Veja as formas de priorização de tarefas para garantir que seu projeto está seguindo a melhor rota para a
+        geração contínua de valor. Selecionamos também os melhores vídeos explicativos e demonstrativos para que o
+        usuário do site tenha ainda mais versatilidade em suas pesquisas.</p>
+    </div>
+  </div>
+  <br>
+  <div class="container-home-ferramentas my-4">
+    <div class="container-ferramentas-img-button">
+      <img class="img-home-ferramentas" src="{{url_for('static', filename='images/ferramentas-svg.svg')}}"
+        alt="Imagem"><br>
+      <a href="/ferramentas">
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Utilizar Ferramentas</button>
+      </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <h4 style="color:#00adef">FERRAMENTAS</h4>
+      <p>Por meio da página “Ferramentas”, o usuário pode baixar modelos de três artefatos do Scrum: Product Backlog,
+        Sprint Backlog e Burndown Chart. Esses modelos servem como bases para que equipes Scrum possam trabalhar
+        adequadamente, evitando possíveis erros no uso esses artefatos. Além disso, os modelos são apresentados de forma
+        clara e intuitiva, com textos explicativos, o que garante que mesmo aqueles que estão a iniciar a sua jornada no
+        Scrum consigam utilizá-los de maneira eficaz. Com essas ferramentas, as equipes têm a oportunidade de melhorar
+        sua organização e seu planejamento, facilitando o alcance dos objetivos estabelecidos.</p>
+    </div>
+  </div>
+
+  <div class="container-ferramentas-reverso my-4">
+    <div class="container-ferramentas-img-button">
+      <img class="img-home-ferramentas" src="{{url_for('static', filename='images/avaliacao-svg.svg')}}"
+        alt="Imagem"><br>
+      <a href="/avaliacao">
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Fazer Avaliação</button>
+      </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <h4 style="color:#00adef">AVALIAÇÃO</h4>
+      <p>Quando sentir-se preparado para o teste que determinará seu entendimento sobre Scrum, se estiver cadastrado, o
+        usuário pode partir para a página “Avaliação” e realizar um teste de dez perguntas sobre Scrum. O mínimo de
+        acertos para ser aprovado é sete. Em caso de aprovação, será possível baixar um certificado e avaliar o curso
+        “Mestre Ágil”. Caso contrário, a avaliação precisará ser refeita até o número mínimo de acertos ser alcançado. É
+        possível utilizar as páginas "Apostila" e "Quiz" para estudar. A página “Apostila” cumpre a função de material
+        de consulta, enquanto é possível praticar seus conhecimentos com quizes sobre Scrum na página “Quiz”. </p>
+    </div>
+  </div>
+
+  <div class="container-home-ferramentas my-4">
+    <div class="container-ferramentas-img-button">
+      <img class="img-home-ferramentas" src="{{url_for('static', filename='images/pacer-svg.svg')}}" alt="Imagem"><br>
+      <a href="/pacer">
+        <button type="button" class="button_home_page_ferramentas rounded-pill shadow-lg">Avaliação PACER</button>
+      </a>
+    </div>
+    <div class="text-pagina-produto-sprint">
+      <h4 style="color:#00adef">PACER</h4>
+      <p>O site "Mestre Ágil" conta, também, com a página “PACER”, que pode ser utilizada por Scrum Masters que desejem
+        ter um panorama geral do desempenho e da autopercepção de seus companheiros. A página inicia com um curto texto
+        que conceitua a avaliação PACER, e ao informar a quantidade de integrantes da equipe, o Scrum Master pode
+        preencher um formulário com as notas concedidas por cada funcionário para que o site calcule os resultados deles
+        e compare a nota da equipe como um todo ao máximo possível. Assim, os Scrum Masters podem tomar decisões mais
+        embasadas e estratégicas, fomentando um ambiente de trabalho mais produtivo e coeso.</p>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="container my-5">
+    <h2 class="title" style="text-align: center; font-size: 2rem;">Faça login para ter acesso a todos os nossos
+      recursos:</h2>
+    <br>
     <div class="row">
-      <div class="col-lg-6">
-        <h2 class="text-center title sub left_side_text">Avaliação</h2>
-        <p class="text-center left_side_text product_intro">
-          Quando sentir-se preparado para o teste que determinará seu entendimento sobre Scrum, se estiver cadastrado, o usuário pode partir para a página “Avaliação” e realizar um teste de dez perguntas sobre Scrum. O mínimo de acertos para ser aprovado é sete. Em caso de aprovação, será possível baixar um certificado e avaliar o curso “Mestre Ágil”. Caso contrário, a avaliação precisará ser refeita até o número mínimo de acertos ser alcançado. É possível utilizar as páginas "Apostila" e "Quiz" para estudar. A página “Apostila” cumpre a função de material de consulta, enquanto é possível praticar seus conhecimentos com quizes sobre Scrum na página “Quiz”. 
-          
-        </p>
-        <button class="index_button" href="apostila/artefatos.html">Comece o Curso</button>
-      </div>
-      <div class="col-lg-6">
-        <img
-          class="content_img"
-          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
-          alt="avaliacao"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <img
-          class="content_img"
-          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
-          alt="avaliacao"
-        />
-      </div>
-      <div class="col-lg-6">
-        <h2 style="padding-right: 3rem" class="text-center title sub">Pacer</h2>
-        <p class="text-center product_intro">
-          O site "Mestre Ágil" conta, também, com a página “PACER”, que pode ser utilizada por Scrum Masters que desejem ter um panorama geral do desempenho e da autopercepção de seus companheiros. A página inicia com um curto texto que conceitua a avaliação PACER, e ao informar a quantidade de integrantes da equipe, o Scrum Master pode preencher um formulário com as notas concedidas por cada funcionário para que o site calcule os resultados deles e compare a nota da equipe como um todo ao máximo possível. Assim, os Scrum Masters podem tomar decisões mais embasadas e estratégicas, fomentando um ambiente de trabalho mais produtivo e coeso.
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <h2 class="text-center title sub left_side_text">Ferramentas</h2>
-        <p class="text-center left_side_text product_intro">
-          Por fim, por meio da página “Ferramentas”, o usuário pode baixar modelos de três artefatos do Scrum: Product Backlog, Sprint Backlog e Burndown Chart. Esses modelos servem como bases para que equipes Scrum possam trabalhar adequadamente, evitando possíveis erros no uso esses artefatos. Além disso, os modelos são apresentados de forma clara e intuitiva, com textos explicativos, o que garante que mesmo aqueles que estão a iniciar a sua jornada no Scrum consigam utilizá-los de maneira eficaz. Com essas ferramentas, as equipes têm a oportunidade de melhorar sua organização e seu planejamento, facilitando o alcance dos objetivos estabelecidos.
-      </div>
-      <div class="col-lg-6">
-        <img
-          class="content_img"
-          src="{{url_for('static', filename='images/index-avaliacao.png')}}"
-          alt="avaliacao"
-        />
-      </div>
-    </div>
-    <!-- Page Footer -->
-    <footer class="footer mt-auto py-3">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-md-4 mb-3 mb-md-0">
-            <img src="/static/images/logo-nova-ma.png" style="height: 100px" />
-            <p>
-              Nossa plataforma oferece materiais detalhados sobre a metodologia
-              ágil Scrum, ajudando profissionais a aprimorarem suas habilidades
-              em gerenciamento de projetos.
-            </p>
+      <div class="col-md-6">
+        <ul class="nav nav-tabs mb-3 fs-5 fw-bold bg-dark rounded w-75" id="pills-tab" role="tablist">
+          <li class="nav-item w-50" role="presentation">
+            <button class="nav-link active w-100" id="pills-profile-tab" data-bs-toggle="tab"
+              data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+              aria-selected="false" style="color:#ff695e">Login</button>
+          </li>
+          <li class="nav-item w-50" role="presentation">
+            <button class="nav-link w-100" id="pills-home-tab" data-bs-toggle="tab" data-bs-target="#pills-home"
+              type="button" role="tab" aria-controls="pills-home" aria-selected="true"
+              style="color:#ff695e">Cadastro</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="col contents">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                    <h3>Registre-se</h3>
+                    <p class="mb-4">Faça seu cadastro se ainda não possui</p>
+                  </div>
+                  <form action="/signup" method="POST">
+                    <div class="form-group first">
+                      <label for="username">Username
+                        <input type="text" class="form-control" id="username" name="username" required></label>
+                    </div>
+                    <div class="form-group first">
+                      <label for="name">Nome
+                        <input type="text" class="form-control" id="name" name="name" required></label>
+                    </div>
+                    <div class="form-group first">
+                      <label for="email">e-mail
+                        <input type="text" class="form-control" id="email" name="email" required></label>
+                    </div>
+                    <div class="form-group first">
+                      <label for="password">Senha
+                        <input type="password" class="form-control" id="password" name="password" required></label>
+                    </div>
+                    <div class="form-group first">
+                      <label for="confirm_password">Confirme sua senha
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                          required></label>
+                    </div>
+                    <a href="/signup"><button class="button_login_page " type="submit"><strong>Fazer
+                          cadastro</strong></button></a>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4 mb-3 mb-md-0">
-            <img
-              src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png"
-              style="height: 65px"
-            />
-            <h5>Titus Systems</h5>
-            <p>
-              Convidamos você a explorar nossas soluções e descobrir como
-              podemos ajudar sua empresa a alcançar novos patamares de sucesso.
-            </p>
-          </div>
-          <div class="col-md-4 mb-3 mb-md-0">
-            <h5>Contato</h5>
-            <p>Email: contato@mestreagil.com</p>
-            <p>Telefone: (12) 99999-9999</p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a
-                  href="https://github.com/Titus-System/1Semestre-ADS"
-                  target="_blank"
-                  ><img
-                    src="https://img.icons8.com/ios-filled/24/ffffff/github.png"
-                    alt="GitHub"
-                /></a>
-              </li>
-            </ul>
+          <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="col contents">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                    <h3>Login</h3>
+                    <p class="mb-4">Faça login se já possui cadastro</p>
+                  </div>
+                  <form action="/login" method="POST">
+                    <div class="form-group first">
+                      <label for="username">Username
+                        <input type="text" class="form-control" id="username" name="username" required></label>
+                    </div>
+                    <div class="form-group first">
+                      <label for="password">Senha
+                        <input type="password" class="form-control" id="password" name="password" required></label>
+                    </div>
+                    <a href="/login"><button class="button_login_page" type="submit"><strong>Login</strong></button></a>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 mt-3">
-            <p class="mb-0">
-              &copy; 2024 Mestre Ágil. Todos os direitos reservados.
-            </p>
-          </div>
+      </div>
+      <div class="col-md-6 contents my-3 mx-auto">
+        <div
+          style="background: url(/static/images/login.svg); background-size: contain; background-repeat: no-repeat; background-position: center; height:50vh;">
         </div>
       </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    </div>
+  </div>
+  <!-- Page Footer -->
+  <footer class="footer mt-auto py-3">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <img src="/static/images/logo-nova-ma.png" style="height: 100px" />
+          <p>
+            Nossa plataforma oferece materiais detalhados sobre a metodologia
+            ágil Scrum, ajudando profissionais a aprimorarem suas habilidades
+            em gerenciamento de projetos.
+          </p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <img
+            src="https://github.com/Titus-System/1Semestre-ADS/raw/5aaa1b580cbe7d8a66140fdc0de0b304689fa11f/docs/images/logo_empresa.png"
+            style="height: 65px" />
+          <h5>Titus Systems</h5>
+          <p>
+            Convidamos você a explorar nossas soluções e descobrir como
+            podemos ajudar sua empresa a alcançar novos patamares de sucesso.
+          </p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h5>Contato</h5>
+          <p>Email: contato@mestreagil.com</p>
+          <p>Telefone: (12) 99999-9999</p>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="https://github.com/Titus-System/1Semestre-ADS" target="_blank"><img
+                  src="https://img.icons8.com/ios-filled/24/ffffff/github.png" alt="GitHub" /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-3">
+          <p class="mb-0">
+            &copy; 2024 Mestre Ágil. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
