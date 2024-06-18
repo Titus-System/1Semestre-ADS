@@ -35,7 +35,7 @@
 Veja uma exibição no youtube:
 <p align="center">
 <img width=30% src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg">
-</a></p>
+</p></a>
 
 <a href="https://mestreagil.ddns.net" source="_blank">
 🔗 Acesse o site e navegue pela plataforma:
@@ -117,7 +117,7 @@ Além das habilidades técnicas, o projeto proporcionou o desenvolvimento das se
 | Sprint 4     | 27/05          | 16/06           |
 
 ### 📋 Product Backlog
-![PRODUCT-BACKLOG](/Materiais/apresentacoes/product-backlog.png)
+![PRODUCT-BACKLOG](/Materiais/apresentacoes/product-backlog.PNG)
 
 ### 🗺️ Roadmap
 ![ROADMAP](/Materiais/apresentacoes/imagem-entregas-por-sprint.png)
